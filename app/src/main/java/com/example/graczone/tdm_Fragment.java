@@ -43,7 +43,7 @@ public class tdm_Fragment extends Fragment {
             @NonNull
             @Override
             public tdm_Fragment.ProductsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_single, parent, false);
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_squad, parent, false);
                 return new tdm_Fragment.ProductsViewHolder(view);
             }
 

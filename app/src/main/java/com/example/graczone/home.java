@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -28,7 +29,8 @@ import com.google.firebase.messaging.FirebaseMessaging;
 
 public class home extends AppCompatActivity {
 
-    Dialog  dialog;
+    Dialog dialog;
+    TextView get_username;
 
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -41,14 +43,18 @@ public class home extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        get_username = findViewById(R.id.get_username);
+
+/*
+        Intent intent=getIntent();
+        String s1=intent.getStringExtra("username");
+        get_username.setText(s1);*/
 
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel("MyNotifications", "MyNotifications", NotificationManager.IMPORTANCE_DEFAULT);
 
-
-       if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
-            NotificationChannel channel=new NotificationChannel("MyNotifications","MyNotifications", NotificationManager.IMPORTANCE_DEFAULT);
-
-            NotificationManager manager=getSystemService(NotificationManager.class);
+            NotificationManager manager = getSystemService(NotificationManager.class);
             manager.createNotificationChannel(channel);
         }
 
@@ -87,6 +93,7 @@ public class home extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
 
 
 

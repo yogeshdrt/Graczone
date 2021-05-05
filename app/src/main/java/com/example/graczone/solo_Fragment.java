@@ -43,7 +43,7 @@ public class solo_Fragment extends Fragment {
             @NonNull
             @Override
             public solo_Fragment.ProductsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_single, parent, false);
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_solo, parent, false);
                 return new solo_Fragment.ProductsViewHolder(view);
             }
 

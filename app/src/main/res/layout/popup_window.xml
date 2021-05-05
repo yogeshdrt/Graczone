@@ -18,11 +18,11 @@
         android:textAlignment="center"/>
 
     <Button
-        android:id="@+id/join_btn"
+        android:id="@+id/popup_confirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="join"
+        android:text="Confirm"
         app:strokeColor="#000000"
         app:strokeWidth="2dp" />
 

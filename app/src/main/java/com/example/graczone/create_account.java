@@ -50,6 +50,8 @@ public class create_account extends AppCompatActivity {
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
                 String txt_username=username.getText().toString();
                 String txt_email=email.getText().toString();
                 String txt_password=password.getText().toString();
@@ -61,12 +63,17 @@ public class create_account extends AppCompatActivity {
                 else if(txt_password.length()<8){
                     Toast.makeText(create_account.this, "password must be at least 8 characters", Toast.LENGTH_SHORT).show();
                 }
-                else if(!txt_password.equals(txt_confirm_password)){
+                else if (!txt_password.equals(txt_confirm_password)) {
                     Toast.makeText(create_account.this, "new password and confirm password mismatch!", Toast.LENGTH_SHORT).show();
-                }
+                } else {
+                    register(txt_username, txt_email, txt_password);
 
-                else
-                    register(txt_username,txt_email,txt_password);
+                    AppCompatActivity activity = (AppCompatActivity) view.getContext();
+                    Intent intent = new Intent(create_account.this, home.class);
+                    intent.putExtra("username", username.getText().toString());
+                    startActivity(intent);
+
+                }
             }
         });
     }

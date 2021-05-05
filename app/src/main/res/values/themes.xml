@@ -13,7 +13,6 @@
         <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
         <!-- Customize your theme here. -->
 
-        <item name="android:windowAnimationStyle">@style/animation</item>
 
     </style>
 
@@ -26,11 +25,7 @@
 
     <style name="Theme.Graczone.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="animation">
 
-        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
-        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
-    </style>
 
 
 </resources>
