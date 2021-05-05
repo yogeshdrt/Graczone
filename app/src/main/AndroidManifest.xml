@@ -9,7 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Graczone">
-        <activity android:name=".joining"></activity>
         <activity android:name=".Wallet.withdraw" />
         <activity android:name=".Wallet.transactions" />
         <activity android:name=".Wallet.wallet" />
