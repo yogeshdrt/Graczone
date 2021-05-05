@@ -13,6 +13,8 @@
         android:id="@+id/menu_solo"
         android:icon="@drawable/ic_baseline_person_24"
         android:title="SOLO" />
-
-
+    <item
+        android:id="@+id/menu_tdm"
+        android:icon="@drawable/tdm_icon"
+        android:title="TDM" />
 </menu>

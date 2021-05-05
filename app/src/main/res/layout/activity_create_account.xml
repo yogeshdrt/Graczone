@@ -22,7 +22,7 @@
 
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/username"
         android:layout_width="340dp"
         android:layout_height="60dp"
         android:backgroundTint="#FFFFFF"
@@ -43,7 +43,7 @@
         app:layout_constraintVertical_bias="0.188" />
 
     <EditText
-        android:id="@+id/editTextTextEmailId"
+        android:id="@+id/email"
         android:layout_width="340dp"
         android:layout_height="60dp"
         android:backgroundTint="#FFFFFF"
@@ -63,8 +63,9 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.342" />
 
+
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/password"
         android:layout_width="340dp"
         android:layout_height="60dp"
         android:backgroundTint="#FFFBFB"
@@ -78,13 +79,13 @@
         android:textSize="22dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.506" />
 
     <EditText
-        android:id="@+id/editTextConfirmPassword"
+        android:id="@+id/confirm_password"
         android:layout_width="340dp"
         android:layout_height="60dp"
         android:backgroundTint="#FFFFFF"
@@ -104,26 +105,10 @@
         app:layout_constraintVertical_bias="0.666" />
 
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="289dp"
-        android:layout_height="64dp"
-        android:backgroundTint="@color/white"
-        android:fontFamily="sans-serif-light"
-        android:paddingLeft="20dp"
-        android:paddingBottom="15dp"
-        android:text="Create Account"
-        android:textAllCaps="false"
-        android:textColor="@color/black"
-        android:textSize="28sp"
-        app:cornerRadius="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.843"
-        app:strokeColor="#000000"
-        app:strokeWidth="1dp" />
+
+
+
+
 
     <TextView
         android:id="@+id/textView9"
@@ -180,6 +165,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.447" />
+
+
+    <Button
+        android:id="@+id/btn_register"
+        android:layout_width="289dp"
+        android:layout_height="64dp"
+        android:backgroundTint="@color/white"
+        android:fontFamily="sans-serif-light"
+        android:paddingLeft="20dp"
+        android:paddingBottom="15dp"
+        android:text="Create Account"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="28sp"
+        app:cornerRadius="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.843"
+        app:strokeColor="#000000"
+        app:strokeWidth="1dp" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,24 +8,23 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.example.graczone.R;
 import com.example.graczone.duo_Fragment;
 import com.example.graczone.solo_Fragment;
 import com.example.graczone.squad_Fragment;
+import com.example.graczone.tdm_Fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeFragment extends Fragment {
     BottomNavigationView bnv;
 
-    private HomeViewModel homeViewModel;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
+
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
 
@@ -46,9 +45,13 @@ public class HomeFragment extends Fragment {
                         break;
                     case R.id.menu_solo:
                         frag = new solo_Fragment();
+                        break;
+                    case R.id.menu_tdm:
+                        frag=new tdm_Fragment();
                 }
 
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.FrameContainer, frag).commit();
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.FrameContainer, frag).commit();
                 return true;
             }
         });

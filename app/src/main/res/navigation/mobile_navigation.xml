@@ -12,14 +12,22 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.graczone.ui.gallery.GalleryFragment"
+        android:id="@+id/nav_mymatches"
+        android:name="com.example.graczone.ui.MyMatches.MyMatches_Fragment"
         android:label=""
         tools:layout="@layout/fragment_my_matches" />
 
+
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.graczone.ui.slideshow.SlideshowFragment"
+        android:id="@+id/nav_notification"
+        android:name="com.example.graczone.ui.Notification.Notification_Fragment"
         android:label=""
-        tools:layout="@layout/fragment_account" />
+        tools:layout="@layout/fragment_notifications"/>
+
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.example.graczone.ui.Settings.Settings_Fragment"
+        android:label=""
+        tools:layout="@layout/fragment_settings" />
+
 </navigation>

@@ -9,18 +9,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Graczone">
+        <activity android:name=".joining"></activity>
+        <activity android:name=".Wallet.withdraw" />
+        <activity android:name=".Wallet.transactions" />
+        <activity android:name=".Wallet.wallet" />
         <activity
             android:name=".home"
             android:label="@string/title_activity_home"
             android:theme="@style/Theme.Graczone.NoActionBar" />
         <activity android:name=".create_account" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name=".MyMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

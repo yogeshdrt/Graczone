@@ -17,7 +17,7 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
-public class duo_Fragment extends Fragment {
+public class tdm_Fragment extends Fragment {
 
     private RecyclerView mFirestoreList;
     private FirebaseFirestore firebaseFirestore;
@@ -29,26 +29,26 @@ public class duo_Fragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_duo_, container, false);
+        View view = inflater.inflate(R.layout.fragment_t_d_m, container, false);
 
 
         mFirestoreList = view.findViewById(R.id.firestore_list);
         firebaseFirestore = FirebaseFirestore.getInstance();
 
-        Query query = firebaseFirestore.collection("DUO");
+        Query query = firebaseFirestore.collection("TDM");
         FirestoreRecyclerOptions<ProductsModel> options = new FirestoreRecyclerOptions.Builder<ProductsModel>()
                 .setQuery(query, ProductsModel.class).build();
 
-        adapter = new FirestoreRecyclerAdapter<ProductsModel, duo_Fragment.ProductsViewHolder>(options) {
+        adapter = new FirestoreRecyclerAdapter<ProductsModel, tdm_Fragment.ProductsViewHolder>(options) {
             @NonNull
             @Override
-            public duo_Fragment.ProductsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            public tdm_Fragment.ProductsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_single, parent, false);
-                return new duo_Fragment.ProductsViewHolder(view);
+                return new tdm_Fragment.ProductsViewHolder(view);
             }
 
             @Override
-            protected void onBindViewHolder(@NonNull duo_Fragment.ProductsViewHolder holder, int position, @NonNull ProductsModel model) {
+            protected void onBindViewHolder(@NonNull tdm_Fragment.ProductsViewHolder holder, int position, @NonNull ProductsModel model) {
                 holder.time.setText(model.getTime());
                 holder.entry_fee.setText(model.getEntry_fee());
                 holder.rs_per_kill.setText(model.getRs_per_kill());

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/newbackground"
-    tools:context=".ui.gallery.GalleryFragment">
+    tools:context=".ui.MyMatches.MyMatches_Fragment">
 
 
     <ScrollView
