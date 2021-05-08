@@ -71,6 +71,7 @@ public class create_account extends AppCompatActivity {
                     AppCompatActivity activity = (AppCompatActivity) view.getContext();
                     Intent intent = new Intent(create_account.this, home.class);
                     intent.putExtra("username", username.getText().toString());
+                 //   intent.putExtra("email", email.getText().toString());
                     startActivity(intent);
 
                 }

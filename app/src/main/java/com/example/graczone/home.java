@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,12 +26,17 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 public class home extends AppCompatActivity {
 
     Dialog dialog;
-    TextView get_username;
+    TextView get_username, get_email;
+    View hview;
+
+    FirebaseAuth mauth;
+    FirebaseUser currentUser;
 
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -43,12 +49,9 @@ public class home extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        get_username = findViewById(R.id.get_username);
 
-/*
-        Intent intent=getIntent();
-        String s1=intent.getStringExtra("username");
-        get_username.setText(s1);*/
+        mauth = FirebaseAuth.getInstance();
+        currentUser = mauth.getCurrentUser();
 
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -87,14 +90,18 @@ public class home extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_mymatches,R.id.nav_notification, R.id.nav_settings)
+                R.id.nav_home, R.id.nav_mymatches, R.id.nav_notification, R.id.nav_settings)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+
+        hview = navigationView.getHeaderView(0);
+        get_username = hview.findViewById(R.id.get_username);
+        get_username.setText(currentUser.getDisplayName());
+        get_email = hview.findViewById(R.id.get_email);
+        get_email.setText(currentUser.getEmail());
         NavigationUI.setupWithNavController(navigationView, navController);
-
-
 
 
     }
