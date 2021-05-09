@@ -48,7 +48,7 @@
         android:layout_height="60dp"
         android:backgroundTint="#FFFFFF"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="textEmailAddress"
         android:paddingLeft="5dp"
         android:textColor="#CFCFCF"
         android:textColorHighlight="#FFFFFF"
@@ -72,6 +72,7 @@
         android:ems="10"
         android:paddingLeft="5dp"
         android:textColor="#CFCFCF"
+        android:inputType="textPassword"
         android:textColorHighlight="#FFFFFF"
         android:textColorHint="#C5C3C3"
         android:textColorLink="#FFFFFF"
@@ -97,6 +98,7 @@
         android:textColorLink="#FFFFFF"
         android:textCursorDrawable="@drawable/my_cursor"
         android:textSize="22dp"
+        android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
@@ -187,8 +189,6 @@
         app:layout_constraintVertical_bias="0.843"
         app:strokeColor="#000000"
         app:strokeWidth="1dp" />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,6 +21,7 @@
 
     <TextView
         android:id="@+id/textView5"
+        android:inputType="textEmailAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/forgotpassword"
@@ -36,6 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/newuser"
+        android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.148"
@@ -49,7 +51,7 @@
         android:layout_height="60dp"
         android:backgroundTint="#FFFFFF"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="textEmailAddress"
         android:paddingLeft="5dp"
         android:textColor="#CFCFCF"
         android:textColorHighlight="#FFFFFF"
@@ -80,6 +82,7 @@
 
     <EditText
         android:id="@+id/password"
+        android:inputType="textPassword"
         android:layout_width="340dp"
         android:layout_height="60dp"
         android:backgroundTint="#FFFFFF"
