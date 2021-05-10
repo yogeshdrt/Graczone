@@ -26,6 +26,7 @@ public class squad_Fragment extends Fragment {
     private FirebaseFirestore firebaseFirestore;
     private FirestoreRecyclerAdapter adapter;
 
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -33,10 +34,6 @@ public class squad_Fragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_squad_, container, false);
 
-
-
-
-        /*  */
 
 
         mFirestoreList = view.findViewById(R.id.firestore_list);
@@ -60,6 +57,11 @@ public class squad_Fragment extends Fragment {
                 holder.entry_fee.setText(model.getEntry_fee());
                 holder.rs_per_kill.setText(model.getRs_per_kill());
                 holder.teamup.setText(model.getTeamup());
+                holder.rank1.setText(model.getRank1());
+                holder.rank2.setText(model.getRank2());
+                holder.rank3.setText(model.getRank3());
+                holder.date.setText(model.getDate());
+
 
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -67,12 +69,15 @@ public class squad_Fragment extends Fragment {
                         AppCompatActivity activity = (AppCompatActivity) view.getContext();
                         Intent intent = new Intent(getActivity(), joining.class);
                         intent.putExtra("entry_fee", model.getEntry_fee());
+                        intent.putExtra("rs_per_kill", model.getRs_per_kill());
+                        intent.putExtra("rank1", model.getRank1());
+                        intent.putExtra("rank2", model.getRank2());
+                        intent.putExtra("rank3", model.getRank3());
+                        intent.putExtra("teamup", model.getTeamup());
+
                         startActivity(intent);
                     }
                 });
-
-                /*
-                 */
 
 
             }
@@ -98,11 +103,15 @@ public class squad_Fragment extends Fragment {
         adapter.startListening();
     }
 
-    private class ProductsViewHolder extends RecyclerView.ViewHolder {
+    static class ProductsViewHolder extends RecyclerView.ViewHolder {
         private TextView time;
         private TextView entry_fee;
         private TextView rs_per_kill;
         private TextView teamup;
+        private TextView rank1;
+        private TextView rank2;
+        private TextView rank3;
+        private TextView date;
 
         public ProductsViewHolder(View itemView) {
             super(itemView);
@@ -111,10 +120,14 @@ public class squad_Fragment extends Fragment {
             entry_fee = itemView.findViewById(R.id.entry_fee);
             rs_per_kill = itemView.findViewById(R.id.rs_per_kill);
             teamup = itemView.findViewById(R.id.teamup);
+            rank1 = itemView.findViewById(R.id.rank1);
+            rank2 = itemView.findViewById(R.id.rank2);
+            rank3 = itemView.findViewById(R.id.rank3);
+            date = itemView.findViewById(R.id.date);
+
+
         }
     }
-
-
 
 
 }

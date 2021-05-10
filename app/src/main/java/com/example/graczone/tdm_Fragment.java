@@ -1,5 +1,6 @@
 package com.example.graczone;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -53,6 +55,28 @@ public class tdm_Fragment extends Fragment {
                 holder.entry_fee.setText(model.getEntry_fee());
                 holder.rs_per_kill.setText(model.getRs_per_kill());
                 holder.teamup.setText(model.getTeamup());
+
+                holder.rank1.setText(model.getRank1());
+                holder.rank2.setText(model.getRank2());
+                holder.rank3.setText(model.getRank3());
+                holder.date.setText(model.getDate());
+
+
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        AppCompatActivity activity = (AppCompatActivity) view.getContext();
+                        Intent intent = new Intent(getActivity(), joining.class);
+                        intent.putExtra("entry_fee", model.getEntry_fee());
+                        intent.putExtra("rs_per_kill", model.getRs_per_kill());
+                        intent.putExtra("rank1", model.getRank1());
+                        intent.putExtra("rank2", model.getRank2());
+                        intent.putExtra("rank3", model.getRank3());
+                        intent.putExtra("teamup", model.getTeamup());
+
+                        startActivity(intent);
+                    }
+                });
             }
         };
 
@@ -81,6 +105,10 @@ public class tdm_Fragment extends Fragment {
         private TextView entry_fee;
         private TextView rs_per_kill;
         private TextView teamup;
+        private TextView rank1;
+        private TextView rank2;
+        private TextView rank3;
+        private TextView date;
 
         public ProductsViewHolder(View itemView) {
             super(itemView);
@@ -89,6 +117,12 @@ public class tdm_Fragment extends Fragment {
             entry_fee = itemView.findViewById(R.id.entry_fee);
             rs_per_kill = itemView.findViewById(R.id.rs_per_kill);
             teamup = itemView.findViewById(R.id.teamup);
+            rank1 = itemView.findViewById(R.id.rank1);
+            rank2 = itemView.findViewById(R.id.rank2);
+            rank3 = itemView.findViewById(R.id.rank3);
+            date = itemView.findViewById(R.id.date);
+
+
         }
     }
 
