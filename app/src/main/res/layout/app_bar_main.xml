@@ -10,7 +10,7 @@
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#9C2A06"
+        android:background="@drawable/radial"
         android:elevation="20sp"
         android:theme="@style/Theme.Graczone.AppBarOverlay">
 
