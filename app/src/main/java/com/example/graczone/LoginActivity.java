@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -19,7 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
-    TextView new_user_create_account;
+    TextView new_user_create_account, phone;
 
     EditText email, password;
     Button btn_login;
@@ -29,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     FirebaseUser firebaseUser;
 
     @Override
-    protected void onStart(){
+    protected void onStart() {
         super.onStart();
 
         firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
@@ -45,8 +46,9 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
-        new_user_create_account=findViewById(R.id.new_user_create_account);
+        new_user_create_account = findViewById(R.id.new_user_create_account);
         new_user_create_account.setOnClickListener(this::LoginActivity);
 
         auth = FirebaseAuth.getInstance();
@@ -54,6 +56,14 @@ public class LoginActivity extends AppCompatActivity {
         email = findViewById(R.id.email);
 
         password = findViewById(R.id.password);
+        phone = findViewById(R.id.login_via_phone);
+        phone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, Phone_OTP.class);
+                startActivity(intent);
+            }
+        });
 
         btn_login = findViewById(R.id.btn_login);
 

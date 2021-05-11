@@ -28,7 +28,7 @@
 
 
                 <TextView
-                    android:id="@+id/teamup"
+                    android:id="@+id/map"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -54,33 +54,34 @@
                         android:id="@+id/rank1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:padding="2dp"
                         android:textAlignment="center"
                         android:textColor="@color/white"
                         android:textSize="5sp" />
+
+                    <TextView
+                        android:id="@+id/teamup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="DUAL"
+                        android:textColor="@color/white"
+                        android:textSize="1sp" />
 
 
                     <TextView
                         android:id="@+id/rank2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="10sp"
-                        android:padding="2dp"
                         android:textAlignment="center"
                         android:textColor="@color/white"
-                        android:textSize="3sp" />
+                        android:textSize="1sp" />
 
                     <TextView
                         android:id="@+id/rank3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:padding="2dp"
                         android:textAlignment="center"
                         android:textColor="@color/white"
-                        android:textSize="3sp" />
+                        android:textSize="1sp" />
 
                 </LinearLayout>
 

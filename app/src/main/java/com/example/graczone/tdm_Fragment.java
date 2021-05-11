@@ -60,6 +60,7 @@ public class tdm_Fragment extends Fragment {
                 holder.rank2.setText(model.getRank2());
                 holder.rank3.setText(model.getRank3());
                 holder.date.setText(model.getDate());
+                holder.map.setText(model.getMap());
 
 
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -73,6 +74,8 @@ public class tdm_Fragment extends Fragment {
                         intent.putExtra("rank2", model.getRank2());
                         intent.putExtra("rank3", model.getRank3());
                         intent.putExtra("teamup", model.getTeamup());
+                        intent.putExtra("map", model.getMap());
+
 
                         startActivity(intent);
                     }
@@ -109,6 +112,7 @@ public class tdm_Fragment extends Fragment {
         private TextView rank2;
         private TextView rank3;
         private TextView date;
+        private TextView map;
 
         public ProductsViewHolder(View itemView) {
             super(itemView);
@@ -121,6 +125,7 @@ public class tdm_Fragment extends Fragment {
             rank2 = itemView.findViewById(R.id.rank2);
             rank3 = itemView.findViewById(R.id.rank3);
             date = itemView.findViewById(R.id.date);
+            map = itemView.findViewById(R.id.map);
 
 
         }
