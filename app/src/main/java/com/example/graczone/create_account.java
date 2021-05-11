@@ -25,7 +25,7 @@ import java.util.HashMap;
 
 public class create_account extends AppCompatActivity {
 
-    EditText username, email,password,confirm_password;
+    EditText username, email, password, confirm_password, phoneno;
 
     Button btn_register;
 
@@ -42,8 +42,9 @@ public class create_account extends AppCompatActivity {
 
         username = findViewById(R.id.username);
         email= findViewById(R.id.email);
-        password= findViewById(R.id.password);
-        btn_register=findViewById(R.id.btn_register);
+        password = findViewById(R.id.password);
+        phoneno = findViewById(R.id.phoneno);
+        btn_register = findViewById(R.id.btn_register);
         confirm_password=findViewById(R.id.confirm_password);
 
          auth = FirebaseAuth.getInstance();
@@ -55,47 +56,43 @@ public class create_account extends AppCompatActivity {
                 String txt_username=username.getText().toString();
                 String txt_email=email.getText().toString();
                 String txt_password=password.getText().toString();
-                String txt_confirm_password=confirm_password.getText().toString();
+                String txt_confirm_password = confirm_password.getText().toString();
+                String txt_phoneno = phoneno.getText().toString();
 
                 if(TextUtils.isEmpty(txt_username)|| TextUtils.isEmpty(txt_email)||TextUtils.isEmpty(txt_password)||TextUtils.isEmpty((txt_confirm_password))){
                     Toast.makeText(create_account.this, "All fields are required", Toast.LENGTH_SHORT).show();
                 }
-                else if(txt_password.length()<8){
+                else if (txt_password.length() < 8) {
                     Toast.makeText(create_account.this, "password must be at least 8 characters", Toast.LENGTH_SHORT).show();
-                }
-                else if (!txt_password.equals(txt_confirm_password)) {
+                } else if (txt_phoneno.length() < 10 && txt_phoneno.length() > 10) {
+                    Toast.makeText(create_account.this, "password must be at least 8 characters", Toast.LENGTH_SHORT).show();
+                } else if (!txt_password.equals(txt_confirm_password)) {
                     Toast.makeText(create_account.this, "new password and confirm password mismatch!", Toast.LENGTH_SHORT).show();
                 } else {
-                    register(txt_username, txt_email, txt_password);
-
-                    AppCompatActivity activity = (AppCompatActivity) view.getContext();
-                    Intent intent = new Intent(create_account.this, home.class);
-                    intent.putExtra("username", username.getText().toString());
-                 //   intent.putExtra("email", email.getText().toString());
-                    startActivity(intent);
+                    register(txt_username, txt_email, txt_password, txt_phoneno);
 
                 }
             }
         });
     }
 
-    private void register(String username, String email, String password)
-    {
-        auth.createUserWithEmailAndPassword(email,password)
+    private void register(String username, String email, String password, String phoneno) {
+        auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            FirebaseUser firebaseUser=auth.getCurrentUser();
+                        if (task.isSuccessful()) {
+                            FirebaseUser firebaseUser = auth.getCurrentUser();
                             assert firebaseUser != null;
-                            String userid=firebaseUser.getUid();
+                            String userid = firebaseUser.getUid();
 
                             reference = FirebaseDatabase.getInstance().getReference("Users").child(userid);
 
                             HashMap<String,String> hashMap=new HashMap<>();
                             hashMap.put("id",userid);
                             hashMap.put("username",username);
-                            hashMap.put("imageURL","default");
+                            hashMap.put("imageURL", "default");
+                            hashMap.put("phoneno", phoneno);
 
                             reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>(){
                                 @Override
