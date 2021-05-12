@@ -4,9 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:background="#F6F0DD"
+    android:background="@drawable/newbackground"
     android:orientation="vertical"
-    android:scrollbarThumbVertical="@color/black"
     tools:context=".squad_Fragment">
 
 
@@ -17,7 +16,7 @@
         android:layout_gravity="center"
         android:padding="10sp"
         android:text="PUBG Tournaments"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"/>
 
@@ -28,7 +27,7 @@
         android:layout_height="wrap_content"
         android:padding="6sp"
         android:text="Upcoming matches"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="12sp"/>
 
 
