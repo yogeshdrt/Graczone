@@ -69,7 +69,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:padding="20sp"
-                android:text="Entry fee"
+                android:text="Entry free"
                 android:textSize="20sp" />
 
             <TextView
@@ -207,7 +207,7 @@
         android:layout_marginTop="60sp"
         android:elevation="15sp"
         android:padding="10sp"
-        android:text="Join"
+        android:text="impossible"
         android:textAlignment="center"
         app:cornerRadius="15dp" />
 
