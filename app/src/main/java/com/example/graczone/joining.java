@@ -20,7 +20,7 @@ public class joining extends AppCompatActivity {
     Button btnn, join;
 
 
-    TextView entry, rs_per_kill, rank1, rank2, rank3, teamup;
+    TextView entry, rs_per_kill, rank1, rank2, rank3, teamup, map;
 
 
     @Override
@@ -39,6 +39,7 @@ public class joining extends AppCompatActivity {
         rank1 = findViewById(R.id.get_rank1);
         rank2 = findViewById(R.id.get_rank2);
         rank3 = findViewById(R.id.get_rank3);
+        map = findViewById(R.id.get_map);
         teamup = findViewById(R.id.get_teamup);
 
         Intent intent = getIntent();
@@ -48,6 +49,7 @@ public class joining extends AppCompatActivity {
         String s4 = intent.getStringExtra("rank2");
         String s5 = intent.getStringExtra("rank3");
         String s6 = intent.getStringExtra("teamup");
+        String s7 = intent.getStringExtra("map");
 
         entry.setText(s1);
         rs_per_kill.setText(s2);
@@ -55,6 +57,7 @@ public class joining extends AppCompatActivity {
         rank2.setText(s4);
         rank3.setText(s5);
         teamup.setText(s6);
+        map.setText(s7);
 
 
         //  String k = extractDigits(s);

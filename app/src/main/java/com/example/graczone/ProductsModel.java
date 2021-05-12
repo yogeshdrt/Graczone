@@ -6,12 +6,9 @@ public class ProductsModel {
     private String entry_fee;
     private String rs_per_kill;
 
-    private String date;
-    private String rank1;
-    private String rank2;
-    private String rank3;
+    private String map;
 
-    private ProductsModel(String time, String entry_fee, String rs_per_kill, String date, String teamup, String rank1, String rank2, String rank3) {
+    private ProductsModel(String time, String entry_fee, String rs_per_kill, String map, String date, String teamup, String rank1, String rank2, String rank3) {
         this.time = time;
         this.entry_fee = entry_fee;
         this.rs_per_kill = rs_per_kill;
@@ -20,7 +17,21 @@ public class ProductsModel {
         this.rank2 = rank2;
         this.rank3 = rank3;
         this.date = date;
+        this.map = map;
 
+    }
+
+    public String getMap() {
+        return map;
+    }
+
+    private String date;
+    private String rank1;
+    private String rank2;
+    private String rank3;
+
+    public void setMap(String map) {
+        this.map = map;
     }
 
     public String getDate() {
