@@ -32,11 +32,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5eceb19a-c1de-4813-87a6-bc0852261a41" name="Default Changelist" comment="init">
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/scrollbar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/scrollbar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_joining.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_joining.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_squad_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_squad_.xml" afterDir="false" />
-    </list>
+    <list default="true" id="5eceb19a-c1de-4813-87a6-bc0852261a41" name="Default Changelist" comment="init" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -391,10 +387,11 @@
     </state>
     <state x="527" y="154" key="AndroidCreateXmlResourceDialog/0.0.1366.728@0.0.1366.728" timestamp="1617951894504" />
     <state x="593" y="174" key="AndroidCreateXmlResourceDialog/0.0.1536.824@0.0.1536.824" timestamp="1619779480301" />
-    <state x="103" y="100" width="1146" height="488" key="DiffContextDialog" timestamp="1620640771833">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="116" y="113" width="1289" height="553" key="DiffContextDialog" timestamp="1620811278523">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="103" y="100" width="1146" height="488" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1620640771833" />
+    <state x="116" y="113" width="1289" height="553" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1620811278523" />
     <state x="549" y="154" key="FileChooserDialogImpl" timestamp="1619869382724">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -453,6 +450,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="578" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1620047308132" />
+    <state x="496" y="201" key="git4idea.merge.GitPullDialog" timestamp="1620811140102">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="496" y="201" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1620811140102" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1620215484373">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
