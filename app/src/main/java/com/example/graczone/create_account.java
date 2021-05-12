@@ -123,7 +123,7 @@ public class create_account extends AppCompatActivity {
 
                             });
                         } else {
-                            Toast.makeText(create_account.this, "registration failed! ", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(create_account.this, "you failed!", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
