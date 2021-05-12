@@ -33,7 +33,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dceb6660-a320-494f-b42a-773741ded4fc" name="Default Changelist" comment="init">
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/list_item_notification_card.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/create_account.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/create_account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/color/highlight2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/color/highlight2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/gradientcolour.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/gradientcolour.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_create_account.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_create_account.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,8 +94,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="valueResourceFile" />
-        <option value="resourceFile" />
         <option value="Class" />
+        <option value="resourceFile" />
         <option value="layoutResourceFile" />
       </list>
     </option>
@@ -294,7 +300,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620734276138</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="init">
+      <created>1620812050076</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1620812050076</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -369,21 +382,21 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="286" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1619861544082" />
-    <state x="464" y="126" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1620218386092">
+    <state x="464" y="126" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1620814668648">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="413" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1618380447415" />
-    <state x="464" y="126" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1620218386092" />
+    <state x="464" y="126" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1620814668648" />
     <state x="296" y="135" key="AndroidCreateResourceDirectoryDialog" timestamp="1620122333176">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="263" y="119" key="AndroidCreateResourceDirectoryDialog/0.0.1366.728@0.0.1366.728" timestamp="1618286233672" />
     <state x="296" y="135" key="AndroidCreateResourceDirectoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1620122333176" />
-    <state x="296" y="135" key="AndroidCreateResourceFileDialog" timestamp="1620211597551">
+    <state x="296" y="135" key="AndroidCreateResourceFileDialog" timestamp="1620814768773">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="263" y="119" key="AndroidCreateResourceFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1618284045344" />
-    <state x="296" y="135" key="AndroidCreateResourceFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1620211597551" />
+    <state x="296" y="135" key="AndroidCreateResourceFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1620814768773" />
     <state x="593" y="174" key="AndroidCreateXmlResourceDialog" timestamp="1619779480301">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -446,11 +459,11 @@
     </state>
     <state x="246" y="18" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1620645933049" />
     <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1619533026510" />
-    <state x="309" y="110" key="Vcs.Push.Dialog.v2" timestamp="1620811940011">
+    <state x="309" y="110" key="Vcs.Push.Dialog.v2" timestamp="1620812056648">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1620734488612" />
-    <state x="309" y="110" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1620811940011" />
+    <state x="309" y="110" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1620812056648" />
     <state x="330" y="66" key="com.intellij.javaee.MapExternalResourceDialog" timestamp="1619869326692">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -459,6 +472,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="578" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1620047308132" />
+    <state x="496" y="201" key="git4idea.merge.GitPullDialog" timestamp="1620812363301">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="496" y="201" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1620812363301" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1620215484373">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
