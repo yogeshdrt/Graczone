@@ -79,7 +79,7 @@
         android:textSize="15dp" />
 
     <EditText
-        android:id="@+id/phoneno"
+        android:id="@+id/phoneEditText"
         android:layout_width="340dp"
         android:layout_height="60dp"
         android:layout_gravity="center_horizontal"
