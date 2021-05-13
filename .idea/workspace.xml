@@ -32,14 +32,14 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dceb6660-a320-494f-b42a-773741ded4fc" name="Default Changelist" comment="init">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/list_item_notification_card.xml" afterDir="false" />
+    <list default="true" id="dceb6660-a320-494f-b42a-773741ded4fc" name="Default Changelist" comment="notification_card">
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/wall.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/corners.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/create_account.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/create_account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/color/highlight2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/color/highlight2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/gradientcolour.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/gradientcolour.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_create_account.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_create_account.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/joining.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/joining.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_joining.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_joining.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +129,8 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="android-custom-viewC:/Users/Deepak jain/.gradle/caches/modules-2/files-2.1/androidx.appcompat/appcompat/1.2.0/13e8ff89631c2e101eb6bddd12c2fb4bbd74b15d/appcompat-1.2.0-sources.jar!/androidx/appcompat/widget/Toolbar.java_SELECTED" value="Toolbar" />
     <property name="android-custom-viewC:/Users/Deepak jain/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.2.0/3e159bfab49c7e6495fe374e6e5e1e989ee21dcf/recyclerview-1.2.0-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_SELECTED" value="RecyclerView" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable-mdpi" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable-hdpi" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable-hdpi" />
     <property name="multi-representation-previewC:/Users/Deepak jain/.gradle/caches/modules-2/files-2.1/androidx.appcompat/appcompat/1.2.0/13e8ff89631c2e101eb6bddd12c2fb4bbd74b15d/appcompat-1.2.0-sources.jar!/androidx/appcompat/widget/Toolbar.java_selected" value="Custom views" />
     <property name="multi-representation-previewC:/Users/Deepak jain/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.2.0/3e159bfab49c7e6495fe374e6e5e1e989ee21dcf/recyclerview-1.2.0-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_selected" value="Custom views" />
     <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
@@ -138,10 +139,10 @@
     <key name="android.template.-1950701520">
       <recent name="com.example.graczone" />
     </key>
-    <key name="android.template.-1597253552">
+    <key name="android.template.1108961341">
       <recent name="com.example.graczone" />
     </key>
-    <key name="android.template.1315503850">
+    <key name="android.template.-1597253552">
       <recent name="com.example.graczone" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -154,10 +155,11 @@
       <recent name="com.example.graczone.Wallet" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Graczone\app\src\main\res\drawable-hdpi" />
       <recent name="E:\Graczone\app\src\main\res\drawable-mdpi" />
       <recent name="E:\Graczone\app" />
     </key>
-    <key name="android.template.1108961341">
+    <key name="android.template.1315503850">
       <recent name="com.example.graczone" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
@@ -259,7 +261,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="5eceb19a-c1de-4813-87a6-bc0852261a41" name="Default Changelist" comment="" />
+      <changelist id="dceb6660-a320-494f-b42a-773741ded4fc" name="Default Changelist" comment="notification_card" />
       <created>1617806921585</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -307,7 +309,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620812050076</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="notification_card">
+      <created>1620816360156</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1620816360156</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -359,7 +368,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init" />
-    <option name="LAST_COMMIT_MESSAGE" value="init" />
+    <MESSAGE value="notification_card" />
+    <option name="LAST_COMMIT_MESSAGE" value="notification_card" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -392,16 +402,16 @@
     </state>
     <state x="263" y="119" key="AndroidCreateResourceDirectoryDialog/0.0.1366.728@0.0.1366.728" timestamp="1618286233672" />
     <state x="296" y="135" key="AndroidCreateResourceDirectoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1620122333176" />
-    <state x="296" y="135" key="AndroidCreateResourceFileDialog" timestamp="1620814768773">
+    <state x="296" y="135" key="AndroidCreateResourceFileDialog" timestamp="1620894663919">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="263" y="119" key="AndroidCreateResourceFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1618284045344" />
-    <state x="296" y="135" key="AndroidCreateResourceFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1620814768773" />
-    <state x="593" y="174" key="AndroidCreateXmlResourceDialog" timestamp="1619779480301">
+    <state x="296" y="135" key="AndroidCreateResourceFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1620894663919" />
+    <state x="593" y="174" key="AndroidCreateXmlResourceDialog" timestamp="1620820255222">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="527" y="154" key="AndroidCreateXmlResourceDialog/0.0.1366.728@0.0.1366.728" timestamp="1617951894504" />
-    <state x="593" y="174" key="AndroidCreateXmlResourceDialog/0.0.1536.824@0.0.1536.824" timestamp="1619779480301" />
+    <state x="593" y="174" key="AndroidCreateXmlResourceDialog/0.0.1536.824@0.0.1536.824" timestamp="1620820255222" />
     <state x="103" y="100" width="1146" height="488" key="DiffContextDialog" timestamp="1620640771833">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -418,26 +428,26 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="561" y="262" key="Github.ShareDialog/0.0.1366.728@0.0.1366.728" timestamp="1617807960078" />
-    <state width="1491" height="167" key="GridCell.Tab.0.bottom" timestamp="1620215972852">
+    <state width="1491" height="208" key="GridCell.Tab.0.bottom" timestamp="1620897308794">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1322" height="136" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1618379191707" />
-    <state width="1491" height="167" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1620215972852" />
-    <state width="1491" height="167" key="GridCell.Tab.0.center" timestamp="1620215972852">
+    <state width="1491" height="208" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1620897308794" />
+    <state width="1491" height="208" key="GridCell.Tab.0.center" timestamp="1620897308794">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1322" height="136" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1618379191707" />
-    <state width="1491" height="167" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1620215972852" />
-    <state width="1491" height="167" key="GridCell.Tab.0.left" timestamp="1620215972851">
+    <state width="1491" height="208" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1620897308794" />
+    <state width="1491" height="208" key="GridCell.Tab.0.left" timestamp="1620897308794">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1322" height="136" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1618379191705" />
-    <state width="1491" height="167" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1620215972851" />
-    <state width="1491" height="167" key="GridCell.Tab.0.right" timestamp="1620215972852">
+    <state width="1491" height="208" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1620897308794" />
+    <state width="1491" height="208" key="GridCell.Tab.0.right" timestamp="1620897308794">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1322" height="136" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1618379191707" />
-    <state width="1491" height="167" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1620215972852" />
+    <state width="1491" height="208" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1620897308794" />
     <state x="349" y="155" key="IDE.errors.dialog" timestamp="1620122575496">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -459,11 +469,15 @@
     </state>
     <state x="246" y="18" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1620645933049" />
     <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1619533026510" />
-    <state x="309" y="110" key="Vcs.Push.Dialog.v2" timestamp="1620812056648">
+    <state x="309" y="110" key="Vcs.Push.Dialog.v2" timestamp="1620816368084">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1620734488612" />
-    <state x="309" y="110" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1620812056648" />
+    <state x="309" y="110" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1620816368084" />
+    <state x="584" y="190" key="chooseDestDirectoryDialog" timestamp="1620895889874">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="584" y="190" key="chooseDestDirectoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1620895889874" />
     <state x="330" y="66" key="com.intellij.javaee.MapExternalResourceDialog" timestamp="1619869326692">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
