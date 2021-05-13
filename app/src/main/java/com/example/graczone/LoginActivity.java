@@ -106,5 +106,6 @@ public class LoginActivity extends AppCompatActivity {
     private void LoginActivity(View view) {
         Intent intent=new Intent(LoginActivity.this,create_account.class);
         startActivity(intent);
+        finish();
     }
 }

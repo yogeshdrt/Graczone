@@ -17,6 +17,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.SignInMethodQueryResult;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.annotations.NotNull;
@@ -26,7 +27,7 @@ import java.util.regex.Pattern;
 
 public class create_account extends AppCompatActivity {
 
-    EditText username, email, password, confirm_password;
+    EditText username, email, password, confirm_password, phoneEditText;
 
     Button btn_register;
 
@@ -46,6 +47,7 @@ public class create_account extends AppCompatActivity {
         password = findViewById(R.id.password);
         btn_register = findViewById(R.id.btn_register);
         confirm_password = findViewById(R.id.confirm_password);
+        phoneEditText = findViewById(R.id.phoneEditText);
 
         auth = FirebaseAuth.getInstance();
         btn_register.setOnClickListener(new View.OnClickListener() {
@@ -77,7 +79,16 @@ public class create_account extends AppCompatActivity {
                     if (!Pattern.compile(regex).matcher(txt_password).matches()) {
                         password.setError("Your Password is weak!\n password must contain atleast 1 lower and 1 upper case alphabet\n,1 numeric, 1 special character");
                     } else {
-                        register(txt_username, txt_email, txt_password);
+                        auth.fetchSignInMethodsForEmail(txt_email).addOnCompleteListener(create_account.this, new OnCompleteListener<SignInMethodQueryResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
+                                if (!task.getResult().getSignInMethods().isEmpty()) {
+                                    Toast.makeText(getApplicationContext(), "this email already exist!", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    register(txt_username, txt_email, txt_password);
+                                }
+                            }
+                        });
                     }
 
 //                    AppCompatActivity activity = (AppCompatActivity) view.getContext();
@@ -91,6 +102,7 @@ public class create_account extends AppCompatActivity {
     }
 
     private void register(String username, String email, String password) {
+        String phone = phoneEditText.getText().toString();
         auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -105,14 +117,15 @@ public class create_account extends AppCompatActivity {
                             HashMap<String, String> hashMap = new HashMap<>();
                             hashMap.put("id", userid);
                             hashMap.put("username", username);
-                            hashMap.put("imageURL", "default");
+                            hashMap.put("email", email);
+                            hashMap.put("Phone", phone);
 
                             reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NotNull Task<Void> task) {
                                     if (task.isSuccessful()) {
+                                        Toast.makeText(getApplicationContext(), "registration successfully!", Toast.LENGTH_SHORT).show();
                                         Intent intent = new Intent(create_account.this, home.class);
-                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                         startActivity(intent);
                                         finish();
                                     } else {
