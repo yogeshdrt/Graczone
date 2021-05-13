@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="30sp"
         android:layout_marginTop="30sp"
-        android:text="username"
+        android:text="Username"
         android:textColor="#FFFFFF"
         android:textSize="15dp" />
 
@@ -49,7 +49,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30sp"
-        android:text="email id"
+        android:text="Email id"
         android:textColor="#FFFFFF"
         android:textSize="15dp" />
 
@@ -99,7 +99,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30sp"
-        android:text="enter password"
+        android:text="Enter Password"
         android:textColor="#FFFFFF"
         android:textSize="15dp" />
 
@@ -124,7 +124,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30sp"
-        android:text="confirm password"
+        android:text="Confirm Password"
         android:textColor="#FFFFFF"
         android:textSize="15dp" />
 
