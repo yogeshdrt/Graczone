@@ -55,17 +55,24 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="10sp"
-                    android:text="Topup Wallet"/>
+                    android:text="Topup Wallet" />
 
-                <EditText
-                    android:layout_width="370dp"
-                    android:layout_height="match_parent"
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:background="#56787878"
-                    android:hint="₹ Ando Guru"
-                    android:padding="10dp"
-                    android:textCursorDrawable="@drawable/my_cursor"/>
+                    app:cardCornerRadius="10sp">
 
+                    <EditText
+                        android:layout_width="370dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:hint="₹ Ando Guru"
+                        android:background="#D8D7D7"
+                        android:padding="10dp"
+                        android:textCursorDrawable="@drawable/my_cursor" />
+
+                </androidx.cardview.widget.CardView>
 
                 <Button
                     android:layout_width="wrap_content"

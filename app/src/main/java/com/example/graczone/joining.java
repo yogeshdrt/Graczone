@@ -2,6 +2,8 @@ package com.example.graczone;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,6 +15,7 @@ import android.widget.TextView;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
 import com.example.graczone.Wallet.wallet;
 
@@ -20,7 +23,7 @@ public class joining extends AppCompatActivity {
 
     Dialog dialog;
     Button btnn, join;
-
+    Menu wallet;
 
     TextView entry, rs_per_kill, rank1, rank2, rank3, teamup, map;
 
@@ -36,6 +39,9 @@ public class joining extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+
+        Drawable drawable = toolbar.getNavigationIcon();
+        drawable.setColorFilter(ContextCompat.getColor(this, R.color.black), PorterDuff.Mode.SRC_ATOP);
 
         entry = findViewById(R.id.get_entry_fee);
         rs_per_kill = findViewById(R.id.get_rs_per_kill);
@@ -92,6 +98,10 @@ public class joining extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.wallet_button_icon, menu);
+
+        Drawable mydrawable = menu.getItem(0).getIcon();
+        mydrawable.mutate();
+        mydrawable.setColorFilter(getResources().getColor(R.color.black), PorterDuff.Mode.SRC_IN);
         return true;
     }
 

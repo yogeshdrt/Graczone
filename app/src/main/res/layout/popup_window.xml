@@ -1,21 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="20sp"
+    android:layout_margin="10sp"
     android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10sp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#D8D7D7"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:hint="Enter your PUBG UserId"
+            android:padding="10sp"
+            android:textAlignment="center"
+            android:textCursorDrawable="@drawable/my_cursor"
+            android:textStyle="bold" />
+    </androidx.cardview.widget.CardView>
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_margin="6sp"
         android:background="@drawable/stroke"
         android:gravity="center"
         android:padding="5sp"
         android:text="Room id password will be provided 5 minutes before the match via notification or sms."
-        android:textAlignment="center"/>
+        android:textAlignment="center" />
 
     <Button
         android:id="@+id/popup_confirm"
