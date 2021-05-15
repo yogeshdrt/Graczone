@@ -1,6 +1,5 @@
 package com.example.graczone;
 
-import android.app.Dialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Intent;
@@ -12,7 +11,6 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -22,8 +20,6 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.graczone.Wallet.wallet;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -31,7 +27,6 @@ import com.google.firebase.messaging.FirebaseMessaging;
 
 public class home extends AppCompatActivity {
 
-    Dialog dialog;
     TextView get_username, get_email;
     View hview;
 
@@ -65,15 +60,12 @@ public class home extends AppCompatActivity {
 
 
         FirebaseMessaging.getInstance().subscribeToTopic("general")
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        String msg = "welcome";
-                        if (!task.isSuccessful()) {
-                            msg = "Failed";
-                        }
-                        Toast.makeText(home.this, msg, Toast.LENGTH_SHORT).show();
+                .addOnCompleteListener(task -> {
+                    String msg = "welcome";
+                    if (!task.isSuccessful()) {
+                        msg = "Failed";
                     }
+                    Toast.makeText(home.this, msg, Toast.LENGTH_SHORT).show();
                 });
 
 
@@ -87,7 +79,7 @@ public class home extends AppCompatActivity {
             finish();
             return true;
         });
-        // Passing each menu ID as a set of Ids because each
+        // Passing each menu ID as a set of Ids because each.
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_mymatches, R.id.nav_notification, R.id.nav_settings)
@@ -106,10 +98,6 @@ public class home extends AppCompatActivity {
 
     }
 
-
-    public void popUp(){
-        dialog.show();
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
