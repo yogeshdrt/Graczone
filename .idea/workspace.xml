@@ -35,21 +35,37 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dceb6660-a320-494f-b42a-773741ded4fc" name="Default Changelist" comment="popup/joining">
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="dceb6660-a320-494f-b42a-773741ded4fc" name="Default Changelist" comment="joiningComplete">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/SplashScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/splash.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_splash_screen.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/Phone_OTP.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/Phone_OTP.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/home.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/home.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_joining.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_joining.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_duo_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_duo_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_solo_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_solo_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_squad_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_squad_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_t_d_m.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_t_d_m.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/line1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/line2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/loginviamobilenumber.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/line1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/line2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/loginviamobilenumber.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/line1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/line2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/loginviamobilenumber.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/line1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/line2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/loginviamobilenumber.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/line1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/line2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/loginviamobilenumber.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/line1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/line2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/loginviamobilenumber.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/popup_window.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/popup_window.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/activity_main_drawer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/activity_main_drawer.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,13 +161,14 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable-hdpi" />
     <property name="multi-representation-previewC:/Users/Deepak jain/.gradle/caches/modules-2/files-2.1/androidx.appcompat/appcompat/1.2.0/13e8ff89631c2e101eb6bddd12c2fb4bbd74b15d/appcompat-1.2.0-sources.jar!/androidx/appcompat/widget/Toolbar.java_selected" value="Custom views" />
     <property name="multi-representation-previewC:/Users/Deepak jain/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.2.0/3e159bfab49c7e6495fe374e6e5e1e989ee21dcf/recyclerview-1.2.0-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_selected" value="Custom views" />
+    <property name="recommended.upgrade.last.time.stamp" value="1621078739946" />
     <property name="settings.editor.selected.configurable" value="preferences.updates" />
   </component>
   <component name="RecentsManager">
     <key name="android.template.-1950701520">
       <recent name="com.example.graczone" />
     </key>
-    <key name="android.template.1108961341">
+    <key name="android.template.1315503850">
       <recent name="com.example.graczone" />
     </key>
     <key name="android.template.-1597253552">
@@ -171,11 +188,14 @@
       <recent name="E:\Graczone\app\src\main\res\drawable-mdpi" />
       <recent name="E:\Graczone\app" />
     </key>
-    <key name="android.template.1315503850">
+    <key name="android.template.1108961341">
       <recent name="com.example.graczone" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.example.graczone.ui.Notification" />
+    </key>
+    <key name="android.template.320545353">
+      <recent name="com.example.graczone" />
     </key>
   </component>
   <component name="RunManager" selected="Android App.app">
@@ -344,7 +364,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620995270524</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="joiningComplete">
+      <created>1621076866466</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1621076866466</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -399,7 +426,8 @@
     <MESSAGE value="notification_card" />
     <MESSAGE value="joining" />
     <MESSAGE value="popup/joining" />
-    <option name="LAST_COMMIT_MESSAGE" value="popup/joining" />
+    <MESSAGE value="joiningComplete" />
+    <option name="LAST_COMMIT_MESSAGE" value="joiningComplete" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -427,11 +455,11 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="286" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1619861544082" />
-    <state x="464" y="126" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1620987537719">
+    <state x="464" y="126" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1621080952652">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="413" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1618380447415" />
-    <state x="464" y="126" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1620987537719" />
+    <state x="464" y="126" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1621080952652" />
     <state x="296" y="135" key="AndroidCreateResourceDirectoryDialog" timestamp="1620122333176">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -451,10 +479,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="103" y="100" width="1146" height="488" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1620640771833" />
-    <state x="549" y="154" key="FileChooserDialogImpl" timestamp="1620985306533">
+    <state x="549" y="154" key="FileChooserDialogImpl" timestamp="1621079256763">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="154" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1620985306533" />
+    <state x="549" y="154" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1621079256763" />
     <state x="467" y="205" key="Github.CreatePullRequestDialog" timestamp="1620720887695">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -504,15 +532,15 @@
     </state>
     <state x="246" y="18" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1620645933049" />
     <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1619533026510" />
-    <state x="309" y="110" key="Vcs.Push.Dialog.v2" timestamp="1620995336181">
+    <state x="309" y="110" key="Vcs.Push.Dialog.v2" timestamp="1621076879824">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1620734488612" />
-    <state x="309" y="110" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1620995336181" />
-    <state x="584" y="190" key="chooseDestDirectoryDialog" timestamp="1620987012489">
+    <state x="309" y="110" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1621076879824" />
+    <state x="584" y="190" key="chooseDestDirectoryDialog" timestamp="1621081001292">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="584" y="190" key="chooseDestDirectoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1620987012489" />
+    <state x="584" y="190" key="chooseDestDirectoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1621081001292" />
     <state x="330" y="66" key="com.intellij.javaee.MapExternalResourceDialog" timestamp="1619869326692">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
