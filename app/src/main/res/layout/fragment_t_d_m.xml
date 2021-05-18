@@ -9,13 +9,12 @@
     tools:context=".squad_Fragment">
 
 
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:padding="10sp"
-        android:text="PUBG Tournaments"
+        android:text="BATTLEGROUNDS Tournaments"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"/>
@@ -30,7 +29,6 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/firestore_list"
         android:layout_width="match_parent"
-        android:scrollbarThumbVertical="@drawable/scrollbar"
         android:scrollbars="vertical"
         android:layout_height="match_parent" />
 

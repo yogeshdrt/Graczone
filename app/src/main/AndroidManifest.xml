@@ -6,12 +6,13 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Graczone">
-        <activity android:name=".Phone_OTP"></activity>
+        <activity
+            android:name=".Phone_OTP"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".joining"
             android:screenOrientation="portrait" />
@@ -34,6 +35,9 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SplashScreen"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

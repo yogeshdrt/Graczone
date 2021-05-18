@@ -72,15 +72,12 @@ public class home extends AppCompatActivity {
 
 
         FirebaseMessaging.getInstance().subscribeToTopic("general")
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        String msg = "welcome";
-                        if (!task.isSuccessful()) {
-                            msg = "Failed";
-                        }
-                        Toast.makeText(home.this, msg, Toast.LENGTH_SHORT).show();
+                .addOnCompleteListener(task -> {
+                    String msg = "welcome";
+                    if (!task.isSuccessful()) {
+                        msg = "Failed";
                     }
+                    Toast.makeText(home.this, msg, Toast.LENGTH_SHORT).show();
                 });
 
 

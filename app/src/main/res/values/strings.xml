@@ -30,5 +30,6 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="policy">• Room id password will be provided 10 minutes before the match via notification or sms.\n• Do not share your room id password with anyone.\n• Only the above entered BATTLEGROUNDS username is allowed to enter the room so please enter it correctly. \n• In case you failed to join the room in the time limit refund will not be initiated.\n• Money will be deducted from your wallet according to the entry fee. \n• By confirming you are accepting our privacy policy.</string>
 
 </resources>
