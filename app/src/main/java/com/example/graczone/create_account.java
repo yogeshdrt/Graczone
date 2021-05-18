@@ -42,7 +42,7 @@ public class create_account extends AppCompatActivity {
         setContentView(R.layout.activity_create_account);
 
 
-        username = findViewById(R.id.username);
+        username = findViewById(R.id.usernameTextView);
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
         btn_register = findViewById(R.id.btn_register);

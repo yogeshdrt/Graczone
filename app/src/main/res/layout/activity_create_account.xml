@@ -29,7 +29,7 @@
         android:textSize="15dp" />
 
     <EditText
-        android:id="@+id/username"
+        android:id="@+id/usernameTextView"
         android:layout_width="340dp"
         android:layout_height="60dp"
         android:backgroundTint="#FFFFFF"

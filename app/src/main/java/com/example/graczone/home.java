@@ -16,17 +16,23 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.graczone.Wallet.wallet;
+import com.example.graczone.ui.Settings.Settings_Fragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 public class home extends AppCompatActivity {
@@ -37,6 +43,7 @@ public class home extends AppCompatActivity {
 
     FirebaseAuth mauth;
     FirebaseUser currentUser;
+    String username, arg1, arg2, arg3;
 
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -77,7 +84,6 @@ public class home extends AppCompatActivity {
                 });
 
 
-
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
 
@@ -87,10 +93,45 @@ public class home extends AppCompatActivity {
             finish();
             return true;
         });
+
+        navigationView.getMenu().findItem(R.id.nav_settings).setOnMenuItemClickListener(MenuItem -> {
+            Settings_Fragment sf = new Settings_Fragment();
+            Bundle bundle = new Bundle();
+            FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid()).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    Settings_Fragment sf = new Settings_Fragment();
+                    Bundle bundle = new Bundle();
+                    arg1 = snapshot.child("username").getValue().toString();
+                    arg2 = snapshot.child("email").getValue().toString();
+                    arg3 = snapshot.child("Phone").getValue().toString();
+
+                    bundle.putString("arg1", arg1);
+                    bundle.putString("arg2", arg2);
+                    bundle.putString("arg3", arg3);
+                    sf.setArguments(bundle);
+                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.FrameContainer, sf);
+                    ft.addToBackStack(null);
+                    ft.commit();
+                    drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+                    navigationView.getMenu().getItem(3).setChecked(false);
+//                    Toast.makeText(getApplicationContext(), "success fetch data" + arg3, Toast.LENGTH_SHORT).show();
+
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(getApplicationContext(), "failed to fetch data", Toast.LENGTH_SHORT).show();
+                }
+            });
+            return true;
+        });
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_mymatches, R.id.nav_notification, R.id.nav_settings)
+                R.id.nav_home, R.id.nav_mymatches, R.id.nav_notification)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -98,8 +139,19 @@ public class home extends AppCompatActivity {
 
         hview = navigationView.getHeaderView(0);
         get_username = hview.findViewById(R.id.get_username);
-        get_username.setText(currentUser.getDisplayName());
         get_email = hview.findViewById(R.id.get_email);
+        FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                username = snapshot.child("username").getValue().toString();
+                get_username.setText(username);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getApplicationContext(), "failed to fetch data", Toast.LENGTH_SHORT).show();
+            }
+        });
         get_email.setText(currentUser.getEmail());
         NavigationUI.setupWithNavController(navigationView, navController);
 

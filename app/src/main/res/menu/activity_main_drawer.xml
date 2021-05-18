@@ -20,7 +20,7 @@
         <item
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_baseline_settings_24"
-            android:title="Settings" />
+            android:title="Profile" />
         <item
             android:id="@+id/about_us"
             android:icon="@drawable/ic_baseline_grade_24"
