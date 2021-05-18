@@ -1,4 +1,4 @@
-package com.example.graczone.ui.Settings;
+package com.example.graczone.ui.My_Profile;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,13 +10,13 @@ import androidx.fragment.app.Fragment;
 
 import com.example.graczone.R;
 
-public class Settings_Fragment extends Fragment {
+public class My_Profile_Fragment extends Fragment {
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.fragment_settings, container, false);
+        View root = inflater.inflate(R.layout.fragment_my_profile, container, false);
 
         return root;
     }

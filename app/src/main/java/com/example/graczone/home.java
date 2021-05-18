@@ -40,7 +40,7 @@ public class home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        super.setContentView(R.layout.activity_home);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -69,7 +69,6 @@ public class home extends AppCompatActivity {
                 });
 
 
-
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
 
@@ -94,7 +93,6 @@ public class home extends AppCompatActivity {
         get_email = hview.findViewById(R.id.get_email);
         get_email.setText(currentUser.getEmail());
         NavigationUI.setupWithNavController(navigationView, navController);
-
 
     }
 

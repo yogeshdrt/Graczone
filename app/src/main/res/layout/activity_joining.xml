@@ -13,8 +13,8 @@
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="450dp"
-        android:elevation="0dp"
-        android:background="#D1E9F4"
+        android:background="@drawable/corners"
+        app:elevation="0dp"
         android:theme="@style/Theme.Graczone.AppBarOverlay">
 
 
@@ -24,7 +24,6 @@
             android:layout_height="400dp"
             android:background="@drawable/curvebackground"
             app:contentInsetStart="0dp">
-
 
         </androidx.appcompat.widget.Toolbar>
 

@@ -39,17 +39,39 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:padding="10sp"
+                    android:fontFamily="sans-serif-condensed-medium"
                     android:text="Balance"
                     android:textSize="30sp" />
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:padding="2sp"
-                    android:text="₹100"
-                    android:textColor="@color/black"
-                    android:textSize="35sp" />
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:padding="2sp"
+                        android:text="₹"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="35sp" />
+
+                    <TextView
+                        android:id="@+id/balance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:inputType="numberDecimal"
+                        android:paddingVertical="2sp"
+                        android:text="100"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="35sp" />
+
+                </LinearLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -64,10 +86,12 @@
                     app:cardCornerRadius="10sp">
 
                     <EditText
+                        android:id="@+id/enter_amount"
                         android:layout_width="370dp"
+                        android:hint="Enter Amount"
                         android:layout_height="match_parent"
                         android:layout_gravity="center_horizontal"
-                        android:hint="₹ Ando Guru"
+                        android:inputType="number"
                         android:background="#D8D7D7"
                         android:padding="10dp"
                         android:textCursorDrawable="@drawable/my_cursor" />
@@ -85,8 +109,6 @@
                     android:text="Add Cash"
                     android:textColor="@color/white"
                     android:textStyle="bold"/>
-
-
 
 
 
@@ -112,8 +134,6 @@
                     android:textAllCaps="false" />
 
             </LinearLayout>
-
-
 
 
     </LinearLayout>
