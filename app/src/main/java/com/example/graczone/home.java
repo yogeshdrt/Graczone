@@ -52,7 +52,7 @@ public class home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        super.setContentView(R.layout.activity_home);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -151,7 +151,6 @@ public class home extends AppCompatActivity {
         });
         get_email.setText(currentUser.getEmail());
         NavigationUI.setupWithNavController(navigationView, navController);
-
 
     }
 

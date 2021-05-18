@@ -4,13 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/newbackground"
+    android:orientation="vertical"
     tools:context=".ui.Notification.Notification_Fragment">
-
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/notification_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
 
 </LinearLayout>
