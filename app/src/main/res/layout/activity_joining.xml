@@ -22,7 +22,6 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="400dp"
-            android:background="@drawable/curvebackground"
             app:contentInsetStart="0dp">
 
 
@@ -112,22 +111,19 @@
                 android:layout_height="45sp"
                 android:layout_marginTop="29.5sp"
                 android:padding="5sp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/first_place" />
+                android:scaleType="centerCrop" />
 
             <ImageView
                 android:layout_width="45sp"
                 android:layout_height="45sp"
                 android:padding="5sp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/second_place" />
+                android:scaleType="centerCrop" />
 
             <ImageView
                 android:layout_width="45sp"
                 android:layout_height="45sp"
                 android:padding="5sp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/third_place" />
+                android:scaleType="centerCrop" />
 
         </LinearLayout>
 
