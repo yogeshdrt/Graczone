@@ -20,9 +20,6 @@
             android:name=".Wallet.withdraw"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Wallet.transactions"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".Wallet.wallet"
             android:screenOrientation="portrait" />
         <activity

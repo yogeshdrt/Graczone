@@ -37,8 +37,6 @@ public class create_account extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
         setContentView(R.layout.activity_create_account);
 
 
@@ -101,6 +99,16 @@ public class create_account extends AppCompatActivity {
         });
     }
 
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i = new Intent(create_account.this, LoginActivity.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i);
+        finish();
+    }
+
     private void register(String username, String email, String password) {
         String phone = phoneEditText.getText().toString();
         auth.createUserWithEmailAndPassword(email, password)
@@ -141,5 +149,4 @@ public class create_account extends AppCompatActivity {
                     }
                 });
     }
-
 }
