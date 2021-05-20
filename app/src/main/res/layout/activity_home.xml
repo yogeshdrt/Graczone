@@ -26,4 +26,6 @@
         app:itemIconTint="@color/highlight"
         app:itemTextColor="@color/highlight"
         app:menu="@menu/activity_main_drawer" />
+
+
 </androidx.drawerlayout.widget.DrawerLayout>

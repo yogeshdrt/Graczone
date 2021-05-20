@@ -8,9 +8,11 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
@@ -20,20 +22,20 @@ import androidx.core.content.ContextCompat;
 
 import com.example.graczone.Wallet.wallet;
 
-public class joining extends AppCompatActivity {
+public class joining_TDM extends AppCompatActivity {
 
     Dialog dialog;
     Button btnn, join;
+    ImageView vector01, vector02;
 
-
-    TextView entry, rs_per_kill, rank1, rank2, rank3, teamup, map;
+    TextView entry, rs_per_kill, rank1, teamup, map;
 
 
     @RequiresApi(api = Build.VERSION_CODES.Q)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_joining);
+        setContentView(R.layout.activity_joining_tdm);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -41,15 +43,20 @@ public class joining extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
+        vector01 = findViewById(R.id.vector01);
+        vector01.setColorFilter(getResources().getColor(R.color.blue));
+
+        vector02 = findViewById(R.id.vector02);
+        vector02.setColorFilter(getResources().getColor(R.color.red));
+
+
         Drawable drawable = toolbar.getNavigationIcon();
-        assert drawable != null;
         drawable.setColorFilter(ContextCompat.getColor(this, R.color.black), PorterDuff.Mode.SRC_ATOP);
 
         entry = findViewById(R.id.get_entry_fee);
         rs_per_kill = findViewById(R.id.get_rs_per_kill);
         rank1 = findViewById(R.id.get_rank1);
-        rank2 = findViewById(R.id.get_rank2);
-        rank3 = findViewById(R.id.get_rank3);
+
         map = findViewById(R.id.get_map);
         teamup = findViewById(R.id.get_teamup);
 
@@ -57,16 +64,12 @@ public class joining extends AppCompatActivity {
         String s1 = intent.getStringExtra("entry_fee");
         String s2 = intent.getStringExtra("rs_per_kill");
         String s3 = intent.getStringExtra("rank1");
-        String s4 = intent.getStringExtra("rank2");
-        String s5 = intent.getStringExtra("rank3");
         String s6 = intent.getStringExtra("teamup");
         String s7 = intent.getStringExtra("map");
 
         entry.setText(s1);
         rs_per_kill.setText(s2);
         rank1.setText(s3);
-        rank2.setText(s4);
-        rank3.setText(s5);
         teamup.setText(s6);
         map.setText(s7);
 
@@ -93,11 +96,14 @@ public class joining extends AppCompatActivity {
 
         btnn.setOnClickListener(v -> dialog.dismiss());
 
-        final EditText editText = dialog.findViewById(R.id.enter_battlegrounds_id);
-        editText.setOnFocusChangeListener((v, hasFocus) -> {
-            if (hasFocus)
-                editText.setHint("");
+        final EditText editText = (EditText) dialog.findViewById(R.id.enter_battlegrounds_id);
+        editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus)
+                    editText.setHint("");
 
+            }
         });
 
 
@@ -116,7 +122,7 @@ public class joining extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.wallet_button) {
-            startActivity(new Intent(joining.this, wallet.class));
+            startActivity(new Intent(joining_TDM.this, wallet.class));
             return true;
         }
         return false;

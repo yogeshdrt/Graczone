@@ -30,6 +30,22 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="policy">• Room id password will be provided 10 minutes before the match via notification or sms.\n• Do not share your room id password with anyone.\n• Only the above entered BATTLEGROUNDS username is allowed to enter the room so please enter it correctly. \n• In case you failed to join the room in the time limit refund will not be initiated.\n• Money will be deducted from your wallet according to the entry fee. \n• By confirming you are accepting our privacy policy.</string>
+    <string name="policy">• Room id password will be provided 10 minutes before the match via notification or sms.\n• Do not share your room id password with anyone.\n• Only the above entered BATTLEGROUNDS username is allowed to enter the room so please enter it correctly. \n• In case you failed to join the room in the time limit refund will not be initiated.\n• Match will be cancelled if there is not enough players joined, money will be refunded in that case. \n• Money will be deducted from your wallet according to the entry fee. \n• By confirming you are accepting our privacy policy.</string>
+    <string name="balance">Balance</string>
+    <string name="Rs">₹</string>
+    <string name="_100">100</string>
+    <string name="topup_wallet">Topup Wallet</string>
+    <string name="enter_amount">Enter Amount</string>
+    <string name="add_cash">Add Cash</string>
+    <string name="withdraw">Withdraw →</string>
+    <string name="transactions">TRANSACTIONS</string>
+    <string name="forgot_password">FORGOT PASSWORD?</string>
+    <string name="new_user_create_account">New User? Create Account.</string>
+    <string name="login_via_phone_number">Login via Phone number</string>
+    <string name="todo">TODO</string>
+    <string name="email_id">Email id</string>
+    <string name="password">Password</string>
+    <string name="battlegrounds_tournaments">BATTLEGROUNDS Tournaments</string>
+
 
 </resources>

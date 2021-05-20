@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:background="@drawable/newbackground"
     android:forceDarkAllowed="false"
-    tools:context=".create_account">
+    tools:context=".LOGIN.create_account">
 
     <TextView
         android:id="@+id/textView3"

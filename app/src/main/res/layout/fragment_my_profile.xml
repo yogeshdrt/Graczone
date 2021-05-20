@@ -18,22 +18,23 @@
             android:layout_height="120dp"
             android:layout_marginTop="130dp"
             android:scaleType="centerCrop"
+            android:contentDescription="TODO"
             android:src="@color/white" />
 
 
     </LinearLayout>
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-condensed-medium"
-            android:text="Deepak Jain"
-            android:layout_gravity="center_horizontal"
-            android:textAlignment="center"
-            android:padding="10dp"
-            android:textColor="@color/black"
-            android:textSize="25dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="Deepak Jain"
+        android:layout_gravity="center_horizontal"
+        android:textAlignment="center"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:textSize="25sp" />
 
 
         <LinearLayout
@@ -71,7 +72,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:hint="Tap to change email address"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
             </LinearLayout>
 
 
@@ -87,14 +88,14 @@
                     android:paddingVertical="5dp"
                     android:text="+91 9997669034"
                     android:textColor="@color/black"
-                    android:textSize="20dp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:hint="Tap to change phone number"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
 
 
             </LinearLayout>

@@ -14,8 +14,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10sp"
-                android:text="player unknown battlegrounds"
-                android:textColor="@color/white"
+        android:text="@string/battlegrounds_tournaments"
+        android:textColor="@color/white"
                 android:textSize="15sp" />
 
 
@@ -25,7 +25,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="20sp"
-        android:background="@drawable/trophy" />
+        android:background="@drawable/trophy"
+        android:contentDescription="TODO" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/get_cardview"

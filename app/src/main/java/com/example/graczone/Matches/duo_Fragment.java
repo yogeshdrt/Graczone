@@ -1,4 +1,4 @@
-package com.example.graczone;
+package com.example.graczone.Matches;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,15 +14,15 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.graczone.ProductsModel;
+import com.example.graczone.R;
+import com.example.graczone.joining;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
 public class duo_Fragment extends Fragment {
-
-    private RecyclerView mFirestoreList;
-    private FirebaseFirestore firebaseFirestore;
 
     private FirestoreRecyclerAdapter adapter;
 
@@ -34,8 +34,8 @@ public class duo_Fragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_duo_, container, false);
 
 
-        mFirestoreList = view.findViewById(R.id.firestore_list);
-        firebaseFirestore = FirebaseFirestore.getInstance();
+        RecyclerView mFirestoreList = view.findViewById(R.id.firestore_list);
+        FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
 
         Query query = firebaseFirestore.collection("DUO");
         FirestoreRecyclerOptions<ProductsModel> options = new FirestoreRecyclerOptions.Builder<ProductsModel>()
@@ -46,7 +46,7 @@ public class duo_Fragment extends Fragment {
             @Override
             public duo_Fragment.ProductsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_duo, parent, false);
-                return new duo_Fragment.ProductsViewHolder(view);
+                return new ProductsViewHolder(view);
             }
 
             @Override
@@ -62,21 +62,18 @@ public class duo_Fragment extends Fragment {
                 holder.map.setText(model.getMap());
 
 
-                holder.itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        AppCompatActivity activity = (AppCompatActivity) view.getContext();
-                        Intent intent = new Intent(getActivity(), joining.class);
-                        intent.putExtra("entry_fee", model.getEntry_fee());
-                        intent.putExtra("rs_per_kill", model.getRs_per_kill());
-                        intent.putExtra("rank1", model.getRank1());
-                        intent.putExtra("rank2", model.getRank2());
-                        intent.putExtra("rank3", model.getRank3());
-                        intent.putExtra("teamup", model.getTeamup());
-                        intent.putExtra("map", model.getMap());
+                holder.itemView.setOnClickListener(v -> {
+                    AppCompatActivity activity = (AppCompatActivity) view.getContext();
+                    Intent intent = new Intent(getActivity(), joining.class);
+                    intent.putExtra("entry_fee", model.getEntry_fee());
+                    intent.putExtra("rs_per_kill", model.getRs_per_kill());
+                    intent.putExtra("rank1", model.getRank1());
+                    intent.putExtra("rank2", model.getRank2());
+                    intent.putExtra("rank3", model.getRank3());
+                    intent.putExtra("teamup", model.getTeamup());
+                    intent.putExtra("map", model.getMap());
 
-                        startActivity(intent);
-                    }
+                    startActivity(intent);
                 });
             }
         };
@@ -101,16 +98,16 @@ public class duo_Fragment extends Fragment {
         adapter.startListening();
     }
 
-    private class ProductsViewHolder extends RecyclerView.ViewHolder {
-        private TextView time;
-        private TextView entry_fee;
-        private TextView rs_per_kill;
-        private TextView teamup;
-        private TextView rank1;
-        private TextView rank2;
-        private TextView rank3;
-        private TextView date;
-        private TextView map;
+    private static class ProductsViewHolder extends RecyclerView.ViewHolder {
+        private final TextView time;
+        private final TextView entry_fee;
+        private final TextView rs_per_kill;
+        private final TextView teamup;
+        private final TextView rank1;
+        private final TextView rank2;
+        private final TextView rank3;
+        private final TextView date;
+        private final TextView map;
 
         public ProductsViewHolder(View itemView) {
             super(itemView);

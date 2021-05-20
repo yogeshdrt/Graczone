@@ -6,7 +6,7 @@
     android:background="@drawable/newbackground"
     android:fillViewport="true"
     android:orientation="vertical"
-    tools:context=".squad_Fragment">
+    tools:context=".Matches.squad_Fragment">
 
 
     <TextView
@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:padding="10sp"
-        android:text="BATTLEGROUNDS Tournaments"
+        android:text="@string/battlegrounds_tournaments"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"/>
@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="5sp"
-        android:text="Upcoming matches"
+        android:text="@string/upcoming_matches"
         android:textColor="@color/white"
         android:textSize="15sp"/>
 

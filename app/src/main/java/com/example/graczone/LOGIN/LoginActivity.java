@@ -1,4 +1,4 @@
-package com.example.graczone;
+package com.example.graczone.LOGIN;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
+import com.example.graczone.R;
+import com.example.graczone.home;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -36,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
 
         if(firebaseUser!=null){
-            Intent intent=new Intent(LoginActivity.this,home.class);
+            Intent intent = new Intent(LoginActivity.this, home.class);
             startActivity(intent);
             finish();
         }
