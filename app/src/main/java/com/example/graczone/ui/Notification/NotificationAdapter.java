@@ -8,48 +8,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.graczone.R;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.ValueEventListener;
 
-public class NotificationAdapter extends FirebaseRecyclerAdapter<NotificationModel, NotificationViewHolder> {
+import java.util.ArrayList;
 
+public class NotificationAdapter extends RecyclerView.Adapter<NotificationViewHolder> {
 
-    /**
-     * Initialize a {@link RecyclerView.Adapter} that listens to a Firebase query. See
-     * {@link FirebaseRecyclerOptions} for configuration options.
-     *
-     * @param options
-     */
-    public NotificationAdapter(@NonNull FirebaseRecyclerOptions<NotificationModel> options) {
-        super(options);
-    }
+    ArrayList<NotificationModel> notificationModels;
 
-    @Override
-    protected void onBindViewHolder(@NonNull NotificationViewHolder notificationViewHolder, int i, @NonNull NotificationModel notificationModel) {
-
-        getRef(i).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String title = snapshot.child("title").getValue().toString();
-                String body = snapshot.child("body").getValue().toString();
-                String time = snapshot.child("time").getValue().toString();
-                String date = snapshot.child("date").getValue().toString();
-                notificationViewHolder.notificationTitleTextView.setText(title);
-                notificationViewHolder.bodyTextView.setText(body);
-                notificationViewHolder.timeTextView.setText(time);
-                notificationViewHolder.bodyTextView.setText(date);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-
+    public NotificationAdapter(ArrayList<NotificationModel> notificationModels) {
+        this.notificationModels = notificationModels;
     }
 
     @NonNull
@@ -57,5 +24,19 @@ public class NotificationAdapter extends FirebaseRecyclerAdapter<NotificationMod
     public NotificationViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_notification_card, parent, false);
         return new NotificationViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull NotificationViewHolder holder, int position) {
+        holder.notificationTitleTextView.setText(notificationModels.get(position).getTitle());
+        holder.bodyTextView.setText(notificationModels.get(position).getBody());
+        holder.timeTextView.setText(notificationModels.get(position).getTime());
+        holder.dateTextView.setText(notificationModels.get(position).getDate());
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return notificationModels.size();
     }
 }
