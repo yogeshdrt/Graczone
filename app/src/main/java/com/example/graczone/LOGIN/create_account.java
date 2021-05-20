@@ -1,4 +1,4 @@
-package com.example.graczone;
+package com.example.graczone.LOGIN;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.graczone.R;
+import com.example.graczone.home;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -37,8 +39,6 @@ public class create_account extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
         setContentView(R.layout.activity_create_account);
 
 
@@ -101,6 +101,16 @@ public class create_account extends AppCompatActivity {
         });
     }
 
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i = new Intent(create_account.this, LoginActivity.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i);
+        finish();
+    }
+
     private void register(String username, String email, String password) {
         String phone = phoneEditText.getText().toString();
         auth.createUserWithEmailAndPassword(email, password)
@@ -141,5 +151,4 @@ public class create_account extends AppCompatActivity {
                     }
                 });
     }
-
 }

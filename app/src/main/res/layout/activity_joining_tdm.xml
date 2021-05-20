@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/white"
+    android:orientation="vertical"
     tools:context=".joining">
 
 
@@ -100,6 +100,51 @@
     </LinearLayout>
 
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" 4 players in each team"
+        app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.092" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed"
+        android:gravity="center_horizontal"
+        android:padding="10sp"
+        android:text="Winning Team"
+        android:textColor="@color/purple_500"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.057"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.333" />
+
+    <TextView
+        android:id="@+id/get_rank1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10sp"
+        android:text="Rs 100/each player"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.87"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.333" />
+
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
@@ -107,138 +152,44 @@
         android:layout_marginTop="10dp"
         android:background="#E0E4E6"
         android:elevation="10dp"
+        android:gravity="center"
         android:orientation="horizontal"
-        android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="10sp"
-            android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="45sp"
-                android:layout_height="45sp"
-                android:layout_marginTop="29.5sp"
-                android:padding="5sp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/first_place" />
+        <ImageView
+            android:id="@+id/vector01"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginRight="80dp"
+            android:padding="5dp"
+            android:src="@drawable/ic_baseline_groups_24" />
 
-            <ImageView
-                android:layout_width="45sp"
-                android:layout_height="45sp"
-                android:padding="5sp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/second_place" />
-
-            <ImageView
-                android:layout_width="45sp"
-                android:layout_height="45sp"
-                android:padding="5sp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/third_place" />
-
-        </LinearLayout>
-
-
-        <LinearLayout
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-
-            android:orientation="vertical">
-
-
-            <TextView
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30sp"
-                android:fontFamily="sans-serif-condensed-medium"
-                android:padding="10sp"
-                android:text="Rank 1"
-                android:textColor="@color/purple_500"
-                android:textSize="18sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-condensed-medium"
-                android:padding="10sp"
-                android:text="Rank 2"
-                android:textColor="@color/purple_500"
-                android:textSize="18sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-condensed-medium"
-                android:padding="10sp"
-                android:text="Rank 3"
-                android:textColor="@color/purple_500"
-                android:textSize="18sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="90dp"
-            android:orientation="vertical">
+            android:layout_gravity="center"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="VS"
+            android:textSize="25dp"
+            android:textStyle="bold" />
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-condensed-medium"
-                android:padding="5sp"
-                android:text="Winning Prize"
-                android:textAlignment="center"
-                android:textColor="@color/purple_500"
-                android:textSize="15sp" />
-
-            <TextView
-                android:id="@+id/get_rank1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10sp"
-                android:text="Rs 100/each"
-                android:textAlignment="center"
-                android:textColor="@color/purple_500"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/get_rank2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10sp"
-                android:text="Rs 50/each"
-                android:textAlignment="center"
-                android:textColor="@color/purple_500"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/get_rank3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10sp"
-                android:text="Rs 500"
-                android:textAlignment="center"
-                android:textColor="@color/purple_500"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
+        <ImageView
+            android:id="@+id/vector02"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginLeft="80dp"
+            android:padding="5dp"
+            android:src="@drawable/ic_baseline_groups_24" />
 
     </LinearLayout>
 
 
     <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/black"

@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Wallet.wallet">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appBarLayout"
-            android:layout_width="match_parent"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/black"
             android:theme="@style/Theme.Graczone.AppBarOverlay">
@@ -29,18 +26,13 @@
         </com.google.android.material.appbar.AppBarLayout>
 
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:padding="10sp"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:text="Balance"
+                    android:text="@string/balance"
                     android:textSize="30sp" />
 
                 <LinearLayout
@@ -54,7 +46,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-condensed-medium"
                         android:padding="2sp"
-                        android:text="₹"
+                        android:text="@string/Rs"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="35sp" />
@@ -66,76 +58,86 @@
                         android:fontFamily="sans-serif-condensed-medium"
                         android:inputType="numberDecimal"
                         android:paddingVertical="2sp"
-                        android:text="100"
+                        android:text="@string/_100"
                         android:textAlignment="center"
                         android:textColor="@color/black"
-                        android:textSize="35sp" />
+                        android:textSize="35sp"
+                        tools:ignore="TextViewEdits" />
 
                 </LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="10sp"
-                    android:text="Topup Wallet" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10sp"
+        android:text="@string/topup_wallet" />
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    app:cardCornerRadius="10sp">
 
-                    <EditText
-                        android:id="@+id/enter_amount"
-                        android:layout_width="370dp"
-                        android:hint="Enter Amount"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center_horizontal"
-                        android:inputType="number"
-                        android:background="#D8D7D7"
-                        android:padding="10dp"
-                        android:textCursorDrawable="@drawable/my_cursor" />
+    <EditText
+        android:id="@+id/enter_amount"
+        android:layout_width="370dp"
+        android:hint="@string/enter_amount"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:inputType="number"
+        android:background="#D8D7D7"
+        android:padding="10dp"
+        android:textCursorDrawable="@drawable/my_cursor_2" />
 
-                </androidx.cardview.widget.CardView>
 
-                <Button
+    <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_margin="10sp"
                     android:backgroundTint="#089C0E"
                     android:elevation="15sp"
-                    android:padding="10sp"
-                    android:text="Add Cash"
-                    android:textColor="@color/white"
+        android:padding="10sp"
+        android:text="@string/add_cash"
+        android:textColor="@color/white"
                     android:textStyle="bold"/>
 
 
-
-                <Button
-                    android:id="@+id/transaction_btn"
-                    android:layout_width="300dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="60dp"
-                    android:elevation="20sp"
-                    android:padding="10sp"
-                    android:text="Recent Transaction                     →"
-                    android:textAlignment="center"
-                    android:textAllCaps="false" />
-
-                <Button
-                    android:id="@+id/withdraw_btn"
-                    android:layout_width="300dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:elevation="20sp"
-                    android:padding="10sp"
-                    android:text="Withdraw                                     →"
-                    android:textAllCaps="false" />
-
-            </LinearLayout>
+    <Button
+        android:id="@+id/withdraw_btn"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:elevation="20sp"
+        android:padding="10sp"
+        android:shadowColor="@color/black"
+        android:shadowDx="10"
+        android:shadowDy="10"
+        android:text="@string/withdraw"
+        android:textAllCaps="false" />
 
 
-    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:padding="10dp"
+        android:text="@string/transactions"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/corners">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="Amount                                               Date  \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021     "
+            android:textSize="18sp" />
+
+    </ScrollView>
+
+
+</LinearLayout>
+

@@ -63,7 +63,7 @@ public class home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        super.setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_home);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -230,10 +230,6 @@ public class home extends AppCompatActivity {
 
     }
 
-
-    public void popUp(){
-        dialog.show();
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

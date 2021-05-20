@@ -1,4 +1,4 @@
-package com.example.graczone;
+package com.example.graczone.Matches;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,49 +14,48 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.graczone.ProductsModel;
+import com.example.graczone.R;
+import com.example.graczone.joining;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
-public class squad_Fragment extends Fragment {
+public class solo_Fragment extends Fragment {
 
-
-    private RecyclerView mFirestoreList;
-    private FirebaseFirestore firebaseFirestore;
     private FirestoreRecyclerAdapter adapter;
-
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_squad_, container, false);
+        View view = inflater.inflate(R.layout.fragment_solo_, container, false);
 
 
+        RecyclerView mFirestoreList = view.findViewById(R.id.firestore_list);
+        FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
 
-        mFirestoreList = view.findViewById(R.id.firestore_list);
-        firebaseFirestore = FirebaseFirestore.getInstance();
-
-        Query query = firebaseFirestore.collection("SQUAD");
+        Query query = firebaseFirestore.collection("SOLO");
         FirestoreRecyclerOptions<ProductsModel> options = new FirestoreRecyclerOptions.Builder<ProductsModel>()
                 .setQuery(query, ProductsModel.class).build();
 
-        adapter = new FirestoreRecyclerAdapter<ProductsModel, ProductsViewHolder>(options) {
+        adapter = new FirestoreRecyclerAdapter<ProductsModel, solo_Fragment.ProductsViewHolder>(options) {
             @NonNull
             @Override
-            public ProductsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_squad, parent, false);
+            public solo_Fragment.ProductsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_solo, parent, false);
                 return new ProductsViewHolder(view);
             }
 
             @Override
-            protected void onBindViewHolder(@NonNull ProductsViewHolder holder, int position, @NonNull ProductsModel model) {
+            protected void onBindViewHolder(@NonNull solo_Fragment.ProductsViewHolder holder, int position, @NonNull ProductsModel model) {
                 holder.time.setText(model.getTime());
                 holder.entry_fee.setText(model.getEntry_fee());
                 holder.rs_per_kill.setText(model.getRs_per_kill());
                 holder.teamup.setText(model.getTeamup());
+
                 holder.rank1.setText(model.getRank1());
                 holder.rank2.setText(model.getRank2());
                 holder.rank3.setText(model.getRank3());
@@ -64,24 +63,19 @@ public class squad_Fragment extends Fragment {
                 holder.map.setText(model.getMap());
 
 
-                holder.itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        AppCompatActivity activity = (AppCompatActivity) view.getContext();
-                        Intent intent = new Intent(getActivity(), joining.class);
-                        intent.putExtra("entry_fee", model.getEntry_fee());
-                        intent.putExtra("rs_per_kill", model.getRs_per_kill());
-                        intent.putExtra("rank1", model.getRank1());
-                        intent.putExtra("rank2", model.getRank2());
-                        intent.putExtra("rank3", model.getRank3());
-                        intent.putExtra("teamup", model.getTeamup());
-                        intent.putExtra("map", model.getMap());
+                holder.itemView.setOnClickListener(v -> {
+                    AppCompatActivity activity = (AppCompatActivity) view.getContext();
+                    Intent intent = new Intent(getActivity(), joining.class);
+                    intent.putExtra("entry_fee", model.getEntry_fee());
+                    intent.putExtra("rs_per_kill", model.getRs_per_kill());
+                    intent.putExtra("rank1", model.getRank1());
+                    intent.putExtra("rank2", model.getRank2());
+                    intent.putExtra("rank3", model.getRank3());
+                    intent.putExtra("teamup", model.getTeamup());
+                    intent.putExtra("map", model.getMap());
 
-                        startActivity(intent);
-                    }
+                    startActivity(intent);
                 });
-
-
             }
         };
 
@@ -105,16 +99,16 @@ public class squad_Fragment extends Fragment {
         adapter.startListening();
     }
 
-    static class ProductsViewHolder extends RecyclerView.ViewHolder {
-        private TextView time;
-        private TextView entry_fee;
-        private TextView rs_per_kill;
-        private TextView teamup;
-        private TextView rank1;
-        private TextView rank2;
-        private TextView rank3;
-        private TextView date;
-        private TextView map;
+    private static class ProductsViewHolder extends RecyclerView.ViewHolder {
+        private final TextView time;
+        private final TextView entry_fee;
+        private final TextView rs_per_kill;
+        private final TextView teamup;
+        private final TextView rank1;
+        private final TextView rank2;
+        private final TextView rank3;
+        private final TextView date;
+        private final TextView map;
 
         public ProductsViewHolder(View itemView) {
             super(itemView);
@@ -132,6 +126,8 @@ public class squad_Fragment extends Fragment {
 
         }
     }
+
+
 
 
 }

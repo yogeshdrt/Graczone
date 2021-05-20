@@ -1,4 +1,4 @@
-package com.example.graczone;
+package com.example.graczone.Matches;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,15 +14,15 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.graczone.ProductsModel;
+import com.example.graczone.R;
+import com.example.graczone.joining_TDM;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
 public class tdm_Fragment extends Fragment {
-
-    private RecyclerView mFirestoreList;
-    private FirebaseFirestore firebaseFirestore;
 
     private FirestoreRecyclerAdapter adapter;
 
@@ -34,8 +34,8 @@ public class tdm_Fragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_t_d_m, container, false);
 
 
-        mFirestoreList = view.findViewById(R.id.firestore_list);
-        firebaseFirestore = FirebaseFirestore.getInstance();
+        RecyclerView mFirestoreList = view.findViewById(R.id.firestore_list);
+        FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
 
         Query query = firebaseFirestore.collection("TDM");
         FirestoreRecyclerOptions<ProductsModel> options = new FirestoreRecyclerOptions.Builder<ProductsModel>()
@@ -46,7 +46,7 @@ public class tdm_Fragment extends Fragment {
             @Override
             public tdm_Fragment.ProductsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_squad, parent, false);
-                return new tdm_Fragment.ProductsViewHolder(view);
+                return new ProductsViewHolder(view);
             }
 
             @Override
@@ -55,30 +55,21 @@ public class tdm_Fragment extends Fragment {
                 holder.entry_fee.setText(model.getEntry_fee());
                 holder.rs_per_kill.setText(model.getRs_per_kill());
                 holder.teamup.setText(model.getTeamup());
-
                 holder.rank1.setText(model.getRank1());
-                holder.rank2.setText(model.getRank2());
-                holder.rank3.setText(model.getRank3());
                 holder.date.setText(model.getDate());
                 holder.map.setText(model.getMap());
 
 
-                holder.itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        AppCompatActivity activity = (AppCompatActivity) view.getContext();
-                        Intent intent = new Intent(getActivity(), joining.class);
-                        intent.putExtra("entry_fee", model.getEntry_fee());
-                        intent.putExtra("rs_per_kill", model.getRs_per_kill());
-                        intent.putExtra("rank1", model.getRank1());
-                        intent.putExtra("rank2", model.getRank2());
-                        intent.putExtra("rank3", model.getRank3());
-                        intent.putExtra("teamup", model.getTeamup());
-                        intent.putExtra("map", model.getMap());
+                holder.itemView.setOnClickListener(v -> {
+                    AppCompatActivity activity = (AppCompatActivity) view.getContext();
+                    Intent intent = new Intent(getActivity(), joining_TDM.class);
+                    intent.putExtra("entry_fee", model.getEntry_fee());
+                    intent.putExtra("rs_per_kill", model.getRs_per_kill());
+                    intent.putExtra("teamup", model.getTeamup());
+                    intent.putExtra("map", model.getMap());
+                    intent.putExtra("rank1", model.getRank1());
 
-
-                        startActivity(intent);
-                    }
+                    startActivity(intent);
                 });
             }
         };
@@ -103,16 +94,14 @@ public class tdm_Fragment extends Fragment {
         adapter.startListening();
     }
 
-    private class ProductsViewHolder extends RecyclerView.ViewHolder {
-        private TextView time;
-        private TextView entry_fee;
-        private TextView rs_per_kill;
-        private TextView teamup;
-        private TextView rank1;
-        private TextView rank2;
-        private TextView rank3;
-        private TextView date;
-        private TextView map;
+    private static class ProductsViewHolder extends RecyclerView.ViewHolder {
+        private final TextView time;
+        private final TextView entry_fee;
+        private final TextView rs_per_kill;
+        private final TextView teamup;
+        private final TextView date;
+        private final TextView map;
+        private final TextView rank1;
 
         public ProductsViewHolder(View itemView) {
             super(itemView);
@@ -121,11 +110,9 @@ public class tdm_Fragment extends Fragment {
             entry_fee = itemView.findViewById(R.id.entry_fee);
             rs_per_kill = itemView.findViewById(R.id.rs_per_kill);
             teamup = itemView.findViewById(R.id.teamup);
-            rank1 = itemView.findViewById(R.id.rank1);
-            rank2 = itemView.findViewById(R.id.rank2);
-            rank3 = itemView.findViewById(R.id.rank3);
             date = itemView.findViewById(R.id.date);
             map = itemView.findViewById(R.id.map);
+            rank1 = itemView.findViewById(R.id.rank1);
 
 
         }

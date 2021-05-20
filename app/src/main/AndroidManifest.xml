@@ -10,17 +10,15 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.Graczone">
+        <activity android:name=".joining_TDM"></activity>
         <activity
-            android:name=".Phone_OTP"
+            android:name=".LOGIN.Phone_OTP"
             android:screenOrientation="portrait" />
         <activity
             android:name=".joining"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Wallet.withdraw"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".Wallet.transactions"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Wallet.wallet"
@@ -31,10 +29,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Graczone.NoActionBar" />
         <activity
-            android:name=".create_account"
+            android:name=".LOGIN.create_account"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".LOGIN.LoginActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".SplashScreen"
