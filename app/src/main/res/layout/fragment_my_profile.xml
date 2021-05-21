@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/profileFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#E6E6E6"
+    android:orientation="vertical"
     tools:context=".ui.My_Profile.My_Profile_Fragment">
 
     <LinearLayout
@@ -17,8 +18,8 @@
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_marginTop="130dp"
-            android:scaleType="centerCrop"
             android:contentDescription="TODO"
+            android:scaleType="centerCrop"
             android:src="@color/white" />
 
 
@@ -26,82 +27,85 @@
 
 
     <TextView
+        android:id="@+id/usernameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:text="Deepak Jain"
         android:layout_gravity="center_horizontal"
-        android:textAlignment="center"
+        android:fontFamily="sans-serif-condensed-medium"
         android:padding="10dp"
+        android:text="Deepak Jain"
+        android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="25sp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="Account"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/email2TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingVertical="5dp"
+                android:text="deepakjain@gmail.com"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:hint="Tap to change email address"
+                android:textSize="16sp" />
+        </LinearLayout>
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
             android:orientation="vertical"
-            android:layout_marginTop="50dp"
             android:padding="10dp">
+
+            <TextView
+                android:id="@+id/phoneNoTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingVertical="5dp"
+                android:text="+91 9997669034"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text="Account"
-                android:textSize="15sp"
-                android:textStyle="bold" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="10dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingVertical="5dp"
-                    android:text="deepakjain@gmail.com"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:hint="Tap to change email address"
-                    android:textSize="16sp" />
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="10dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingVertical="5dp"
-                    android:text="+91 9997669034"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:hint="Tap to change phone number"
-                    android:textSize="16sp" />
-
-
-            </LinearLayout>
+                android:layout_marginLeft="5dp"
+                android:hint="Tap to change phone number"
+                android:textSize="16sp" />
 
 
         </LinearLayout>
 
+
     </LinearLayout>
+
+</LinearLayout>
 

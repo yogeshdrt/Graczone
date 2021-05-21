@@ -12,13 +12,20 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
 import com.example.graczone.Wallet.wallet;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
+
+import org.jetbrains.annotations.NotNull;
 
 public class joining extends AppCompatActivity {
 
@@ -91,14 +98,31 @@ public class joining extends AppCompatActivity {
 
         btnn = dialog.findViewById(R.id.popup_confirm);
 
-        btnn.setOnClickListener(v -> dialog.dismiss());
 
         final EditText editText = dialog.findViewById(R.id.enter_battlegrounds_id);
         editText.setOnFocusChangeListener((v, hasFocus) -> {
-            if (hasFocus)
-                editText.setHint("");
-
+            if (hasFocus) {
+                editText.setHint("enter pubg player id");
+            }
         });
+        btnn.setOnClickListener(v -> {
+                    if (editText.getText().toString().isEmpty()) {
+                        Toast.makeText(getApplicationContext(), "enter valid pubg id", Toast.LENGTH_SHORT).show();
+                    } else {
+                        FirebaseMessaging.getInstance().subscribeToTopic("match1").addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull @NotNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(getApplicationContext(), "successfully entered in room", Toast.LENGTH_SHORT).show();
+                                    dialog.dismiss();
+                                } else {
+                                    Toast.makeText(getApplicationContext(), "something went wrong", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                    }
+                }
+        );
 
 
     }

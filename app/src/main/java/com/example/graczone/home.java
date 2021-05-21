@@ -1,6 +1,5 @@
 package com.example.graczone;
 
-import android.app.Dialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Intent;
@@ -24,6 +23,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.graczone.LOGIN.LoginActivity;
 import com.example.graczone.Wallet.wallet;
 import com.example.graczone.ui.My_Profile.My_Profile_Fragment;
 import com.example.graczone.ui.Notification.NotificationModel;
@@ -44,7 +44,6 @@ import java.util.ArrayList;
 
 public class home extends AppCompatActivity {
 
-    Dialog dialog;
     public static final String MyPREFERENCES = "MyPrefs";
     DrawerLayout drawer;
     TextView get_username, get_email;
@@ -53,7 +52,7 @@ public class home extends AppCompatActivity {
     FirebaseAuth mauth;
     FirebaseUser currentUser;
     NavigationView navigationView;
-    String username, arg1, arg2, arg3, body, title, date, time;
+    String username, arg1, arg2, arg3;
     ArrayList<NotificationModel> modelArrayList;
 
 
