@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/myMatchesFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/newbackground"
+    android:orientation="vertical"
     tools:context=".ui.MyMatches.MyMatches_Fragment">
 
 
     <TextView
-                android:id="@+id/textView16"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10sp"
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10sp"
         android:text="@string/battlegrounds_tournaments"
         android:textColor="@color/white"
-                android:textSize="15sp" />
+        android:textSize="15sp" />
 
 
     <ImageView
@@ -31,7 +32,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/get_cardview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:scrollbars="vertical" />
 
 
 </LinearLayout>

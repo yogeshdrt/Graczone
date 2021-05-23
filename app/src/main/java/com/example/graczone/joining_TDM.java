@@ -6,21 +6,32 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
 import com.example.graczone.Wallet.wallet;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.messaging.FirebaseMessaging;
+
+import org.jetbrains.annotations.NotNull;
 
 public class joining_TDM extends AppCompatActivity {
 
@@ -29,6 +40,10 @@ public class joining_TDM extends AppCompatActivity {
     ImageView vector01, vector02;
 
     TextView entry, rs_per_kill, rank1, teamup, map;
+    String time, date, s1, s6;
+    FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
+    DatabaseReference databaseReference;
 
 
     @RequiresApi(api = Build.VERSION_CODES.Q)
@@ -38,6 +53,9 @@ public class joining_TDM extends AppCompatActivity {
         setContentView(R.layout.activity_joining_tdm);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
 
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -61,11 +79,13 @@ public class joining_TDM extends AppCompatActivity {
         teamup = findViewById(R.id.get_teamup);
 
         Intent intent = getIntent();
-        String s1 = intent.getStringExtra("entry_fee");
+        s1 = intent.getStringExtra("entry_fee");
         String s2 = intent.getStringExtra("rs_per_kill");
         String s3 = intent.getStringExtra("rank1");
-        String s6 = intent.getStringExtra("teamup");
+        s6 = intent.getStringExtra("teamup");
         String s7 = intent.getStringExtra("map");
+        time = intent.getStringExtra("time");
+        date = intent.getStringExtra("date");
 
         entry.setText(s1);
         rs_per_kill.setText(s2);
@@ -94,17 +114,48 @@ public class joining_TDM extends AppCompatActivity {
 
         btnn = dialog.findViewById(R.id.popup_confirm);
 
-        btnn.setOnClickListener(v -> dialog.dismiss());
-
         final EditText editText = (EditText) dialog.findViewById(R.id.enter_battlegrounds_id);
-        editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus)
-                    editText.setHint("");
+        editText.setOnFocusChangeListener((v, hasFocus) -> {
+            if (hasFocus)
+                editText.setHint("enter pubg userName");
 
-            }
         });
+
+//        btnn.setOnClickListener(v -> dialog.dismiss());
+        btnn.setOnClickListener(v -> {
+                    if (editText.getText().toString().isEmpty()) {
+                        Toast.makeText(getApplicationContext(), "enter valid pubg id", Toast.LENGTH_SHORT).show();
+                    } else {
+                        FirebaseMessaging.getInstance().subscribeToTopic("match1").addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull @NotNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    String email = firebaseUser.getEmail();
+                                    if (email == null) {
+                                        email = "null";
+                                        Log.d("myTag", "email null");
+                                    }
+                                    databaseReference = FirebaseDatabase.getInstance().getReference(s6).child(date + "+" + time);
+                                    databaseReference.child("EntryFee").setValue(s1);
+                                    databaseReference.child("participants").child(editText.getText().toString()).child("email")
+                                            .setValue(email).addOnCompleteListener(task1 -> {
+                                        if (task1.isSuccessful()) {
+                                            Log.d("myTag", "succ. add participant");
+                                        } else {
+                                            Log.d("myTag", "error in participant");
+                                        }
+                                    });
+                                    Log.d("myTag", "add id in joining");
+                                    Toast.makeText(getApplicationContext(), "successfully entered in room", Toast.LENGTH_SHORT).show();
+                                    dialog.dismiss();
+                                } else {
+                                    Toast.makeText(getApplicationContext(), "something went wrong", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                    }
+                }
+        );
 
 
     }

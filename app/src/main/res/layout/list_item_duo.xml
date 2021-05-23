@@ -144,7 +144,7 @@
                     android:textSize="15sp" />
 
                 <TextView
-                    android:id="@+id/entry_fee"
+                    android:id="@+id/entryFee"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"

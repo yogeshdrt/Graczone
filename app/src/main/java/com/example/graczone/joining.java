@@ -2,23 +2,42 @@ package com.example.graczone;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
 import com.example.graczone.Wallet.wallet;
+import com.example.graczone.ui.MyMatches.MyMatchesModel;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.common.reflect.TypeToken;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.gson.Gson;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 
 public class joining extends AppCompatActivity {
 
@@ -27,6 +46,11 @@ public class joining extends AppCompatActivity {
 
 
     TextView entry, rs_per_kill, rank1, rank2, rank3, teamup, map;
+    String s6, time, date, s1, s2, s3, s4, s5, s7;
+    DatabaseReference databaseReference;
+    FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
+    ArrayList<MyMatchesModel> myMatchesModels;
 
 
     @RequiresApi(api = Build.VERSION_CODES.Q)
@@ -36,6 +60,9 @@ public class joining extends AppCompatActivity {
         setContentView(R.layout.activity_joining);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
 
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -54,13 +81,15 @@ public class joining extends AppCompatActivity {
         teamup = findViewById(R.id.get_teamup);
 
         Intent intent = getIntent();
-        String s1 = intent.getStringExtra("entry_fee");
-        String s2 = intent.getStringExtra("rs_per_kill");
-        String s3 = intent.getStringExtra("rank1");
-        String s4 = intent.getStringExtra("rank2");
-        String s5 = intent.getStringExtra("rank3");
-        String s6 = intent.getStringExtra("teamup");
-        String s7 = intent.getStringExtra("map");
+        s1 = intent.getStringExtra("entry_fee");
+        s2 = intent.getStringExtra("rs_per_kill");
+        s3 = intent.getStringExtra("rank1");
+        s4 = intent.getStringExtra("rank2");
+        s5 = intent.getStringExtra("rank3");
+        s6 = intent.getStringExtra("teamup");
+        s7 = intent.getStringExtra("map");
+        time = intent.getStringExtra("time");
+        date = intent.getStringExtra("date");
 
         entry.setText(s1);
         rs_per_kill.setText(s2);
@@ -91,15 +120,70 @@ public class joining extends AppCompatActivity {
 
         btnn = dialog.findViewById(R.id.popup_confirm);
 
-        btnn.setOnClickListener(v -> dialog.dismiss());
 
         final EditText editText = dialog.findViewById(R.id.enter_battlegrounds_id);
         editText.setOnFocusChangeListener((v, hasFocus) -> {
-            if (hasFocus)
-                editText.setHint("");
-
+            if (hasFocus) {
+                editText.setHint("enter pubg userName");
+            }
         });
+        btnn.setOnClickListener(v -> {
+                    if (editText.getText().toString().isEmpty()) {
+                        Toast.makeText(getApplicationContext(), "enter valid pubg id", Toast.LENGTH_SHORT).show();
+                    } else {
+                        FirebaseMessaging.getInstance().subscribeToTopic("match1").addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull @NotNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    String email = firebaseUser.getEmail();
+                                    if (email == null) {
+                                        email = "null";
+                                        Log.d("myTag", "email null");
+                                    }
+                                    databaseReference = FirebaseDatabase.getInstance().getReference(s6).child(date + "+" + time);
+                                    databaseReference.child("EntryFee").setValue(s1);
+                                    databaseReference.child("participants").child(editText.getText().toString()).child("email")
+                                            .setValue(email).addOnCompleteListener(task1 -> {
+                                        if (task1.isSuccessful()) {
+                                            Log.d("myTag", "succ. add participant");
+                                        } else {
+                                            Log.d("myTag", "error in participant");
+                                        }
+                                    });
+                                    Log.d("myTag", "add id in joining");
+                                    saveMyMatches(s1, s2, s7, time, date);
+                                    Toast.makeText(getApplicationContext(), "successfully entered in room", Toast.LENGTH_SHORT).show();
+                                    dialog.dismiss();
+                                } else {
+                                    Toast.makeText(getApplicationContext(), "something went wrong", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                    }
+                }
+        );
 
+
+    }
+
+    void saveMyMatches(String s1, String s2, String s7, String time, String date) {
+
+        MyMatchesModel myMatchesModel = new MyMatchesModel(s7, time, date, s1, s2);
+        SharedPreferences sharedPreferences = getSharedPreferences("myMatchesPre", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Gson gson = new Gson();
+        if (!sharedPreferences.contains("myMatchModels")) {
+            myMatchesModels = new ArrayList<>();
+        } else {
+            String json = sharedPreferences.getString("myMatchModels", null);
+            Type type = new TypeToken<ArrayList<MyMatchesModel>>() {
+            }.getType();
+            myMatchesModels = gson.fromJson(json, type);
+        }
+        myMatchesModels.add(0, myMatchesModel);
+        String json1 = gson.toJson(myMatchesModels);
+        editor.putString("myMatchModels", json1);
+        editor.apply();
 
     }
 
