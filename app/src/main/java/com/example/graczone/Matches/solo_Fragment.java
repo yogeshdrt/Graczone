@@ -73,6 +73,8 @@ public class solo_Fragment extends Fragment {
                     intent.putExtra("rank3", model.getRank3());
                     intent.putExtra("teamup", model.getTeamup());
                     intent.putExtra("map", model.getMap());
+                    intent.putExtra("time", model.getTime());
+                    intent.putExtra("date", model.getDate());
 
                     startActivity(intent);
                 });
@@ -114,7 +116,7 @@ public class solo_Fragment extends Fragment {
             super(itemView);
 
             time = itemView.findViewById(R.id.time);
-            entry_fee = itemView.findViewById(R.id.entry_fee);
+            entry_fee = itemView.findViewById(R.id.entryFee);
             rs_per_kill = itemView.findViewById(R.id.rs_per_kill);
             teamup = itemView.findViewById(R.id.teamup);
             rank1 = itemView.findViewById(R.id.rank1);

@@ -23,7 +23,6 @@ import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 
 public class MyMessagingService extends FirebaseMessagingService {
 
@@ -32,6 +31,7 @@ public class MyMessagingService extends FirebaseMessagingService {
     String title, body, image;
     FirebaseAuth auth;
     FirebaseUser firebaseUser;
+    DatabaseReference databaseReference;
     ArrayList<NotificationModel> notificationModels;
 
     @Override
@@ -67,7 +67,7 @@ public class MyMessagingService extends FirebaseMessagingService {
             }.getType();
             notificationModels = gson.fromJson(json, type);
         }
-        notificationModels.add(notification);
+        notificationModels.add(0, notification);
         String json1 = gson.toJson(notificationModels);
         editor.putString("models", json1);
         editor.apply();
@@ -95,6 +95,7 @@ public class MyMessagingService extends FirebaseMessagingService {
                 .setContentTitle(title)
                 .setSmallIcon(R.drawable.ic_launcher_background)
                 .setAutoCancel(true)
+                .setContentIntent(pendingIntent)
                 .setContentText(message);
 
 
@@ -113,25 +114,19 @@ public class MyMessagingService extends FirebaseMessagingService {
     public void onNewToken(@NonNull String s) {
         super.onNewToken(s);
 
-        Log.d("myTag: ", "onNewToken() called");
         auth = FirebaseAuth.getInstance();
         firebaseUser = auth.getCurrentUser();
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("Token", s);
+        assert firebaseUser != null;
         String userId = firebaseUser.getUid();
-        Log.d("myTag: ", "onNewToken() called : Uid : " + userId + "Token: " + s);
-        Log.d("myTag: ", "onNewToken() called : Uid : " + "hashmap: " + hashMap);
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(userId);
-        databaseReference.setValue(hashMap)
+        FirebaseDatabase.getInstance().getReference("Users").child(userId).child("Token").setValue(s)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-//                        Toast.makeText(getApplicationContext(), "token add successfully", Toast.LENGTH_SHORT).show();
                         Log.d("myTag", "token add successfully");
                     } else {
-//                        Toast.makeText(getApplicationContext(), "token add failed", Toast.LENGTH_SHORT).show();
                         Log.d("myTag", "failed to add token");
                     }
 
                 });
+        Log.d("myTag", "Token generated");
     }
 }
