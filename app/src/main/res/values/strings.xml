@@ -12,7 +12,7 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="pubg_tournaments">PUBG Tournaments</string>
-    <string name="upcoming_matches">Upcoming Matches</string>
+    <string name="upcoming_matches">Upcoming matches</string>
     <string name="rs_10">RS 10/-</string>
     <string name="_10_00_am">10:00 AM</string>
 
@@ -37,7 +37,6 @@
     <string name="topup_wallet">Topup Wallet</string>
     <string name="enter_amount">Enter Amount</string>
     <string name="add_cash">Add Cash</string>
-    <string name="withdraw">Withdraw →</string>
     <string name="transactions">TRANSACTIONS</string>
     <string name="forgot_password">FORGOT PASSWORD?</string>
     <string name="new_user_create_account">New User? Create Account.</string>
@@ -46,6 +45,11 @@
     <string name="email_id">Email id</string>
     <string name="password">Password</string>
     <string name="battlegrounds_tournaments">BATTLEGROUNDS Tournaments</string>
+    <string name="username">Username</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="create_account">Create Account</string>
 
 
 </resources>

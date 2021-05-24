@@ -73,7 +73,7 @@
             android:padding="5sp"
             android:text="1000"
             android:textColor="@color/purple_500"
-            android:textSize="18sp"
+            android:textSize="15sp"
             android:textStyle="bold" />
 
         <TextView
@@ -93,7 +93,7 @@
             android:padding="5sp"
             android:text="Erangle"
             android:textColor="@color/purple_500"
-            android:textSize="18sp"
+            android:textSize="15sp"
             android:textStyle="bold" />
 
 

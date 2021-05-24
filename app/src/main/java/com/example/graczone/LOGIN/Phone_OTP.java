@@ -2,7 +2,6 @@ package com.example.graczone.LOGIN;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -10,11 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.graczone.R;
-import com.example.graczone.home;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.PhoneAuthCredential;
@@ -62,21 +57,9 @@ public class Phone_OTP extends AppCompatActivity {
         get_phoneno = findViewById(R.id.get_phoneno);
         enter_otp = findViewById(R.id.enter_otp);
 
-        findViewById(R.id.get_OTP).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sendVerificationCode();
-            }
+        findViewById(R.id.get_OTP).setOnClickListener(v -> sendVerificationCode());
 
-
-        });
-
-        findViewById(R.id.bt_login).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                verifySignInCode();
-            }
-        });
+        findViewById(R.id.bt_login).setOnClickListener(v -> verifySignInCode());
     }
 
     private void verifySignInCode() {
@@ -88,19 +71,15 @@ public class Phone_OTP extends AppCompatActivity {
 
     private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
         mAuth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
+                .addOnCompleteListener(this, task -> {
 
-                        String phone = get_phoneno.getText().toString();
-                        if (task.isSuccessful()) {
-                            Intent intent = new Intent(Phone_OTP.this, home.class);
-                            startActivity(intent);
-                            finish();
-                        } else {
-                            if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
-                                Toast.makeText(getApplicationContext(), "Incorrect Verification Code", Toast.LENGTH_SHORT).show();
-                            }
+                    if (task.isSuccessful()) {
+                        Intent intent = new Intent(Phone_OTP.this, Select_Game.class);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
+                            Toast.makeText(getApplicationContext(), "Incorrect Verification Code", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -110,13 +89,13 @@ public class Phone_OTP extends AppCompatActivity {
 
         String phone = "+91" + get_phoneno.getText().toString();
 
-        if (phone.isEmpty()) {
+        if (phone.length() <= 3) {
             get_phoneno.setError("Phone number is required");
             get_phoneno.requestFocus();
             return;
         }
 
-        if (phone.length() < 10) {
+        if (phone.length() < 13) {
             get_phoneno.setError("Invalid Phone number");
             get_phoneno.requestFocus();
             return;

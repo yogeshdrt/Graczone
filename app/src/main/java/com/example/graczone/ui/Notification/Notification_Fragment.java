@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,6 +16,8 @@ import java.util.ArrayList;
 
 
 public class Notification_Fragment extends Fragment {
+
+    CardView cardView;
 
     RecyclerView recyclerView;
     ArrayList<NotificationModel> notificationModels;
@@ -28,6 +31,7 @@ public class Notification_Fragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_notification, container, false);
+
         recyclerView = view.findViewById(R.id.notification_recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         notificationModels = new ArrayList<>();

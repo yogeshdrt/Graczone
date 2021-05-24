@@ -67,6 +67,7 @@ public class squad_Fragment extends Fragment {
                 holder.itemView.setOnClickListener(v -> {
                     AppCompatActivity activity = (AppCompatActivity) view.getContext();
                     Intent intent = new Intent(getActivity(), joining.class);
+
                     intent.putExtra("entry_fee", model.getEntry_fee());
                     intent.putExtra("rs_per_kill", model.getRs_per_kill());
                     intent.putExtra("rank1", model.getRank1());

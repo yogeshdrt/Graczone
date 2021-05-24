@@ -13,7 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.graczone.R;
-import com.example.graczone.home;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -54,7 +53,6 @@ public class create_account extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
                 String txt_username = username.getText().toString();
                 String txt_email = email.getText().toString();
                 String txt_password = password.getText().toString();
@@ -66,6 +64,8 @@ public class create_account extends AppCompatActivity {
                     email.setError("email address is not valid!");
                 } else if (txt_password.length() < 8) {
                     Toast.makeText(create_account.this, "password must be at least 8 characters", Toast.LENGTH_SHORT).show();
+                } else if (phoneEditText.length() > 10 || phoneEditText.length() < 10) {
+                    phoneEditText.setError("Invalid Phone Number");
                 } else if (txt_password.length() > 20) {
                     Toast.makeText(create_account.this, "password length not greater than 20", Toast.LENGTH_SHORT).show();
                 } else if (!txt_password.equals(txt_confirm_password)) {
@@ -135,7 +135,7 @@ public class create_account extends AppCompatActivity {
                                 public void onComplete(@NotNull Task<Void> task) {
                                     if (task.isSuccessful()) {
                                         Toast.makeText(getApplicationContext(), "registration successfully!", Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(create_account.this, home.class);
+                                        Intent intent = new Intent(create_account.this, Select_Game.class);
                                         startActivity(intent);
                                         finish();
                                     } else {
