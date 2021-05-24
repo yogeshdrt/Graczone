@@ -25,7 +25,7 @@
         tools:layout="@layout/fragment_notification" />
 
     <fragment
-        android:id="@+id/nav_settings"
+        android:id="@+id/nav_myprofile"
         android:name="com.example.graczone.ui.My_Profile.My_Profile_Fragment"
         android:label=""
         tools:layout="@layout/fragment_my_profile" />

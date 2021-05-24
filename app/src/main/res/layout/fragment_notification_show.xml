@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:background="#1C1B1B"
     android:orientation="vertical"
+    android:clickable="true"
     tools:context=".ui.Notification.Notification_Fragment">
 
     <TextView
