@@ -13,7 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.graczone.R;
-import com.example.graczone.home;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -136,7 +135,7 @@ public class create_account extends AppCompatActivity {
                                 public void onComplete(@NotNull Task<Void> task) {
                                     if (task.isSuccessful()) {
                                         Toast.makeText(getApplicationContext(), "registration successfully!", Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(create_account.this, home.class);
+                                        Intent intent = new Intent(create_account.this, Select_Game.class);
                                         startActivity(intent);
                                         finish();
                                     } else {

@@ -10,7 +10,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.Graczone">
-        <activity android:name=".joining_TDM"></activity>
+        <activity android:name=".LOGIN.Select_Game"></activity>
+        <activity android:name=".joining_TDM" />
         <activity
             android:name=".LOGIN.Phone_OTP"
             android:screenOrientation="portrait" />
@@ -40,7 +41,6 @@
             android:name=".SplashScreen"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

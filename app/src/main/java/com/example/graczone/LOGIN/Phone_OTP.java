@@ -9,7 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.graczone.R;
-import com.example.graczone.home;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
@@ -75,7 +74,7 @@ public class Phone_OTP extends AppCompatActivity {
                 .addOnCompleteListener(this, task -> {
 
                     if (task.isSuccessful()) {
-                        Intent intent = new Intent(Phone_OTP.this, home.class);
+                        Intent intent = new Intent(Phone_OTP.this, Select_Game.class);
                         startActivity(intent);
                         finish();
                     } else {

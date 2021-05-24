@@ -2,6 +2,7 @@ package com.example.graczone;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -146,7 +147,10 @@ public class joining_TDM extends AppCompatActivity {
                                         }
                                     });
                                     Log.d("myTag", "add id in joining");
-                                    Toast.makeText(getApplicationContext(), "successfully entered in room", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), "successfully joined", Toast.LENGTH_SHORT).show();
+                                    join.setEnabled(false);
+                                    join.setText("JOINED");
+                                    join.setTextColor(Color.GRAY);
                                     dialog.dismiss();
                                 } else {
                                     Toast.makeText(getApplicationContext(), "something went wrong", Toast.LENGTH_SHORT).show();
