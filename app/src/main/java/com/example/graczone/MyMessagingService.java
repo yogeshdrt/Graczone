@@ -90,6 +90,8 @@ public class MyMessagingService extends FirebaseMessagingService {
 
     public void showNotification(String title,String message) {
         Intent intent = new Intent(this, home.class);
+        intent.setAction(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_LAUNCHER);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "MyNotifications")
                 .setContentTitle(title)

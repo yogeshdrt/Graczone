@@ -2,6 +2,7 @@ package com.example.graczone.Wallet;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -26,9 +27,6 @@ public class wallet extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-
-
-
         btn2 = findViewById(R.id.withdraw_btn);
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,6 +35,8 @@ public class wallet extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Log.d("myTag", "work in wallet");
 
     }
 

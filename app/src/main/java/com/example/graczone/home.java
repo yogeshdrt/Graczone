@@ -78,6 +78,8 @@ public class home extends AppCompatActivity {
         mauth = FirebaseAuth.getInstance();
         currentUser = mauth.getCurrentUser();
 
+        Log.d("myTag", "open fragment: " + getSupportFragmentManager().getBackStackEntryCount());
+
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel("MyNotifications", "MyNotifications", NotificationManager.IMPORTANCE_DEFAULT);
@@ -89,11 +91,11 @@ public class home extends AppCompatActivity {
 
         FirebaseMessaging.getInstance().subscribeToTopic("general")
                 .addOnCompleteListener(task -> {
-                    String msg = "welcome";
+                    String msg = "";
                     if (!task.isSuccessful()) {
                         msg = "Failed";
                     }
-                    Toast.makeText(home.this, msg, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(home.this, msg, Toast.LENGTH_SHORT).show();
                 });
 
 
@@ -107,7 +109,7 @@ public class home extends AppCompatActivity {
             return true;
         });
 
-        navigationView.getMenu().findItem(R.id.nav_settings).setOnMenuItemClickListener(MenuItem -> {
+        navigationView.getMenu().findItem(R.id.nav_myprofile).setOnMenuItemClickListener(MenuItem -> {
             FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid()).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -121,23 +123,23 @@ public class home extends AppCompatActivity {
                     bundle.putString("arg2", arg2);
                     bundle.putString("arg3", arg3);
                     pf.setArguments(bundle);
-                    fragment = getSupportFragmentManager().findFragmentById(R.id.notificationFragment);
-                    if (fragment != null) {
-                        getSupportFragmentManager().beginTransaction().remove(fragment).commit();
-                    }
+//                    fragment = getSupportFragmentManager().findFragmentById(R.id.notificationFragment);
+//                    if (fragment != null) {
+//                        getSupportFragmentManager().beginTransaction().remove(fragment).commit();
+//                    }
                     FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                    fragment = getSupportFragmentManager().findFragmentById(R.id.profileFragment);
-                    if (fragment == null) {
-                        ft.replace(R.id.nav_host_fragment, pf);
-                        Log.d("myTag", "pf fragment null");
-                    } else {
-                        ft.replace(R.id.nav_host_fragment, fragment);
-                        Log.d("myTag", "pf not fragment null");
+                    for (int i = 0; i < getSupportFragmentManager().getBackStackEntryCount(); i++) {
+                        getSupportFragmentManager().popBackStack();
+                        Log.d("myTag", "open Fragment id: " + getSupportFragmentManager().getBackStackEntryAt(i).getClass() + " name: " +
+                                getSupportFragmentManager().getBackStackEntryAt(i).getName());
+
                     }
+                    ft.replace(R.id.nav_host_fragment, pf, "myProfileTag");
                     ft.addToBackStack(null);
                     ft.commit();
                     drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
                     navigationView.getMenu().getItem(3).setChecked(true);
+                    Log.d("myTag", "prof. open fragment: " + getSupportFragmentManager().getBackStackEntryCount());
 //                    Toast.makeText(getApplicationContext(), "success fetch data" + arg3, Toast.LENGTH_SHORT).show();
                 }
 
@@ -210,24 +212,24 @@ public class home extends AppCompatActivity {
             }
             bundle.putSerializable("models", modelArrayList);
             nf.setArguments(bundle);
-            fragment = getSupportFragmentManager().findFragmentById(R.id.profileFragment);
-            if (fragment != null) {
-                getSupportFragmentManager().beginTransaction().remove(fragment).commit();
-            }
+//            fragment = getSupportFragmentManager().findFragmentById(R.id.profileFragment);
+//            if (fragment != null) {
+//                getSupportFragmentManager().beginTransaction().remove(fragment).commit();
+//            }
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            fragment = getSupportFragmentManager().findFragmentById(R.id.notificationFragment);
-            if (fragment == null) {
-                ft.replace(R.id.nav_host_fragment, nf);
-                Log.d("myTag", "nf fragment null");
-            } else {
-                ft.replace(R.id.nav_host_fragment, fragment);
-                Log.d("myTag", "nf fragment not null");
+            for (int i = 0; i < getSupportFragmentManager().getBackStackEntryCount(); i++) {
+                getSupportFragmentManager().popBackStack();
+                Log.d("myTag", "open Fragment id: " + getSupportFragmentManager().getBackStackEntryAt(i).getClass() + " name: " +
+                        getSupportFragmentManager().getBackStackEntryAt(i).getName());
+
             }
+            ft.replace(R.id.nav_host_fragment, nf, "notificationTag");
             ft.addToBackStack(null);
             ft.commit();
             drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
             navigationView.getMenu().getItem(2).setChecked(true);
-            Toast.makeText(getApplicationContext(), "successfully add notification data", Toast.LENGTH_SHORT).show();
+            Log.d("myTag", "noti. open fragment: " + getSupportFragmentManager().getBackStackEntryCount());
+//            Toast.makeText(getApplicationContext(), "successfully add notification data", Toast.LENGTH_SHORT).show();
             return true;
         });
 
@@ -252,18 +254,19 @@ public class home extends AppCompatActivity {
             mf.setArguments(bundle);
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             fragment = getSupportFragmentManager().findFragmentById(R.id.myMatchesFragment);
-            if (fragment == null) {
-                ft.replace(R.id.nav_host_fragment, mf);
-                Log.d("myTag", "mf fragment null");
-            } else {
-                ft.replace(R.id.nav_host_fragment, fragment);
-                Log.d("myTag", "nf fragment not null");
+            for (int i = 0; i < getSupportFragmentManager().getBackStackEntryCount(); i++) {
+                getSupportFragmentManager().popBackStack();
+                Log.d("myTag", "open Fragment id: " + getSupportFragmentManager().getBackStackEntryAt(i).getClass() + " name: " +
+                        getSupportFragmentManager().getBackStackEntryAt(i).getName());
+
             }
+            ft.replace(R.id.nav_host_fragment, mf, "myMatchTag");
             ft.addToBackStack(null);
             ft.commit();
             drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
             navigationView.getMenu().getItem(1).setChecked(true);
-            Toast.makeText(getApplicationContext(), "successfully add myMatches data", Toast.LENGTH_SHORT).show();
+            Log.d("myTag", "my match open fragment: " + getSupportFragmentManager().getBackStackEntryCount());
+//            Toast.makeText(getApplicationContext(), "successfully add myMatches data", Toast.LENGTH_SHORT).show();
             return true;
         });
         // Passing each menu ID as a set of Ids because each
@@ -304,7 +307,14 @@ public class home extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.wallet_button) {
+            for (int i = 0; i < getSupportFragmentManager().getBackStackEntryCount(); i++) {
+                getSupportFragmentManager().popBackStack();
+                Log.d("myTag", "open Fragment id: " + getSupportFragmentManager().getBackStackEntryAt(i).getClass() + " name: " +
+                        getSupportFragmentManager().getBackStackEntryAt(i).getName());
+
+            }
             startActivity(new Intent(home.this, wallet.class));
+            Log.d("myTag", "switch to wallet");
             return true;
         }
         return false;
@@ -325,16 +335,24 @@ public class home extends AppCompatActivity {
         } else {
             super.onBackPressed();
 
+//            for (int i = 0; i < getSupportFragmentManager().getBackStackEntryCount(); i++) {
+//                getSupportFragmentManager().popBackStack();
+//                Log.d("myTag", "open Fragment id: " + getSupportFragmentManager().getBackStackEntryAt(i).getClass() + " name: " +
+//                        getSupportFragmentManager().getBackStackEntryAt(i).getName());
+//
+//            }
+
 
             if (getSupportFragmentManager().findFragmentById(R.id.myMatchesFragment) == null) {
                 navigationView.getMenu().getItem(1).setChecked(false);
             }
-            if (getSupportFragmentManager().findFragmentById(R.id.notificationFragment) == null) {
+            if (getSupportFragmentManager().findFragmentByTag("notyFrag") == null) {
                 navigationView.getMenu().getItem(2).setChecked(false);
                 Log.d("myTag", "check nf fragment null");
             }
             navigationView.getMenu().getItem(3).setChecked(false);
         }
+        Log.d("myTag", "open fragment: " + getSupportFragmentManager().getBackStackEntryCount());
 
 
     }

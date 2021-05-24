@@ -1,7 +1,6 @@
 package com.example.graczone.ui.MyMatches;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +27,6 @@ public class MyMatches_Fragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         myMatchesModels = new ArrayList<>();
         Bundle bundle = getArguments();
-        Log.d("myTag", "myMatchFragment");
         if (bundle != null) {
             myMatchesModels = (ArrayList<MyMatchesModel>) bundle.getSerializable("myMatchModels");
         }
