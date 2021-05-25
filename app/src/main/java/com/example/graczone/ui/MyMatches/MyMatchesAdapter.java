@@ -36,6 +36,9 @@ public class MyMatchesAdapter extends RecyclerView.Adapter<MyMatchesViewHolder> 
         holder.entryFeeTextView.setText(myMatchesModels.get(position).getEntryFeeTextView());
         holder.timeTextView.setText(myMatchesModels.get(position).getTimeTextView());
         holder.mapTextView.setText(myMatchesModels.get(position).getMapTextView());
+        holder.rank1TextView.setText(myMatchesModels.get(position).getRank1TextView());
+        holder.rank2TextView.setText(myMatchesModels.get(position).getRank2TextView());
+        holder.rank3TextView.setText(myMatchesModels.get(position).getRank3TextView());
 
     }
 

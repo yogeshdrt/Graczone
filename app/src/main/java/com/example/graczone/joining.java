@@ -152,7 +152,7 @@ public class joining extends AppCompatActivity {
                                         }
                                     });
                                     Log.d("myTag", "add id in joining");
-                                    saveMyMatches(s1, s2, s7, time, date);
+                                    saveMyMatches(s1, s2, s7, time, date, s3, s4, s5);
                                     Toast.makeText(getApplicationContext(), "successfully joined", Toast.LENGTH_SHORT).show();
                                     join.setEnabled(false);
                                     join.setText("JOINED");
@@ -170,9 +170,9 @@ public class joining extends AppCompatActivity {
 
     }
 
-    void saveMyMatches(String s1, String s2, String s7, String time, String date) {
+    void saveMyMatches(String s1, String s2, String s7, String time, String date, String s3, String s4, String s5) {
 
-        MyMatchesModel myMatchesModel = new MyMatchesModel(s7, time, date, s1, s2);
+        MyMatchesModel myMatchesModel = new MyMatchesModel(s7, time, date, s1, s2, s3, s4, s5);
         SharedPreferences sharedPreferences = getSharedPreferences("myMatchesPre", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         Gson gson = new Gson();
