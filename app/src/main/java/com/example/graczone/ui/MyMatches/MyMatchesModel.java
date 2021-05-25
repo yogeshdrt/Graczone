@@ -1,14 +1,48 @@
 package com.example.graczone.ui.MyMatches;
 
 public class MyMatchesModel {
-    private String mapTextView, timeTextView, dateTextView, entryFeeTextView, killTextView;
+    private String mapTextView;
+    private String timeTextView;
+    private String dateTextView;
+    private String entryFeeTextView;
+    private String killTextView;
+    private String rank1TextView;
+    private String rank2TextView;
+    private String rank3TextView;
 
-    public MyMatchesModel(String mapTextView, String timeTextView, String dateTextView, String entryFeeTextView, String killTextView) {
+    public MyMatchesModel(String mapTextView, String timeTextView, String dateTextView, String entryFeeTextView, String killTextView, String rank1TextView, String rank2TextView, String rank3TextView) {
         this.mapTextView = mapTextView;
         this.timeTextView = timeTextView;
         this.dateTextView = dateTextView;
         this.entryFeeTextView = entryFeeTextView;
         this.killTextView = killTextView;
+        this.rank1TextView = rank1TextView;
+        this.rank2TextView = rank2TextView;
+        this.rank3TextView = rank3TextView;
+    }
+
+    public String getRank1TextView() {
+        return rank1TextView;
+    }
+
+    public void setRank1TextView(String rank1TextView) {
+        this.rank1TextView = rank1TextView;
+    }
+
+    public String getRank2TextView() {
+        return rank2TextView;
+    }
+
+    public void setRank2TextView(String rank2TextView) {
+        this.rank2TextView = rank2TextView;
+    }
+
+    public String getRank3TextView() {
+        return rank3TextView;
+    }
+
+    public void setRank3TextView(String rank3TextView) {
+        this.rank3TextView = rank3TextView;
     }
 
     public String getMapTextView() {

@@ -247,7 +247,7 @@ public class home extends AppCompatActivity {
                 myMatchesModels = gson.fromJson(json, type);
             } else {
                 myMatchesModels = new ArrayList<>();
-                MyMatchesModel myMatchesModel = new MyMatchesModel("default", "default", "default", "default", "default");
+                MyMatchesModel myMatchesModel = new MyMatchesModel("default", "default", "default", "default", "default", "default", "default", "default");
                 myMatchesModels.add(myMatchesModel);
             }
             bundle.putSerializable("myMatchModels", myMatchesModels);

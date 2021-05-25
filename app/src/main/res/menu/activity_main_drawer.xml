@@ -22,13 +22,22 @@
             android:icon="@drawable/ic_baseline_person_25"
             android:title="My Profile" />
         <item
+            android:id="@+id/joining_rules"
+            android:icon="@drawable/ic_joining_rules"
+            android:title="Joining Rules" />
+        <item
+            android:id="@+id/feedback"
+            android:icon="@drawable/ic_baseline_feedback"
+            android:title="Feedback" />
+        <item
             android:id="@+id/about_us"
             android:icon="@drawable/ic_baseline_grade_24"
             android:title="about us!" />
 
-        <item android:id="@+id/logout"
+        <item
+            android:id="@+id/logout"
             android:icon="@drawable/logout_icon"
             android:title="Logout"
-            app:showAsAction="never"/>
+            app:showAsAction="never" />
     </group>
 </menu>
