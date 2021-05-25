@@ -2,6 +2,7 @@ package com.example.graczone;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
@@ -24,15 +25,21 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
 import com.example.graczone.Wallet.wallet;
+import com.example.graczone.ui.MyMatches.MyMatchesModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.common.reflect.TypeToken;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.gson.Gson;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 
 public class joining_TDM extends AppCompatActivity {
 
@@ -45,6 +52,7 @@ public class joining_TDM extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
     DatabaseReference databaseReference;
+    ArrayList<MyMatchesModel> myMatchesModels;
 
 
     @RequiresApi(api = Build.VERSION_CODES.Q)
@@ -147,6 +155,7 @@ public class joining_TDM extends AppCompatActivity {
                                         }
                                     });
                                     Log.d("myTag", "add id in joining");
+                                    saveMyMatches(s1, s2, s7, time, date, s3, "", "");
                                     Toast.makeText(getApplicationContext(), "successfully joined", Toast.LENGTH_SHORT).show();
                                     join.setEnabled(false);
                                     join.setText("JOINED");
@@ -161,6 +170,28 @@ public class joining_TDM extends AppCompatActivity {
                 }
         );
 
+
+    }
+
+
+    void saveMyMatches(String s1, String s2, String s7, String time, String date, String s3, String s4, String s5) {
+
+        MyMatchesModel myMatchesModel = new MyMatchesModel(s7, time, date, s1, s2, s3, s4, s5);
+        SharedPreferences sharedPreferences = getSharedPreferences("myMatchesPre", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Gson gson = new Gson();
+        if (!sharedPreferences.contains("myMatchModels")) {
+            myMatchesModels = new ArrayList<>();
+        } else {
+            String json = sharedPreferences.getString("myMatchModels", null);
+            Type type = new TypeToken<ArrayList<MyMatchesModel>>() {
+            }.getType();
+            myMatchesModels = gson.fromJson(json, type);
+        }
+        myMatchesModels.add(0, myMatchesModel);
+        String json1 = gson.toJson(myMatchesModels);
+        editor.putString("myMatchModels", json1);
+        editor.apply();
 
     }
 

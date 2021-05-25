@@ -29,6 +29,10 @@
         android:id="@+id/nav_myprofile"
         android:name="com.example.graczone.ui.My_Profile.My_Profile_Fragment"
         android:label=""
-        tools:layout="@layout/fragment_my_profile" />
+        tools:layout="@layout/fragment_my_profile">
+        <action
+            android:id="@+id/action_nav_myprofile_self"
+            app:destination="@id/nav_myprofile" />
+    </fragment>
 
 </navigation>
