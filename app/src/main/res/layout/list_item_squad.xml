@@ -80,11 +80,19 @@
 
                 <TextView
                     android:id="@+id/teamup"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="squad teamup"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:textColor="@color/white"
                     android:textSize="1sp" />
+
+                <TextView
+                    android:id="@+id/match_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="1"
+                    android:textColor="@color/white"
+                    android:textSize="1sp" />
+
 
             </LinearLayout>
 
@@ -98,35 +106,59 @@
              android:orientation="vertical">
 
 
-            <ImageView
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_gravity="center_horizontal"
-                android:padding="5sp"
-                android:src="@drawable/clock_icon" />
+             <TextView
+                 android:id="@+id/date"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center_horizontal"
+                 android:padding="6sp"
+                 android:text="01/02/2002"
+                 android:textAlignment="center"
+                 android:textColor="#787878"
+                 android:textSize="15sp" />
+
+             <TextView
+                 android:id="@+id/time"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center_horizontal"
+                 android:padding="5sp"
+                 android:text="12:00 AM"
+                 android:textAlignment="center"
+                 android:textColor="@color/black"
+                 android:textSize="16sp"
+                 android:textStyle="bold" />
+
+             <RelativeLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center">
 
 
-            <TextView
-                android:id="@+id/time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:padding="5sp"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                 <com.google.android.material.progressindicator.LinearProgressIndicator
+                     android:id="@+id/filling_progressbar"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginTop="2dp"
+                     android:elevation="10dp"
+                     app:indicatorColor="#089C0E"
+                     app:trackColor="#E6E5E5"
+                     app:trackCornerRadius="8dp"
+                     app:trackThickness="15dp" />
 
-            <TextView
-                android:id="@+id/date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:padding="5sp"
-                android:textAlignment="center"
-                android:textColor="#787878"
-                android:textSize="15sp" />
+                 <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_alignParentEnd="true"
+                     android:layout_marginEnd="2dp"
+                     android:elevation="11dp"
+                     android:padding="2dp"
+                     android:text="90/100"
+                     android:textColor="@color/black"
+                     android:textSize="10dp" />
 
+
+             </RelativeLayout>
 
          </LinearLayout>
 
@@ -170,7 +202,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="3sp"
                 android:padding="3dp"
-                android:text="kill"
+                android:text="rs 5 per kill"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="15sp" />
