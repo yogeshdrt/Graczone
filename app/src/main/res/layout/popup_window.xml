@@ -37,6 +37,7 @@
             android:layout_margin="6sp"
             android:text="@string/policy"
             android:padding="5sp"
+            android:lineSpacingExtra="4dp"
             android:textAlignment="viewStart" />
 
     </ScrollView>
