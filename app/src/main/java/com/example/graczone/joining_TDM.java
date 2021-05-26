@@ -118,7 +118,7 @@ public class joining_TDM extends AppCompatActivity {
         final EditText editText = (EditText) dialog.findViewById(R.id.enter_battlegrounds_id);
         editText.setOnFocusChangeListener((v, hasFocus) -> {
             if (hasFocus)
-                editText.setHint("enter pubg userName");
+                editText.setHint("");
 
         });
 

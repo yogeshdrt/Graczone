@@ -31,14 +31,20 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
-    <string name="policy">
-        <ol><li>&#160;Room id password will be provided 10 minutes before the match via notification or sms.</li>
+
+    <string name="joining_rules">
+        <ol><li>&#160;Room id password will be provided 10 minutes before the match via notification.</li>
         <li>&#160;Do not share your room id password with anyone.</li>
-        <li>&#160;Only the above entered BATTLEGROUNDS username is allowed to enter the room so please enter it correctly.</li>
-        <li>&#160;In case you failed to join the room in the time limit refund will not be initiated.</li>
+        <li>&#160;It is required to enter your corresponding BATTLEGROUNDS username before joining a match.</li>
+        <li>&#160;Only entered BATTLEGROUNDS usernames will be allowed to enter the room so please enter it correctly.</li>
+        <li>&#160;In case you failed to join the room in the time limit, refund will not be initiated.</li>
         <li>&#160;Match will be cancelled if there is not enough players joined, money will be refunded in that case.</li>
         <li>&#160;Money will be deducted from your wallet according to the entry fee.</li>
-            <li>&#160;By confirming you are accepting our privacy policy.</li></ol></string>
+        <li>&#160;Winning prize money will be transferred in your wallet within 10-15 hours after the match is completed.</li>
+            <li>&#160;By joining a match,it is considered that you are accepting our privacy policy.</li>
+         <li>&#160;If anyone find doing unusual activity during the match, he/she will be disqualified and no prize money will be given.</li>
+         <li>&#160;If anyone found hacking, his/her Graczone account will be banned.</li>
+         <li>&#160;For help and support you can contact us at graczone.inc@gmail.com or you can give us feedback for our product.</li></ol></string>
 
     <string name="balance">Balance</string>
     <string name="Rs">₹</string>
@@ -59,6 +65,16 @@
     <string name="enter_password">Enter Password</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="create_account">Create Account</string>
+    <string name="r1"><![CDATA[ Room id password will be provided 10 minutes before the match via notification.]]></string>
+    <string name="r2"><![CDATA[ Do not share your room id password with anyone.]]></string>
+    <string name="r3"><![CDATA[ Only the above entered BATTLEGROUNDS username is allowed to enter the room so please enter it correctly.]]></string>
+    <string name="r4"><![CDATA[ In case you failed to join the room in the time limit, refund will not be initiated.]]></string>
+    <string name="r5"><![CDATA[ Match will be cancelled if there is not enough players joined, money will be refunded in that case.]]></string>
+    <string name="r6"><![CDATA[ Money will be deducted from your wallet according to the entry fee.]]></string>
+    <string name="r7"><![CDATA[ By confirming you are accepting our privacy policy.]]></string>
+    <string name="btn_confirm">Confirm</string>
+    <string name="enter_your_battlegrounds_username">Enter your BATTLEGROUNDS Username</string>
+    <string name="bullet">•</string>
 
 
 </resources>

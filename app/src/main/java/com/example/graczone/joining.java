@@ -125,7 +125,7 @@ public class joining extends AppCompatActivity {
         final EditText editText = dialog.findViewById(R.id.enter_battlegrounds_id);
         editText.setOnFocusChangeListener((v, hasFocus) -> {
             if (hasFocus) {
-                editText.setHint("enter pubg userName");
+                editText.setHint("");
             }
         });
         btnn.setOnClickListener(v -> {
