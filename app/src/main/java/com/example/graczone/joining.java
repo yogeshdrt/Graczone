@@ -32,6 +32,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.gson.Gson;
 
@@ -47,10 +48,11 @@ public class joining extends AppCompatActivity {
 
 
     TextView entry, rs_per_kill, rank1, rank2, rank3, teamup, map;
-    String s6, time, date, s1, s2, s3, s4, s5, s7;
+    String s6, time, date, s1, s2, s3, s4, s5, s7, match, count;
     DatabaseReference databaseReference;
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
+    FirebaseFirestore firebaseFirestore;
     ArrayList<MyMatchesModel> myMatchesModels;
 
 
@@ -64,6 +66,7 @@ public class joining extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
+        firebaseFirestore = FirebaseFirestore.getInstance();
 
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -91,6 +94,8 @@ public class joining extends AppCompatActivity {
         s7 = intent.getStringExtra("map");
         time = intent.getStringExtra("time");
         date = intent.getStringExtra("date");
+        match = intent.getStringExtra("match");
+        count = intent.getStringExtra("count");
 
         entry.setText(s1);
         rs_per_kill.setText(s2);
@@ -141,6 +146,10 @@ public class joining extends AppCompatActivity {
                                         email = "null";
                                         Log.d("myTag", "email null");
                                     }
+
+                                    count = String.valueOf(Integer.parseInt(count) + 1);
+
+                                    firebaseFirestore.collection(s6).document(match).update("count", (count.toString()));
                                     databaseReference = FirebaseDatabase.getInstance().getReference(s6).child(date + "+" + time);
                                     databaseReference.child("EntryFee").setValue(s1);
                                     databaseReference.child("participants").child(editText.getText().toString()).child("email")
