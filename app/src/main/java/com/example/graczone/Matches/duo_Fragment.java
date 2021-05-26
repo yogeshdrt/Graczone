@@ -19,6 +19,7 @@ import com.example.graczone.R;
 import com.example.graczone.joining;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.material.progressindicator.LinearProgressIndicator;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
@@ -60,6 +61,9 @@ public class duo_Fragment extends Fragment {
                 holder.rank3.setText(model.getRank3());
                 holder.date.setText(model.getDate());
                 holder.map.setText(model.getMap());
+                holder.count.setText((model.getCount() + "/100"));
+                holder.match.setText(model.getMatch());
+                holder.linearProgressIndicator.setProgress(Integer.parseInt(model.getCount()));
 
 
                 holder.itemView.setOnClickListener(v -> {
@@ -74,6 +78,8 @@ public class duo_Fragment extends Fragment {
                     intent.putExtra("map", model.getMap());
                     intent.putExtra("time", model.getTime());
                     intent.putExtra("date", model.getDate());
+                    intent.putExtra("match", model.getMatch());
+                    intent.putExtra("count", model.getCount());
 
                     startActivity(intent);
                 });
@@ -110,6 +116,9 @@ public class duo_Fragment extends Fragment {
         private final TextView rank3;
         private final TextView date;
         private final TextView map;
+        private final TextView match;
+        private final TextView count;
+        private final LinearProgressIndicator linearProgressIndicator;
 
         public ProductsViewHolder(View itemView) {
             super(itemView);
@@ -123,6 +132,9 @@ public class duo_Fragment extends Fragment {
             rank3 = itemView.findViewById(R.id.rank3);
             date = itemView.findViewById(R.id.date);
             map = itemView.findViewById(R.id.map);
+            match = itemView.findViewById(R.id.match_number);
+            count = itemView.findViewById(R.id.countDuo);
+            linearProgressIndicator = itemView.findViewById(R.id.filling_progressbar);
 
 
         }

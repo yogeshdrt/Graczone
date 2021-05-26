@@ -5,10 +5,12 @@ public class ProductsModel {
     private String teamup;
     private String entry_fee;
     private String rs_per_kill;
+    private String count;
+    private String match;
 
     private String map;
 
-    private ProductsModel(String time, String entry_fee, String rs_per_kill, String map, String date, String teamup, String rank1, String rank2, String rank3) {
+    private ProductsModel(String time, String entry_fee, String rs_per_kill, String map, String date, String teamup, String rank1, String rank2, String rank3, String count, String match) {
         this.time = time;
         this.entry_fee = entry_fee;
         this.rs_per_kill = rs_per_kill;
@@ -18,7 +20,25 @@ public class ProductsModel {
         this.rank3 = rank3;
         this.date = date;
         this.map = map;
+        this.count = count;
+        this.match = match;
 
+    }
+
+    public String getCount() {
+        return count;
+    }
+
+    public void setCount(String count) {
+        this.count = count;
+    }
+
+    public String getMatch() {
+        return match;
+    }
+
+    public void setMatch(String match) {
+        this.match = match;
     }
 
     public String getMap() {

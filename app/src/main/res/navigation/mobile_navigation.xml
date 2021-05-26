@@ -6,33 +6,21 @@
     app:startDestination="@+id/nav_home">
 
 
-<fragment
+    <fragment
         android:id="@+id/nav_home"
         android:name="com.example.graczone.ui.home.HomeFragment"
         android:label=""
         tools:layout="@layout/fragment_home" />
-
     <fragment
-        android:id="@+id/nav_mymatches"
-        android:name="com.example.graczone.ui.MyMatches.MyMatches_Fragment"
-        android:label=""
-        tools:layout="@layout/fragment_my_matches" />
-
-
+        android:id="@+id/joining_Rules_Fragment"
+        android:name="com.example.graczone.ui.joiningRule.Joining_Rules_Fragment"
+        android:label="fragment_joining__rules_"
+        tools:layout="@layout/fragment_joining__rules_" />
     <fragment
-        android:id="@+id/nav_notification"
-        android:name="com.example.graczone.ui.Notification.Notification_Fragment"
-        android:label=""
-        tools:layout="@layout/fragment_notification" />
+        android:id="@+id/feedback_Fragment"
+        android:name="com.example.graczone.ui.feedback.Feedback_Fragment"
+        android:label="fragment_feedback_"
+        tools:layout="@layout/fragment_feedback_" />
 
-    <fragment
-        android:id="@+id/nav_myprofile"
-        android:name="com.example.graczone.ui.My_Profile.My_Profile_Fragment"
-        android:label=""
-        tools:layout="@layout/fragment_my_profile">
-        <action
-            android:id="@+id/action_nav_myprofile_self"
-            app:destination="@id/nav_myprofile" />
-    </fragment>
 
 </navigation>
