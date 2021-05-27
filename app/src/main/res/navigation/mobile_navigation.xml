@@ -11,16 +11,6 @@
         android:name="com.example.graczone.ui.home.HomeFragment"
         android:label=""
         tools:layout="@layout/fragment_home" />
-    <fragment
-        android:id="@+id/joining_Rules_Fragment"
-        android:name="com.example.graczone.ui.joiningRule.Joining_Rules_Fragment"
-        android:label="fragment_joining__rules_"
-        tools:layout="@layout/fragment_joining__rules_" />
-    <fragment
-        android:id="@+id/feedback_Fragment"
-        android:name="com.example.graczone.ui.feedback.Feedback_Fragment"
-        android:label="fragment_feedback_"
-        tools:layout="@layout/fragment_feedback_" />
 
 
 </navigation>

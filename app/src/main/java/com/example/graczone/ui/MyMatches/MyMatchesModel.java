@@ -9,8 +9,13 @@ public class MyMatchesModel {
     private String rank1TextView;
     private String rank2TextView;
     private String rank3TextView;
+    private String rank2lTextView;
+    private String rank3lTextView;
 
-    public MyMatchesModel(String mapTextView, String timeTextView, String dateTextView, String entryFeeTextView, String killTextView, String rank1TextView, String rank2TextView, String rank3TextView) {
+
+    public MyMatchesModel(String mapTextView, String timeTextView, String dateTextView,
+                          String entryFeeTextView, String killTextView, String rank1TextView,
+                          String rank2TextView, String rank3TextView, String rank2lTextView, String rank3lTextView) {
         this.mapTextView = mapTextView;
         this.timeTextView = timeTextView;
         this.dateTextView = dateTextView;
@@ -19,6 +24,24 @@ public class MyMatchesModel {
         this.rank1TextView = rank1TextView;
         this.rank2TextView = rank2TextView;
         this.rank3TextView = rank3TextView;
+        this.rank2lTextView = rank2lTextView;
+        this.rank3lTextView = rank3lTextView;
+    }
+
+    public String getRank2lTextView() {
+        return rank2lTextView;
+    }
+
+    public void setRank2lTextView(String rank2lTextView) {
+        this.rank2lTextView = rank2lTextView;
+    }
+
+    public String getRank3lTextView() {
+        return rank3lTextView;
+    }
+
+    public void setRank3lTextView(String rank3lTextView) {
+        this.rank3lTextView = rank3lTextView;
     }
 
     public String getRank1TextView() {

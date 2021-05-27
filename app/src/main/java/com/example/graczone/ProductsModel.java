@@ -7,6 +7,10 @@ public class ProductsModel {
     private String rs_per_kill;
     private String count;
     private String match;
+    private String date;
+    private String rank1;
+    private String rank2;
+    private String rank3;
 
     private String map;
 
@@ -45,10 +49,6 @@ public class ProductsModel {
         return map;
     }
 
-    private String date;
-    private String rank1;
-    private String rank2;
-    private String rank3;
 
     public void setMap(String map) {
         this.map = map;

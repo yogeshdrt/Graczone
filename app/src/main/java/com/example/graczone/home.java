@@ -32,6 +32,8 @@ import com.example.graczone.ui.MyMatches.MyMatches_Fragment;
 import com.example.graczone.ui.My_Profile.My_Profile_Fragment;
 import com.example.graczone.ui.Notification.NotificationModel;
 import com.example.graczone.ui.Notification.Notification_Fragment;
+import com.example.graczone.ui.feedback.Feedback_Fragment;
+import com.example.graczone.ui.joiningRule.Joining_Rules_Fragment;
 import com.google.android.material.navigation.NavigationView;
 import com.google.common.reflect.TypeToken;
 import com.google.firebase.auth.FirebaseAuth;
@@ -247,13 +249,12 @@ public class home extends AppCompatActivity {
                 myMatchesModels = gson.fromJson(json, type);
             } else {
                 myMatchesModels = new ArrayList<>();
-                MyMatchesModel myMatchesModel = new MyMatchesModel("default", "default", "default", "default", "default", "default", "default", "default");
-                myMatchesModels.add(myMatchesModel);
+//                MyMatchesModel myMatchesModel = new MyMatchesModel("default", "default", "default", "default", "default", "default", "default", "default");
+//                myMatchesModels.add(myMatchesModel);
             }
             bundle.putSerializable("myMatchModels", myMatchesModels);
             mf.setArguments(bundle);
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            fragment = getSupportFragmentManager().findFragmentById(R.id.myMatchesFragment);
             for (int i = 0; i < getSupportFragmentManager().getBackStackEntryCount(); i++) {
                 getSupportFragmentManager().popBackStack();
                 Log.d("myTag", "open Fragment id: " + getSupportFragmentManager().getBackStackEntryAt(i).getClass() + " name: " +
@@ -269,10 +270,40 @@ public class home extends AppCompatActivity {
 //            Toast.makeText(getApplicationContext(), "successfully add myMatches data", Toast.LENGTH_SHORT).show();
             return true;
         });
+
+        navigationView.getMenu().findItem(R.id.feedback).setOnMenuItemClickListener(item -> {
+
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            for (int i = 0; i < getSupportFragmentManager().getBackStackEntryCount(); i++) {
+                getSupportFragmentManager().popBackStack();
+            }
+            fragmentTransaction.replace(R.id.nav_host_fragment, new Feedback_Fragment());
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+            drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+            navigationView.getMenu().getItem(5).setChecked(true);
+            return true;
+        });
+
+        navigationView.getMenu().findItem(R.id.joining_rules).setOnMenuItemClickListener(item -> {
+
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            for (int i = 0; i < getSupportFragmentManager().getBackStackEntryCount(); i++) {
+                getSupportFragmentManager().popBackStack();
+            }
+            fragmentTransaction.replace(R.id.nav_host_fragment, new Joining_Rules_Fragment());
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+            drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+            navigationView.getMenu().getItem(4).setChecked(true);
+            return true;
+        });
+
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.feedback_Fragment, R.id.joining_Rules_Fragment)
+                R.id.nav_home)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -351,6 +382,8 @@ public class home extends AppCompatActivity {
                 Log.d("myTag", "check nf fragment null");
             }
             navigationView.getMenu().getItem(3).setChecked(false);
+            navigationView.getMenu().getItem(4).setChecked(false);
+            navigationView.getMenu().getItem(5).setChecked(false);
         }
         Log.d("myTag", "open fragment: " + getSupportFragmentManager().getBackStackEntryCount());
 

@@ -33,6 +33,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.gson.Gson;
 
@@ -48,9 +49,10 @@ public class joining_TDM extends AppCompatActivity {
     ImageView vector01, vector02;
 
     TextView entry, rs_per_kill, rank1, teamup, map;
-    String time, date, s1, s6;
+    String time, date, s1, s6, match, count, s7;
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
+    FirebaseFirestore firebaseFirestore;
     DatabaseReference databaseReference;
     ArrayList<MyMatchesModel> myMatchesModels;
 
@@ -65,6 +67,7 @@ public class joining_TDM extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
+        firebaseFirestore = FirebaseFirestore.getInstance();
 
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -92,9 +95,11 @@ public class joining_TDM extends AppCompatActivity {
         String s2 = intent.getStringExtra("rs_per_kill");
         String s3 = intent.getStringExtra("rank1");
         s6 = intent.getStringExtra("teamup");
-        String s7 = intent.getStringExtra("map");
+        s7 = intent.getStringExtra("map");
         time = intent.getStringExtra("time");
         date = intent.getStringExtra("date");
+        match = intent.getStringExtra("match");
+        count = intent.getStringExtra("count");
 
         entry.setText(s1);
         rs_per_kill.setText(s2);
@@ -135,7 +140,8 @@ public class joining_TDM extends AppCompatActivity {
                     if (editText.getText().toString().isEmpty()) {
                         Toast.makeText(getApplicationContext(), "enter valid pubg id", Toast.LENGTH_SHORT).show();
                     } else {
-                        FirebaseMessaging.getInstance().subscribeToTopic("match1").addOnCompleteListener(new OnCompleteListener<Void>() {
+
+                        FirebaseMessaging.getInstance().subscribeToTopic((date + "-" + s6 + "-" + match)).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull @NotNull Task<Void> task) {
                                 if (task.isSuccessful()) {
@@ -144,6 +150,10 @@ public class joining_TDM extends AppCompatActivity {
                                         email = "null";
                                         Log.d("myTag", "email null");
                                     }
+
+                                    count = String.valueOf(Integer.parseInt(count) + 1);
+
+                                    firebaseFirestore.collection(s6).document(match).update("count", (count.toString()));
                                     databaseReference = FirebaseDatabase.getInstance().getReference(s6).child(date + "+" + time);
                                     databaseReference.child("EntryFee").setValue(s1);
                                     databaseReference.child("participants").child(editText.getText().toString()).child("email")
@@ -155,7 +165,7 @@ public class joining_TDM extends AppCompatActivity {
                                         }
                                     });
                                     Log.d("myTag", "add id in joining");
-                                    saveMyMatches(s1, s2, s7, time, date, s3, "", "");
+                                    saveMyMatches(s1, s2, s6, time, date, s3, s7, "");
                                     Toast.makeText(getApplicationContext(), "successfully joined", Toast.LENGTH_SHORT).show();
                                     join.setEnabled(false);
                                     join.setText("JOINED");
@@ -174,9 +184,9 @@ public class joining_TDM extends AppCompatActivity {
     }
 
 
-    void saveMyMatches(String s1, String s2, String s7, String time, String date, String s3, String s4, String s5) {
+    void saveMyMatches(String s1, String s2, String s6, String time, String date, String s3, String s7, String s5) {
 
-        MyMatchesModel myMatchesModel = new MyMatchesModel(s7, time, date, s1, s2, s3, s4, s5);
+        MyMatchesModel myMatchesModel = new MyMatchesModel(s6, time, date, s1, s2, s3, s7, s5, "map:", "");
         SharedPreferences sharedPreferences = getSharedPreferences("myMatchesPre", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         Gson gson = new Gson();
