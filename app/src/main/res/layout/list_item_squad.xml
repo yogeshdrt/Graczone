@@ -141,10 +141,10 @@
                      android:layout_height="wrap_content"
                      android:layout_marginTop="2dp"
                      android:elevation="10dp"
-                     app:indicatorColor="#089C0E"
+                     app:indicatorColor="#0CA812"
                      app:trackColor="#E6E5E5"
-                     app:trackCornerRadius="8dp"
-                     app:trackThickness="15dp" />
+                     app:trackCornerRadius="2dp"
+                     app:trackThickness="7dp" />
 
                  <TextView
                      android:id="@+id/countTextView"
@@ -155,6 +155,7 @@
                      android:elevation="11dp"
                      android:padding="2dp"
                      android:text="90/100"
+                     android:layout_marginTop="10dp"
                      android:textColor="@color/black"
                      android:textSize="10dp" />
 

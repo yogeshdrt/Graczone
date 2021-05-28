@@ -10,6 +10,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        app:cardElevation="0dp"
         app:cardCornerRadius="5sp">
 
         <EditText
@@ -29,7 +30,6 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:background="#E6F3FD"
         android:padding="5dp"
         android:layout_height="140dp">
 

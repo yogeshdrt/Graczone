@@ -107,8 +107,9 @@ public class Notification_Fragment extends Fragment {
             @Override
             public void onChildDraw(@NonNull @NotNull Canvas c, @NonNull @NotNull RecyclerView recyclerView, @NonNull @NotNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
                 new RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
-                        .addSwipeRightBackgroundColor(ContextCompat.getColor(getContext(), R.color.red))
+                        .addSwipeRightLabel("Delete").setSwipeRightLabelColor(R.color.black)
                         .addSwipeRightActionIcon(R.drawable.ic_baseline_delete_24)
+                        .addSwipeRightBackgroundColor(ContextCompat.getColor(getContext(), R.color.red))
                         .create()
                         .decorate();
                 super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
