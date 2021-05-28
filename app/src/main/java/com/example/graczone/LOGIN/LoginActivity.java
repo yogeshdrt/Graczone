@@ -1,6 +1,9 @@
 package com.example.graczone.LOGIN;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -14,7 +17,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
 import com.example.graczone.R;
-import com.example.graczone.home;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -29,20 +31,22 @@ public class LoginActivity extends AppCompatActivity {
 
     FirebaseAuth auth;
 
+    ConnectivityManager connectivityManager;
+    NetworkInfo networkInfo;
+
     FirebaseUser firebaseUser;
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
-
-        if(firebaseUser!=null){
-            Intent intent = new Intent(LoginActivity.this, home.class);
-            startActivity(intent);
-            finish();
-        }
-    }
+//    protected void onStart() {
+//        super.onStart();
+//
+//        firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
+//
+//        if(firebaseUser!=null){
+//            Intent intent = new Intent(LoginActivity.this, home.class);
+//            startActivity(intent);
+//            finish();
+//        }
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,11 +63,18 @@ public class LoginActivity extends AppCompatActivity {
 
         password = findViewById(R.id.password);
         phone = findViewById(R.id.login_via_phone);
+
         phone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, Phone_OTP.class);
-                startActivity(intent);
+                connectivityManager = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+                networkInfo = connectivityManager.getActiveNetworkInfo();
+                if (networkInfo != null) {
+                    Intent intent = new Intent(LoginActivity.this, Phone_OTP.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getApplicationContext(), "please check your internet connection", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -75,31 +86,39 @@ public class LoginActivity extends AppCompatActivity {
 
             public void onClick(View view) {
 
-                String txt_email = email.getText().toString();
-                String txt_password = password.getText().toString();
+                connectivityManager = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+                networkInfo = connectivityManager.getActiveNetworkInfo();
 
-                if (TextUtils.isEmpty(txt_email) || TextUtils.isEmpty(txt_password)) {
+                if (networkInfo != null) {
 
-                    Toast.makeText(LoginActivity.this, "All fields are required", Toast.LENGTH_SHORT).show();
-                } else {
+                    String txt_email = email.getText().toString();
+                    String txt_password = password.getText().toString();
 
-                    auth.signInWithEmailAndPassword(txt_email, txt_password)
-                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if (task.isSuccessful()) {
+                    if (TextUtils.isEmpty(txt_email) || TextUtils.isEmpty(txt_password)) {
 
-                                        Intent intent = new Intent(LoginActivity.this, Select_Game.class);
-                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        Toast.makeText(LoginActivity.this, "All fields are required", Toast.LENGTH_SHORT).show();
+                    } else {
 
-                                        startActivity(intent);
-                                        finish();
+                        auth.signInWithEmailAndPassword(txt_email, txt_password)
+                                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<AuthResult> task) {
+                                        if (task.isSuccessful()) {
 
-                                    } else {
-                                        Toast.makeText(LoginActivity.this, "Authentication failed!", Toast.LENGTH_SHORT).show();
+                                            Intent intent = new Intent(LoginActivity.this, Select_Game.class);
+                                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                                            startActivity(intent);
+                                            finish();
+
+                                        } else {
+                                            Toast.makeText(LoginActivity.this, "Authentication failed!", Toast.LENGTH_SHORT).show();
+                                        }
                                     }
-                                }
-                            });
+                                });
+                    }
+                } else {
+                    Toast.makeText(getApplicationContext(), "please check your internet connection", Toast.LENGTH_SHORT).show();
                 }
             }
         });

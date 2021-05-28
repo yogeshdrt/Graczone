@@ -2,6 +2,7 @@ package com.example.graczone;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -62,6 +63,7 @@ public class home extends AppCompatActivity {
     ArrayList<NotificationModel> modelArrayList;
     ArrayList<MyMatchesModel> myMatchesModels;
     Fragment fragment;
+    ProgressDialog progressDialog;
 
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -73,6 +75,9 @@ public class home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        progressDialog = new ProgressDialog(getApplicationContext());
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 
         //FirebaseMessaging.getInstance().setAutoInitEnabled(true);
 
@@ -112,6 +117,13 @@ public class home extends AppCompatActivity {
         });
 
         navigationView.getMenu().findItem(R.id.nav_myprofile).setOnMenuItemClickListener(MenuItem -> {
+            Log.d("myTag", "not show dialog");
+            try {
+                progressDialog.show();
+            } catch (Exception e) {
+                Log.d("myTag", e.getStackTrace().toString());
+            }
+            Log.d("myTag", "show dialog");
             FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid()).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -125,6 +137,7 @@ public class home extends AppCompatActivity {
                     bundle.putString("arg2", arg2);
                     bundle.putString("arg3", arg3);
                     pf.setArguments(bundle);
+                    progressDialog.dismiss();
 //                    fragment = getSupportFragmentManager().findFragmentById(R.id.notificationFragment);
 //                    if (fragment != null) {
 //                        getSupportFragmentManager().beginTransaction().remove(fragment).commit();
@@ -209,8 +222,8 @@ public class home extends AppCompatActivity {
                 modelArrayList = gson.fromJson(json, type);
             } else {
                 modelArrayList = new ArrayList<>();
-                NotificationModel notificationModel = new NotificationModel("default", "default", "default", "default");
-                modelArrayList.add(notificationModel);
+//                NotificationModel notificationModel = new NotificationModel("default", "default", "default", "default");
+//                modelArrayList.add(notificationModel);
             }
             bundle.putSerializable("models", modelArrayList);
             nf.setArguments(bundle);

@@ -1,14 +1,20 @@
 package com.example.graczone;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.graczone.LOGIN.LoginActivity;
 import com.example.graczone.ui.Notification.NotificationModel;
 import com.google.common.reflect.TypeToken;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.gson.Gson;
 
 import java.lang.reflect.Type;
@@ -21,10 +27,20 @@ public class SplashScreen extends AppCompatActivity {
     public static final String MyPREFERENCES = "MyPrefs";
     ArrayList<NotificationModel> modelArrayList;
 
+
+    FirebaseUser firebaseUser;
+    Intent intent;
+    ConnectivityManager connectivityManager;
+    NetworkInfo networkInfo;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
+
+        connectivityManager = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        networkInfo = connectivityManager.getActiveNetworkInfo();
 
         if (getIntent() != null && getIntent().hasExtra("title")) {
             String title = getIntent().getExtras().getString("title");
@@ -56,7 +72,14 @@ public class SplashScreen extends AppCompatActivity {
         Thread thread = new Thread(() -> {
             try {
                 sleep(4000);
-                Intent intent = new Intent(SplashScreen.this, LoginActivity.class);
+                firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+                if (networkInfo != null && firebaseUser != null) {
+                    intent = new Intent(SplashScreen.this, home.class);
+                } else {
+                    intent = new Intent(SplashScreen.this, LoginActivity.class);
+                }
+
                 startActivity(intent);
                 finish();
             } catch (InterruptedException e) {
@@ -64,6 +87,11 @@ public class SplashScreen extends AppCompatActivity {
             }
         });
         thread.start();
+
+        if (networkInfo == null) {
+            Toast.makeText(getApplicationContext(), "make sure your internet connection is open", Toast.LENGTH_LONG).show();
+        }
+
     }
 
     @Override

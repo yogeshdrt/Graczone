@@ -11,11 +11,12 @@ public class MyMatchesModel {
     private String rank3TextView;
     private String rank2lTextView;
     private String rank3lTextView;
+    private String teamUp;
 
 
     public MyMatchesModel(String mapTextView, String timeTextView, String dateTextView,
                           String entryFeeTextView, String killTextView, String rank1TextView,
-                          String rank2TextView, String rank3TextView, String rank2lTextView, String rank3lTextView) {
+                          String rank2TextView, String rank3TextView, String rank2lTextView, String rank3lTextView, String teamUp) {
         this.mapTextView = mapTextView;
         this.timeTextView = timeTextView;
         this.dateTextView = dateTextView;
@@ -26,6 +27,15 @@ public class MyMatchesModel {
         this.rank3TextView = rank3TextView;
         this.rank2lTextView = rank2lTextView;
         this.rank3lTextView = rank3lTextView;
+        this.teamUp = teamUp;
+    }
+
+    public String getTeamUp() {
+        return teamUp;
+    }
+
+    public void setTeamUp(String teamUp) {
+        this.teamUp = teamUp;
     }
 
     public String getRank2lTextView() {

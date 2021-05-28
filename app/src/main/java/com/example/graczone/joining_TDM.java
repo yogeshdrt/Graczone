@@ -186,7 +186,7 @@ public class joining_TDM extends AppCompatActivity {
 
     void saveMyMatches(String s1, String s2, String s6, String time, String date, String s3, String s7, String s5) {
 
-        MyMatchesModel myMatchesModel = new MyMatchesModel(s6, time, date, s1, s2, s3, s7, s5, "map:", "");
+        MyMatchesModel myMatchesModel = new MyMatchesModel(s6, time, date, s1, s2, s3, s7, s5, "map:", "", s6);
         SharedPreferences sharedPreferences = getSharedPreferences("myMatchesPre", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         Gson gson = new Gson();

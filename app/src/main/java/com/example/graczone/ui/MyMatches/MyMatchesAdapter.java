@@ -41,6 +41,21 @@ public class MyMatchesAdapter extends RecyclerView.Adapter<MyMatchesViewHolder> 
         holder.rank3TextView.setText(myMatchesModels.get(position).getRank3TextView());
         holder.rank2lTextView.setText(myMatchesModels.get(position).getRank2lTextView());
         holder.rank3lTextView.setText(myMatchesModels.get(position).getRank3lTextView());
+        switch (myMatchesModels.get(position).getTeamUp()) {
+            case "SQUAD":
+                holder.imageView.setImageResource(R.drawable.ic_baseline_groups_24);
+                break;
+            case "TDM":
+                holder.imageView.setImageResource(R.drawable.tdm_icon);
+                break;
+            case "SOLO":
+                holder.imageView.setImageResource(R.drawable.ic_baseline_person_24);
+                break;
+            case "DUO":
+                holder.imageView.setImageResource(R.drawable.ic_baseline_group_24);
+                break;
+        }
+
 
     }
 

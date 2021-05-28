@@ -184,7 +184,7 @@ public class joining extends AppCompatActivity {
 
     void saveMyMatches(String s1, String s2, String s7, String time, String date, String s3, String s4, String s5) {
 
-        MyMatchesModel myMatchesModel = new MyMatchesModel(s7, time, date, s1, s2, s3, s4, s5, "rank2:", "rank3:");
+        MyMatchesModel myMatchesModel = new MyMatchesModel(s7, time, date, s1, s2, s3, s4, s5, "rank2:", "rank3:", s6);
         SharedPreferences sharedPreferences = getSharedPreferences("myMatchesPre", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         Gson gson = new Gson();
