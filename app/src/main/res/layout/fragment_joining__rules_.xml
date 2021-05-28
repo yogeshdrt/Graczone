@@ -11,7 +11,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
 
         <LinearLayout
@@ -34,19 +34,185 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
-                android:text="Read the rules carefully before joining a match"
+                android:text="@string/read_the_rules_carefully_before_joining_a_match"
                 android:textSize="15dp" />
 
-
-            <TextView
+            <TableLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fontFamily="sans-serif-condensed-medium"
-                android:lineSpacingExtra="5dp"
-                android:padding="10dp"
-                android:text="@string/joining_rules"
-                android:textColor="@color/black"
-                android:textSize="15dp" />
+                android:layout_height="wrap_content">
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_column="1"
+                        android:text="@string/bullet" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_column="2"
+                        android:fontFamily="sans-serif-condensed"
+                        android:text="@string/r1" />
+
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_column="1"
+                        android:text="@string/bullet" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_column="2"
+                        android:fontFamily="sans-serif-condensed"
+                        android:text="@string/r2" />
+
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_column="1"
+                        android:text="@string/bullet" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_column="2"
+                        android:fontFamily="sans-serif-condensed"
+                        android:text="@string/j1" />
+
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_column="1"
+                        android:text="@string/bullet" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_column="2"
+                        android:fontFamily="sans-serif-condensed"
+                        android:text="@string/j2" />
+
+                </TableRow>
+
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_column="1"
+                        android:text="@string/bullet" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_column="2"
+                        android:fontFamily="sans-serif-condensed"
+                        android:text="@string/j3" />
+
+                </TableRow>
+
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_column="1"
+                        android:text="@string/bullet" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_column="2"
+                        android:fontFamily="sans-serif-condensed"
+                        android:text="@string/j4" />
+
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_column="1"
+                        android:text="@string/bullet" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_column="2"
+                        android:fontFamily="sans-serif-condensed"
+                        android:text="@string/j5" />
+
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_column="1"
+                        android:text="@string/bullet" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_column="2"
+                        android:fontFamily="sans-serif-condensed"
+                        android:text="@string/j6" />
+
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_column="1"
+                        android:text="@string/bullet" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_column="2"
+                        android:fontFamily="sans-serif-condensed"
+                        android:text="@string/j7" />
+
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_column="1"
+                        android:text="@string/bullet" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_column="2"
+                        android:fontFamily="sans-serif-condensed"
+                        android:text="@string/j8" />
+
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_column="1"
+                        android:text="@string/bullet" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_column="2"
+                        android:fontFamily="sans-serif-condensed"
+                        android:text="@string/j9" />
+
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_column="1"
+                        android:text="@string/bullet" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_column="2"
+                        android:fontFamily="sans-serif-condensed"
+                        android:text="@string/j10" />
+
+                </TableRow>
+
+
+            </TableLayout>
 
         </LinearLayout>
     </ScrollView>

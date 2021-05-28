@@ -35,11 +35,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:fontFamily="sans-serif-condensed-medium"
-            android:padding="10sp"
+            android:padding="10dp"
             android:text="SQUAD TEAMUP"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="20dp"
             android:textStyle="bold" />
 
 
@@ -61,19 +61,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-condensed"
-            android:padding="5sp"
+            android:padding="5dp"
             android:text="Entry fee:"
             android:textColor="@color/purple_500"
-            android:textSize="18sp" />
+            android:textSize="18dp" />
 
         <TextView
             android:id="@+id/get_entry_fee"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="5sp"
+            android:padding="5dp"
             android:text="1000"
             android:textColor="@color/purple_500"
-            android:textSize="15sp"
+            android:textSize="15dp"
             android:textStyle="bold" />
 
         <TextView
@@ -81,19 +81,19 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="90dp"
             android:fontFamily="sans-serif-condensed"
-            android:padding="5sp"
+            android:padding="5dp"
             android:text="Map:"
             android:textColor="@color/purple_500"
-            android:textSize="18sp" />
+            android:textSize="18dp" />
 
         <TextView
             android:id="@+id/get_map"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="5sp"
+            android:padding="5dp"
             android:text="Erangle"
             android:textColor="@color/purple_500"
-            android:textSize="15sp"
+            android:textSize="15dp"
             android:textStyle="bold" />
 
 
@@ -116,28 +116,28 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginStart="10sp"
+            android:layout_marginStart="10dp"
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="45sp"
-                android:layout_height="45sp"
-                android:layout_marginTop="29.5sp"
-                android:padding="5sp"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="29.5dp"
+                android:padding="5dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/first_place" />
 
             <ImageView
-                android:layout_width="45sp"
-                android:layout_height="45sp"
-                android:padding="5sp"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:padding="5dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/second_place" />
 
             <ImageView
-                android:layout_width="45sp"
-                android:layout_height="45sp"
-                android:padding="5sp"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:padding="5dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/third_place" />
 
@@ -156,30 +156,30 @@
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30sp"
+                android:layout_marginTop="30dp"
                 android:fontFamily="sans-serif-condensed-medium"
-                android:padding="10sp"
+                android:padding="10dp"
                 android:text="Rank 1"
                 android:textColor="@color/purple_500"
-                android:textSize="18sp" />
+                android:textSize="18dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-condensed-medium"
-                android:padding="10sp"
+                android:padding="10dp"
                 android:text="Rank 2"
                 android:textColor="@color/purple_500"
-                android:textSize="18sp" />
+                android:textSize="18dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-condensed-medium"
-                android:padding="10sp"
+                android:padding="10dp"
                 android:text="Rank 3"
                 android:textColor="@color/purple_500"
-                android:textSize="18sp" />
+                android:textSize="18dp" />
 
         </LinearLayout>
 
@@ -194,43 +194,43 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-condensed-medium"
-                android:padding="5sp"
+                android:padding="5dp"
                 android:text="Winning Prize"
                 android:textAlignment="center"
                 android:textColor="@color/purple_500"
-                android:textSize="15sp" />
+                android:textSize="15dp" />
 
             <TextView
                 android:id="@+id/get_rank1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="10sp"
+                android:padding="10dp"
                 android:text="Rs 100/each"
                 android:textAlignment="center"
                 android:textColor="@color/purple_500"
-                android:textSize="18sp"
+                android:textSize="18dp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/get_rank2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="10sp"
+                android:padding="10dp"
                 android:text="Rs 50/each"
                 android:textAlignment="center"
                 android:textColor="@color/purple_500"
-                android:textSize="18sp"
+                android:textSize="18dp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/get_rank3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="10sp"
+                android:padding="10dp"
                 android:text="Rs 500"
                 android:textAlignment="center"
                 android:textColor="@color/purple_500"
-                android:textSize="18sp"
+                android:textSize="18dp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -255,17 +255,17 @@
             android:layout_alignParentTop="true"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="40dp"
-            android:layout_marginLeft="50sp"
+            android:layout_marginLeft="50dp"
             android:layout_marginTop="5dp"
-            android:padding="10sp"
+            android:padding="10dp"
             android:text="Rs 5 per/-kill"
             android:textColor="@color/white"
-            android:textSize="15sp"
+            android:textSize="15dp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/join_btn"
-            android:layout_width="120sp"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
@@ -274,11 +274,11 @@
             android:layout_marginTop="0dp"
             android:layout_marginEnd="29dp"
             android:backgroundTint="@color/black"
-            android:elevation="15sp"
-            android:padding="10sp"
+            android:elevation="15dp"
+            android:padding="10dp"
             android:text="Join"
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="16dp"
             app:cornerRadius="10dp"
             app:strokeColor="@color/white"
             app:strokeWidth="2dp" />

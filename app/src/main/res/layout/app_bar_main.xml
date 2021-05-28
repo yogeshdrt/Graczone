@@ -10,7 +10,7 @@
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:elevation="20sp"
+        android:elevation="20dp"
         android:theme="@style/Theme.Graczone.AppBarOverlay">
 
 
@@ -28,7 +28,7 @@
                 android:fontFamily="@font/segoeui"
                 android:text="Graczone"
                 android:textColor="@color/white"
-                android:textSize="30sp"
+                android:textSize="30dp"
                 android:textStyle="bold" />
 
         </androidx.appcompat.widget.Toolbar>

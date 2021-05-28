@@ -15,18 +15,18 @@
         android:layout_height="67dp"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/title"
-        android:padding="10sp" />
+        android:padding="10dp" />
 
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30sp"
-        android:layout_marginTop="30sp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
         android:text="@string/username"
         android:textColor="#FFFFFF"
-        android:textSize="15sp" />
+        android:textSize="15dp" />
 
     <EditText
         android:id="@+id/usernameTextView"
@@ -42,17 +42,17 @@
         android:textColorLink="#FFFFFF"
         android:layout_gravity="center_horizontal"
         android:textCursorDrawable="@drawable/my_cursor"
-        android:textSize="20sp"
+        android:textSize="20dp"
         tools:ignore="RtlSymmetry" />
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30sp"
+        android:layout_marginStart="30dp"
         android:text="@string/email_id"
         android:textColor="#FFFFFF"
-        android:textSize="15sp" />
+        android:textSize="15dp" />
 
     <EditText
         android:id="@+id/email"
@@ -68,17 +68,17 @@
         android:textColorHint="#C5C3C3"
         android:textColorLink="#FFFFFF"
         android:textCursorDrawable="@drawable/my_cursor"
-        android:textSize="20sp"
+        android:textSize="20dp"
         tools:ignore="RtlSymmetry" />
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30sp"
+        android:layout_marginStart="30dp"
         android:text="@string/phone_number"
         android:textColor="#FFFFFF"
-        android:textSize="15sp" />
+        android:textSize="15dp" />
 
     <EditText
         android:id="@+id/phoneEditText"
@@ -94,17 +94,17 @@
         android:textColorHint="#C5C3C3"
         android:textColorLink="#FFFFFF"
         android:textCursorDrawable="@drawable/my_cursor"
-        android:textSize="20sp"
+        android:textSize="20dp"
         tools:ignore="RtlSymmetry" />
 
     <TextView
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30sp"
+        android:layout_marginStart="30dp"
         android:text="@string/enter_password"
         android:textColor="#FFFFFF"
-        android:textSize="15sp" />
+        android:textSize="15dp" />
 
     <EditText
         android:id="@+id/password"
@@ -120,17 +120,17 @@
         android:textColorHint="#C5C3C3"
         android:textColorLink="#FFFFFF"
         android:textCursorDrawable="@drawable/my_cursor"
-        android:textSize="20sp"
+        android:textSize="20dp"
         tools:ignore="RtlSymmetry" />
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30sp"
+        android:layout_marginStart="30dp"
         android:text="@string/confirm_password"
         android:textColor="#FFFFFF"
-        android:textSize="15sp" />
+        android:textSize="15dp" />
 
     <EditText
         android:id="@+id/confirm_password"
@@ -146,7 +146,7 @@
         android:textColorHint="#C5C3C3"
         android:textColorLink="#FFFFFF"
         android:textCursorDrawable="@drawable/my_cursor"
-        android:textSize="20sp"
+        android:textSize="20dp"
         tools:ignore="RtlSymmetry" />
 
 
@@ -160,11 +160,11 @@
         android:text="@string/create_account"
         android:textAllCaps="false"
         android:textColor="@color/black"
-        android:textSize="25sp"
+        android:layout_marginTop="30dp"
         app:cornerRadius="30dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30sp"
-        android:elevation="10sp" />
+        android:elevation="10dp"
+        android:textSize="25dp" />
 
 
 </LinearLayout>

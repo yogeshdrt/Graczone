@@ -13,7 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Graczone">
         <activity android:name=".LOGIN.Select_Game"></activity>
-        <activity android:name=".joining_TDM" />
+        <activity
+            android:name=".joining_TDM"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".LOGIN.Phone_OTP"
             android:screenOrientation="portrait" />

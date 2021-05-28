@@ -30,10 +30,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:padding="10sp"
+                    android:padding="10dp"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:text="@string/balance"
-                    android:textSize="30sp" />
+                    android:textSize="30dp" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -45,11 +45,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-condensed-medium"
-                        android:padding="2sp"
+                        android:padding="2dp"
                         android:text="@string/Rs"
                         android:textAlignment="center"
                         android:textColor="@color/black"
-                        android:textSize="35sp" />
+                        android:textSize="35dp" />
 
                     <TextView
                         android:id="@+id/balance"
@@ -57,11 +57,11 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-condensed-medium"
                         android:inputType="numberDecimal"
-                        android:paddingVertical="2sp"
+                        android:paddingVertical="2dp"
                         android:text="@string/_100"
                         android:textAlignment="center"
                         android:textColor="@color/black"
-                        android:textSize="35sp"
+                        android:textSize="35dp"
                         tools:ignore="TextViewEdits" />
 
                 </LinearLayout>
@@ -69,7 +69,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="10sp"
+        android:padding="10dp"
         android:text="@string/topup_wallet" />
 
 
@@ -86,16 +86,16 @@
 
 
     <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_margin="10sp"
-                    android:backgroundTint="#089C0E"
-                    android:elevation="15sp"
-        android:padding="10sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp"
+        android:backgroundTint="#089C0E"
+        android:elevation="15dp"
+        android:padding="10dp"
         android:text="@string/add_cash"
         android:textColor="@color/white"
-                    android:textStyle="bold"/>
+        android:textStyle="bold" />
 
 
     <Button
@@ -103,8 +103,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:elevation="20sp"
-        android:padding="10sp"
+        android:elevation="20dp"
+        android:padding="10dp"
         android:shadowColor="@color/black"
         android:shadowDx="10"
         android:shadowDy="10"
@@ -120,7 +120,7 @@
         android:padding="10dp"
         android:text="@string/transactions"
         android:textColor="@color/black"
-        android:textSize="20sp" />
+        android:textSize="20dp" />
 
 
     <ScrollView
@@ -134,7 +134,7 @@
             android:layout_height="wrap_content"
             android:padding="15dp"
             android:text="Amount                                               Date  \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021     "
-            android:textSize="18sp" />
+            android:textSize="18dp" />
 
     </ScrollView>
 
