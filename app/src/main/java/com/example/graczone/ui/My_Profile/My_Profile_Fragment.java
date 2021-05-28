@@ -1,5 +1,6 @@
 package com.example.graczone.ui.My_Profile;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import com.example.graczone.R;
@@ -15,11 +17,20 @@ public class My_Profile_Fragment extends Fragment {
 
     TextView usernameEditText, emailEditText, phoneNoEditText;
     String username, email, phone;
+    ProgressDialog progressDialog;
+    DrawerLayout drawer;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_my_profile, container, false);
+
+//        drawer = root.findViewById(R.id.drawer_layout);
+//        drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+
+        progressDialog = new ProgressDialog(root.getContext());
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.show();
 
         username = "nothing";
         email = "nothing2";
@@ -38,6 +49,8 @@ public class My_Profile_Fragment extends Fragment {
         emailEditText.setText(email);
         phoneNoEditText = root.findViewById(R.id.phoneNoTextView);
         phoneNoEditText.setText(phone);
+
+        progressDialog.dismiss();
 
         return root;
     }

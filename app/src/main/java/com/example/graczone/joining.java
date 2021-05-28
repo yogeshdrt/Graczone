@@ -137,7 +137,9 @@ public class joining extends AppCompatActivity {
                     if (editText.getText().toString().isEmpty()) {
                         Toast.makeText(getApplicationContext(), "enter valid pubg id", Toast.LENGTH_SHORT).show();
                     } else {
-                        FirebaseMessaging.getInstance().subscribeToTopic("match1").addOnCompleteListener(new OnCompleteListener<Void>() {
+                        String subscribe = (date + "-" + s6 + "-" + match);
+                        Log.d("myTag", subscribe);
+                        FirebaseMessaging.getInstance().subscribeToTopic(subscribe).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull @NotNull Task<Void> task) {
                                 if (task.isSuccessful()) {
@@ -168,6 +170,7 @@ public class joining extends AppCompatActivity {
                                     join.setTextColor(Color.GRAY);
                                     dialog.dismiss();
                                 } else {
+                                    Log.d("myTag", "exception" + task.getException());
                                     Toast.makeText(getApplicationContext(), "something went wrong", Toast.LENGTH_SHORT).show();
                                 }
                             }
@@ -181,7 +184,7 @@ public class joining extends AppCompatActivity {
 
     void saveMyMatches(String s1, String s2, String s7, String time, String date, String s3, String s4, String s5) {
 
-        MyMatchesModel myMatchesModel = new MyMatchesModel(s7, time, date, s1, s2, s3, s4, s5);
+        MyMatchesModel myMatchesModel = new MyMatchesModel(s7, time, date, s1, s2, s3, s4, s5, "rank2:", "rank3:", s6);
         SharedPreferences sharedPreferences = getSharedPreferences("myMatchesPre", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         Gson gson = new Gson();
