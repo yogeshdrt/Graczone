@@ -25,14 +25,15 @@
             android:padding="10dp">
 
             <EditText
+                android:id="@+id/feedbackEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-condensed"
                 android:background="@color/transparent"
-                android:padding="10dp"
+                android:fontFamily="sans-serif-condensed"
                 android:hint="Enter your feedback here......"
-                android:textCursorDrawable="@drawable/my_cursor_2"
-                android:textColor="@color/black" />
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textCursorDrawable="@drawable/my_cursor_2" />
 
 
         </LinearLayout>
@@ -40,14 +41,15 @@
     </androidx.cardview.widget.CardView>
 
     <Button
+        android:id="@+id/feedbackButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
         android:backgroundTint="@color/blue"
         android:elevation="10dp"
         android:padding="10dp"
         android:text="Submit"
-        android:layout_marginTop="10dp"
         android:textColor="@color/white" />
 
 

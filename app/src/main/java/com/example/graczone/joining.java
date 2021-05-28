@@ -30,8 +30,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.common.reflect.TypeToken;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.gson.Gson;
@@ -40,6 +43,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class joining extends AppCompatActivity {
 
@@ -119,6 +123,26 @@ public class joining extends AppCompatActivity {
 
 
         join = findViewById(R.id.join_btn);
+
+        FirebaseDatabase.getInstance().getReference(s6).child(date + "+" + time).child("participants").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                for (DataSnapshot child : snapshot.getChildren()) {
+                    if (Objects.requireNonNull(child.child("email").getValue()).toString().equals(firebaseUser.getEmail())) {
+                        join.setEnabled(false);
+                        join.setText("JOINED");
+                        join.setTextColor(Color.GRAY);
+                        break;
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+                Toast.makeText(getApplicationContext(), "error fetch data from database", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         join.setOnClickListener(v -> dialog.show());
 
 

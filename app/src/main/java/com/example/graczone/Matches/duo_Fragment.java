@@ -1,6 +1,7 @@
 package com.example.graczone.Matches;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -64,6 +65,13 @@ public class duo_Fragment extends Fragment {
                 holder.count.setText((model.getCount() + "/100"));
                 holder.match.setText(model.getMatch());
                 holder.linearProgressIndicator.setProgress(Integer.parseInt(model.getCount()));
+
+                if (Integer.parseInt(model.getCount()) == 100) {
+
+                    holder.itemView.setEnabled(false);
+                    holder.itemView.setBackgroundColor(Color.GRAY);
+
+                }
 
 
                 holder.itemView.setOnClickListener(v -> {
