@@ -19,7 +19,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -62,7 +61,6 @@ public class home extends AppCompatActivity {
     String username, arg1, arg2, arg3;
     ArrayList<NotificationModel> modelArrayList;
     ArrayList<MyMatchesModel> myMatchesModels;
-    Fragment fragment;
     ProgressDialog progressDialog;
 
 
@@ -76,16 +74,20 @@ public class home extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        progressDialog = new ProgressDialog(getApplicationContext());
-        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-
-        //FirebaseMessaging.getInstance().setAutoInitEnabled(true);
+        try {
+            progressDialog = new ProgressDialog(home.this);
+            progressDialog.show();
+            progressDialog.setContentView(R.layout.progress_dialog);
+            progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+            progressDialog.setCanceledOnTouchOutside(false);
+            progressDialog.setCancelable(false);
+        } catch (Exception e) {
+            Log.d("myTag", "error in dialog");
+        }
 
 
         mauth = FirebaseAuth.getInstance();
         currentUser = mauth.getCurrentUser();
-
-        Log.d("myTag", "open fragment: " + getSupportFragmentManager().getBackStackEntryCount());
 
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -102,7 +104,6 @@ public class home extends AppCompatActivity {
                     if (!task.isSuccessful()) {
                         msg = "Failed";
                     }
-                    //Toast.makeText(home.this, msg, Toast.LENGTH_SHORT).show();
                 });
 
 
@@ -117,51 +118,51 @@ public class home extends AppCompatActivity {
         });
 
         navigationView.getMenu().findItem(R.id.nav_myprofile).setOnMenuItemClickListener(MenuItem -> {
-            Log.d("myTag", "not show dialog");
-            try {
-                progressDialog.show();
-            } catch (Exception e) {
-                Log.d("myTag", e.getStackTrace().toString());
-            }
-            Log.d("myTag", "show dialog");
-            FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid()).addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    My_Profile_Fragment pf = new My_Profile_Fragment();
-                    Bundle bundle = new Bundle();
-                    arg1 = snapshot.child("username").getValue().toString();
-                    arg2 = snapshot.child("email").getValue().toString();
-                    arg3 = snapshot.child("Phone").getValue().toString();
 
-                    bundle.putString("arg1", arg1);
-                    bundle.putString("arg2", arg2);
+            try {
+                progressDialog = new ProgressDialog(home.this);
+                progressDialog.show();
+                progressDialog.setContentView(R.layout.progress_dialog);
+                progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+                progressDialog.setCanceledOnTouchOutside(false);
+            } catch (Exception e) {
+                Log.d("myTag", "error in dialog");
+            }
+
+            FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid())
+                    .addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            My_Profile_Fragment pf = new My_Profile_Fragment();
+                            Bundle bundle = new Bundle();
+                            arg1 = snapshot.child("username").getValue().toString();
+                            arg2 = snapshot.child("email").getValue().toString();
+                            arg3 = snapshot.child("Phone").getValue().toString();
+
+                            bundle.putString("arg1", arg1);
+                            bundle.putString("arg2", arg2);
                     bundle.putString("arg3", arg3);
                     pf.setArguments(bundle);
-                    progressDialog.dismiss();
-//                    fragment = getSupportFragmentManager().findFragmentById(R.id.notificationFragment);
-//                    if (fragment != null) {
-//                        getSupportFragmentManager().beginTransaction().remove(fragment).commit();
-//                    }
+//
                     FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                     for (int i = 0; i < getSupportFragmentManager().getBackStackEntryCount(); i++) {
                         getSupportFragmentManager().popBackStack();
-                        Log.d("myTag", "open Fragment id: " + getSupportFragmentManager().getBackStackEntryAt(i).getClass() + " name: " +
-                                getSupportFragmentManager().getBackStackEntryAt(i).getName());
 
                     }
                     ft.replace(R.id.nav_host_fragment, pf, "myProfileTag");
                     ft.addToBackStack(null);
                     ft.commit();
                     drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-                    navigationView.getMenu().getItem(3).setChecked(true);
-                    Log.d("myTag", "prof. open fragment: " + getSupportFragmentManager().getBackStackEntryCount());
-//                    Toast.makeText(getApplicationContext(), "success fetch data" + arg3, Toast.LENGTH_SHORT).show();
+                            navigationView.getMenu().getItem(3).setChecked(true);
+                            progressDialog.dismiss();
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
                     Toast.makeText(getApplicationContext(), "failed to fetch data", Toast.LENGTH_SHORT).show();
+                    progressDialog.dismiss();
                 }
+
             });
             return true;
         });
@@ -262,8 +263,6 @@ public class home extends AppCompatActivity {
                 myMatchesModels = gson.fromJson(json, type);
             } else {
                 myMatchesModels = new ArrayList<>();
-//                MyMatchesModel myMatchesModel = new MyMatchesModel("default", "default", "default", "default", "default", "default", "default", "default");
-//                myMatchesModels.add(myMatchesModel);
             }
             bundle.putSerializable("myMatchModels", myMatchesModels);
             mf.setArguments(bundle);
@@ -330,12 +329,15 @@ public class home extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 username = snapshot.child("username").getValue().toString();
                 get_username.setText(username);
+                progressDialog.dismiss();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(getApplicationContext(), "failed to fetch data", Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
             }
+
         });
         get_email.setText(currentUser.getEmail());
         NavigationUI.setupWithNavController(navigationView, navController);
@@ -377,6 +379,7 @@ public class home extends AppCompatActivity {
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         } else {
+            progressDialog.dismiss();
             super.onBackPressed();
 
 //            for (int i = 0; i < getSupportFragmentManager().getBackStackEntryCount(); i++) {

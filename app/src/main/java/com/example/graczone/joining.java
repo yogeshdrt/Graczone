@@ -1,11 +1,15 @@
 package com.example.graczone;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,8 +29,6 @@ import androidx.core.content.ContextCompat;
 
 import com.example.graczone.Wallet.wallet;
 import com.example.graczone.ui.MyMatches.MyMatchesModel;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.common.reflect.TypeToken;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -43,12 +45,16 @@ import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 
 public class joining extends AppCompatActivity {
 
     Dialog dialog;
     Button btnn, join;
+    ProgressDialog progressDialog;
+    ConnectivityManager connectivityManager;
+    NetworkInfo networkInfo;
 
 
     TextView entry, rs_per_kill, rank1, rank2, rank3, teamup, map;
@@ -67,6 +73,8 @@ public class joining extends AppCompatActivity {
         setContentView(R.layout.activity_joining);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        progressDialog = new ProgressDialog(getApplicationContext());
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
@@ -124,24 +132,66 @@ public class joining extends AppCompatActivity {
 
         join = findViewById(R.id.join_btn);
 
-        FirebaseDatabase.getInstance().getReference(s6).child(date + "+" + time).child("participants").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                for (DataSnapshot child : snapshot.getChildren()) {
-                    if (Objects.requireNonNull(child.child("email").getValue()).toString().equals(firebaseUser.getEmail())) {
-                        join.setEnabled(false);
-                        join.setText("JOINED");
-                        join.setTextColor(Color.GRAY);
-                        break;
-                    }
-                }
-            }
+        Log.d("myTag", "before try fetch");
 
-            @Override
-            public void onCancelled(@NonNull @NotNull DatabaseError error) {
-                Toast.makeText(getApplicationContext(), "error fetch data from database", Toast.LENGTH_SHORT).show();
+        try {
+            progressDialog = new ProgressDialog(joining.this);
+            progressDialog.show();
+            progressDialog.setContentView(R.layout.progress_dialog);
+            progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+            progressDialog.setCanceledOnTouchOutside(false);
+            progressDialog.setCancelable(false);
+            SharedPreferences sharedPreferences = getSharedPreferences("haveJoinEditor", MODE_PRIVATE);
+            if (!sharedPreferences.contains(date + "-" + s6 + "-" + match)) {
+                final int[] flag = {0};
+                FirebaseDatabase.getInstance().getReference(s6).child(date + "+" + time).child("participants")
+                        .addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                                for (DataSnapshot child : snapshot.getChildren()) {
+                                    if (Objects.requireNonNull(child.child("email").getValue()).toString().equals(firebaseUser.getEmail())) {
+                                        SharedPreferences sharedPreferences = getSharedPreferences("haveJoinEditor", MODE_PRIVATE);
+                                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                                        editor.putString(date + "-" + s6 + "-" + match, "true");
+                                        editor.apply();
+                                        join.setEnabled(false);
+                                        join.setText("JOINED");
+                                        join.setTextColor(Color.GRAY);
+                                        flag[0] = 1;
+                                        Log.d("myTag", "after disable button dismiss");
+                                        break;
+                                    }
+                                }
+                                if (flag[0] == 0) {
+                                    SharedPreferences sharedPreferences = getSharedPreferences("haveJoinEditor", MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                                    editor.putString(date + "-" + s6 + "-" + match, "false");
+                                    editor.apply();
+                                }
+                                Log.d("myTag", "in fetching check before dismiss");
+                                progressDialog.dismiss();
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+                                Toast.makeText(getApplicationContext(), "error fetch data from database", Toast.LENGTH_SHORT).show();
+                                progressDialog.dismiss();
+                            }
+                        });
+            } else if (sharedPreferences.getString(date + "-" + s6 + "-" + match, null).equals("true")) {
+                join.setEnabled(false);
+                join.setText("JOINED");
+                join.setTextColor(Color.GRAY);
+                progressDialog.dismiss();
+            } else {
+                progressDialog.dismiss();
             }
-        });
+        } catch (Exception e) {
+
+            Log.d("myTag", Arrays.toString(e.getStackTrace()));
+            Log.d("myTag", "error");
+        }
+
 
         join.setOnClickListener(v -> dialog.show());
 
@@ -158,48 +208,66 @@ public class joining extends AppCompatActivity {
             }
         });
         btnn.setOnClickListener(v -> {
+            connectivityManager = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+            networkInfo = connectivityManager.getActiveNetworkInfo();
+            if (networkInfo != null) {
+                if (Integer.parseInt(count) <= 100) {
                     if (editText.getText().toString().isEmpty()) {
                         Toast.makeText(getApplicationContext(), "enter valid pubg id", Toast.LENGTH_SHORT).show();
                     } else {
                         String subscribe = (date + "-" + s6 + "-" + match);
                         Log.d("myTag", subscribe);
-                        FirebaseMessaging.getInstance().subscribeToTopic(subscribe).addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull @NotNull Task<Void> task) {
-                                if (task.isSuccessful()) {
-                                    String email = firebaseUser.getEmail();
-                                    if (email == null) {
-                                        email = "null";
-                                        Log.d("myTag", "email null");
-                                    }
-
-                                    count = String.valueOf(Integer.parseInt(count) + 1);
-
-                                    firebaseFirestore.collection(s6).document(match).update("count", (count.toString()));
-                                    databaseReference = FirebaseDatabase.getInstance().getReference(s6).child(date + "+" + time);
-                                    databaseReference.child("EntryFee").setValue(s1);
-                                    databaseReference.child("participants").child(editText.getText().toString()).child("email")
-                                            .setValue(email).addOnCompleteListener(task1 -> {
-                                        if (task1.isSuccessful()) {
-                                            Log.d("myTag", "succ. add participant");
-                                        } else {
-                                            Log.d("myTag", "error in participant");
+                        FirebaseMessaging.getInstance().subscribeToTopic(subscribe)
+                                .addOnCompleteListener(task -> {
+                                    if (task.isSuccessful()) {
+                                        try {
+                                            progressDialog.show();
+                                        } catch (Exception e) {
+                                            Log.d("myTag", "error in dialog in enter room");
                                         }
-                                    });
-                                    Log.d("myTag", "add id in joining");
-                                    saveMyMatches(s1, s2, s7, time, date, s3, s4, s5);
-                                    Toast.makeText(getApplicationContext(), "successfully joined", Toast.LENGTH_SHORT).show();
-                                    join.setEnabled(false);
-                                    join.setText("JOINED");
-                                    join.setTextColor(Color.GRAY);
-                                    dialog.dismiss();
-                                } else {
-                                    Log.d("myTag", "exception" + task.getException());
-                                    Toast.makeText(getApplicationContext(), "something went wrong", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
+                                        String email = firebaseUser.getEmail();
+                                        if (email == null) {
+                                            email = "null";
+                                            Log.d("myTag", "email null");
+                                        }
+
+                                        count = String.valueOf(Integer.parseInt(count) + 1);
+
+                                        firebaseFirestore.collection(s6).document(match).update("count", (count.toString()));
+                                        databaseReference = FirebaseDatabase.getInstance().getReference(s6).child(date + "+" + time);
+                                        databaseReference.child("EntryFee").setValue(s1);
+                                        databaseReference.child("participants").child(editText.getText().toString()).child("email")
+                                                .setValue(email).addOnCompleteListener(task1 -> {
+                                            if (task1.isSuccessful()) {
+                                                Log.d("myTag", "succ. add participant");
+                                            } else {
+                                                Log.d("myTag", "error in participant");
+                                            }
+                                            progressDialog.dismiss();
+                                        });
+                                        Log.d("myTag", "add id in joining");
+                                        saveMyMatches(s1, s2, s7, time, date, s3, s4, s5);
+                                        Toast.makeText(getApplicationContext(), "successfully joined", Toast.LENGTH_SHORT).show();
+                                        join.setEnabled(false);
+                                        join.setText("JOINED");
+                                        join.setTextColor(Color.GRAY);
+                                        dialog.dismiss();
+                                        SharedPreferences sharedPreferences = getSharedPreferences("haveJoinEditor", MODE_PRIVATE);
+                                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                                        editor.putString(date + "-" + s6 + "-" + match, "true");
+                                        editor.apply();
+                                    } else {
+                                        Log.d("myTag", "exception" + task.getException());
+                                        Toast.makeText(getApplicationContext(), "something went wrong", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
                     }
+                } else {
+                    Toast.makeText(getApplicationContext(), "room is full, please try another room", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                Toast.makeText(getApplicationContext(), "check your network connection", Toast.LENGTH_SHORT).show();
+            }
                 }
         );
 
@@ -258,6 +326,7 @@ public class joining extends AppCompatActivity {
         onBackPressed();
         return true;
     }
+
 
   /*  public String extractDigits(String src) {
         StringBuilder builder = new StringBuilder();
