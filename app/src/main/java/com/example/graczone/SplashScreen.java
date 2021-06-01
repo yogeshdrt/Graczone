@@ -32,6 +32,7 @@ public class SplashScreen extends AppCompatActivity {
     Intent intent;
     ConnectivityManager connectivityManager;
     NetworkInfo networkInfo;
+    int flag;
 
 
     @Override
@@ -50,6 +51,7 @@ public class SplashScreen extends AppCompatActivity {
             if (body != null && body.length() > 0) {
                 getIntent().removeExtra("body");
                 saveNotification(title, body, time, date);
+                flag = 1;
             }
 //            NotificationModel notification = new NotificationModel(title, body, time, date);
 //            SharedPreferences sharedPreferences = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
@@ -76,6 +78,9 @@ public class SplashScreen extends AppCompatActivity {
 
                 if (networkInfo != null && firebaseUser != null) {
                     intent = new Intent(SplashScreen.this, home.class);
+                    if (flag == 1) {
+                        intent.putExtra("notify", "true");
+                    }
                 } else {
                     intent = new Intent(SplashScreen.this, LoginActivity.class);
                 }
@@ -115,6 +120,7 @@ public class SplashScreen extends AppCompatActivity {
             if (body != null && body.length() > 0) {
                 getIntent().removeExtra("body");
                 saveNotification(title, body, time, date);
+                intent.putExtra("notify", "true");
             }
         }
     }

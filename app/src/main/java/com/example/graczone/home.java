@@ -74,6 +74,9 @@ public class home extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        drawer = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+
         try {
             progressDialog = new ProgressDialog(home.this);
             progressDialog.show();
@@ -85,6 +88,16 @@ public class home extends AppCompatActivity {
             Log.d("myTag", "error in dialog");
         }
 
+        if (getIntent() != null && (getIntent().hasExtra("title") || getIntent().hasExtra("notify"))) {
+            String body = getIntent().getExtras().getString("body");
+            if (body != null && body.length() > 0) {
+                getIntent().removeExtra("body");
+
+            }
+            navigationView.getMenu().performIdentifierAction(R.id.nav_notification, 0);
+            Log.d("myTag", "not new intent");
+
+        }
 
         mauth = FirebaseAuth.getInstance();
         currentUser = mauth.getCurrentUser();
@@ -107,8 +120,8 @@ public class home extends AppCompatActivity {
                 });
 
 
-        drawer = findViewById(R.id.drawer_layout);
-        navigationView = findViewById(R.id.nav_view);
+//        drawer = findViewById(R.id.drawer_layout);
+//        navigationView = findViewById(R.id.nav_view);
 
         navigationView.getMenu().findItem(R.id.logout).setOnMenuItemClickListener(MenuItem -> {
             FirebaseAuth.getInstance().signOut();
@@ -344,6 +357,26 @@ public class home extends AppCompatActivity {
 
     }
 
+    public void onNewIntent(Intent intent) {
+        //called when a new intent for this class is created.
+        // The main case is when the app was in background, a notification arrives to the tray, and the user touches the notification
+
+        super.onNewIntent(intent);
+
+        Log.d("myTag", "onNewIntent - starting");
+        Bundle extras = intent.getExtras();
+        if (extras != null) {
+
+            String body = extras.getString("body");
+            if (body != null && body.length() > 0) {
+                getIntent().removeExtra("body");
+
+            }
+            navigationView.getMenu().performIdentifierAction(R.id.nav_notification, 0);
+            Log.d("myTag", "in click manually");
+        }
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -401,7 +434,6 @@ public class home extends AppCompatActivity {
             navigationView.getMenu().getItem(4).setChecked(false);
             navigationView.getMenu().getItem(5).setChecked(false);
         }
-        Log.d("myTag", "open fragment: " + getSupportFragmentManager().getBackStackEntryCount());
 
 
     }
