@@ -1,7 +1,6 @@
 package com.example.graczone.Matches;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -70,7 +69,7 @@ public class solo_Fragment extends Fragment {
                 if (Integer.parseInt(model.getCount()) == 100) {
 
                     holder.itemView.setEnabled(false);
-                    holder.itemView.setBackgroundColor(Color.GRAY);
+                    holder.count.setText("Full");
 
                 }
 

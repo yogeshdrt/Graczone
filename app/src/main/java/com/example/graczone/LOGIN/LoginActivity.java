@@ -29,6 +29,8 @@ public class LoginActivity extends AppCompatActivity {
     EditText email, password;
     Button btn_login;
 
+    TextView forgot_password;
+
     FirebaseAuth auth;
 
     ConnectivityManager connectivityManager;
@@ -62,21 +64,18 @@ public class LoginActivity extends AppCompatActivity {
         email = findViewById(R.id.email);
 
         password = findViewById(R.id.password);
-        phone = findViewById(R.id.login_via_phone);
 
-        phone.setOnClickListener(new View.OnClickListener() {
+        //forgot pasword
+        forgot_password = findViewById(R.id.forgot_password_btn);
+        forgot_password.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                connectivityManager = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
-                networkInfo = connectivityManager.getActiveNetworkInfo();
-                if (networkInfo != null) {
-                    Intent intent = new Intent(LoginActivity.this, Phone_OTP.class);
-                    startActivity(intent);
-                } else {
-                    Toast.makeText(getApplicationContext(), "please check your internet connection", Toast.LENGTH_SHORT).show();
-                }
+                Intent i = new Intent(LoginActivity.this, Forgot_Password.class);
+                startActivity(i);
+                finish();
             }
         });
+
 
         btn_login = findViewById(R.id.btn_login);
 
@@ -125,7 +124,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void LoginActivity(View view) {
-        Intent intent=new Intent(LoginActivity.this,create_account.class);
+        Intent intent = new Intent(LoginActivity.this, create_account.class);
         startActivity(intent);
         finish();
     }

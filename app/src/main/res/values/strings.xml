@@ -68,16 +68,16 @@
     <string name="enter_your_battlegrounds_username">Enter your BATTLEGROUNDS Username</string>
     <string name="bullet">•</string>
     <string name="read_the_rules_carefully_before_joining_a_match">Read the rules carefully before joining a match</string>
-    <string name="j1"><![CDATA[ It is required to enter your corresponding BATTLEGROUNDS username before joining a match.]]></string>
-    <string name="j2"><![CDATA[ In case you failed to join the room in the time limit, refund will not be initiated.]]></string>
-    <string name="j3"><![CDATA[ Only entered BATTLEGROUNDS usernames will be allowed to enter the room so please enter it correctly.]]></string>
-    <string name="j4"><![CDATA[ Match will be cancelled if there is not enough players joined, money will be refunded in that case.]]></string>
-    <string name="j5"><![CDATA[ Money will be deducted from your wallet according to the entry fee.]]></string>
-    <string name="j6"><![CDATA[ Winning prize money will be transferred in your wallet within 10-15 hours after the match is completed.]]></string>
-    <string name="j7"><![CDATA[ By joining a match,it is considered that you are accepting our privacy policy.]]></string>
-    <string name="j8"><![CDATA[ If anyone find doing unusual activity during the match, he/she will be disqualified and no prize money will be given.]]></string>
-    <string name="j9"><![CDATA[ If anyone found hacking, his/her Graczone account will be banned.]]></string>
-    <string name="j10"><![CDATA[ For help and support you can contact us at graczone.inc@gmail.com or you can give us feedback for our product.]]></string>
+    <string name="j1">It is required to enter your corresponding BATTLEGROUNDS username before joining a match.</string>
+    <string name="j2">In case you failed to join the room in the time limit, refund will not be initiated.</string>
+    <string name="j3">Only entered BATTLEGROUNDS usernames will be allowed to enter the room so please enter it correctly.</string>
+    <string name="j4">Match will be cancelled if there is not enough players joined, money will be refunded in that case.</string>
+    <string name="j5">Money will be deducted from your wallet according to the entry fee.</string>
+    <string name="j6">Winning prize money will be transferred in your wallet within 10–15 hours after the match is completed.</string>
+    <string name="j7">By joining a match,it is considered that you are accepting our privacy policy.</string>
+    <string name="j8">If anyone found doing unusual activity during the match, he/she will be disqualified and no prize money will be given.</string>
+    <string name="j9">If anyone found hacking, his/her Graczone account will be banned.</string>
+    <string name="j10">For help and support you can contact us at graczone.inc@gmail.com or you can give us feedback for our product.</string>
 
 
 </resources>

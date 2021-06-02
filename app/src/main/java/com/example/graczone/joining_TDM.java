@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -149,7 +148,7 @@ public class joining_TDM extends AppCompatActivity {
                                         editor.apply();
                                         join.setEnabled(false);
                                         join.setText("JOINED");
-                                        join.setTextColor(Color.GRAY);
+                                        join.setBackgroundColor(getResources().getColor(R.color.green));
                                         flag[0] = 1;
                                         Log.d("myTag", "after disable button dismiss");
                                         break;
@@ -174,7 +173,7 @@ public class joining_TDM extends AppCompatActivity {
             } else if (sharedPreferences.getString(date + "-" + s6 + "-" + match, null).equals("true")) {
                 join.setEnabled(false);
                 join.setText("JOINED");
-                join.setTextColor(Color.GRAY);
+                join.setBackgroundColor(getResources().getColor(R.color.green));
                 progressDialog.dismiss();
             } else {
                 progressDialog.dismiss();
@@ -239,7 +238,7 @@ public class joining_TDM extends AppCompatActivity {
                                         Toast.makeText(getApplicationContext(), "successfully joined", Toast.LENGTH_SHORT).show();
                                         join.setEnabled(false);
                                         join.setText("JOINED");
-                                        join.setTextColor(Color.GRAY);
+                                        join.setBackgroundColor(getResources().getColor(R.color.green));
                                         dialog.dismiss();
                                     } else {
                                         Toast.makeText(getApplicationContext(), "something went wrong", Toast.LENGTH_SHORT).show();
