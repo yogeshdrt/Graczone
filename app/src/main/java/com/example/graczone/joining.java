@@ -157,7 +157,7 @@ public class joining extends AppCompatActivity {
                                         editor.apply();
                                         join.setEnabled(false);
                                         join.setText("JOINED");
-                                        join.setBackgroundColor(getResources().getColor(R.color.green));
+                                        join.setBackgroundColor(getResources().getColor(R.color.black));
                                         flag[0] = 1;
                                         Log.d("myTag", "after disable button dismiss");
                                         break;
@@ -182,7 +182,7 @@ public class joining extends AppCompatActivity {
             } else if (sharedPreferences.getString(date + "-" + s6 + "-" + match, null).equals("true")) {
                 join.setEnabled(false);
                 join.setText("JOINED");
-                join.setBackgroundColor(getResources().getColor(R.color.green));
+                join.setBackgroundColor(getResources().getColor(R.color.black));
                 progressDialog.dismiss();
             } else {
                 progressDialog.dismiss();
