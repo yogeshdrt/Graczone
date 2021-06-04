@@ -250,7 +250,7 @@ public class joining extends AppCompatActivity {
                                         Toast.makeText(getApplicationContext(), "successfully joined", Toast.LENGTH_SHORT).show();
                                         join.setEnabled(false);
                                         join.setText("JOINED");
-                                        join.setBackgroundColor(getResources().getColor(R.color.green));
+                                        join.setBackgroundColor(getResources().getColor(R.color.black));
                                         dialog.dismiss();
                                         SharedPreferences sharedPreferences = getSharedPreferences("haveJoinEditor", MODE_PRIVATE);
                                         SharedPreferences.Editor editor = sharedPreferences.edit();

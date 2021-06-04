@@ -36,28 +36,25 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dceb6660-a320-494f-b42a-773741ded4fc" name="Default Changelist" comment="rules_sorted___">
+    <list default="true" id="dceb6660-a320-494f-b42a-773741ded4fc" name="Default Changelist" comment="forgot_password">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/LOGIN/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/LOGIN/LoginActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/LOGIN/Phone_OTP.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/LOGIN/Forgot_Password.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/LOGIN/create_account.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/LOGIN/create_account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/Matches/duo_Fragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/Matches/duo_Fragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/Matches/solo_Fragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/Matches/solo_Fragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/Matches/squad_Fragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/Matches/squad_Fragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/Matches/tdm_Fragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/Matches/tdm_Fragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/Wallet/wallet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/Wallet/wallet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/SplashScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/SplashScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/Wallet/transactions.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/joining.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/joining.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/joining_TDM.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/joining_TDM.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/ui/MyMatches/MyMatches_Fragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/ui/MyMatches/MyMatches_Fragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/ui/My_Profile/My_Profile_Fragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/ui/My_Profile/My_Profile_Fragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/ui/Notification/Notification_Fragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/ui/Notification/Notification_Fragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/ui/feedback/Feedback_Fragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/ui/feedback/Feedback_Fragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/ui/home/HomeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/ui/home/HomeFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/ui/joiningRule/Joining_Rules_Fragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/ui/joiningRule/Joining_Rules_Fragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/bg_ground.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/bg_ground.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_joining.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_joining.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_phone__o_t_p.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_forgot_password.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_feedback_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_feedback_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_joining__rules_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_joining__rules_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/list_item_my_matches.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/list_item_my_matches.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_joining_tdm.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_joining_tdm.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_transactions.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_notification.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_notification.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/progress_dialog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/progress_dialog.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -440,7 +437,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622188098753</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="forgot_password">
+      <created>1622636090214</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1622636090214</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -504,7 +508,8 @@
     <MESSAGE value="add progress with count to joining match" />
     <MESSAGE value="add swap delete in my matches" />
     <MESSAGE value="fix my matches view." />
-    <option name="LAST_COMMIT_MESSAGE" value="fix my matches view." />
+    <MESSAGE value="forgot_password" />
+    <option name="LAST_COMMIT_MESSAGE" value="forgot_password" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -536,11 +541,11 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="286" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1619861544082" />
-    <state x="464" y="126" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1622635759129">
+    <state x="464" y="126" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1622797452444">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="413" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1618380447415" />
-    <state x="464" y="126" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1622635759129" />
+    <state x="464" y="126" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1622797452444" />
     <state x="296" y="135" key="AndroidCreateResourceDirectoryDialog" timestamp="1621851503288">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -613,11 +618,11 @@
     </state>
     <state x="246" y="18" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1620645933049" />
     <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1621505795087" />
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1622188128276">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="309" y="110" key="Vcs.Push.Dialog.v2" timestamp="1622636099245">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1622188128276" />
-    <state x="309" y="110" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1621942060709" />
+    <state x="309" y="110" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1622636099245" />
     <state x="584" y="190" key="chooseDestDirectoryDialog" timestamp="1621853014266">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -630,6 +635,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="578" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1621332763982" />
+    <state x="351" y="0" width="1199" height="810" key="dock-window-1" timestamp="1622794301520">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="351" y="0" width="1199" height="810" key="dock-window-1/0.0.1536.824@0.0.1536.824" timestamp="1622794301520" />
     <state x="496" y="201" key="git4idea.merge.GitPullDialog" timestamp="1620995324012">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

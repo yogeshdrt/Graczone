@@ -24,7 +24,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
-    TextView new_user_create_account, phone;
+    TextView new_user_create_account;
 
     EditText email, password;
     Button btn_login;
@@ -38,17 +38,17 @@ public class LoginActivity extends AppCompatActivity {
 
     FirebaseUser firebaseUser;
 
-//    protected void onStart() {
-//        super.onStart();
-//
-//        firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
-//
-//        if(firebaseUser!=null){
-//            Intent intent = new Intent(LoginActivity.this, home.class);
-//            startActivity(intent);
-//            finish();
-//        }
-//    }
+/*    protected void onStart() {
+        super.onStart();
+
+        firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
+
+        if(firebaseUser!=null){
+          Intent intent = new Intent(LoginActivity.this, home.class);
+            startActivity(intent);
+            finish();
+        }
+    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
 
         password = findViewById(R.id.password);
 
-        //forgot pasword
+        //forgot password
         forgot_password = findViewById(R.id.forgot_password_btn);
         forgot_password.setOnClickListener(new View.OnClickListener() {
             @Override

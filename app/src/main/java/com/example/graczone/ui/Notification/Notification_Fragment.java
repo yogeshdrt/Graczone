@@ -1,5 +1,6 @@
 package com.example.graczone.ui.Notification;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Canvas;
 import android.os.Bundle;
@@ -7,6 +8,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -47,6 +50,8 @@ public class Notification_Fragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_notification, container, false);
+
+        Toast.makeText(getActivity(), "swipe right to delete notification", Toast.LENGTH_SHORT).show();
 
         final NotificationModel[] deleteNotificationModel = new NotificationModel[1];
 
@@ -122,6 +127,16 @@ public class Notification_Fragment extends Fragment {
         recyclerView.setAdapter(notificationAdapter);
 
         return view;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        View view = getActivity().getCurrentFocus();
+        if (view != null) {
+            InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
     }
 
 

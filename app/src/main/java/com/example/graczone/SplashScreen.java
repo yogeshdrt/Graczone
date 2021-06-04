@@ -91,7 +91,7 @@ public class SplashScreen extends AppCompatActivity {
         thread.start();
 
         if (networkInfo == null) {
-            Toast.makeText(getApplicationContext(), "make sure your internet connection is open", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "make sure your device is connected to internet", Toast.LENGTH_LONG).show();
         }
 
     }
