@@ -359,7 +359,7 @@ public class home extends AppCompatActivity {
                             ft.commit();
                             drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
                             navigationView.getMenu().getItem(1).setChecked(true);
-                            Toast.makeText(getApplicationContext(), "successfully add myMatches data", Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(getApplicationContext(), "successfully add myMatches data", Toast.LENGTH_SHORT).show();
 
                         }
 
