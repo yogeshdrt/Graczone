@@ -1,6 +1,5 @@
 package com.example.graczone.ui.MyMatches;
 
-import android.content.SharedPreferences;
 import android.graphics.Canvas;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,11 +17,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.graczone.R;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.gson.Gson;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
@@ -31,6 +38,8 @@ public class MyMatches_Fragment extends Fragment {
     RecyclerView recyclerView;
     ArrayList<MyMatchesModel> myMatchesModels;
     MyMatchesAdapter myMatchesAdapter;
+    FirebaseUser firebaseUser;
+    DatabaseReference databaseReference;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -45,6 +54,8 @@ public class MyMatches_Fragment extends Fragment {
         }
 
         final MyMatchesModel[] deleteMyMatchesModel = new MyMatchesModel[1];
+        final String[] key = new String[1];
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
         myMatchesAdapter = new MyMatchesAdapter(myMatchesModels);
 
@@ -58,7 +69,35 @@ public class MyMatches_Fragment extends Fragment {
             public void onSwiped(@NonNull @NotNull RecyclerView.ViewHolder viewHolder, int direction) {
                 int position = viewHolder.getAdapterPosition();
                 deleteMyMatchesModel[0] = myMatchesModels.get(position);
+                String subscribe = (deleteMyMatchesModel[0].getDateTextView() + "-" + deleteMyMatchesModel[0].getTeamUp() + "-" + deleteMyMatchesModel[0].getMatch());
+                FirebaseMessaging.getInstance().unsubscribeFromTopic(subscribe).addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Log.d("myTag", "unSubscribe");
+                    } else {
+                        Log.d("myTag", "not unSubscribe");
+                    }
+                });
                 myMatchesModels.remove(position);
+                databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid()).child("MyMatches");
+                Log.d("myTag", "after reference in show myMatches");
+                databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                        for (DataSnapshot child : snapshot.getChildren()) {
+                            if (Objects.equals(child.child("dateTextView").getValue(), deleteMyMatchesModel[0].getDateTextView()) && Objects.equals(child.child("timeTextView").getValue(), deleteMyMatchesModel[0].getTimeTextView())) {
+                                key[0] = child.getKey();
+                                Log.d("myTag", "delete key");
+                                child.getRef().removeValue();
+                                break;
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+                    }
+                });
                 myMatchesAdapter.notifyItemRemoved(position);
 
                 AppCompatActivity activity = (AppCompatActivity) root.getContext();
@@ -67,24 +106,25 @@ public class MyMatches_Fragment extends Fragment {
                         .setAction("undo", new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
+                                databaseReference.child(key[0]).setValue(deleteMyMatchesModel[0]);
                                 myMatchesModels.add(position, deleteMyMatchesModel[0]);
                                 Log.d("myTag", deleteMyMatchesModel[0].getMapTextView());
                                 myMatchesAdapter.notifyItemInserted(position);
-                                SharedPreferences sharedPreferences = activity.getSharedPreferences("myMatchesPre", activity.MODE_PRIVATE);
-                                SharedPreferences.Editor editor = sharedPreferences.edit();
-                                Gson gson = new Gson();
-                                String json1 = gson.toJson(myMatchesModels);
-                                editor.putString("myMatchModels", json1);
-                                editor.apply();
+//                                SharedPreferences sharedPreferences = activity.getSharedPreferences("myMatchesPre", activity.MODE_PRIVATE);
+//                                SharedPreferences.Editor editor = sharedPreferences.edit();
+//                                Gson gson = new Gson();
+//                                String json1 = gson.toJson(myMatchesModels);
+//                                editor.putString("myMatchModels", json1);
+//                                editor.apply();
                             }
                         }).show();
 
-                SharedPreferences sharedPreferences = activity.getSharedPreferences("myMatchesPre", activity.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                Gson gson = new Gson();
-                String json1 = gson.toJson(myMatchesModels);
-                editor.putString("myMatchModels", json1);
-                editor.apply();
+//                SharedPreferences sharedPreferences = activity.getSharedPreferences("myMatchesPre", activity.MODE_PRIVATE);
+//                SharedPreferences.Editor editor = sharedPreferences.edit();
+//                Gson gson = new Gson();
+//                String json1 = gson.toJson(myMatchesModels);
+//                editor.putString("myMatchModels", json1);
+//                editor.apply();
             }
 
             public void onChildDraw(@NonNull @NotNull Canvas c, @NonNull @NotNull RecyclerView recyclerView, @NonNull @NotNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {

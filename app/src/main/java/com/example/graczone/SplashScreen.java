@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,10 +16,12 @@ import com.example.graczone.ui.Notification.NotificationModel;
 import com.google.common.reflect.TypeToken;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 import com.google.gson.Gson;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import static java.lang.Thread.sleep;
 
@@ -30,9 +33,12 @@ public class SplashScreen extends AppCompatActivity {
 
     FirebaseUser firebaseUser;
     Intent intent;
+    DatabaseReference databaseReference;
     ConnectivityManager connectivityManager;
     NetworkInfo networkInfo;
     int flag;
+    String status;
+    NotificationModel notification;
 
 
     @Override
@@ -48,6 +54,7 @@ public class SplashScreen extends AppCompatActivity {
             String body = getIntent().getExtras().getString("body");
             String time = getIntent().getExtras().getString("time");
             String date = getIntent().getExtras().getString("date");
+            status = getIntent().getExtras().getString("status");
             if (body != null && body.length() > 0) {
                 getIntent().removeExtra("body");
                 saveNotification(title, body, time, date);
@@ -71,26 +78,7 @@ public class SplashScreen extends AppCompatActivity {
 //            editor.apply();
         }
 
-        Thread thread = new Thread(() -> {
-            try {
-                sleep(4000);
-                firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-
-                if (networkInfo != null && firebaseUser != null) {
-                    intent = new Intent(SplashScreen.this, home.class);
-                    if (flag == 1) {
-                        intent.putExtra("notify", "true");
-                    }
-                } else {
-                    intent = new Intent(SplashScreen.this, LoginActivity.class);
-                }
-
-                startActivity(intent);
-                finish();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        });
+        Thread thread = new Thread(this::run);
         thread.start();
 
         if (networkInfo == null) {
@@ -109,25 +97,23 @@ public class SplashScreen extends AppCompatActivity {
         // Log.d("myTag", "onNewIntent - starting");
         Bundle extras = intent.getExtras();
         if (extras != null) {
-            for (String key : extras.keySet()) {
-                Object value = extras.get(key);
-                //Log.d("myTag", "Extras received at onNewIntent:  Key: " + key + " Value: " + value);
-            }
+
             String title = extras.getString("title");
             String body = extras.getString("body");
             String time = extras.getString("time");
             String date = extras.getString("date");
+            status = getIntent().getExtras().getString("status");
             if (body != null && body.length() > 0) {
                 getIntent().removeExtra("body");
                 saveNotification(title, body, time, date);
-                intent.putExtra("notify", "true");
+                flag = 1;
             }
         }
     }
 
     void saveNotification(String title, String body, String time, String date) {
 
-        NotificationModel notification = new NotificationModel(title, body, time, date);
+        notification = new NotificationModel(title, body, time, date);
         SharedPreferences sharedPreferences = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         Gson gson = new Gson();
@@ -144,5 +130,43 @@ public class SplashScreen extends AppCompatActivity {
         editor.putString("models", json1);
         editor.apply();
 
+    }
+
+    private void run() {
+        try {
+            sleep(4000);
+            firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+            if (networkInfo != null && firebaseUser != null) {
+                intent = new Intent(SplashScreen.this, home.class);
+                if (flag == 1) {
+                    intent.putExtra("notify", "true");
+                    Log.d("myTag", "notify add");
+                }
+                if (notification != null) {
+                    Log.d("myTag", "send object" + notification.getTitle());
+                    try {
+                        intent.putExtra("body", notification.getBody());
+                        intent.putExtra("title", notification.getTitle());
+                        intent.putExtra("date", notification.getDate());
+                        intent.putExtra("time", notification.getTime());
+                    } catch (Exception e) {
+                        Log.d("myTag", "error in to send object" + Arrays.toString(e.getStackTrace()));
+                    }
+                    Log.d("myTag", "after send object");
+                }
+                if (status != null) {
+                    intent.putExtra("status", status);
+                    Log.d("myTag", "status add");
+                }
+            } else {
+                intent = new Intent(SplashScreen.this, LoginActivity.class);
+            }
+
+            startActivity(intent);
+            finish();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
