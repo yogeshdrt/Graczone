@@ -46,7 +46,7 @@
         android:text="Deepak Jain"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="25sp" />
+        android:textSize="25dp" />
 
 
     <LinearLayout
@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:text="Account"
-            android:textSize="15sp"
+            android:textSize="15dp"
             android:textStyle="bold" />
 
         <LinearLayout
@@ -78,14 +78,14 @@
                 android:paddingVertical="5dp"
                 android:text="deepakjain@gmail.com"
                 android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textSize="20dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:hint="Tap to change email address"
-                android:textSize="16sp" />
+                android:textSize="16dp" />
         </LinearLayout>
 
 
@@ -102,14 +102,14 @@
                 android:paddingVertical="5dp"
                 android:text="+91 9997669034"
                 android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textSize="20dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:hint="Tap to change phone number"
-                android:textSize="16sp" />
+                android:textSize="16dp" />
 
 
         </LinearLayout>

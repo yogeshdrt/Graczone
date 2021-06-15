@@ -1,7 +1,6 @@
 package com.example.graczone.Matches;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -60,14 +59,14 @@ public class tdm_Fragment extends Fragment {
                 holder.rank1.setText(model.getRank1());
                 holder.date.setText(model.getDate());
                 holder.map.setText(model.getMap());
-                holder.count.setText((model.getCount() + "/100"));
+                holder.count.setText((model.getCount() + "/8"));
                 holder.match.setText(model.getMatch());
                 holder.linearProgressIndicator.setProgress(Integer.parseInt(model.getCount()));
 
-                if (Integer.parseInt(model.getCount()) == 100) {
+                if (Integer.parseInt(model.getCount()) == 8) {
 
                     holder.itemView.setEnabled(false);
-                    holder.itemView.setBackgroundColor(Color.GRAY);
+                    holder.count.setText("Full");
 
                 }
 
@@ -93,6 +92,7 @@ public class tdm_Fragment extends Fragment {
         mFirestoreList.setHasFixedSize(true);
         mFirestoreList.setLayoutManager(new LinearLayoutManager(getContext()));
         mFirestoreList.setAdapter(adapter);
+
 
         return view;
     }
@@ -134,6 +134,7 @@ public class tdm_Fragment extends Fragment {
             match = itemView.findViewById(R.id.match_number);
             count = itemView.findViewById(R.id.countTextView);
             linearProgressIndicator = itemView.findViewById(R.id.filling_progressbar);
+            linearProgressIndicator.setMax(8);
 
 
         }

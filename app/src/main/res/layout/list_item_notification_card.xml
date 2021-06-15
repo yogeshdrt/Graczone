@@ -7,12 +7,11 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_marginHorizontal="8sp"
-        android:layout_marginVertical="5sp"
         android:focusable="true"
+        android:layout_marginBottom="5dp"
         android:foreground="@drawable/ripple_effect"
         app:cardBackgroundColor="@color/white"
-        app:cardElevation="10sp">
+        app:cardElevation="10dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -24,10 +23,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:paddingHorizontal="5sp"
+                android:paddingHorizontal="5dp"
                 android:text="Notification Title"
                 android:textColor="@color/black"
-                android:textSize="18sp"
+                android:textSize="18dp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -37,7 +36,7 @@
                 android:layout_width="260dp"
                 android:layout_height="26dp"
                 android:layout_marginHorizontal="5dp"
-                android:padding="3sp"
+                android:padding="3dp"
                 android:text="Room Id Password(notification text)"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -49,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:padding="5sp"
+                android:padding="5dp"
                 android:text="date"
                 android:textSize="12dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -61,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:layout_marginTop="12dp"
-                android:padding="5sp"
+                android:padding="5dp"
                 android:text="Time"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

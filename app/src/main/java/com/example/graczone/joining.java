@@ -5,7 +5,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
@@ -16,6 +15,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -126,6 +126,7 @@ public class joining extends AppCompatActivity {
 
         dialog.getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.background));
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         dialog.setCancelable(false);
         dialog.setCanceledOnTouchOutside(true);
 
@@ -156,7 +157,7 @@ public class joining extends AppCompatActivity {
                                         editor.apply();
                                         join.setEnabled(false);
                                         join.setText("JOINED");
-                                        join.setTextColor(Color.GRAY);
+                                        join.setBackgroundColor(getResources().getColor(R.color.black));
                                         flag[0] = 1;
                                         Log.d("myTag", "after disable button dismiss");
                                         break;
@@ -181,7 +182,7 @@ public class joining extends AppCompatActivity {
             } else if (sharedPreferences.getString(date + "-" + s6 + "-" + match + firebaseUser.getUid(), null).equals("true")) {
                 join.setEnabled(false);
                 join.setText("JOINED");
-                join.setTextColor(Color.GRAY);
+                join.setBackgroundColor(getResources().getColor(R.color.black));
                 progressDialog.dismiss();
             } else {
                 progressDialog.dismiss();
@@ -202,11 +203,10 @@ public class joining extends AppCompatActivity {
 
 
         final EditText editText = dialog.findViewById(R.id.enter_battlegrounds_id);
-        editText.setOnFocusChangeListener((v, hasFocus) -> {
-            if (hasFocus) {
-                editText.setHint("enter pubg userName");
-            }
-        });
+        editText.setFocusableInTouchMode(true);
+        editText.requestFocus();
+
+
         btnn.setOnClickListener(v -> {
             connectivityManager = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
             networkInfo = connectivityManager.getActiveNetworkInfo();
@@ -250,7 +250,7 @@ public class joining extends AppCompatActivity {
                                         Toast.makeText(getApplicationContext(), "successfully joined", Toast.LENGTH_SHORT).show();
                                         join.setEnabled(false);
                                         join.setText("JOINED");
-                                        join.setTextColor(Color.GRAY);
+                                        join.setBackgroundColor(getResources().getColor(R.color.black));
                                         dialog.dismiss();
                                         SharedPreferences sharedPreferences = getSharedPreferences("haveJoinEditor", MODE_PRIVATE);
                                         SharedPreferences.Editor editor = sharedPreferences.edit();

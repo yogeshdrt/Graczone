@@ -10,21 +10,14 @@
         android:background="@drawable/bg_ground"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="25dp">
+        android:padding="20dp">
 
         <ProgressBar
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:indeterminateTint="@color/white">
 
         </ProgressBar>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Loading..."
-            android:textSize="20sp"
-            android:textStyle="bold" />
 
 
     </LinearLayout>

@@ -7,13 +7,13 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="10sp"
-        android:layout_marginVertical="8sp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="8dp"
         android:focusable="true"
         android:foreground="@drawable/ripple_effect"
         app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="10sp"
-        app:cardElevation="10sp">
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp">
 
 
         <LinearLayout
@@ -34,11 +34,11 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:fontFamily="sans-serif-condensed-medium"
-                    android:padding="5sp"
+                    android:padding="5dp"
                     android:text="DUAL"
                     android:textStyle="bold"
                     android:textColor="#787878"
-                    android:textSize="15sp" />
+                    android:textSize="15dp" />
 
                 <ImageView
                     android:id="@+id/image_vieww"
@@ -58,7 +58,7 @@
                         android:layout_height="wrap_content"
                         android:textAlignment="center"
                         android:textColor="@color/white"
-                        android:textSize="5sp" />
+                        android:textSize="5dp" />
 
                     <TextView
                         android:id="@+id/teamup"
@@ -66,7 +66,7 @@
                         android:layout_height="wrap_content"
                         android:text="DUAL"
                         android:textColor="@color/white"
-                        android:textSize="1sp" />
+                        android:textSize="1dp" />
 
 
                     <TextView
@@ -75,7 +75,7 @@
                         android:layout_height="wrap_content"
                         android:textAlignment="center"
                         android:textColor="@color/white"
-                        android:textSize="1sp" />
+                        android:textSize="1dp" />
 
                     <TextView
                         android:id="@+id/rank3"
@@ -83,7 +83,7 @@
                         android:layout_height="wrap_content"
                         android:textAlignment="center"
                         android:textColor="@color/white"
-                        android:textSize="1sp" />
+                        android:textSize="1dp" />
 
                     <TextView
                         android:id="@+id/match_number"
@@ -91,7 +91,7 @@
                         android:layout_height="match_parent"
                         android:text="1"
                         android:textColor="@color/white"
-                        android:textSize="1sp" />
+                        android:textSize="1dp" />
 
 
                 </LinearLayout>
@@ -111,20 +111,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:padding="5sp"
+                    android:padding="5dp"
                     android:textAlignment="center"
                     android:textColor="#787878"
-                    android:textSize="15sp" />
+                    android:textSize="15dp" />
 
                 <TextView
                     android:id="@+id/time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:padding="5sp"
+                    android:padding="5dp"
                     android:textAlignment="center"
                     android:textColor="@color/black"
-                    android:textSize="16sp"
+                    android:textSize="16dp"
                     android:textStyle="bold" />
 
                 <RelativeLayout
@@ -139,10 +139,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
                         android:elevation="10dp"
-                        app:indicatorColor="#089C0E"
+                        app:indicatorColor="#0CA812"
                         app:trackColor="#E6E5E5"
-                        app:trackCornerRadius="8dp"
-                        app:trackThickness="15dp" />
+                        app:trackCornerRadius="2dp"
+                        app:trackThickness="7dp" />
 
                     <TextView
                         android:id="@+id/countDuo"
@@ -153,6 +153,7 @@
                         android:elevation="11dp"
                         android:padding="2dp"
                         android:text="90/100"
+                        android:layout_marginTop="10dp"
                         android:textColor="@color/black"
                         android:textSize="10dp" />
 
@@ -172,11 +173,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:padding="5sp"
+                    android:padding="5dp"
                     android:text="Entry Fee"
                     android:textAlignment="center"
                     android:textColor="#787878"
-                    android:textSize="15sp" />
+                    android:textSize="15dp" />
 
 
                 <TextView
@@ -186,26 +187,26 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="5dp"
                     android:fontFamily="sans-serif-medium"
-                    android:paddingHorizontal="12sp"
+                    android:paddingHorizontal="12dp"
                     android:background="@drawable/stroke2"
                     android:text="FREE"
                     android:elevation="10dp"
                     android:paddingVertical="4dp"
                     android:textAlignment="center"
                     android:textColor="@color/white"
-                    android:textSize="16sp" />
+                    android:textSize="16dp" />
 
                 <TextView
                     android:id="@+id/rs_per_kill"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="3sp"
+                    android:layout_marginTop="3dp"
                     android:padding="3dp"
                     android:text="kill"
                     android:textAlignment="center"
                     android:textColor="@color/black"
-                    android:textSize="15sp" />
+                    android:textSize="15dp" />
 
 
             </LinearLayout>

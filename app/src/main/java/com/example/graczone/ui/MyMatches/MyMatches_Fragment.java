@@ -1,11 +1,14 @@
 package com.example.graczone.ui.MyMatches;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Canvas;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -130,6 +133,7 @@ public class MyMatches_Fragment extends Fragment {
             public void onChildDraw(@NonNull @NotNull Canvas c, @NonNull @NotNull RecyclerView recyclerView, @NonNull @NotNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
                 new RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
                         .addSwipeRightBackgroundColor(ContextCompat.getColor(getContext(), R.color.red))
+                        .addSwipeRightLabel("Delete").setSwipeRightLabelColor(R.color.black)
                         .addSwipeRightActionIcon(R.drawable.ic_baseline_delete_24)
                         .create()
                         .decorate();
@@ -143,5 +147,15 @@ public class MyMatches_Fragment extends Fragment {
         recyclerView.setAdapter(myMatchesAdapter);
 
         return root;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        View view = getActivity().getCurrentFocus();
+        if (view != null) {
+            InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
     }
 }

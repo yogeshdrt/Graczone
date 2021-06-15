@@ -9,15 +9,15 @@
     tools:context=".ui.MyMatches.MyMatches_Fragment">
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10sp"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:text="My Matches"
-        android:textColor="@color/white"
-        android:textSize="20sp" />
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginTop="10dp"
+    android:fontFamily="sans-serif-condensed-medium"
+    android:text="My Matches"
+    android:textColor="@color/white"
+    android:textSize="20dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/get_cardview"

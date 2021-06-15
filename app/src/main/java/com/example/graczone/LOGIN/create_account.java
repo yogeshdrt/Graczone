@@ -3,6 +3,7 @@ package com.example.graczone.LOGIN;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -25,6 +26,8 @@ import com.google.firebase.database.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.regex.Pattern;
+
+import static android.content.ContentValues.TAG;
 
 public class create_account extends AppCompatActivity {
 
@@ -62,6 +65,7 @@ public class create_account extends AppCompatActivity {
                     Toast.makeText(create_account.this, "All fields are required", Toast.LENGTH_SHORT).show();
                 } else if (!Patterns.EMAIL_ADDRESS.matcher(txt_email).matches()) {
                     email.setError("email address is not valid!");
+
                 } else if (txt_password.length() < 8) {
                     Toast.makeText(create_account.this, "password must be at least 8 characters", Toast.LENGTH_SHORT).show();
                 } else if (phoneEditText.length() > 10 || phoneEditText.length() < 10) {
@@ -84,6 +88,12 @@ public class create_account extends AppCompatActivity {
                             public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
                                 if (!task.getResult().getSignInMethods().isEmpty()) {
                                     Toast.makeText(getApplicationContext(), "this email already exist!", Toast.LENGTH_SHORT).show();
+                                } else if (!task.isSuccessful()) {
+                                    try {
+                                        throw task.getException();
+                                    } catch (Exception FirebaseAuthInvalidCredentialsException) {
+                                        Log.d(TAG, "onComplete:wrong_password");
+                                    }
                                 } else {
                                     register(txt_username, txt_email, txt_password);
                                 }

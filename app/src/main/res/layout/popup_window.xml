@@ -3,14 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10sp"
+    android:layout_margin="10dp"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        app:cardCornerRadius="10sp">
+        app:cardElevation="0dp"
+        app:cardCornerRadius="5dp">
 
         <EditText
             android:id="@+id/enter_battlegrounds_id"
@@ -18,8 +19,8 @@
             android:layout_height="wrap_content"
             android:background="#D8D7D7"
             android:fontFamily="sans-serif-condensed-medium"
-            android:hint="Enter your BATTLEGROUNDS Username"
-            android:padding="10sp"
+            android:hint="@string/enter_your_battlegrounds_username"
+            android:padding="10dp"
             android:textAlignment="center"
             android:textCursorDrawable="@drawable/my_cursor_2"
             android:textSize="15dp"
@@ -29,16 +30,115 @@
 
     <ScrollView
         android:layout_width="match_parent"
+        android:padding="5dp"
         android:layout_height="140dp">
 
-        <TextView
+        <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="6sp"
-            android:text="@string/policy"
-            android:padding="5sp"
-            android:lineSpacingExtra="4dp"
-            android:textAlignment="viewStart" />
+            android:layout_height="wrap_content">
+
+            <TableRow>
+
+                <TextView
+                    android:layout_column="1"
+                    android:text="@string/bullet" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_column="2"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="@string/r1" />
+
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:layout_column="1"
+                    android:text="@string/bullet" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_column="2"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="@string/r2" />
+
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:layout_column="1"
+                    android:text="@string/bullet" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_column="2"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="@string/r3" />
+
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:layout_column="1"
+                    android:text="@string/bullet" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_column="2"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="@string/r4" />
+
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:layout_column="1"
+                    android:text="@string/bullet" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_column="2"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="@string/r5" />
+
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:layout_column="1"
+                    android:text="@string/bullet" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_column="2"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="@string/r6" />
+
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:layout_column="1"
+                    android:text="@string/bullet" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_column="2"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="@string/r7" />
+
+            </TableRow>
+
+
+        </TableLayout>
+
 
     </ScrollView>
 
@@ -47,8 +147,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Confirm"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/btn_confirm"
         app:strokeColor="#000000"
         app:strokeWidth="2dp" />
 

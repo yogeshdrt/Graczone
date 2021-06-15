@@ -41,6 +41,7 @@ public class Feedback_Fragment extends Fragment {
                 Toast.makeText(getContext(), "feedback can not be empty", Toast.LENGTH_SHORT).show();
             } else {
                 saveFeedback(feedbackText);
+                feedbackEditText.setText("");
             }
         });
 
@@ -67,4 +68,5 @@ public class Feedback_Fragment extends Fragment {
                     }
                 });
     }
+
 }
