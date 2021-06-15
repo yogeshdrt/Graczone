@@ -1,5 +1,6 @@
 package com.example.graczone.LOGIN;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -16,13 +17,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.graczone.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.SignInMethodQueryResult;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.regex.Pattern;
@@ -34,6 +33,7 @@ public class create_account extends AppCompatActivity {
     EditText username, email, password, confirm_password, phoneEditText;
 
     Button btn_register;
+    ProgressDialog progressDialog;
 
     FirebaseAuth auth;
     DatabaseReference reference;
@@ -123,41 +123,48 @@ public class create_account extends AppCompatActivity {
 
     private void register(String username, String email, String password) {
         String phone = phoneEditText.getText().toString();
+        try {
+
+            progressDialog = new ProgressDialog(create_account.this);
+            progressDialog.show();
+            progressDialog.setContentView(R.layout.progress_dialog);
+            progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+            progressDialog.setCanceledOnTouchOutside(false);
+            progressDialog.setCancelable(false);
+        } catch (Exception e) {
+            Log.d("myTag", "error in progress bar in create account");
+        }
         auth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            FirebaseUser firebaseUser = auth.getCurrentUser();
-                            assert firebaseUser != null;
-                            String userid = firebaseUser.getUid();
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        FirebaseUser firebaseUser = auth.getCurrentUser();
+                        assert firebaseUser != null;
+                        String userid = firebaseUser.getUid();
 
-                            reference = FirebaseDatabase.getInstance().getReference("Users").child(userid);
+                        reference = FirebaseDatabase.getInstance().getReference("Users").child(userid);
 
-                            HashMap<String, String> hashMap = new HashMap<>();
-                            hashMap.put("id", userid);
-                            hashMap.put("username", username);
-                            hashMap.put("email", email);
-                            hashMap.put("Phone", phone);
+                        HashMap<String, String> hashMap = new HashMap<>();
+                        hashMap.put("id", userid);
+                        hashMap.put("username", username);
+                        hashMap.put("email", email);
+                        hashMap.put("Phone", phone);
 
-                            reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NotNull Task<Void> task) {
-                                    if (task.isSuccessful()) {
-                                        Toast.makeText(getApplicationContext(), "registration successfully!", Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(create_account.this, Select_Game.class);
-                                        startActivity(intent);
-                                        finish();
-                                    } else {
-                                        Toast.makeText(getApplicationContext(), "not able to save this data!\n please register again.", Toast.LENGTH_SHORT).show();
-                                    }
+                        reference.setValue(hashMap).addOnCompleteListener(task1 -> {
+                            if (task1.isSuccessful()) {
+                                progressDialog.dismiss();
+                                Toast.makeText(getApplicationContext(), "registration successfully!", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(create_account.this, Select_Game.class);
+                                startActivity(intent);
+                                finish();
+                            } else {
+                                Toast.makeText(getApplicationContext(), "not able to save this data!\n please register again.", Toast.LENGTH_SHORT).show();
+                                progressDialog.dismiss();
+                            }
 
-                                }
-
-                            });
-                        } else {
-                            Toast.makeText(create_account.this, "registration failed! ", Toast.LENGTH_SHORT).show();
-                        }
+                        });
+                    } else {
+                        Toast.makeText(create_account.this, "registration failed! ", Toast.LENGTH_SHORT).show();
+                        progressDialog.dismiss();
                     }
                 });
     }

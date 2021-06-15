@@ -2,10 +2,13 @@ package com.example.graczone;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -56,6 +59,8 @@ public class joining_TDM extends AppCompatActivity {
     String time, date, s1, s6, match, count, s7;
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
+    ConnectivityManager connectivityManager;
+    NetworkInfo networkInfo;
     FirebaseFirestore firebaseFirestore;
     DatabaseReference databaseReference;
     ArrayList<MyMatchesModel> myMatchesModels;
@@ -133,8 +138,8 @@ public class joining_TDM extends AppCompatActivity {
             progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
             progressDialog.setCanceledOnTouchOutside(false);
             progressDialog.setCancelable(false);
-            SharedPreferences sharedPreferences = getSharedPreferences("haveJoinEditor", MODE_PRIVATE);
-            if (!sharedPreferences.contains(date + "-" + s6 + "-" + match)) {
+            SharedPreferences sharedPreferences = getSharedPreferences("haveJoinEditor1", MODE_PRIVATE);
+            if (!sharedPreferences.contains(date + "-" + s6 + "-" + match + firebaseUser.getUid())) {
                 final int[] flag = {0};
                 FirebaseDatabase.getInstance().getReference(s6).child(date + "+" + time).child("participants")
                         .addListenerForSingleValueEvent(new ValueEventListener() {
@@ -142,9 +147,9 @@ public class joining_TDM extends AppCompatActivity {
                             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                                 for (DataSnapshot child : snapshot.getChildren()) {
                                     if (Objects.requireNonNull(child.child("email").getValue()).toString().equals(firebaseUser.getEmail())) {
-                                        SharedPreferences sharedPreferences = getSharedPreferences("haveJoinEditor", MODE_PRIVATE);
+                                        SharedPreferences sharedPreferences = getSharedPreferences("haveJoinEditor1", MODE_PRIVATE);
                                         SharedPreferences.Editor editor = sharedPreferences.edit();
-                                        editor.putString(date + "-" + s6 + "-" + match, "true");
+                                        editor.putString(date + "-" + s6 + "-" + match + firebaseUser.getUid(), "true");
                                         editor.apply();
                                         join.setEnabled(false);
                                         join.setText("JOINED");
@@ -155,9 +160,9 @@ public class joining_TDM extends AppCompatActivity {
                                     }
                                 }
                                 if (flag[0] == 0) {
-                                    SharedPreferences sharedPreferences = getSharedPreferences("haveJoinEditor", MODE_PRIVATE);
+                                    SharedPreferences sharedPreferences = getSharedPreferences("haveJoinEditor1", MODE_PRIVATE);
                                     SharedPreferences.Editor editor = sharedPreferences.edit();
-                                    editor.putString(date + "-" + s6 + "-" + match, "false");
+                                    editor.putString(date + "-" + s6 + "-" + match + firebaseUser.getUid(), "false");
                                     editor.apply();
                                 }
                                 Log.d("myTag", "in fetching check before dismiss");
@@ -170,7 +175,7 @@ public class joining_TDM extends AppCompatActivity {
                                 progressDialog.dismiss();
                             }
                         });
-            } else if (sharedPreferences.getString(date + "-" + s6 + "-" + match, null).equals("true")) {
+            } else if (sharedPreferences.getString(date + "-" + s6 + "-" + match + firebaseUser.getUid(), null).equals("true")) {
                 join.setEnabled(false);
                 join.setText("JOINED");
                 join.setBackgroundColor(getResources().getColor(R.color.black));
@@ -201,6 +206,12 @@ public class joining_TDM extends AppCompatActivity {
 
 //        btnn.setOnClickListener(v -> dialog.dismiss());
         btnn.setOnClickListener(v -> {
+            connectivityManager = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+            networkInfo = connectivityManager.getActiveNetworkInfo();
+            if (networkInfo != null) {
+
+                if (Integer.parseInt(count) <= 100) {
+
                     if (editText.getText().toString().isEmpty()) {
                         Toast.makeText(getApplicationContext(), "enter valid pubg id", Toast.LENGTH_SHORT).show();
                     } else {
@@ -240,11 +251,21 @@ public class joining_TDM extends AppCompatActivity {
                                         join.setText("JOINED");
                                         join.setBackgroundColor(getResources().getColor(R.color.black));
                                         dialog.dismiss();
+                                        SharedPreferences sharedPreferences = getSharedPreferences("haveJoinEditor1", MODE_PRIVATE);
+                                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                                        editor.putString(date + "-" + s6 + "-" + match + firebaseUser.getUid(), "true");
+                                        editor.apply();
                                     } else {
                                         Toast.makeText(getApplicationContext(), "something went wrong", Toast.LENGTH_SHORT).show();
                                     }
                                 });
                     }
+                } else {
+                    Toast.makeText(getApplicationContext(), "room is full, please try another room", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                Toast.makeText(getApplicationContext(), "check your network connection", Toast.LENGTH_SHORT).show();
+            }
                 }
         );
 
@@ -254,7 +275,14 @@ public class joining_TDM extends AppCompatActivity {
 
     void saveMyMatches(String s1, String s2, String s6, String time, String date, String s3, String s7, String s5) {
 
-        MyMatchesModel myMatchesModel = new MyMatchesModel(s6, time, date, s1, s2, s3, s7, s5, "map:", "", s6);
+        MyMatchesModel myMatchesModel = new MyMatchesModel(s6, time, date, s1, s2, s3, s7, s5, "map:", "", s6, match);
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        try {
+            FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid())
+                    .child("MyMatches").push().setValue(myMatchesModel);
+        } catch (Exception e) {
+            Log.d("myTag", "error to save myMatches details in firebase");
+        }
         SharedPreferences sharedPreferences = getSharedPreferences("myMatchesPre", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         Gson gson = new Gson();

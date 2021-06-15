@@ -3,6 +3,7 @@ package com.example.graczone.LOGIN;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -32,17 +33,18 @@ public class Forgot_Password extends AppCompatActivity {
         reset.setOnClickListener(v -> {
             String email = enter_email.getText().toString().trim();
             if (TextUtils.isEmpty(email)) {
+                Log.d("myTag", "empty email when forgot");
                 Toast.makeText(Forgot_Password.this, "Email id required", Toast.LENGTH_SHORT).show();
+            } else {
+                auth.sendPasswordResetEmail(email)
+                        .addOnCompleteListener(task -> {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(Forgot_Password.this, "A password reset link is send to " + email, Toast.LENGTH_LONG).show();
+                            } else {
+                                Toast.makeText(Forgot_Password.this, "invalid email!", Toast.LENGTH_SHORT).show();
+                            }
+                        });
             }
-
-            auth.sendPasswordResetEmail(email)
-                    .addOnCompleteListener(task -> {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(Forgot_Password.this, "A password reset link is send to " + email, Toast.LENGTH_LONG).show();
-                        } else {
-                            Toast.makeText(Forgot_Password.this, "invalid email!", Toast.LENGTH_SHORT).show();
-                        }
-                    });
 
 
         });

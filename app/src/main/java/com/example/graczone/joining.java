@@ -143,7 +143,7 @@ public class joining extends AppCompatActivity {
             progressDialog.setCanceledOnTouchOutside(false);
             progressDialog.setCancelable(false);
             SharedPreferences sharedPreferences = getSharedPreferences("haveJoinEditor", MODE_PRIVATE);
-            if (!sharedPreferences.contains(date + "-" + s6 + "-" + match)) {
+            if (!sharedPreferences.contains(date + "-" + s6 + "-" + match + firebaseUser.getUid())) {
                 final int[] flag = {0};
                 FirebaseDatabase.getInstance().getReference(s6).child(date + "+" + time).child("participants")
                         .addListenerForSingleValueEvent(new ValueEventListener() {
@@ -153,7 +153,7 @@ public class joining extends AppCompatActivity {
                                     if (Objects.requireNonNull(child.child("email").getValue()).toString().equals(firebaseUser.getEmail())) {
                                         SharedPreferences sharedPreferences = getSharedPreferences("haveJoinEditor", MODE_PRIVATE);
                                         SharedPreferences.Editor editor = sharedPreferences.edit();
-                                        editor.putString(date + "-" + s6 + "-" + match, "true");
+                                        editor.putString(date + "-" + s6 + "-" + match + firebaseUser.getUid(), "true");
                                         editor.apply();
                                         join.setEnabled(false);
                                         join.setText("JOINED");
@@ -166,7 +166,7 @@ public class joining extends AppCompatActivity {
                                 if (flag[0] == 0) {
                                     SharedPreferences sharedPreferences = getSharedPreferences("haveJoinEditor", MODE_PRIVATE);
                                     SharedPreferences.Editor editor = sharedPreferences.edit();
-                                    editor.putString(date + "-" + s6 + "-" + match, "false");
+                                    editor.putString(date + "-" + s6 + "-" + match + firebaseUser.getUid(), "false");
                                     editor.apply();
                                 }
                                 Log.d("myTag", "in fetching check before dismiss");
@@ -179,7 +179,7 @@ public class joining extends AppCompatActivity {
                                 progressDialog.dismiss();
                             }
                         });
-            } else if (sharedPreferences.getString(date + "-" + s6 + "-" + match, null).equals("true")) {
+            } else if (sharedPreferences.getString(date + "-" + s6 + "-" + match + firebaseUser.getUid(), null).equals("true")) {
                 join.setEnabled(false);
                 join.setText("JOINED");
                 join.setBackgroundColor(getResources().getColor(R.color.black));
@@ -254,7 +254,7 @@ public class joining extends AppCompatActivity {
                                         dialog.dismiss();
                                         SharedPreferences sharedPreferences = getSharedPreferences("haveJoinEditor", MODE_PRIVATE);
                                         SharedPreferences.Editor editor = sharedPreferences.edit();
-                                        editor.putString(date + "-" + s6 + "-" + match, "true");
+                                        editor.putString(date + "-" + s6 + "-" + match + firebaseUser.getUid(), "true");
                                         editor.apply();
                                     } else {
                                         Log.d("myTag", "exception" + task.getException());
@@ -276,7 +276,14 @@ public class joining extends AppCompatActivity {
 
     void saveMyMatches(String s1, String s2, String s7, String time, String date, String s3, String s4, String s5) {
 
-        MyMatchesModel myMatchesModel = new MyMatchesModel(s7, time, date, s1, s2, s3, s4, s5, "rank2:", "rank3:", s6);
+        MyMatchesModel myMatchesModel = new MyMatchesModel(s7, time, date, s1, s2, s3, s4, s5, "rank2:", "rank3:", s6, match);
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        try {
+            FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid())
+                    .child("MyMatches").push().setValue(myMatchesModel);
+        } catch (Exception e) {
+            Log.d("myTag", "error to save myMatches details in firebase");
+        }
         SharedPreferences sharedPreferences = getSharedPreferences("myMatchesPre", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         Gson gson = new Gson();
