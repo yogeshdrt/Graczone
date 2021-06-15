@@ -1,7 +1,6 @@
 package com.example.graczone.ui.MyMatches;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.graphics.Canvas;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -48,6 +48,8 @@ public class MyMatches_Fragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_my_matches, container, false);
+        Toast.makeText(getActivity(), "swipe right to delete matches", Toast.LENGTH_SHORT).show();
+
         recyclerView = root.findViewById(R.id.get_cardview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         myMatchesModels = new ArrayList<>();
