@@ -22,6 +22,7 @@ public class My_Profile_Fragment extends Fragment {
     ProgressDialog progressDialog;
     DrawerLayout drawer;
 
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
@@ -29,6 +30,7 @@ public class My_Profile_Fragment extends Fragment {
 
 //        drawer = root.findViewById(R.id.drawer_layout);
 //        drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+
 
         progressDialog = new ProgressDialog(root.getContext());
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);

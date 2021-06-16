@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
+import com.example.graczone.EmailVerificationActivity;
 import com.example.graczone.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -124,7 +125,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void LoginActivity(View view) {
-        Intent intent = new Intent(LoginActivity.this, create_account.class);
+        Intent intent = new Intent(LoginActivity.this, EmailVerificationActivity.class);
         startActivity(intent);
         finish();
     }
