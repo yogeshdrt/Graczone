@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="10dp"
+    android:orientation="vertical"
+    tools:context=".BalanceFragment">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:padding="2dp"
+            android:text="@string/Rs"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="35dp" />
+
+        <TextView
+            android:id="@+id/balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:inputType="numberDecimal"
+            android:paddingVertical="2dp"
+            android:text="@string/_100"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="35dp"
+            tools:ignore="TextViewEdits" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/topup_wallet" />
+
+
+    <EditText
+        android:id="@+id/enter_amount"
+        android:layout_width="370dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="#D8D7D7"
+        android:hint="@string/enter_amount"
+        android:inputType="number"
+        android:padding="10dp"
+        android:textCursorDrawable="@drawable/my_cursor_2" />
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp"
+        android:backgroundTint="#089C0E"
+        android:elevation="15dp"
+        android:padding="10dp"
+        android:text="@string/add_cash"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+
+
+    <Button
+        android:id="@+id/withdraw_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:elevation="20dp"
+        android:padding="10dp"
+        android:shadowColor="@color/black"
+        android:shadowDx="10"
+        android:shadowDy="10"
+        android:text="Withdraw                                  →"
+        android:textAllCaps="false" />
+
+
+</LinearLayout>

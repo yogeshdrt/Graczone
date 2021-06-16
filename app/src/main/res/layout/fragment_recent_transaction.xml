@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="10dp"
+    android:orientation="vertical"
+    tools:context=".RecentTransactionFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/corners">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="Amount                                               Date  \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021      \n   +50                  12:45               24/05/2021     "
+            android:textSize="18dp" />
+
+    </ScrollView>
+
+
+</LinearLayout>
