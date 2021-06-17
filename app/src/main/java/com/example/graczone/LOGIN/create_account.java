@@ -5,32 +5,24 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
-import android.util.Patterns;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.graczone.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.SignInMethodQueryResult;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 import java.util.regex.Pattern;
 
-import static android.content.ContentValues.TAG;
-
 public class create_account extends AppCompatActivity {
 
-    EditText username, email, password, confirm_password, phoneEditText;
+    EditText username, password, confirm_password, phoneEditText;
 
     Button btn_register;
     ProgressDialog progressDialog;
@@ -45,68 +37,51 @@ public class create_account extends AppCompatActivity {
 
 
         username = findViewById(R.id.usernameTextView);
-        email = findViewById(R.id.email);
         password = findViewById(R.id.password);
         btn_register = findViewById(R.id.btn_register);
         confirm_password = findViewById(R.id.confirm_password);
         phoneEditText = findViewById(R.id.phoneEditText);
 
         auth = FirebaseAuth.getInstance();
-        btn_register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        btn_register.setOnClickListener(view -> {
 
-                String txt_username = username.getText().toString();
-                String txt_email = email.getText().toString();
-                String txt_password = password.getText().toString();
-                String txt_confirm_password = confirm_password.getText().toString();
+            String txt_username = username.getText().toString();
+            String txt_password = password.getText().toString();
+            String txt_confirm_password = confirm_password.getText().toString();
 
-                if (TextUtils.isEmpty(txt_username) || TextUtils.isEmpty(txt_email) || TextUtils.isEmpty(txt_password) || TextUtils.isEmpty((txt_confirm_password))) {
-                    Toast.makeText(create_account.this, "All fields are required", Toast.LENGTH_SHORT).show();
-                } else if (!Patterns.EMAIL_ADDRESS.matcher(txt_email).matches()) {
-                    email.setError("email address is not valid!");
-
-                } else if (txt_password.length() < 8) {
-                    Toast.makeText(create_account.this, "password must be at least 8 characters", Toast.LENGTH_SHORT).show();
-                } else if (phoneEditText.length() > 10 || phoneEditText.length() < 10) {
-                    phoneEditText.setError("Invalid Phone Number");
-                } else if (txt_password.length() > 20) {
-                    Toast.makeText(create_account.this, "password length not greater than 20", Toast.LENGTH_SHORT).show();
-                } else if (!txt_password.equals(txt_confirm_password)) {
-                    Toast.makeText(create_account.this, "new password and confirm password mismatch!", Toast.LENGTH_SHORT).show();
+            if (TextUtils.isEmpty(txt_username) || TextUtils.isEmpty(txt_password) || TextUtils.isEmpty((txt_confirm_password))) {
+                Toast.makeText(create_account.this, "All fields are required", Toast.LENGTH_SHORT).show();
+            } else if (txt_password.length() < 8) {
+                Toast.makeText(create_account.this, "password must be at least 8 characters", Toast.LENGTH_SHORT).show();
+            } else if (phoneEditText.length() > 10 || phoneEditText.length() < 10) {
+                phoneEditText.setError("Invalid Phone Number");
+            } else if (txt_password.length() > 20) {
+                Toast.makeText(create_account.this, "password length not greater than 20", Toast.LENGTH_SHORT).show();
+            } else if (!txt_password.equals(txt_confirm_password)) {
+                Toast.makeText(create_account.this, "new password and confirm password mismatch!", Toast.LENGTH_SHORT).show();
+            } else {
+                String regex = "^(?=.*[0-9])"
+                        + "(?=.*[a-z])(?=.*[A-Z])"
+                        + "(?=.*[@#$%^&+=])"
+                        + "(?=\\S+$).{8,20}$";
+                //Pattern pattern = Pattern.compile(regex);
+                if (!Pattern.compile(regex).matcher(txt_password).matches()) {
+                    password.setError("Your Password is weak!\n password must contain atleast 1 lower and 1 upper case alphabet\n,1 numeric, 1 special character");
                 } else {
-                    String regex = "^(?=.*[0-9])"
-                            + "(?=.*[a-z])(?=.*[A-Z])"
-                            + "(?=.*[@#$%^&+=])"
-                            + "(?=\\S+$).{8,20}$";
-                    //Pattern pattern = Pattern.compile(regex);
-                    if (!Pattern.compile(regex).matcher(txt_password).matches()) {
-                        password.setError("Your Password is weak!\n password must contain atleast 1 lower and 1 upper case alphabet\n,1 numeric, 1 special character");
-                    } else {
-                        auth.fetchSignInMethodsForEmail(txt_email).addOnCompleteListener(create_account.this, new OnCompleteListener<SignInMethodQueryResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
-                                if (!task.getResult().getSignInMethods().isEmpty()) {
-                                    Toast.makeText(getApplicationContext(), "this email already exist!", Toast.LENGTH_SHORT).show();
-                                } else if (!task.isSuccessful()) {
-                                    try {
-                                        throw task.getException();
-                                    } catch (Exception FirebaseAuthInvalidCredentialsException) {
-                                        Log.d(TAG, "onComplete:wrong_password");
-                                    }
-                                } else {
-                                    register(txt_username, txt_email, txt_password);
-                                }
-                            }
-                        });
+                    Bundle bundle = getIntent().getExtras();
+                    if (bundle != null) {
+                        String emailSend = bundle.getString("email");
+                        Log.d("myTag", "from getIntent");
+                        register(txt_username, emailSend, txt_password);
+//                                        Toast.makeText(getApplicationContext(), "from intent"+emailSend, Toast.LENGTH_SHORT).show();
                     }
+                }
 
 //                    AppCompatActivity activity = (AppCompatActivity) view.getContext();
 //                    Intent intent = new Intent(create_account.this, home.class);
 //                    intent.putExtra("username", username.getText().toString());
 //                    startActivity(intent);
 
-                }
             }
         });
     }
