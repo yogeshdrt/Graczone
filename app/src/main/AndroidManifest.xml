@@ -12,7 +12,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.Graczone">
-        <activity android:name=".EmailVerificationActivity"></activity>
+        <activity android:name=".LOGIN.EmailVerificationActivity"></activity>
         <activity android:name=".LOGIN.Select_Game" />
         <activity
             android:name=".joining_TDM"
