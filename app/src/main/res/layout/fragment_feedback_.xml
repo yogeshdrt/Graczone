@@ -27,9 +27,10 @@
             <EditText
                 android:id="@+id/feedbackEditText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:background="@color/transparent"
                 android:fontFamily="sans-serif-condensed"
+                android:gravity="top"
                 android:hint="Enter your feedback here......"
                 android:padding="10dp"
                 android:textColor="@color/black"
