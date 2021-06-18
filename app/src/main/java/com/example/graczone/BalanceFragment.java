@@ -50,23 +50,20 @@ public class BalanceFragment extends Fragment implements PaymentStatusListener {
         SimpleDateFormat df = new SimpleDateFormat("ddMMyyyyHHmmss", Locale.getDefault());
         String transcId = df.format(c);
 
-        addBalanceBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String amount = amountEditText.getText().toString();
-                String upi = "deepakyobro915@okicici";
-                String name = "Deepak Jain";
-                String desc = "just check";
-                Log.d("myTag", "button click");
+        addBalanceBtn.setOnClickListener(v -> {
+            String amount = amountEditText.getText().toString();
+            String upi = "deepakyobro915@okicici";
+            String name = "Deepak Jain";
+            String desc = "just check";
+            Log.d("myTag", "button click");
 
-                if (TextUtils.isEmpty(amount) || TextUtils.isEmpty(upi) || TextUtils.isEmpty(name) || TextUtils.isEmpty(desc)) {
-                    Log.d("myTag", "empty credential when add money");
-                    Toast.makeText(getContext(), "Please enter all the details..", Toast.LENGTH_SHORT).show();
-                } else {
-                    makePayment(amount, upi, name, desc, transcId);
-                }
-
+            if (TextUtils.isEmpty(amount) || TextUtils.isEmpty(upi) || TextUtils.isEmpty(name) || TextUtils.isEmpty(desc)) {
+                Log.d("myTag", "empty credential when add money");
+                Toast.makeText(getContext(), "Please enter all the details..", Toast.LENGTH_SHORT).show();
+            } else {
+                makePayment(amount, upi, name, desc, transcId);
             }
+
         });
 
 
