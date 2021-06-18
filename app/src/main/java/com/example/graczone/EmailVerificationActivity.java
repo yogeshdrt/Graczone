@@ -71,6 +71,7 @@ public class EmailVerificationActivity extends AppCompatActivity {
                             progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
                             progressDialog.setCanceledOnTouchOutside(false);
                             progressDialog.setCancelable(false);
+                            Log.d("myTag", "show progress dialog in email verification");
                         } catch (Exception e) {
                             Log.d("myTag", "error to show progress dialog in email verification");
                         }
@@ -99,13 +100,13 @@ public class EmailVerificationActivity extends AppCompatActivity {
                             message.setSubject("Graczone");
                             message.setText(emailBody);
                             Transport.send(message);
-                            progressDialog.dismiss();
                             Toast.makeText(getApplicationContext(), "otp send successfully", Toast.LENGTH_SHORT).show();
+                            progressDialog.dismiss();
 
 
                         } catch (MessagingException e) {
                             progressDialog.dismiss();
-                            Toast.makeText(getApplicationContext(), "error to send otp", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "error to send otp", Toast.LENGTH_LONG).show();
                             throw new RuntimeException(e);
                         }
                     }
@@ -119,12 +120,17 @@ public class EmailVerificationActivity extends AppCompatActivity {
 
         otp_btn.setOnClickListener(v -> {
             Log.d("myTag", "" + otp);
+            String otp = otpEditText.getText().toString();
 
-            if (otpEditText.getText().toString().equals(String.valueOf(otp))) {
+            if (otp.isEmpty()) {
+                Toast.makeText(getApplicationContext(), "please enter otp", Toast.LENGTH_SHORT).show();
+            } else if (otp.equals(String.valueOf(otp))) {
                 Intent intent = new Intent(EmailVerificationActivity.this, create_account.class);
                 intent.putExtra("email", emailSend);
                 startActivity(intent);
                 finish();
+            } else {
+                Toast.makeText(getApplicationContext(), "enter valid otp", Toast.LENGTH_SHORT).show();
             }
         });
 

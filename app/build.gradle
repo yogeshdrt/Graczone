@@ -60,9 +60,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics:19.0.0'
     implementation 'com.google.firebase:firebase-auth:21.0.1'
     implementation 'com.google.firebase:firebase-database:20.0.0'
-    implementation 'androidx.recyclerview:recyclerview:1.2.0'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
     implementation 'com.github.bumptech.glide:glide:4.11.0'
-    implementation 'com.google.firebase:firebase-firestore:23.0.0'
+    implementation 'com.google.firebase:firebase-firestore:23.0.1'
     implementation 'com.firebaseui:firebase-ui-firestore:7.1.1'
     implementation 'com.google.firebase:firebase-messaging:22.0.0'
     implementation 'androidx.cardview:cardview:1.0.0'
@@ -77,6 +77,8 @@ dependencies {
 
     implementation 'com.sun.mail:android-mail:1.6.0'
     implementation 'com.sun.mail:android-activation:1.6.0'
+
+    implementation 'com.shreyaspatil:EasyUpiPayment:2.0'
 
 
     testImplementation 'junit:junit:4.13.2'
