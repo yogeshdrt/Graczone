@@ -233,7 +233,7 @@ public class joining extends AppCompatActivity {
 
                                         count = String.valueOf(Integer.parseInt(count) + 1);
 
-                                        firebaseFirestore.collection(s6).document(match).update("count", (count.toString()));
+                                        firebaseFirestore.collection(s6).document(match).update("count", (count));
                                         databaseReference = FirebaseDatabase.getInstance().getReference(s6).child(date + "+" + time);
                                         databaseReference.child("EntryFee").setValue(s1);
                                         databaseReference.child("participants").child(editText.getText().toString()).child("email")

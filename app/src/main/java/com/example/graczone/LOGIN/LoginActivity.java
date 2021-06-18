@@ -1,25 +1,23 @@
 package com.example.graczone.LOGIN;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
 import com.example.graczone.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -35,6 +33,7 @@ public class LoginActivity extends AppCompatActivity {
 
     ConnectivityManager connectivityManager;
     NetworkInfo networkInfo;
+    ProgressDialog progressDialog;
 
     FirebaseUser firebaseUser;
 
@@ -79,46 +78,51 @@ public class LoginActivity extends AppCompatActivity {
 
         btn_login = findViewById(R.id.btn_login);
 
-        btn_login.setOnClickListener(new View.OnClickListener() {
+        btn_login.setOnClickListener(view -> {
 
-            @Override
+            try {
+                progressDialog = new ProgressDialog(LoginActivity.this);
+                progressDialog.show();
+                progressDialog.setContentView(R.layout.progress_dialog);
+                progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+                progressDialog.setCanceledOnTouchOutside(false);
+                progressDialog.setCancelable(false);
+            } catch (Exception e) {
+                Log.d("myTag", "error to show progress bar in login Activity");
+            }
 
-            public void onClick(View view) {
+            connectivityManager = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+            networkInfo = connectivityManager.getActiveNetworkInfo();
 
-                connectivityManager = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
-                networkInfo = connectivityManager.getActiveNetworkInfo();
+            if (networkInfo != null) {
 
-                if (networkInfo != null) {
+                String txt_email = email.getText().toString();
+                String txt_password = password.getText().toString();
 
-                    String txt_email = email.getText().toString();
-                    String txt_password = password.getText().toString();
+                if (TextUtils.isEmpty(txt_email) || TextUtils.isEmpty(txt_password)) {
 
-                    if (TextUtils.isEmpty(txt_email) || TextUtils.isEmpty(txt_password)) {
-
-                        Toast.makeText(LoginActivity.this, "All fields are required", Toast.LENGTH_SHORT).show();
-                    } else {
-
-                        auth.signInWithEmailAndPassword(txt_email, txt_password)
-                                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<AuthResult> task) {
-                                        if (task.isSuccessful()) {
-
-                                            Intent intent = new Intent(LoginActivity.this, Select_Game.class);
-                                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-
-                                            startActivity(intent);
-                                            finish();
-
-                                        } else {
-                                            Toast.makeText(LoginActivity.this, "Authentication failed!", Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
-                                });
-                    }
+                    Toast.makeText(LoginActivity.this, "All fields are required", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getApplicationContext(), "please check your internet connection", Toast.LENGTH_SHORT).show();
+
+                    auth.signInWithEmailAndPassword(txt_email, txt_password)
+                            .addOnCompleteListener(task -> {
+                                if (task.isSuccessful()) {
+
+                                    progressDialog.dismiss();
+                                    Intent intent = new Intent(LoginActivity.this, Select_Game.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                                    startActivity(intent);
+                                    finish();
+
+                                } else {
+                                    progressDialog.dismiss();
+                                    Toast.makeText(LoginActivity.this, "Authentication failed!", Toast.LENGTH_SHORT).show();
+                                }
+                            });
                 }
+            } else {
+                Toast.makeText(getApplicationContext(), "please check your internet connection", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -126,6 +130,6 @@ public class LoginActivity extends AppCompatActivity {
     private void LoginActivity(View view) {
         Intent intent = new Intent(LoginActivity.this, EmailVerificationActivity.class);
         startActivity(intent);
-        finish();
+        //finish();
     }
 }

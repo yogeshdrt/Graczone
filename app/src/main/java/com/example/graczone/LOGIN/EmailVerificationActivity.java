@@ -1,10 +1,8 @@
-package com.example.graczone.LOGIN;
+package com.example.graczone;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.graczone.R;
 
 public class EmailVerificationActivity extends AppCompatActivity {
 
