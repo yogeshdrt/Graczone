@@ -8,9 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.graczone.BalanceFragment;
 import com.example.graczone.R;
-import com.example.graczone.RecentTransactionFragment;
 
 public class wallet extends AppCompatActivity {
 

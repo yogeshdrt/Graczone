@@ -1,4 +1,4 @@
-package com.example.graczone;
+package com.example.graczone.Wallet;
 
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -6,13 +6,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.graczone.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
@@ -31,7 +32,7 @@ import java.util.Objects;
 
 public class BalanceFragment extends Fragment implements PaymentStatusListener {
 
-    Button addBalanceBtn;
+    ImageView addBalanceBtn;
     EditText amountEditText;
     TextView balanceTextView;
     FirebaseUser firebaseUser;
@@ -54,9 +55,9 @@ public class BalanceFragment extends Fragment implements PaymentStatusListener {
 
         addBalanceBtn.setOnClickListener(v -> {
             String amount = amountEditText.getText().toString();
-            String upi = "deepakyobro915@okicici";
-            String name = "Deepak Jain";
-            String desc = "just check";
+            String upi = "8077982617@okbizaxis";
+            String name = "My Android Group";
+            String desc = "Thank you";
             Log.d("myTag", "button click");
 
             if (TextUtils.isEmpty(amount) || TextUtils.isEmpty(upi) || TextUtils.isEmpty(name) || TextUtils.isEmpty(desc)) {
