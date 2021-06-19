@@ -37,23 +37,22 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dceb6660-a320-494f-b42a-773741ded4fc" name="Default Changelist" comment="change in create account">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/paytm_logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/phonepe.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/upi_logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/border_for_pay_images.xml" afterDir="false" />
+    <list default="true" id="dceb6660-a320-494f-b42a-773741ded4fc" name="Default Changelist" comment="payment_images_set">
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v24/profile_person_24.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/BalanceFragment.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/Wallet/BalanceFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/Wallet/BalanceFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/gradientcolour.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/gradientcolour.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ripple_effect.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ripple_effect.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_wallet.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_wallet.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_balance.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_balance.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_my_profile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_my_profile.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[SerialNumber@f6983a1c]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[VirtualDevicePath@C:\Android\.android\avd\Pixel_3a_XL_API_30.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -145,7 +144,7 @@
     <property name="android-custom-viewC:/Users/Deepak jain/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.2.0/3e159bfab49c7e6495fe374e6e5e1e989ee21dcf/recyclerview-1.2.0-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_SELECTED" value="RecyclerView" />
     <property name="ignore.virus.scanning.warn.message" value="true" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable-hdpi" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable-hdpi" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable-v24" />
     <property name="multi-representation-previewC:/Users/Deepak jain/.gradle/caches/modules-2/files-2.1/androidx.appcompat/appcompat/1.2.0/13e8ff89631c2e101eb6bddd12c2fb4bbd74b15d/appcompat-1.2.0-sources.jar!/androidx/appcompat/widget/Toolbar.java_selected" value="Custom views" />
     <property name="multi-representation-previewC:/Users/Deepak jain/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.2.0/3e159bfab49c7e6495fe374e6e5e1e989ee21dcf/recyclerview-1.2.0-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_selected" value="Custom views" />
     <property name="recommended.upgrade.last.time.stamp" value="1621078739946" />
@@ -166,10 +165,10 @@
       <recent name="com.example.graczone" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Graczone\app\src\main\res\drawable-v24" />
       <recent name="E:\Graczone\app\src\main\res\drawable-hdpi" />
       <recent name="E:\Graczone\app\src\main\res\drawable" />
       <recent name="E:\Graczone\app\src\main\res\layout" />
-      <recent name="E:\Graczone\app\src\main\res\drawable-v24" />
       <recent name="E:\Graczone\app\src\main\res\drawable-mdpi" />
     </key>
     <key name="android.template.-1260290854">
@@ -446,7 +445,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622799651077</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="payment_images_set">
+      <created>1624017218487</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1624017218487</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -464,19 +470,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="master" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -524,7 +518,8 @@
     <MESSAGE value="fix my matches view." />
     <MESSAGE value="forgot_password" />
     <MESSAGE value="touch_up3" />
-    <option name="LAST_COMMIT_MESSAGE" value="touch_up3" />
+    <MESSAGE value="payment_images_set" />
+    <option name="LAST_COMMIT_MESSAGE" value="payment_images_set" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -592,26 +587,26 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="561" y="262" key="Github.ShareDialog/0.0.1366.728@0.0.1366.728" timestamp="1617807960078" />
-    <state width="1323" height="242" key="GridCell.Tab.0.bottom" timestamp="1624003418722">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1493" height="207" key="GridCell.Tab.0.bottom" timestamp="1624022061302">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1323" height="242" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1624003418722" />
-    <state width="1493" height="166" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1623761468718" />
-    <state width="1323" height="242" key="GridCell.Tab.0.center" timestamp="1624003418722">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1493" height="207" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1624022061302" />
+    <state width="1493" height="207" key="GridCell.Tab.0.center" timestamp="1624022061301">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1323" height="242" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1624003418722" />
-    <state width="1493" height="166" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1623761468718" />
-    <state width="1323" height="242" key="GridCell.Tab.0.left" timestamp="1624003418722">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1493" height="207" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1624022061301" />
+    <state width="1493" height="207" key="GridCell.Tab.0.left" timestamp="1624022061301">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1323" height="242" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1624003418722" />
-    <state width="1493" height="166" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1623761468718" />
-    <state width="1323" height="242" key="GridCell.Tab.0.right" timestamp="1624003418722">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1493" height="207" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1624022061301" />
+    <state width="1493" height="207" key="GridCell.Tab.0.right" timestamp="1624022061302">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1323" height="242" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1624003418722" />
-    <state width="1493" height="166" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1623761468718" />
+    <state width="1493" height="207" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1624022061302" />
     <state x="349" y="155" key="IDE.errors.dialog" timestamp="1620122575496">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -633,11 +628,11 @@
     </state>
     <state x="246" y="18" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1620645933049" />
     <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1624013543080" />
-    <state x="309" y="110" key="Vcs.Push.Dialog.v2" timestamp="1622799711909">
+    <state x="309" y="110" key="Vcs.Push.Dialog.v2" timestamp="1624017239533">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1622188128276" />
-    <state x="309" y="110" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1622799711909" />
+    <state x="309" y="110" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1624017239533" />
     <state x="584" y="190" key="chooseDestDirectoryDialog" timestamp="1624016422852">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

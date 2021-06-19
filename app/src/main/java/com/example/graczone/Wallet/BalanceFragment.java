@@ -53,9 +53,9 @@ public class BalanceFragment extends Fragment implements PaymentStatusListener {
 
         addBalanceBtn.setOnClickListener(v -> {
             String amount = amountEditText.getText().toString();
-            String upi = "deepakyobro915@okicici";
-            String name = "Deepak Jain";
-            String desc = "just check";
+            String upi = "8077982617@okbizaxis";
+            String name = "My Android Group";
+            String desc = "Thank you";
             Log.d("myTag", "button click");
 
             if (TextUtils.isEmpty(amount) || TextUtils.isEmpty(upi) || TextUtils.isEmpty(name) || TextUtils.isEmpty(desc)) {
