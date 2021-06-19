@@ -26,6 +26,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
+import java.util.Objects;
 
 
 public class BalanceFragment extends Fragment implements PaymentStatusListener {
@@ -34,6 +35,7 @@ public class BalanceFragment extends Fragment implements PaymentStatusListener {
     EditText amountEditText;
     TextView balanceTextView;
     FirebaseUser firebaseUser;
+    Boolean isSuccess;
 
 
     @Override
@@ -136,6 +138,22 @@ public class BalanceFragment extends Fragment implements PaymentStatusListener {
         hashMap.put("ApprovalRefNo", transactionDetails.getApprovalRefNo());
         hashMap.put("TransactionRefNO", transactionDetails.getTransactionRefId());
         hashMap.put("RespondCode", transactionDetails.getResponseCode());
+        if (Objects.equals(hashMap.get("Status"), "Success") && !isSuccess) {
+            int bln = Integer.parseInt(balanceTextView.getText().toString()) + Integer.parseInt(amountEditText.getText().toString());
+
+            balanceTextView.setText(bln);
+            FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid()).child("Balance").setValue(bln)
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            Log.d("myTag", "add balance in database");
+                        } else {
+                            Log.d("myTag", "failed to add balance in database");
+                        }
+                    });
+            Toast.makeText(getActivity(), "Transaction successfully completed..", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getActivity(), "Transaction failed..", Toast.LENGTH_SHORT).show();
+        }
         // on below line we are getting details about transaction when completed.
 //        String transcDetails = transactionDetails.getStatus().toString() + "\n" + "Transaction ID : " + transactionDetails.getTransactionId();
 //        transactionDetailsTV.setVisibility(View.VISIBLE);
@@ -144,9 +162,11 @@ public class BalanceFragment extends Fragment implements PaymentStatusListener {
         FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid()).child("Transactions").push().setValue(hashMap)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        Toast.makeText(getContext(), "successfully add Tran. data", Toast.LENGTH_SHORT).show();
+                        Log.d("myTag", "add transaction details in database");
+//                        Toast.makeText(getContext(), "successfully add Tran. data", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(getContext(), "Transact. data not add", Toast.LENGTH_SHORT).show();
+                        Log.d("myTag", "failed to add transaction details in database");
+//                        Toast.makeText(getContext(), "Transact. data not add", Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -160,6 +180,7 @@ public class BalanceFragment extends Fragment implements PaymentStatusListener {
         int bln = Integer.parseInt(balanceTextView.getText().toString()) + Integer.parseInt(amountEditText.getText().toString());
 
         balanceTextView.setText(bln);
+        isSuccess = true;
 
         Toast.makeText(getActivity(), "Transaction successfully completed..", Toast.LENGTH_SHORT).show();
     }

@@ -1,4 +1,4 @@
-package com.example.graczone;
+package com.example.graczone.LOGIN;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.graczone.LOGIN.create_account;
+import com.example.graczone.R;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Objects;

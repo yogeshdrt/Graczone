@@ -7,7 +7,7 @@
     android:background="@drawable/newbackground"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".EmailVerificationActivity">
+    tools:context=".LOGIN.EmailVerificationActivity">
 
 
     <EditText
