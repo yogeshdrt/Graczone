@@ -36,7 +36,6 @@ public class BalanceFragment extends Fragment implements PaymentStatusListener {
     EditText amountEditText;
     TextView balanceTextView;
     FirebaseUser firebaseUser;
-    Boolean isSuccess;
 
 
     @Override
@@ -95,6 +94,7 @@ public class BalanceFragment extends Fragment implements PaymentStatusListener {
             Log.d("myTag", "after des");
             builder.setAmount(amount + ".00");
             Log.d("myTag", "after ammount");
+            builder.setPayeeMerchantCode("BCR2DN6TR6LLBDJC");
 
             final EasyUpiPayment easyUpiPayment = builder.build();
 
@@ -139,7 +139,7 @@ public class BalanceFragment extends Fragment implements PaymentStatusListener {
         hashMap.put("ApprovalRefNo", transactionDetails.getApprovalRefNo());
         hashMap.put("TransactionRefNO", transactionDetails.getTransactionRefId());
         hashMap.put("RespondCode", transactionDetails.getResponseCode());
-        if (Objects.equals(hashMap.get("Status"), "Success") && !isSuccess) {
+        if (Objects.equals(hashMap.get("Status"), "Success")) {
             int bln = Integer.parseInt(balanceTextView.getText().toString()) + Integer.parseInt(amountEditText.getText().toString());
 
             balanceTextView.setText(bln);
@@ -164,10 +164,10 @@ public class BalanceFragment extends Fragment implements PaymentStatusListener {
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         Log.d("myTag", "add transaction details in database");
-//                        Toast.makeText(getContext(), "successfully add Tran. data", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "successfully add Tran. data", Toast.LENGTH_SHORT).show();
                     } else {
                         Log.d("myTag", "failed to add transaction details in database");
-//                        Toast.makeText(getContext(), "Transact. data not add", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Transact. data not add", Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -178,10 +178,10 @@ public class BalanceFragment extends Fragment implements PaymentStatusListener {
         // this method is called when transaction is successful and we are displaying a toast message.
         Log.d("myTag", "runOnTransactionSuccess");
 
-        int bln = Integer.parseInt(balanceTextView.getText().toString()) + Integer.parseInt(amountEditText.getText().toString());
-
-        balanceTextView.setText(bln);
-        isSuccess = true;
+//        int bln = Integer.parseInt(balanceTextView.getText().toString()) + Integer.parseInt(amountEditText.getText().toString());
+//
+//        balanceTextView.setText(bln);
+//        isSuccess = true;
 
         Toast.makeText(getActivity(), "Transaction successfully completed..", Toast.LENGTH_SHORT).show();
     }
@@ -191,6 +191,7 @@ public class BalanceFragment extends Fragment implements PaymentStatusListener {
         // this method is called when transaction is done
         // but it may be successful or failure.
         Log.e("myTag", "TRANSACTION SUBMIT");
+        Toast.makeText(getContext(), "Pending | Submitted", Toast.LENGTH_SHORT).show();
     }
 
     @Override
