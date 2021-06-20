@@ -56,7 +56,7 @@ public class BalanceFragment extends Fragment implements PaymentStatusListener {
         addBalanceBtn.setOnClickListener(v -> {
             String amount = amountEditText.getText().toString();
             String upi = "8077982617@okbizaxis";
-            String name = "My Android Group";
+            String name = "Graczone";
             String desc = "Thank you";
             Log.d("myTag", "button click");
 
@@ -103,7 +103,7 @@ public class BalanceFragment extends Fragment implements PaymentStatusListener {
 //                    .with(getActivity())
 //                    // on below line we are adding upi id.
 //                    .setPayeeVpa(upi)
-//                    // on below line we are setting name to which we are making oayment.
+//                    // on below line we are setting name to which we are making payment.
 //                    .setPayeeName(name)
 //                    // on below line we are passing transaction id.
 //                    .setTransactionId(transcationId)
