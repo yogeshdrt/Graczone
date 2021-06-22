@@ -1,7 +1,9 @@
 package com.example.graczone.ui.MyMatches;
 
 import android.content.Context;
+import android.content.IntentFilter;
 import android.graphics.Canvas;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,6 +20,7 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.graczone.LOGIN.NetworkChangeListner;
 import com.example.graczone.R;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
@@ -43,6 +46,7 @@ public class MyMatches_Fragment extends Fragment {
     MyMatchesAdapter myMatchesAdapter;
     FirebaseUser firebaseUser;
     DatabaseReference databaseReference;
+    NetworkChangeListner networkChangeListner = new NetworkChangeListner();
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -159,5 +163,22 @@ public class MyMatches_Fragment extends Fragment {
             InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
             inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
+    }
+
+    @Override
+    public void onStart() {
+        View view = getActivity().getCurrentFocus();
+        AppCompatActivity activity = (AppCompatActivity) view.getContext();
+        IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        activity.registerReceiver(networkChangeListner, intentFilter);
+        super.onStart();
+    }
+
+    @Override
+    public void onStop() {
+        View view = getActivity().getCurrentFocus();
+        AppCompatActivity activity = (AppCompatActivity) view.getContext();
+        activity.unregisterReceiver(networkChangeListner);
+        super.onStop();
     }
 }

@@ -4,6 +4,8 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,6 +27,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.graczone.LOGIN.LoginActivity;
+import com.example.graczone.LOGIN.NetworkChangeListner;
 import com.example.graczone.Wallet.wallet;
 import com.example.graczone.ui.MyMatches.MyMatchesModel;
 import com.example.graczone.ui.MyMatches.MyMatches_Fragment;
@@ -66,6 +69,7 @@ public class home extends AppCompatActivity {
 
 
     private AppBarConfiguration mAppBarConfiguration;
+    NetworkChangeListner networkChangeListner = new NetworkChangeListner();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -443,17 +447,18 @@ public class home extends AppCompatActivity {
         hview = navigationView.getHeaderView(0);
         get_username = hview.findViewById(R.id.get_username);
         get_email = hview.findViewById(R.id.get_email);
-        FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid()).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                username = snapshot.child("username").getValue().toString();
-                get_username.setText(username);
-                progressDialog.dismiss();
-            }
+        FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid())
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        username = snapshot.child("username").getValue().toString();
+                        get_username.setText(username);
+                        progressDialog.dismiss();
+                    }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getApplicationContext(), "failed to fetch data", Toast.LENGTH_SHORT).show();
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(getApplicationContext(), "failed to fetch data", Toast.LENGTH_SHORT).show();
                 progressDialog.dismiss();
             }
 
@@ -595,4 +600,18 @@ public class home extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onStart() {
+        IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListner, intentFilter);
+        Log.d("myTag", "call on start");
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListner);
+        Log.d("myTag", "call on stop");
+        super.onStop();
+    }
 }

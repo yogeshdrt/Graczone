@@ -2,6 +2,8 @@ package com.example.graczone.LOGIN;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
@@ -36,6 +38,7 @@ public class EmailVerificationActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
     String emailSend;
     FirebaseAuth auth;
+    NetworkChangeListner networkChangeListner = new NetworkChangeListner();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,6 +137,21 @@ public class EmailVerificationActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onStart() {
+        IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListner, intentFilter);
+        Log.d("myTag", "call on start");
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListner);
+        Log.d("myTag", "call on stop");
+        super.onStop();
     }
 
 }
