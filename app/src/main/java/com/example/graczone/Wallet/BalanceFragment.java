@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.shreyaspatil.EasyUpiPayment.EasyUpiPayment;
 import com.shreyaspatil.EasyUpiPayment.listener.PaymentStatusListener;
 import com.shreyaspatil.EasyUpiPayment.model.TransactionDetails;
+import com.tobiasschuerg.prefixsuffix.PrefixSuffixEditText;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -33,7 +33,7 @@ import java.util.Objects;
 public class BalanceFragment extends Fragment implements PaymentStatusListener {
 
     ImageView addBalanceBtn;
-    EditText amountEditText;
+    PrefixSuffixEditText amountEditText;
     TextView balanceTextView;
     FirebaseUser firebaseUser;
 
@@ -45,6 +45,7 @@ public class BalanceFragment extends Fragment implements PaymentStatusListener {
         View view = inflater.inflate(R.layout.fragment_balance, container, false);
 
         amountEditText = view.findViewById(R.id.enter_amount);
+
         addBalanceBtn = view.findViewById(R.id.addBalanceBtn);
         balanceTextView = view.findViewById(R.id.balance);
 
