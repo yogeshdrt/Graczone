@@ -1,5 +1,7 @@
 package com.example.graczone.Wallet;
 
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -11,8 +13,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.example.graczone.LOGIN.NetworkChangeListner;
 import com.example.graczone.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -36,6 +40,7 @@ public class BalanceFragment extends Fragment implements PaymentStatusListener {
     EditText amountEditText;
     TextView balanceTextView;
     FirebaseUser firebaseUser;
+    NetworkChangeListner networkChangeListner = new NetworkChangeListner();
 
 
     @Override
@@ -210,5 +215,22 @@ public class BalanceFragment extends Fragment implements PaymentStatusListener {
     public void onAppNotFound() {
         // this method is called when the users device is not having any app installed for making payment.
         Toast.makeText(getContext(), "No app found for making transaction..", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onStart() {
+        View view = getActivity().getCurrentFocus();
+        AppCompatActivity activity = (AppCompatActivity) view.getContext();
+        IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        activity.registerReceiver(networkChangeListner, intentFilter);
+        super.onStart();
+    }
+
+    @Override
+    public void onStop() {
+        View view = getActivity().getCurrentFocus();
+        AppCompatActivity activity = (AppCompatActivity) view.getContext();
+        activity.unregisterReceiver(networkChangeListner);
+        super.onStop();
     }
 }

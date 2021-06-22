@@ -3,6 +3,7 @@ package com.example.graczone.LOGIN;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -34,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
     ConnectivityManager connectivityManager;
     NetworkInfo networkInfo;
     ProgressDialog progressDialog;
+    NetworkChangeListner networkChangeListner = new NetworkChangeListner();
 
     FirebaseUser firebaseUser;
 
@@ -125,6 +127,21 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "please check your internet connection", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListner, intentFilter);
+        Log.d("myTag", "call on start");
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListner);
+        Log.d("myTag", "call on stop");
+        super.onStop();
     }
 
     private void LoginActivity(View view) {

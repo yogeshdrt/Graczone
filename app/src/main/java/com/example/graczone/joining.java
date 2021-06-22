@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
@@ -11,6 +12,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,6 +29,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
+import com.example.graczone.LOGIN.NetworkChangeListner;
 import com.example.graczone.Wallet.wallet;
 import com.example.graczone.ui.MyMatches.MyMatchesModel;
 import com.google.common.reflect.TypeToken;
@@ -47,6 +50,14 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.Properties;
+
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 public class joining extends AppCompatActivity {
 
@@ -55,10 +66,11 @@ public class joining extends AppCompatActivity {
     ProgressDialog progressDialog;
     ConnectivityManager connectivityManager;
     NetworkInfo networkInfo;
+    NetworkChangeListner networkChangeListner = new NetworkChangeListner();
 
 
     TextView entry, rs_per_kill, rank1, rank2, rank3, teamup, map;
-    String s6, time, date, s1, s2, s3, s4, s5, s7, match, count;
+    String s6, time, date, s1, s2, s3, s4, s5, s7, match, count, username;
     DatabaseReference databaseReference;
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
@@ -193,6 +205,21 @@ public class joining extends AppCompatActivity {
             Log.d("myTag", "error");
         }
 
+        FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid())
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        username = Objects.requireNonNull(snapshot.child("username").getValue()).toString();
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(getApplicationContext(), "failed to fetch data", Toast.LENGTH_SHORT).show();
+                    }
+
+                });
+
 
         join.setOnClickListener(v -> dialog.show());
 
@@ -208,70 +235,133 @@ public class joining extends AppCompatActivity {
 
 
         btnn.setOnClickListener(v -> {
-            connectivityManager = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
-            networkInfo = connectivityManager.getActiveNetworkInfo();
-            if (networkInfo != null) {
-                if (Integer.parseInt(count) <= 100) {
-                    if (editText.getText().toString().isEmpty()) {
-                        Toast.makeText(getApplicationContext(), "enter valid pubg id", Toast.LENGTH_SHORT).show();
-                    } else {
-                        String subscribe = (date + "-" + s6 + "-" + match);
-                        Log.d("myTag", subscribe);
-                        FirebaseMessaging.getInstance().subscribeToTopic(subscribe)
-                                .addOnCompleteListener(task -> {
-                                    if (task.isSuccessful()) {
-                                        try {
-                                            progressDialog.show();
-                                        } catch (Exception e) {
-                                            Log.d("myTag", "error in dialog in enter room");
-                                        }
-                                        String email = firebaseUser.getEmail();
-                                        if (email == null) {
-                                            email = "null";
-                                            Log.d("myTag", "email null");
-                                        }
+                    connectivityManager = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+                    networkInfo = connectivityManager.getActiveNetworkInfo();
+                    if (networkInfo != null) {
+                        if (Integer.parseInt(count) <= 100) {
+                            if (editText.getText().toString().isEmpty()) {
+                                Toast.makeText(getApplicationContext(), "enter valid pubg id", Toast.LENGTH_SHORT).show();
+                            } else {
+                                String subscribe = (date + "-" + s6 + "-" + match);
+                                Log.d("myTag", subscribe);
+                                FirebaseMessaging.getInstance().subscribeToTopic(subscribe)
+                                        .addOnCompleteListener(task -> {
+                                            if (task.isSuccessful()) {
+                                                try {
+                                                    progressDialog.show();
+                                                } catch (Exception e) {
+                                                    Log.d("myTag", "error in dialog in enter room");
+                                                }
+                                                String email = firebaseUser.getEmail();
+                                                if (email == null) {
+                                                    email = "null";
+                                                    Log.d("myTag", "email null");
+                                                }
 
-                                        count = String.valueOf(Integer.parseInt(count) + 1);
+                                                count = String.valueOf(Integer.parseInt(count) + 1);
 
-                                        firebaseFirestore.collection(s6).document(match).update("count", (count));
-                                        databaseReference = FirebaseDatabase.getInstance().getReference(s6).child(date + "+" + time);
-                                        databaseReference.child("EntryFee").setValue(s1);
-                                        databaseReference.child("participants").child(editText.getText().toString()).child("email")
-                                                .setValue(email).addOnCompleteListener(task1 -> {
-                                            if (task1.isSuccessful()) {
-                                                Log.d("myTag", "succ. add participant");
+                                                firebaseFirestore.collection(s6).document(match).update("count", (count));
+                                                databaseReference = FirebaseDatabase.getInstance().getReference(s6).child(date + "+" + time);
+                                                databaseReference.child("EntryFee").setValue(s1);
+                                                databaseReference.child("participants").child(editText.getText().toString()).child("email")
+                                                        .setValue(email).addOnCompleteListener(task1 -> {
+                                                    if (task1.isSuccessful()) {
+                                                        Log.d("myTag", "succ. add participant");
+                                                    } else {
+                                                        Log.d("myTag", "error in participant");
+                                                    }
+                                                    progressDialog.dismiss();
+                                                });
+                                                Log.d("myTag", "add id in joining");
+                                                saveMyMatches(s1, s2, s7, time, date, s3, s4, s5);
+//                                        FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid())
+//                                                .addValueEventListener(new ValueEventListener() {
+//                                                    @Override
+//                                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                                                        username = Objects.requireNonNull(snapshot.child("username").getValue()).toString();
+//
+//                                                    }
+//
+//                                                    @Override
+//                                                    public void onCancelled(@NonNull DatabaseError error) {
+//                                                        Toast.makeText(getApplicationContext(), "failed to fetch data", Toast.LENGTH_SHORT).show();
+//                                                    }
+//
+//                                                });
+                                                String emailTo = "yogeshdrt@gmail.com";
+                                                String password = "Yogi@123";
+                                                String emailBody = "Dear " + username + ",\n" +
+                                                        "\n" +
+                                                        "you have successfully joined " + s6 + " match at " + s7;
+                                                Properties properties = new Properties();
+                                                properties.put("mail.smtp.auth", "true");
+                                                properties.put("mail.smtp.starttls.enable", "true");
+                                                properties.put("mail.smtp.host", "smtp.gmail.com");
+                                                properties.put("mail.smtp.port", "587");
+                                                Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
+                                                    @Override
+                                                    protected PasswordAuthentication getPasswordAuthentication() {
+                                                        return new PasswordAuthentication(emailTo, password);
+                                                    }
+                                                });
+                                                try {
+                                                    MimeMessage message = new MimeMessage(session);
+                                                    message.setFrom(new InternetAddress(emailTo));
+                                                    message.setRecipients(MimeMessage.RecipientType.TO, InternetAddress.parse(email));
+                                                    message.setSubject("Graczone");
+                                                    message.setText(emailBody);
+                                                    Transport.send(message);
+//                                            progressDialog.dismiss();
+
+
+                                                } catch (MessagingException e) {
+//                                            progressDialog.dismiss();
+                                                    Toast.makeText(getApplicationContext(), "error to send mail", Toast.LENGTH_LONG).show();
+                                                    throw new RuntimeException(e);
+                                                }
+                                                Toast.makeText(getApplicationContext(), "successfully joined", Toast.LENGTH_SHORT).show();
+                                                join.setEnabled(false);
+                                                join.setText("JOINED");
+                                                join.setBackgroundColor(getResources().getColor(R.color.black));
+                                                dialog.dismiss();
+                                                SharedPreferences sharedPreferences = getSharedPreferences("haveJoinEditor", MODE_PRIVATE);
+                                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                                editor.putString(date + "-" + s6 + "-" + match + firebaseUser.getUid(), "true");
+                                                editor.apply();
                                             } else {
-                                                Log.d("myTag", "error in participant");
+                                                Log.d("myTag", "exception" + task.getException());
+                                                Toast.makeText(getApplicationContext(), "something went wrong", Toast.LENGTH_SHORT).show();
                                             }
-                                            progressDialog.dismiss();
                                         });
-                                        Log.d("myTag", "add id in joining");
-                                        saveMyMatches(s1, s2, s7, time, date, s3, s4, s5);
-                                        Toast.makeText(getApplicationContext(), "successfully joined", Toast.LENGTH_SHORT).show();
-                                        join.setEnabled(false);
-                                        join.setText("JOINED");
-                                        join.setBackgroundColor(getResources().getColor(R.color.black));
-                                        dialog.dismiss();
-                                        SharedPreferences sharedPreferences = getSharedPreferences("haveJoinEditor", MODE_PRIVATE);
-                                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                                        editor.putString(date + "-" + s6 + "-" + match + firebaseUser.getUid(), "true");
-                                        editor.apply();
-                                    } else {
-                                        Log.d("myTag", "exception" + task.getException());
-                                        Toast.makeText(getApplicationContext(), "something went wrong", Toast.LENGTH_SHORT).show();
-                                    }
-                                });
+                            }
+                        } else {
+                            Toast.makeText(getApplicationContext(), "room is full, please try another room", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(getApplicationContext(), "check your network connection", Toast.LENGTH_SHORT).show();
                     }
-                } else {
-                    Toast.makeText(getApplicationContext(), "room is full, please try another room", Toast.LENGTH_SHORT).show();
-                }
-            } else {
-                Toast.makeText(getApplicationContext(), "check your network connection", Toast.LENGTH_SHORT).show();
-            }
                 }
         );
 
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
 
+
+    }
+
+    @Override
+    protected void onStart() {
+        IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListner, intentFilter);
+        Log.d("myTag", "call on start");
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListner);
+        Log.d("myTag", "call on stop");
+        super.onStop();
     }
 
     void saveMyMatches(String s1, String s2, String s7, String time, String date, String s3, String s4, String s5) {
