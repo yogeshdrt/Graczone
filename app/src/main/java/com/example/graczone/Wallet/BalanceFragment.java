@@ -45,6 +45,7 @@ public class BalanceFragment extends Fragment implements PaymentStatusListener {
     LinearLayout linearLayout;
 
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -18,7 +17,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.graczone.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,7 +29,6 @@ public class LoginActivity extends AppCompatActivity {
     Button btn_login;
 
     TextView forgot_password;
-    ConstraintLayout linearLayout;
 
     FirebaseAuth auth;
 
@@ -132,14 +129,6 @@ public class LoginActivity extends AppCompatActivity {
         });
 
 
-        linearLayout = findViewById(R.id.login_linear_layout);
-        linearLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-                inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
-            }
-        });
     }
 
     @Override
