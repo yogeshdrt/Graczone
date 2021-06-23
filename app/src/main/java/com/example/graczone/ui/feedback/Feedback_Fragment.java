@@ -1,7 +1,5 @@
 package com.example.graczone.ui.feedback;
 
-import android.content.IntentFilter;
-import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,10 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import com.example.graczone.LOGIN.NetworkChangeListner;
 import com.example.graczone.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -28,7 +24,7 @@ public class Feedback_Fragment extends Fragment {
     FirebaseUser firebaseUser;
     EditText feedbackEditText;
     Button feedbackButton;
-    NetworkChangeListner networkChangeListner = new NetworkChangeListner();
+//    NetworkChangeListner networkChangeListner = new NetworkChangeListner();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -74,21 +70,21 @@ public class Feedback_Fragment extends Fragment {
                 });
     }
 
-    @Override
-    public void onStart() {
-        View view = getActivity().getCurrentFocus();
-        AppCompatActivity activity = (AppCompatActivity) view.getContext();
-        IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
-        activity.registerReceiver(networkChangeListner, intentFilter);
-        super.onStart();
-    }
-
-    @Override
-    public void onStop() {
-        View view = getActivity().getCurrentFocus();
-        AppCompatActivity activity = (AppCompatActivity) view.getContext();
-        activity.unregisterReceiver(networkChangeListner);
-        super.onStop();
-    }
+//    @Override
+//    public void onStart() {
+//        View view = getActivity().getCurrentFocus();
+//        AppCompatActivity activity = (AppCompatActivity) view.getContext();
+//        IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+//        activity.registerReceiver(networkChangeListner, intentFilter);
+//        super.onStart();
+//    }
+//
+//    @Override
+//    public void onStop() {
+//        View view = getActivity().getCurrentFocus();
+//        AppCompatActivity activity = (AppCompatActivity) view.getContext();
+//        activity.unregisterReceiver(networkChangeListner);
+//        super.onStop();
+//    }
 
 }

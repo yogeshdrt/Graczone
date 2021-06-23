@@ -38,7 +38,7 @@ public class EmailVerificationActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
     String emailSend;
     FirebaseAuth auth;
-    NetworkChangeListner networkChangeListner = new NetworkChangeListner();
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -142,14 +142,14 @@ public class EmailVerificationActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
-        registerReceiver(networkChangeListner, intentFilter);
+        registerReceiver(networkChangeListener, intentFilter);
         Log.d("myTag", "call on start");
         super.onStart();
     }
 
     @Override
     protected void onStop() {
-        unregisterReceiver(networkChangeListner);
+        unregisterReceiver(networkChangeListener);
         Log.d("myTag", "call on stop");
         super.onStop();
     }

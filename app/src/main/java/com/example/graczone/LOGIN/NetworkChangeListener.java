@@ -13,7 +13,7 @@ import androidx.appcompat.widget.AppCompatButton;
 
 import com.example.graczone.R;
 
-public class NetworkChangeListner extends BroadcastReceiver {
+public class NetworkChangeListener extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {

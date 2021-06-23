@@ -27,7 +27,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.graczone.LOGIN.LoginActivity;
-import com.example.graczone.LOGIN.NetworkChangeListner;
+import com.example.graczone.LOGIN.NetworkChangeListener;
 import com.example.graczone.Wallet.wallet;
 import com.example.graczone.ui.MyMatches.MyMatchesModel;
 import com.example.graczone.ui.MyMatches.MyMatches_Fragment;
@@ -69,7 +69,7 @@ public class home extends AppCompatActivity {
 
 
     private AppBarConfiguration mAppBarConfiguration;
-    NetworkChangeListner networkChangeListner = new NetworkChangeListner();
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -603,14 +603,14 @@ public class home extends AppCompatActivity {
     @Override
     protected void onStart() {
         IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
-        registerReceiver(networkChangeListner, intentFilter);
+        registerReceiver(networkChangeListener, intentFilter);
         Log.d("myTag", "call on start");
         super.onStart();
     }
 
     @Override
     protected void onStop() {
-        unregisterReceiver(networkChangeListner);
+        unregisterReceiver(networkChangeListener);
         Log.d("myTag", "call on stop");
         super.onStop();
     }
