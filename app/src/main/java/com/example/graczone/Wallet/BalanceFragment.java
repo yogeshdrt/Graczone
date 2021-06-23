@@ -1,22 +1,23 @@
 package com.example.graczone.Wallet;
 
-import android.content.IntentFilter;
-import android.net.ConnectivityManager;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import com.example.graczone.LOGIN.NetworkChangeListner;
 import com.example.graczone.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -36,11 +37,12 @@ import java.util.Objects;
 
 public class BalanceFragment extends Fragment implements PaymentStatusListener {
 
-    ImageView addBalanceBtn;
+    ImageButton addBalanceBtn;
     EditText amountEditText;
     TextView balanceTextView;
     FirebaseUser firebaseUser;
-    NetworkChangeListner networkChangeListner = new NetworkChangeListner();
+    Button withdraw, rs100, rs200, rs500;
+    LinearLayout linearLayout;
 
 
     @Override
@@ -48,6 +50,39 @@ public class BalanceFragment extends Fragment implements PaymentStatusListener {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_balance, container, false);
+
+        withdraw = view.findViewById(R.id.withdraw_btn);
+        withdraw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), withdraw.class);
+                startActivity(intent);
+            }
+        });
+
+        linearLayout = view.findViewById(R.id.wallet_linear_layout);
+        linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                InputMethodManager inputMethodManager = (InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            }
+        });
+
+        //wallet amount auto-fill code ------------------------------------
+
+
+        rs100 = view.findViewById(R.id.rs100_btn);
+        rs200 = view.findViewById(R.id.rs200_btn);
+        rs500 = view.findViewById(R.id.rs500_btn);
+
+        rs100.setOnClickListener(v -> amountEditText.setText("100"));
+
+        rs200.setOnClickListener(v -> amountEditText.setText("200"));
+
+        rs500.setOnClickListener(v -> amountEditText.setText("500"));
+
+        //-------------------------------------
 
         amountEditText = view.findViewById(R.id.enter_amount);
         addBalanceBtn = view.findViewById(R.id.addBalanceBtn);
@@ -217,20 +252,5 @@ public class BalanceFragment extends Fragment implements PaymentStatusListener {
         Toast.makeText(getContext(), "No app found for making transaction..", Toast.LENGTH_SHORT).show();
     }
 
-    @Override
-    public void onStart() {
-        View view = getActivity().getCurrentFocus();
-        AppCompatActivity activity = (AppCompatActivity) view.getContext();
-        IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
-        activity.registerReceiver(networkChangeListner, intentFilter);
-        super.onStart();
-    }
 
-    @Override
-    public void onStop() {
-        View view = getActivity().getCurrentFocus();
-        AppCompatActivity activity = (AppCompatActivity) view.getContext();
-        activity.unregisterReceiver(networkChangeListner);
-        super.onStop();
-    }
 }

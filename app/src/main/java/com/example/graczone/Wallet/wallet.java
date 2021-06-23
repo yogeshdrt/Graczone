@@ -1,6 +1,9 @@
 package com.example.graczone.Wallet;
 
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.WindowManager;
 import android.widget.TextView;
 
@@ -8,12 +11,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.graczone.LOGIN.NetworkChangeListener;
 import com.example.graczone.R;
 
 public class wallet extends AppCompatActivity {
 
     TextView recent, balance;
 
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,29 +74,36 @@ public class wallet extends AppCompatActivity {
         });
 
 
-//        btn2 = findViewById(R.id.withdraw_btn);
-//        btn2.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(wallet.this, withdraw.class);
-//                startActivity(intent);
-//            }
-//        });
 
-        //  Log.d("myTag", "work in wallet");
 
     }
 
 
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
         super.onBackPressed();
         this.finish();
-}
+    }
+
     @Override
-    public boolean onSupportNavigateUp(){
+    public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
-}
+    }
+
+    @Override
+    protected void onStart() {
+        IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener, intentFilter);
+        Log.d("myTag", "call on start");
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListener);
+        Log.d("myTag", "call on stop");
+        super.onStop();
+    }
 
 }

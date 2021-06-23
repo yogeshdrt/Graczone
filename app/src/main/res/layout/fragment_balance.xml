@@ -6,6 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginTop="10dp"
     android:orientation="vertical"
+    android:id="@+id/wallet_linear_layout"
     tools:context=".Wallet.BalanceFragment">
 
     <LinearLayout
@@ -43,6 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10dp"
+        android:textColor="@color/black"
         android:text="@string/topup_wallet" />
 
 
@@ -52,7 +54,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="15dp"
         android:layout_marginVertical="10dp"
-        android:background="@drawable/border_for_pay_images"
+        android:background="@drawable/border_for_wallet_money"
         android:layout_gravity="center_horizontal"
         android:textColor="@color/black"
         android:hint="@string/enter_amount"
@@ -74,34 +76,44 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="10dp">
+        android:paddingStart="15dp">
 
-        <TextView
+        <Button
+            android:id="@+id/rs100_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/border_for_pay_images"
-            android:paddingHorizontal="15dp"
             android:text="₹100"
-            android:textSize="18dp" />
+            android:stateListAnimator="@null"
+            android:textColor="@color/green"
+            android:textSize="14dp"
+            app:strokeColor="@color/green"
+            app:strokeWidth="1dp" />
 
 
-        <TextView
+        <Button
+            android:id="@+id/rs200_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="15dp"
-            android:background="@drawable/border_for_pay_images"
-            android:paddingHorizontal="15dp"
-            android:text="₹100"
-            android:textSize="18dp" />
 
+            android:stateListAnimator="@null"
+            android:text="₹200"
+            android:textColor="@color/green"
+            android:textSize="14dp"
+            app:strokeColor="@color/green"
+            app:strokeWidth="1dp" />
 
-        <TextView
+        <Button
+            android:id="@+id/rs500_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/border_for_pay_images"
-            android:paddingHorizontal="15dp"
-            android:text="₹100"
-            android:textSize="18dp" />
+
+            android:stateListAnimator="@null"
+            android:text="₹500"
+            android:textColor="@color/green"
+            android:textSize="14dp"
+            app:strokeColor="@color/green"
+            app:strokeWidth="1dp" />
 
 
     </LinearLayout>
@@ -111,52 +123,41 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:padding="10dp"
+        android:textColor="@color/black"
         android:text="Add cash using" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:padding="10dp"
         android:orientation="horizontal">
 
-        <ImageView
+        <ImageButton
             android:id="@+id/addBalanceBtn"
             android:layout_width="100dp"
             android:layout_height="50dp"
-            android:layout_margin="15dp"
-            android:background="@drawable/border_for_pay_images"
-            android:elevation="10dp"
-            app:elevation="10dp"
             android:foreground="@drawable/ripple_effect"
+            android:background="@drawable/border_for_pay_images"
             android:src="@drawable/upi_logo"
-            android:padding="10dp"
-            android:textColor="@color/white"
-            android:textStyle="bold" />
+            android:scaleType="fitCenter" />
 
-        <ImageView
+        <ImageButton
             android:layout_width="100dp"
             android:layout_height="50dp"
-            android:layout_margin="15dp"
-            android:background="@drawable/border_for_pay_images"
-            android:elevation="15dp"
+            android:layout_marginHorizontal="30dp"
             android:foreground="@drawable/ripple_effect"
-            android:scaleType="centerCrop"
+            android:background="@drawable/border_for_pay_images"
             android:src="@drawable/phonepe"
-            android:textColor="@color/white"
-            android:textStyle="bold" />
+            android:scaleType="centerCrop" />
 
-        <ImageView
-
+        <ImageButton
             android:layout_width="100dp"
             android:layout_height="50dp"
-            android:layout_margin="15dp"
-            android:background="@drawable/border_for_pay_images"
-            android:elevation="15dp"
             android:foreground="@drawable/ripple_effect"
-            android:scaleType="centerCrop"
+            android:background="@drawable/border_for_pay_images"
             android:src="@drawable/paytm_logo"
-            android:textColor="@color/white"
-            android:textStyle="bold" />
+            android:scaleType="centerCrop" />
 
 
     </LinearLayout>
@@ -166,14 +167,14 @@
         android:id="@+id/withdraw_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:elevation="20dp"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="#777777"
+        android:fontFamily="sans-serif-condensed"
         android:padding="10dp"
-        android:shadowColor="@color/black"
-        android:shadowDx="10"
-        android:shadowDy="10"
-        android:text="Withdraw                                  →"
-        android:textAllCaps="false" />
+        android:text="Withdraw money                             →"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:cornerRadius="3dp" />
 
 
 </LinearLayout>
