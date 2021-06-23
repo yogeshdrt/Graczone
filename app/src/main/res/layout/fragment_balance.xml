@@ -50,7 +50,8 @@
         android:id="@+id/enter_amount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginVertical="10dp"
         android:background="@drawable/border_for_pay_images"
         android:layout_gravity="center_horizontal"
         android:textColor="@color/black"
@@ -89,6 +90,18 @@
             android:textStyle="bold" />
 
         <ImageView
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_margin="15dp"
+            android:background="@drawable/border_for_pay_images"
+            android:elevation="15dp"
+            android:foreground="@drawable/ripple_effect"
+            android:scaleType="centerCrop"
+            android:src="@drawable/phonepe"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+        <ImageView
 
             android:layout_width="100dp"
             android:layout_height="50dp"
@@ -101,17 +114,6 @@
             android:textColor="@color/white"
             android:textStyle="bold" />
 
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_margin="15dp"
-            android:background="@drawable/border_for_pay_images"
-            android:elevation="15dp"
-            android:foreground="@drawable/ripple_effect"
-            android:scaleType="centerCrop"
-            android:src="@drawable/phonepe"
-            android:textColor="@color/white"
-            android:textStyle="bold" />
 
     </LinearLayout>
 

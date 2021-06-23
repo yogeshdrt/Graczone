@@ -1,7 +1,5 @@
 package com.example.graczone.Wallet;
 
-import android.content.IntentFilter;
-import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -12,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.example.graczone.LOGIN.NetworkChangeListner;
@@ -218,20 +215,20 @@ public class BalanceFragment extends Fragment implements PaymentStatusListener {
         Toast.makeText(getContext(), "No app found for making transaction..", Toast.LENGTH_SHORT).show();
     }
 
-    @Override
-    public void onStart() {
-        View view = getActivity().getCurrentFocus();
-        AppCompatActivity activity = (AppCompatActivity) view.getContext();
-        IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
-        activity.registerReceiver(networkChangeListner, intentFilter);
-        super.onStart();
-    }
-
-    @Override
-    public void onStop() {
-        View view = getActivity().getCurrentFocus();
-        AppCompatActivity activity = (AppCompatActivity) view.getContext();
-        activity.unregisterReceiver(networkChangeListner);
-        super.onStop();
-    }
+//    @Override
+//    public void onStart() {
+//        View view = getActivity().getCurrentFocus();
+//        AppCompatActivity activity = (AppCompatActivity) view.getContext();
+//        IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+//        activity.registerReceiver(networkChangeListner, intentFilter);
+//        super.onStart();
+//    }
+//
+//    @Override
+//    public void onStop() {
+//        View view = getActivity().getCurrentFocus();
+//        AppCompatActivity activity = (AppCompatActivity) view.getContext();
+//        activity.unregisterReceiver(networkChangeListner);
+//        super.onStop();
+//    }
 }
