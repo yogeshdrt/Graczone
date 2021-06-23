@@ -2,8 +2,6 @@ package com.example.graczone.ui.My_Profile;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.IntentFilter;
-import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,11 +10,9 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
-import com.example.graczone.LOGIN.NetworkChangeListner;
 import com.example.graczone.R;
 
 public class My_Profile_Fragment extends Fragment {
@@ -25,7 +21,7 @@ public class My_Profile_Fragment extends Fragment {
     String username, email, phone;
     ProgressDialog progressDialog;
     DrawerLayout drawer;
-    NetworkChangeListner networkChangeListner = new NetworkChangeListner();
+//    NetworkChangeListner networkChangeListner = new NetworkChangeListner();
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -74,20 +70,20 @@ public class My_Profile_Fragment extends Fragment {
         }
     }
 
-    @Override
-    public void onStart() {
-        View view = getActivity().getCurrentFocus();
-        AppCompatActivity activity = (AppCompatActivity) view.getContext();
-        IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
-        activity.registerReceiver(networkChangeListner, intentFilter);
-        super.onStart();
-    }
-
-    @Override
-    public void onStop() {
-        View view = getActivity().getCurrentFocus();
-        AppCompatActivity activity = (AppCompatActivity) view.getContext();
-        activity.unregisterReceiver(networkChangeListner);
-        super.onStop();
-    }
+//    @Override
+//    public void onStart() {
+//        View view = getActivity().getCurrentFocus();
+//        AppCompatActivity activity = (AppCompatActivity) view.getContext();
+//        IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+//        activity.registerReceiver(networkChangeListner, intentFilter);
+//        super.onStart();
+//    }
+//
+//    @Override
+//    public void onStop() {
+//        View view = getActivity().getCurrentFocus();
+//        AppCompatActivity activity = (AppCompatActivity) view.getContext();
+//        activity.unregisterReceiver(networkChangeListner);
+//        super.onStop();
+//    }
 }

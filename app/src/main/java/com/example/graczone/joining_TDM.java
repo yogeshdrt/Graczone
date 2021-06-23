@@ -29,7 +29,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
-import com.example.graczone.LOGIN.NetworkChangeListner;
+import com.example.graczone.LOGIN.NetworkChangeListener;
 import com.example.graczone.Wallet.wallet;
 import com.example.graczone.ui.MyMatches.MyMatchesModel;
 import com.google.common.reflect.TypeToken;
@@ -65,7 +65,7 @@ public class joining_TDM extends AppCompatActivity {
     Button btnn, join;
     ImageView vector01, vector02;
     ProgressDialog progressDialog;
-    NetworkChangeListner networkChangeListner = new NetworkChangeListner();
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
     TextView entry, rs_per_kill, rank1, teamup, map;
     String time, date, s1, s6, match, count, s7, username;
@@ -351,14 +351,14 @@ public class joining_TDM extends AppCompatActivity {
     @Override
     protected void onStart() {
         IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
-        registerReceiver(networkChangeListner, intentFilter);
+        registerReceiver(networkChangeListener, intentFilter);
         Log.d("myTag", "call on start");
         super.onStart();
     }
 
     @Override
     protected void onStop() {
-        unregisterReceiver(networkChangeListner);
+        unregisterReceiver(networkChangeListener);
         Log.d("myTag", "call on stop");
         super.onStop();
     }

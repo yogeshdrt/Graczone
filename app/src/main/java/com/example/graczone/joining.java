@@ -18,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -29,7 +30,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
-import com.example.graczone.LOGIN.NetworkChangeListner;
+import com.example.graczone.LOGIN.NetworkChangeListener;
 import com.example.graczone.Wallet.wallet;
 import com.example.graczone.ui.MyMatches.MyMatchesModel;
 import com.google.common.reflect.TypeToken;
@@ -66,7 +67,7 @@ public class joining extends AppCompatActivity {
     ProgressDialog progressDialog;
     ConnectivityManager connectivityManager;
     NetworkInfo networkInfo;
-    NetworkChangeListner networkChangeListner = new NetworkChangeListner();
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
 
     TextView entry, rs_per_kill, rank1, rank2, rank3, teamup, map;
@@ -235,12 +236,14 @@ public class joining extends AppCompatActivity {
 
 
         btnn.setOnClickListener(v -> {
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
                     connectivityManager = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
                     networkInfo = connectivityManager.getActiveNetworkInfo();
                     if (networkInfo != null) {
                         if (Integer.parseInt(count) <= 100) {
                             if (editText.getText().toString().isEmpty()) {
-                                Toast.makeText(getApplicationContext(), "enter valid pubg id", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "enter pubg id", Toast.LENGTH_SHORT).show();
                             } else {
                                 String subscribe = (date + "-" + s6 + "-" + match);
                                 Log.d("myTag", subscribe);
@@ -248,7 +251,11 @@ public class joining extends AppCompatActivity {
                                         .addOnCompleteListener(task -> {
                                             if (task.isSuccessful()) {
                                                 try {
+//                                                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+//                                                    imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
+                                                    dialog.dismiss();
                                                     progressDialog.show();
+                                                    Log.d("myTag", "show progress on joining");
                                                 } catch (Exception e) {
                                                     Log.d("myTag", "error in dialog in enter room");
                                                 }
@@ -271,6 +278,7 @@ public class joining extends AppCompatActivity {
                                                         Log.d("myTag", "error in participant");
                                                     }
                                                     progressDialog.dismiss();
+                                                    Log.d("myTag", "progressDialog dismiss");
                                                 });
                                                 Log.d("myTag", "add id in joining");
                                                 saveMyMatches(s1, s2, s7, time, date, s3, s4, s5);
@@ -323,11 +331,12 @@ public class joining extends AppCompatActivity {
                                                 join.setEnabled(false);
                                                 join.setText("JOINED");
                                                 join.setBackgroundColor(getResources().getColor(R.color.black));
-                                                dialog.dismiss();
+//                                                dialog.dismiss();
                                                 SharedPreferences sharedPreferences = getSharedPreferences("haveJoinEditor", MODE_PRIVATE);
                                                 SharedPreferences.Editor editor = sharedPreferences.edit();
                                                 editor.putString(date + "-" + s6 + "-" + match + firebaseUser.getUid(), "true");
                                                 editor.apply();
+//                                                progressDialog.dismiss();
                                             } else {
                                                 Log.d("myTag", "exception" + task.getException());
                                                 Toast.makeText(getApplicationContext(), "something went wrong", Toast.LENGTH_SHORT).show();
@@ -352,14 +361,14 @@ public class joining extends AppCompatActivity {
     @Override
     protected void onStart() {
         IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
-        registerReceiver(networkChangeListner, intentFilter);
+        registerReceiver(networkChangeListener, intentFilter);
         Log.d("myTag", "call on start");
         super.onStart();
     }
 
     @Override
     protected void onStop() {
-        unregisterReceiver(networkChangeListner);
+        unregisterReceiver(networkChangeListener);
         Log.d("myTag", "call on stop");
         super.onStop();
     }
