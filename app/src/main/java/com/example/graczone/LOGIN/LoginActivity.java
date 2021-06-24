@@ -30,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
 
     TextView forgot_password;
 
+
     FirebaseAuth auth;
 
     ConnectivityManager connectivityManager;

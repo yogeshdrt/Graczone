@@ -569,20 +569,16 @@ public class home extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
+
     @Override
     public void onBackPressed() {
+
+
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         } else {
             progressDialog.dismiss();
             super.onBackPressed();
-
-//            for (int i = 0; i < getSupportFragmentManager().getBackStackEntryCount(); i++) {
-//                getSupportFragmentManager().popBackStack();
-//                Log.d("myTag", "open Fragment id: " + getSupportFragmentManager().getBackStackEntryAt(i).getClass() + " name: " +
-//                        getSupportFragmentManager().getBackStackEntryAt(i).getName());
-//
-//            }
 
 
             if (getSupportFragmentManager().findFragmentById(R.id.myMatchesFragment) == null) {

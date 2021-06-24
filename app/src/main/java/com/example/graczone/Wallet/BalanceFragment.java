@@ -46,11 +46,13 @@ public class BalanceFragment extends Fragment implements PaymentStatusListener {
 
 
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_balance, container, false);
+
 
         withdraw = view.findViewById(R.id.withdraw_btn);
         withdraw.setOnClickListener(new View.OnClickListener() {
@@ -108,7 +110,6 @@ public class BalanceFragment extends Fragment implements PaymentStatusListener {
             }
 
         });
-
 
         return view;
 

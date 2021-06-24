@@ -51,7 +51,6 @@ public class wallet extends AppCompatActivity {
             balance.setTextColor(this.getResources().getColor(R.color.purple_500));
             balance.setTextSize(getResources().getDimension(R.dimen.text_balanceTransactionSmall));
 
-
         });
 
 
