@@ -8,7 +8,7 @@ android {
     buildToolsVersion "30.0.3"
 
     dexOptions{
-        javaMaxHeapSize "4G"
+        javaMaxHeapSize "5G"
     }
 
     defaultConfig {

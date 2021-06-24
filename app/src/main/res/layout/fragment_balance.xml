@@ -146,7 +146,7 @@
         <ImageButton
             android:layout_width="100dp"
             android:layout_height="50dp"
-            android:layout_marginHorizontal="30dp"
+            android:layout_marginHorizontal="25dp"
             android:foreground="@drawable/ripple_effect"
             android:background="@drawable/border_for_pay_images"
             android:src="@drawable/phonepe"
