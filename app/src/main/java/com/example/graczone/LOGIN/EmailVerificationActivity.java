@@ -84,7 +84,7 @@ public class EmailVerificationActivity extends AppCompatActivity {
                         String password = "Yogi@123";
                         String emailBody = "Hello,\n" +
                                 "\n" +
-                                "entered this OTP " + otp + " to verify your email address.";
+                                "enter this OTP " + otp + " to verify your email address.";
                         Properties properties = new Properties();
                         properties.put("mail.smtp.auth", "true");
                         properties.put("mail.smtp.starttls.enable", "true");

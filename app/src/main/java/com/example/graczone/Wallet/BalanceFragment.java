@@ -1,13 +1,18 @@
 package com.example.graczone.Wallet;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,10 +37,14 @@ import java.util.Objects;
 
 public class BalanceFragment extends Fragment implements PaymentStatusListener {
 
-    ImageView addBalanceBtn;
+    ImageButton addBalanceBtn;
     EditText amountEditText;
     TextView balanceTextView;
     FirebaseUser firebaseUser;
+    Button withdraw, rs100, rs200, rs500;
+    LinearLayout linearLayout;
+
+
 
 
     @Override
@@ -43,6 +52,40 @@ public class BalanceFragment extends Fragment implements PaymentStatusListener {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_balance, container, false);
+
+
+        withdraw = view.findViewById(R.id.withdraw_btn);
+        withdraw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), withdraw.class);
+                startActivity(intent);
+            }
+        });
+
+        linearLayout = view.findViewById(R.id.wallet_linear_layout);
+        linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                InputMethodManager inputMethodManager = (InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            }
+        });
+
+        //wallet amount auto-fill code ------------------------------------
+
+
+        rs100 = view.findViewById(R.id.rs100_btn);
+        rs200 = view.findViewById(R.id.rs200_btn);
+        rs500 = view.findViewById(R.id.rs500_btn);
+
+        rs100.setOnClickListener(v -> amountEditText.setText("100"));
+
+        rs200.setOnClickListener(v -> amountEditText.setText("200"));
+
+        rs500.setOnClickListener(v -> amountEditText.setText("500"));
+
+        //-------------------------------------
 
         amountEditText = view.findViewById(R.id.enter_amount);
         addBalanceBtn = view.findViewById(R.id.addBalanceBtn);
@@ -55,7 +98,7 @@ public class BalanceFragment extends Fragment implements PaymentStatusListener {
         addBalanceBtn.setOnClickListener(v -> {
             String amount = amountEditText.getText().toString();
             String upi = "8077982617@okbizaxis";
-            String name = "My Android Group";
+            String name = "Appswap private limited";
             String desc = "Thank you";
             Log.d("myTag", "button click");
 
@@ -67,7 +110,6 @@ public class BalanceFragment extends Fragment implements PaymentStatusListener {
             }
 
         });
-
 
         return view;
 
@@ -211,5 +253,6 @@ public class BalanceFragment extends Fragment implements PaymentStatusListener {
         // this method is called when the users device is not having any app installed for making payment.
         Toast.makeText(getContext(), "No app found for making transaction..", Toast.LENGTH_SHORT).show();
     }
+
 
 }

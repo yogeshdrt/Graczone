@@ -34,7 +34,6 @@
         <activity
             android:name=".home"
             android:label="@string/title_activity_home"
-            android:launchMode="singleInstance"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Graczone.NoActionBar" />
         <activity
@@ -42,11 +41,9 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".LOGIN.LoginActivity"
-            android:launchMode="singleTop"
             android:screenOrientation="portrait" />
         <activity
             android:name=".SplashScreen"
-            android:launchMode="singleInstance"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

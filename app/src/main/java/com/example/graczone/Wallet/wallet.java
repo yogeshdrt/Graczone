@@ -52,7 +52,6 @@ public class wallet extends AppCompatActivity {
             balance.setTextColor(this.getResources().getColor(R.color.purple_500));
             balance.setTextSize(getResources().getDimension(R.dimen.text_balanceTransactionSmall));
 
-
         });
 
 
@@ -75,31 +74,21 @@ public class wallet extends AppCompatActivity {
         });
 
 
-//        btn2 = findViewById(R.id.withdraw_btn);
-//        btn2.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(wallet.this, withdraw.class);
-//                startActivity(intent);
-//            }
-//        });
 
-        //  Log.d("myTag", "work in wallet");
 
     }
 
 
     @Override
-    public void onBackPressed() {
+    public void onBackPressed(){
         super.onBackPressed();
         this.finish();
-    }
-
+}
     @Override
-    public boolean onSupportNavigateUp() {
+    public boolean onSupportNavigateUp(){
         onBackPressed();
         return true;
-    }
+}
 
     @Override
     protected void onStart() {

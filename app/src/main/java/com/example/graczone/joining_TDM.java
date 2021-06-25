@@ -226,13 +226,10 @@ public class joining_TDM extends AppCompatActivity {
         // Inflate the layout for this fragment
 
         btnn = dialog.findViewById(R.id.popup_confirm);
+        final EditText editText = dialog.findViewById(R.id.enter_battlegrounds_id);
+        editText.setFocusableInTouchMode(true);
+        editText.requestFocus();
 
-        final EditText editText = (EditText) dialog.findViewById(R.id.enter_battlegrounds_id);
-        editText.setOnFocusChangeListener((v, hasFocus) -> {
-            if (hasFocus)
-                editText.setHint("");
-
-        });
 
 //        btnn.setOnClickListener(v -> dialog.dismiss());
         btnn.setOnClickListener(v -> {

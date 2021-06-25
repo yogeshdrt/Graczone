@@ -30,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
 
     TextView forgot_password;
 
+
     FirebaseAuth auth;
 
     ConnectivityManager connectivityManager;
@@ -137,6 +138,8 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "please check your internet connection", Toast.LENGTH_SHORT).show();
             }
         });
+
+
     }
 
     @Override
