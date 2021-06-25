@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -235,6 +236,8 @@ public class joining_TDM extends AppCompatActivity {
 
 //        btnn.setOnClickListener(v -> dialog.dismiss());
         btnn.setOnClickListener(v -> {
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
                     connectivityManager = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
                     networkInfo = connectivityManager.getActiveNetworkInfo();
                     if (networkInfo != null) {
@@ -245,14 +248,23 @@ public class joining_TDM extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), "enter valid pubg id", Toast.LENGTH_SHORT).show();
                             } else {
 
+//                                dialog.dismiss();
+                                try {
+                                    progressDialog = new ProgressDialog(joining_TDM.this);
+                                    dialog.dismiss();
+                                    progressDialog.show();
+                                    progressDialog.setContentView(R.layout.progress_dialog);
+                                    progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+                                    progressDialog.setCanceledOnTouchOutside(false);
+                                    progressDialog.setCancelable(false);
+                                    Log.d("myTag", "show progress");
+                                } catch (Exception e) {
+                                    Log.d("myTag", "error to show progress bar in login Activity");
+                                }
+
                                 FirebaseMessaging.getInstance().subscribeToTopic((date + "-" + s6 + "-" + match))
                                         .addOnCompleteListener(task -> {
                                             if (task.isSuccessful()) {
-                                                try {
-                                                    progressDialog.show();
-                                                } catch (Exception e) {
-                                                    Log.d("myTag", "error in dialog in enter room");
-                                                }
                                                 String email = firebaseUser.getEmail();
                                                 if (email == null) {
                                                     email = "null";
@@ -326,7 +338,7 @@ public class joining_TDM extends AppCompatActivity {
                                                 join.setEnabled(false);
                                                 join.setText("JOINED");
                                                 join.setBackgroundColor(getResources().getColor(R.color.black));
-                                                dialog.dismiss();
+//                                                dialog.dismiss();
                                                 SharedPreferences sharedPreferences = getSharedPreferences("haveJoinEditor1", MODE_PRIVATE);
                                                 SharedPreferences.Editor editor = sharedPreferences.edit();
                                                 editor.putString(date + "-" + s6 + "-" + match + firebaseUser.getUid(), "true");
