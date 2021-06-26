@@ -46,8 +46,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.messaging.FirebaseMessaging;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -97,53 +95,52 @@ public class home extends AppCompatActivity {
 
         if (extras != null) {
             Log.d("myTag", "get extra not null");
-            String body = getIntent().getExtras().getString("body");
-            if (body != null && body.length() > 0) {
-                getIntent().removeExtra("body");
+//            String body = getIntent().getExtras().getString("body");
+//            if (body != null && body.length() > 0) {
+//                getIntent().removeExtra("body");
+//
+//            }
 
-            }
+//            if (extras.getString("notify").equals("true")) {
 
-            if (extras.getString("notify").equals("true")) {
-                Log.d("myTag", "pass notify");
+//            NotificationModel notificationModel = new NotificationModel(getIntent().getStringExtra("title"),
+//                    getIntent().getStringExtra("body"), getIntent().getStringExtra("time")
+//                    , getIntent().getStringExtra("date"));
+//            currentUser = FirebaseAuth.getInstance().getCurrentUser();
+//            databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid()).child("Notifications");
+//            Log.d("myTag", "after reference");
+//            databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+//                    int flag = 0;
+//
+//                    for (DataSnapshot child : snapshot.getChildren()) {
+//                        if (Objects.equals(child.child("date").getValue(), notificationModel.getDate()) && Objects.equals(child.child("time").getValue(), notificationModel.getTime())) {
+//                            flag = 1;
+//                        }
+//
+//                    }
+//
+//
+//                    if (flag == 0) {
+//                        if (getIntent().getStringExtra("status").equals("public")) {
+//                            for (DataSnapshot child : snapshot.getChildren()) {
+//                                FirebaseDatabase.getInstance().getReference("Users").child(Objects.requireNonNull(child.getKey())).child("Notifications")
+//                                        .push().setValue(notificationModel);
+//
+//                            }
+//                        } else {
+//                            databaseReference.child(notificationModel.getDate() + "+" + notificationModel.getTime()).setValue(notificationModel);
+//                        }
+//                    }
+//                }
+//
+//                @Override
+//                public void onCancelled(@NonNull @NotNull DatabaseError error) {
+//
+//                }
+//            });
 
-                NotificationModel notificationModel = new NotificationModel(getIntent().getStringExtra("title"),
-                        getIntent().getStringExtra("body"), getIntent().getStringExtra("time")
-                        , getIntent().getStringExtra("date"));
-                currentUser = FirebaseAuth.getInstance().getCurrentUser();
-                databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid()).child("Notifications");
-                Log.d("myTag", "after reference");
-                databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                        int flag = 0;
-
-                        for (DataSnapshot child : snapshot.getChildren()) {
-                            if (Objects.equals(child.child("date").getValue(), notificationModel.getDate()) && Objects.equals(child.child("time").getValue(), notificationModel.getTime())) {
-                                flag = 1;
-                            }
-
-                        }
-
-
-                        if (flag == 0) {
-                            if (getIntent().getStringExtra("status").equals("public")) {
-                                for (DataSnapshot child : snapshot.getChildren()) {
-                                    FirebaseDatabase.getInstance().getReference("Users").child(Objects.requireNonNull(child.getKey())).child("Notifications")
-                                            .push().setValue(notificationModel);
-
-                                }
-                            } else {
-                                databaseReference.child(notificationModel.getDate() + "+" + notificationModel.getTime()).setValue(notificationModel);
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull @NotNull DatabaseError error) {
-
-                    }
-                });
-            }
 
             navigationView.getMenu().performIdentifierAction(R.id.nav_notification, 0);
             Log.d("myTag", "not new intent");
@@ -459,10 +456,10 @@ public class home extends AppCompatActivity {
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
                         Toast.makeText(getApplicationContext(), "failed to fetch data", Toast.LENGTH_SHORT).show();
-                progressDialog.dismiss();
-            }
+                        progressDialog.dismiss();
+                    }
 
-        });
+                });
         get_email.setText(currentUser.getEmail());
         NavigationUI.setupWithNavController(navigationView, navController);
 
@@ -478,62 +475,56 @@ public class home extends AppCompatActivity {
         Bundle extras = intent.getExtras();
         if (extras != null) {
 
-//            String body = extras.getString("body");
-//            if (body != null && body.length() > 0) {
-//                getIntent().removeExtra("body");
-//
-//            }
-
             Log.d("myTag", "out of notify" + extras.getString("notify"));
 
-            if (extras.getString("notify").equals("true")) {
-                Log.d("myTag", "pass notify");
-
-                NotificationModel notificationModel = new NotificationModel(extras.getString("title"),
-                        extras.getString("body"), extras.getString("time")
-                        , extras.getString("date"));
-                currentUser = FirebaseAuth.getInstance().getCurrentUser();
-                databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid()).child("Notifications");
-                Log.d("myTag", "after reference");
-                if (databaseReference == null) {
-
-                    databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                            int flag = 0;
-
-                            for (DataSnapshot child : snapshot.getChildren()) {
-                                if (Objects.equals(child.child("date").getValue(), notificationModel.getDate()) && Objects.equals(child.child("time").getValue(), notificationModel.getTime())) {
-                                    flag = 1;
-                                }
-
-                            }
-
-
-                            if (flag == 0) {
-                                if (getIntent().getStringExtra("status").equals("public")) {
-                                    for (DataSnapshot child : snapshot.getChildren()) {
-                                        FirebaseDatabase.getInstance().getReference("Users").child(Objects.requireNonNull(child.getKey())).child("Notifications")
-                                                .push().setValue(notificationModel);
-
-                                    }
-                                } else {
-                                    databaseReference.push().setValue(notificationModel);
-                                }
-                            }
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull @NotNull DatabaseError error) {
-
-                            Log.d("myTag", "database error");
-
-                        }
-                    });
-                } else {
-                    databaseReference.push().setValue(notificationModel);
-                }
-            }
+//            if (extras.getString("notify").equals("true")) {
+//                Log.d("myTag", "pass notify");
+//
+//                NotificationModel notificationModel = new NotificationModel(extras.getString("title"),
+//                        extras.getString("body"), extras.getString("time")
+//                        , extras.getString("date"));
+//                currentUser = FirebaseAuth.getInstance().getCurrentUser();
+//                databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid()).child("Notifications");
+//                Log.d("myTag", "after reference");
+//                if (databaseReference == null) {
+//
+//                    databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+//                        @Override
+//                        public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+//                            int flag = 0;
+//
+//                            for (DataSnapshot child : snapshot.getChildren()) {
+//                                if (Objects.equals(child.child("date").getValue(), notificationModel.getDate()) && Objects.equals(child.child("time").getValue(), notificationModel.getTime())) {
+//                                    flag = 1;
+//                                }
+//
+//                            }
+//
+//
+//                            if (flag == 0) {
+//                                if (getIntent().getStringExtra("status").equals("public")) {
+//                                    for (DataSnapshot child : snapshot.getChildren()) {
+//                                        FirebaseDatabase.getInstance().getReference("Users").child(Objects.requireNonNull(child.getKey())).child("Notifications")
+//                                                .push().setValue(notificationModel);
+//
+//                                    }
+//                                } else {
+//                                    databaseReference.push().setValue(notificationModel);
+//                                }
+//                            }
+//                        }
+//
+//                        @Override
+//                        public void onCancelled(@NonNull @NotNull DatabaseError error) {
+//
+//                            Log.d("myTag", "database error");
+//
+//                        }
+//                    });
+//                } else {
+//                    databaseReference.push().setValue(notificationModel);
+//                }
+//            }
             navigationView.getMenu().performIdentifierAction(R.id.nav_notification, 0);
             Log.d("myTag", "in click manually");
         }
