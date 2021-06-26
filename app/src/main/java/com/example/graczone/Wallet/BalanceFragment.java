@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.graczone.LOGIN.signInWithGoogleActivity;
 import com.example.graczone.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -58,7 +59,7 @@ public class BalanceFragment extends Fragment implements PaymentStatusListener {
         withdraw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), withdraw.class);
+                Intent intent = new Intent(getActivity(), signInWithGoogleActivity.class);
                 startActivity(intent);
             }
         });

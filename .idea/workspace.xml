@@ -37,17 +37,28 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dceb6660-a320-494f-b42a-773741ded4fc" name="Default Changelist" comment="resume_activity/bottom_navigation">
+    <list default="true" id="dceb6660-a320-494f-b42a-773741ded4fc" name="Default Changelist" comment="resume_activity/bottom_navigation...">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/LOGIN/signInWithGoogleActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/admin_logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/google_logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_sign_in_with_google.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/Wallet/BalanceFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/Wallet/BalanceFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/border_for_wallet_money.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/border_for_wallet_money.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_select_game.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_select_game.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_balance.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_balance.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/list_item_duo.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/list_item_duo.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/list_item_my_matches.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/list_item_my_matches.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/list_item_solo.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/list_item_solo.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/list_item_squad.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/list_item_squad.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[VirtualDevicePath@C:\Android\.android\avd\Pixel_3a_XL_API_30.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[SerialNumber@f6983a1c]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -130,6 +141,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="f6983a1c" />
     <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2021-04-30T09:38:08.431Z" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
@@ -139,7 +151,7 @@
     <property name="android-custom-viewC:/Users/Deepak jain/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.2.0/3e159bfab49c7e6495fe374e6e5e1e989ee21dcf/recyclerview-1.2.0-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_SELECTED" value="RecyclerView" />
     <property name="ignore.virus.scanning.warn.message" value="true" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable-hdpi" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable-ldpi" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable-hdpi" />
     <property name="multi-representation-previewC:/Users/Deepak jain/.gradle/caches/modules-2/files-2.1/androidx.appcompat/appcompat/1.2.0/13e8ff89631c2e101eb6bddd12c2fb4bbd74b15d/appcompat-1.2.0-sources.jar!/androidx/appcompat/widget/Toolbar.java_selected" value="Custom views" />
     <property name="multi-representation-previewC:/Users/Deepak jain/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.2.0/3e159bfab49c7e6495fe374e6e5e1e989ee21dcf/recyclerview-1.2.0-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_selected" value="Custom views" />
     <property name="recommended.upgrade.last.time.stamp" value="1621078739946" />
@@ -147,6 +159,10 @@
   </component>
   <component name="RecentsManager">
     <key name="android.template.1108961341">
+      <recent name="com.example.graczone" />
+    </key>
+    <key name="android.template.-2032883966">
+      <recent name="com.example.graczone.LOGIN" />
       <recent name="com.example.graczone" />
     </key>
     <key name="android.template.-207487835">
@@ -160,11 +176,11 @@
       <recent name="com.example.graczone" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Graczone\app\src\main\res\drawable-hdpi" />
       <recent name="E:\Graczone\app\src\main\res\drawable-ldpi" />
       <recent name="E:\Graczone\app\src\main\res\drawable" />
       <recent name="E:\Graczone\app\src\main\res\layout" />
       <recent name="E:\Graczone\app\src\main\res\drawable-v24" />
-      <recent name="E:\Graczone\app\src\main\res\drawable-hdpi" />
     </key>
     <key name="android.template.-1260290854">
       <recent name="com.example.graczone.LOGIN" />
@@ -482,7 +498,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624528136557</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="resume_activity/bottom_navigation...">
+      <created>1624543493837</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1624543493837</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -533,6 +556,7 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="init" />
     <MESSAGE value="notification_card" />
     <MESSAGE value="joining" />
@@ -554,7 +578,8 @@
     <MESSAGE value="wallet_settttt" />
     <MESSAGE value="resume_activity" />
     <MESSAGE value="resume_activity/bottom_navigation" />
-    <option name="LAST_COMMIT_MESSAGE" value="resume_activity/bottom_navigation" />
+    <MESSAGE value="resume_activity/bottom_navigation..." />
+    <option name="LAST_COMMIT_MESSAGE" value="resume_activity/bottom_navigation..." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -578,19 +603,19 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="446" y="337" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1536.824@0.0.1536.824" timestamp="1619862344561" />
-    <state x="551" y="281" width="433" height="267" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1621250890177">
+    <state x="551" y="281" width="433" height="267" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1624607697578">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="551" y="281" width="433" height="267" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1621250890177" />
+    <state x="551" y="281" width="433" height="267" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1624607697578" />
     <state x="286" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1619861544082">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="286" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1619861544082" />
-    <state x="464" y="126" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1622797452444">
+    <state x="464" y="126" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1624703291275">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="413" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1618380447415" />
-    <state x="464" y="126" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1622797452444" />
+    <state x="464" y="126" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1624703291275" />
     <state x="296" y="135" key="AndroidCreateResourceDirectoryDialog" timestamp="1621851503288">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -622,26 +647,26 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="561" y="262" key="Github.ShareDialog/0.0.1366.728@0.0.1366.728" timestamp="1617807960078" />
-    <state width="1493" height="166" key="GridCell.Tab.0.bottom" timestamp="1624521355525">
+    <state width="1493" height="207" key="GridCell.Tab.0.bottom" timestamp="1624707912163">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1323" height="220" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1624364067308" />
-    <state width="1493" height="166" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1624521355525" />
-    <state width="1493" height="166" key="GridCell.Tab.0.center" timestamp="1624521355525">
+    <state width="1493" height="207" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1624707912163" />
+    <state width="1493" height="207" key="GridCell.Tab.0.center" timestamp="1624707912163">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1323" height="220" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1624364067308" />
-    <state width="1493" height="166" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1624521355525" />
-    <state width="1493" height="166" key="GridCell.Tab.0.left" timestamp="1624521355525">
+    <state width="1493" height="207" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1624707912163" />
+    <state width="1493" height="207" key="GridCell.Tab.0.left" timestamp="1624707912163">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1323" height="220" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1624364067308" />
-    <state width="1493" height="166" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1624521355525" />
-    <state width="1493" height="166" key="GridCell.Tab.0.right" timestamp="1624521355525">
+    <state width="1493" height="207" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1624707912163" />
+    <state width="1493" height="207" key="GridCell.Tab.0.right" timestamp="1624707912163">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1323" height="220" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1624364067308" />
-    <state width="1493" height="166" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1624521355525" />
+    <state width="1493" height="207" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1624707912163" />
     <state x="349" y="155" key="IDE.errors.dialog" timestamp="1620122575496">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -654,24 +679,25 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="407" y="174" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1620812028268" />
-    <state x="410" y="0" key="RollbackChangesDialog" timestamp="1624363807321">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="461" y="0" key="RollbackChangesDialog" timestamp="1624704437353">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="410" y="0" key="RollbackChangesDialog/0.0.1366.728@0.0.1366.728" timestamp="1624363807321" />
+    <state x="461" y="0" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1624704437353" />
     <state x="277" y="57" key="SettingsEditor" timestamp="1621505795087">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="246" y="18" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1620645933049" />
     <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1621505795087" />
-    <state x="309" y="110" key="Vcs.Push.Dialog.v2" timestamp="1624528141050">
+    <state x="309" y="110" key="Vcs.Push.Dialog.v2" timestamp="1624543500360">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1624185801648" />
-    <state x="309" y="110" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1624528141050" />
-    <state x="584" y="190" key="chooseDestDirectoryDialog" timestamp="1621853014266">
+    <state x="309" y="110" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1624543500360" />
+    <state x="584" y="190" key="chooseDestDirectoryDialog" timestamp="1624703306057">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="584" y="190" key="chooseDestDirectoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1621853014266" />
+    <state x="584" y="190" key="chooseDestDirectoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1624703306057" />
     <state x="330" y="66" key="com.intellij.javaee.MapExternalResourceDialog" timestamp="1619869326692">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0d0d0d"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".LOGIN.signInWithGoogleActivity">
+
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="169dp"
+        android:layout_height="67dp"
+        android:background="@drawable/title" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            app:cardBackgroundColor="#262626"
+            app:cardCornerRadius="10dp"
+            app:contentPadding="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="Sign in to Graczone using"
+                    android:textColor="#d9d9d9"
+                    android:textSize="15dp" />
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="30dp"
+                    android:foreground="@drawable/ripple_effect"
+                    app:cardBackgroundColor="#f2f2f2"
+                    app:cardCornerRadius="30dp">
+
+                    <ImageView
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="0dp"
+                        android:elevation="10dp"
+                        android:padding="2dp"
+                        android:src="@drawable/google_logo" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Google"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+
+                </androidx.cardview.widget.CardView>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginHorizontal="25dp"
+                    android:layout_marginTop="30dp"
+                    android:background="#f2f2f2" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:padding="10dp"
+                    android:text="Welcome to Graczone eSports tournaments"
+                    android:textColor="#d9d9d9"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="Syntics App Development"
+                    android:textColor="#E9D9D9D9"
+                    android:textSize="10dp" />
+
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="150dp"
+            android:padding="10dp"
+            android:text="Admin" />
+
+    </LinearLayout>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
