@@ -20,6 +20,7 @@ public class wallet extends AppCompatActivity {
 
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,16 +80,15 @@ public class wallet extends AppCompatActivity {
 
 
     @Override
-    public void onBackPressed() {
+    public void onBackPressed(){
         super.onBackPressed();
         this.finish();
-    }
-
+}
     @Override
-    public boolean onSupportNavigateUp() {
+    public boolean onSupportNavigateUp(){
         onBackPressed();
         return true;
-    }
+}
 
     @Override
     protected void onStart() {

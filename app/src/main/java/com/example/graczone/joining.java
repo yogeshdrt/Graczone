@@ -247,18 +247,41 @@ public class joining extends AppCompatActivity {
                             } else {
                                 String subscribe = (date + "-" + s6 + "-" + match);
                                 Log.d("myTag", subscribe);
+//                                dialog.dismiss();
+                                try {
+                                    progressDialog = new ProgressDialog(joining.this);
+                                    dialog.dismiss();
+                                    progressDialog.show();
+                                    progressDialog.setContentView(R.layout.progress_dialog);
+                                    progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+                                    progressDialog.setCanceledOnTouchOutside(false);
+                                    progressDialog.setCancelable(false);
+                                    Log.d("myTag", "show progress");
+                                } catch (Exception e) {
+                                    Log.d("myTag", "error to show progress bar in login Activity");
+                                }
                                 FirebaseMessaging.getInstance().subscribeToTopic(subscribe)
                                         .addOnCompleteListener(task -> {
+//                                            try {
+//                                                progressDialog = new ProgressDialog(joining.this);
+//                                                progressDialog.show();
+//                                                progressDialog.setContentView(R.layout.progress_dialog);
+//                                                progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+//                                                progressDialog.setCanceledOnTouchOutside(false);
+//                                                progressDialog.setCancelable(false);
+//                                            } catch (Exception e) {
+//                                                Log.d("myTag", "error to show progress bar in login Activity");
+//                                            }
                                             if (task.isSuccessful()) {
-                                                try {
-//                                                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-//                                                    imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
-                                                    dialog.dismiss();
-                                                    progressDialog.show();
-                                                    Log.d("myTag", "show progress on joining");
-                                                } catch (Exception e) {
-                                                    Log.d("myTag", "error in dialog in enter room");
-                                                }
+//                                                try {
+////                                                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+////                                                    imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
+////                                                    dialog.dismiss();
+//                                                    progressDialog.show();
+//                                                    Log.d("myTag", "show progress on joining");
+//                                                } catch (Exception e) {
+//                                                    Log.d("myTag", "error in dialog in enter room");
+//                                                }
                                                 String email = firebaseUser.getEmail();
                                                 if (email == null) {
                                                     email = "null";

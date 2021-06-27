@@ -83,16 +83,16 @@ public class LoginActivity extends AppCompatActivity {
 
         btn_login.setOnClickListener(view -> {
 
-            try {
-                progressDialog = new ProgressDialog(LoginActivity.this);
-                progressDialog.show();
-                progressDialog.setContentView(R.layout.progress_dialog);
-                progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-                progressDialog.setCanceledOnTouchOutside(false);
-                progressDialog.setCancelable(false);
-            } catch (Exception e) {
-                Log.d("myTag", "error to show progress bar in login Activity");
-            }
+//            try {
+//                progressDialog = new ProgressDialog(LoginActivity.this);
+//                progressDialog.show();
+//                progressDialog.setContentView(R.layout.progress_dialog);
+//                progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+//                progressDialog.setCanceledOnTouchOutside(false);
+//                progressDialog.setCancelable(false);
+//            } catch (Exception e) {
+//                Log.d("myTag", "error to show progress bar in login Activity");
+//            }
 
             connectivityManager = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
             networkInfo = connectivityManager.getActiveNetworkInfo();
@@ -106,6 +106,16 @@ public class LoginActivity extends AppCompatActivity {
 
                     Toast.makeText(LoginActivity.this, "All fields are required", Toast.LENGTH_SHORT).show();
                 } else {
+                    try {
+                        progressDialog = new ProgressDialog(LoginActivity.this);
+                        progressDialog.show();
+                        progressDialog.setContentView(R.layout.progress_dialog);
+                        progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+                        progressDialog.setCanceledOnTouchOutside(false);
+                        progressDialog.setCancelable(false);
+                    } catch (Exception e) {
+                        Log.d("myTag", "error to show progress bar in login Activity");
+                    }
 
                     auth.signInWithEmailAndPassword(txt_email, txt_password)
                             .addOnCompleteListener(task -> {
