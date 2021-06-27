@@ -144,7 +144,7 @@
                      app:indicatorColor="#0CA812"
                      app:trackColor="#E6E5E5"
                      app:trackCornerRadius="2dp"
-                     app:trackThickness="7dp" />
+                     app:trackThickness="5dp" />
 
                  <TextView
                      android:id="@+id/countTextView"
