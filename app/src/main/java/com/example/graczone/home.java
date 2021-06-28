@@ -26,8 +26,8 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import com.example.graczone.LOGIN.LoginActivity;
 import com.example.graczone.LOGIN.NetworkChangeListener;
+import com.example.graczone.LOGIN.signInWithGoogleActivity;
 import com.example.graczone.Wallet.wallet;
 import com.example.graczone.ui.MyMatches.MyMatchesModel;
 import com.example.graczone.ui.MyMatches.MyMatches_Fragment;
@@ -36,6 +36,9 @@ import com.example.graczone.ui.Notification.NotificationModel;
 import com.example.graczone.ui.Notification.Notification_Fragment;
 import com.example.graczone.ui.feedback.Feedback_Fragment;
 import com.example.graczone.ui.joiningRule.Joining_Rules_Fragment;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -64,6 +67,7 @@ public class home extends AppCompatActivity {
     ArrayList<NotificationModel> modelArrayList;
     ArrayList<MyMatchesModel> myMatchesModels;
     ProgressDialog progressDialog;
+    GoogleSignInClient mGoogleSignInClient;
 
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -79,6 +83,10 @@ public class home extends AppCompatActivity {
 
         drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         try {
             progressDialog = new ProgressDialog(home.this);
@@ -172,8 +180,10 @@ public class home extends AppCompatActivity {
 //        navigationView = findViewById(R.id.nav_view);
 
         navigationView.getMenu().findItem(R.id.logout).setOnMenuItemClickListener(MenuItem -> {
+
+            mGoogleSignInClient.signOut();
             FirebaseAuth.getInstance().signOut();
-            startActivity(new Intent(home.this, LoginActivity.class));
+            startActivity(new Intent(home.this, signInWithGoogleActivity.class));
             finish();
             return true;
         });
