@@ -30,7 +30,7 @@ public class HomeFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
 
-        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.FrameContainer, new squad_Fragment()).commit();
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.FrameContainer, new solo_Fragment()).commit();
 
 
         bnv = root.findViewById(R.id.bottomNavigation);
