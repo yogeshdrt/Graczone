@@ -10,7 +10,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
-import com.example.graczone.LOGIN.LoginActivity;
+import com.example.graczone.LOGIN.signInWithGoogleActivity;
 import com.example.graczone.ui.Notification.NotificationModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -156,7 +156,7 @@ public class SplashScreen extends AppCompatActivity {
 //                    Log.d("myTag", "status add");
 //                }
             } else {
-                intent = new Intent(SplashScreen.this, LoginActivity.class);
+                intent = new Intent(SplashScreen.this, signInWithGoogleActivity.class);
             }
 
             startActivity(intent);
