@@ -31,7 +31,6 @@ import com.example.graczone.LOGIN.signInWithGoogleActivity;
 import com.example.graczone.Wallet.wallet;
 import com.example.graczone.ui.MyMatches.MyMatchesModel;
 import com.example.graczone.ui.MyMatches.MyMatches_Fragment;
-import com.example.graczone.ui.My_Profile.My_Profile_Fragment;
 import com.example.graczone.ui.Notification.NotificationModel;
 import com.example.graczone.ui.Notification.Notification_Fragment;
 import com.example.graczone.ui.feedback.Feedback_Fragment;
@@ -188,55 +187,55 @@ public class home extends AppCompatActivity {
             return true;
         });
 
-        navigationView.getMenu().findItem(R.id.nav_myprofile).setOnMenuItemClickListener(MenuItem -> {
-
-            try {
-                progressDialog = new ProgressDialog(home.this);
-                progressDialog.show();
-                progressDialog.setContentView(R.layout.progress_dialog);
-                progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-                progressDialog.setCanceledOnTouchOutside(false);
-            } catch (Exception e) {
-                Log.d("myTag", "error in dialog");
-            }
-
-            FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid())
-                    .addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            My_Profile_Fragment pf = new My_Profile_Fragment();
-                            Bundle bundle = new Bundle();
-                            arg1 = snapshot.child("username").getValue().toString();
-                            arg2 = snapshot.child("email").getValue().toString();
-                            arg3 = snapshot.child("Phone").getValue().toString();
-
-                            bundle.putString("arg1", arg1);
-                            bundle.putString("arg2", arg2);
-                            bundle.putString("arg3", arg3);
-                            pf.setArguments(bundle);
+//        navigationView.getMenu().findItem(R.id.nav_myprofile).setOnMenuItemClickListener(MenuItem -> {
 //
-                            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                            for (int i = 0; i < getSupportFragmentManager().getBackStackEntryCount(); i++) {
-                                getSupportFragmentManager().popBackStack();
-
-                            }
-                            ft.replace(R.id.nav_host_fragment, pf, "myProfileTag");
-                            ft.addToBackStack(null);
-                            ft.commit();
-                            drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-                            navigationView.getMenu().getItem(3).setChecked(true);
-                            progressDialog.dismiss();
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-                            Toast.makeText(getApplicationContext(), "failed to fetch data", Toast.LENGTH_SHORT).show();
-                            progressDialog.dismiss();
-                        }
-
-                    });
-            return true;
-        });
+//            try {
+//                progressDialog = new ProgressDialog(home.this);
+//                progressDialog.show();
+//                progressDialog.setContentView(R.layout.progress_dialog);
+//                progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+//                progressDialog.setCanceledOnTouchOutside(false);
+//            } catch (Exception e) {
+//                Log.d("myTag", "error in dialog");
+//            }
+//
+//            FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid())
+//                    .addValueEventListener(new ValueEventListener() {
+//                        @Override
+//                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                            My_Profile_Fragment pf = new My_Profile_Fragment();
+//                            Bundle bundle = new Bundle();
+//                            arg1 = snapshot.child("username").getValue().toString();
+//                            arg2 = snapshot.child("email").getValue().toString();
+//                            arg3 = snapshot.child("Phone").getValue().toString();
+//
+//                            bundle.putString("arg1", arg1);
+//                            bundle.putString("arg2", arg2);
+//                            bundle.putString("arg3", arg3);
+//                            pf.setArguments(bundle);
+////
+//                            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+//                            for (int i = 0; i < getSupportFragmentManager().getBackStackEntryCount(); i++) {
+//                                getSupportFragmentManager().popBackStack();
+//
+//                            }
+//                            ft.replace(R.id.nav_host_fragment, pf, "myProfileTag");
+//                            ft.addToBackStack(null);
+//                            ft.commit();
+//                            drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+//                            navigationView.getMenu().getItem(3).setChecked(true);
+//                            progressDialog.dismiss();
+//                        }
+//
+//                        @Override
+//                        public void onCancelled(@NonNull DatabaseError error) {
+//                            Toast.makeText(getApplicationContext(), "failed to fetch data", Toast.LENGTH_SHORT).show();
+//                            progressDialog.dismiss();
+//                        }
+//
+//                    });
+//            return true;
+//        });
 
         navigationView.getMenu().findItem(R.id.nav_notification).setOnMenuItemClickListener(MenuItem -> {
 
