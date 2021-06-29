@@ -150,7 +150,7 @@ public class EmailVerificationActivity extends AppCompatActivity {
             if (otp.isEmpty()) {
                 Toast.makeText(getApplicationContext(), "please enter otp", Toast.LENGTH_SHORT).show();
             } else if (otp.equals(String.valueOf(otp))) {
-                Intent intent = new Intent(EmailVerificationActivity.this, create_account.class);
+                Intent intent = new Intent(EmailVerificationActivity.this, signInWithGoogleActivity.class);
                 intent.putExtra("email", emailSend);
                 startActivity(intent);
                 finish();
