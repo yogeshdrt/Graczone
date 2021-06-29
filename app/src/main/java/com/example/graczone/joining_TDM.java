@@ -33,6 +33,8 @@ import androidx.core.content.ContextCompat;
 import com.example.graczone.LOGIN.NetworkChangeListener;
 import com.example.graczone.Wallet.wallet;
 import com.example.graczone.ui.MyMatches.MyMatchesModel;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.common.reflect.TypeToken;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -202,22 +204,25 @@ public class joining_TDM extends AppCompatActivity {
             Log.d("myTag", "error");
         }
 
-        FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid())
-                .addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        username = snapshot.child("username").getValue().toString();
-
-                        progressDialog.dismiss();
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(getApplicationContext(), "failed to fetch data", Toast.LENGTH_SHORT).show();
-                        progressDialog.dismiss();
-                    }
-
-                });
+//        FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid())
+//                .addValueEventListener(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                        username = snapshot.child("username").getValue().toString();
+//
+//                        progressDialog.dismiss();
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError error) {
+//                        Toast.makeText(getApplicationContext(), "failed to fetch data", Toast.LENGTH_SHORT).show();
+//                        progressDialog.dismiss();
+//                    }
+//
+//                });
+        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
+        assert acct != null;
+        username = acct.getDisplayName();
 
 
         join.setOnClickListener(v -> dialog.show());

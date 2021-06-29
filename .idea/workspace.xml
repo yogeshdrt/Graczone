@@ -26,24 +26,29 @@
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:yogeshdrt" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </expand>
     <select>
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:master" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dceb6660-a320-494f-b42a-773741ded4fc" name="Default Changelist" comment="......" />
+    <list default="true" id="dceb6660-a320-494f-b42a-773741ded4fc" name="Default Changelist" comment="google sign in">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/LOGIN/signInWithGoogleActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/LOGIN/signInWithGoogleActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/home.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/home.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[SerialNumber@f6983a1c]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -479,7 +484,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624794480402</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="google sign in">
+      <created>1624878824243</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1624878824243</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -564,7 +576,8 @@
     <MESSAGE value="resume_activity" />
     <MESSAGE value="resume_activity/bottom_navigation" />
     <MESSAGE value="&#10;after pull" />
-    <option name="LAST_COMMIT_MESSAGE" value="&#10;after pull" />
+    <MESSAGE value="google sign in" />
+    <option name="LAST_COMMIT_MESSAGE" value="google sign in" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -673,10 +686,10 @@
     </state>
     <state x="246" y="18" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1624878635496" />
     <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1621505795087" />
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1624794505505">
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1624878830016">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1624794505505" />
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1624878830016" />
     <state x="309" y="110" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1624528141050" />
     <state x="584" y="190" key="chooseDestDirectoryDialog" timestamp="1621853014266">
       <screen x="0" y="0" width="1536" height="824" />

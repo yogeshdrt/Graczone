@@ -65,12 +65,9 @@ public class BalanceFragment extends Fragment implements PaymentStatusListener {
         });
 
         linearLayout = view.findViewById(R.id.wallet_linear_layout);
-        linearLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                InputMethodManager inputMethodManager = (InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-                inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
-            }
+        linearLayout.setOnClickListener(v -> {
+            InputMethodManager inputMethodManager = (InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
         });
 
         //wallet amount auto-fill code ------------------------------------

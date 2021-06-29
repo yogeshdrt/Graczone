@@ -36,6 +36,7 @@ import com.example.graczone.ui.Notification.Notification_Fragment;
 import com.example.graczone.ui.feedback.Feedback_Fragment;
 import com.example.graczone.ui.joiningRule.Joining_Rules_Fragment;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.material.navigation.NavigationView;
@@ -83,6 +84,7 @@ public class home extends AppCompatActivity {
         drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
@@ -453,23 +455,27 @@ public class home extends AppCompatActivity {
         hview = navigationView.getHeaderView(0);
         get_username = hview.findViewById(R.id.get_username);
         get_email = hview.findViewById(R.id.get_email);
-        FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid())
-                .addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        username = snapshot.child("username").getValue().toString();
-                        get_username.setText(username);
-                        progressDialog.dismiss();
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(getApplicationContext(), "failed to fetch data", Toast.LENGTH_SHORT).show();
-                        progressDialog.dismiss();
-                    }
-
-                });
+//        FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid())
+//                .addValueEventListener(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                        username = snapshot.child("username").getValue().toString();
+//                        get_username.setText(username);
+//                        progressDialog.dismiss();
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError error) {
+//                        Toast.makeText(getApplicationContext(), "failed to fetch data", Toast.LENGTH_SHORT).show();
+//                        progressDialog.dismiss();
+//                    }
+//
+//                });
         get_email.setText(currentUser.getEmail());
+        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
+        assert acct != null;
+        get_username.setText(acct.getDisplayName());
+        progressDialog.dismiss();
         NavigationUI.setupWithNavController(navigationView, navController);
 
     }

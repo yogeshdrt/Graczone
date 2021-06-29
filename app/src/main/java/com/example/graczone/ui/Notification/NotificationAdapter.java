@@ -32,10 +32,11 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationViewHo
     @Override
     public void onBindViewHolder(@NonNull NotificationViewHolder holder, int position) {
         String time, date, body, title;
-        title = notificationModels.get(position).getTitle();
-        date = notificationModels.get(position).getDate();
-        time = notificationModels.get(position).getTime();
-        body = notificationModels.get(position).getBody();
+        int length = notificationModels.size();
+        title = notificationModels.get(length - (position - 1)).getTitle();
+        date = notificationModels.get(length - (position - 1)).getDate();
+        time = notificationModels.get(length - (position - 1)).getTime();
+        body = notificationModels.get(length - (position - 1)).getBody();
         holder.notificationTitleTextView.setText(title);
         holder.bodyTextView.setText(body);
         holder.timeTextView.setText(time);
