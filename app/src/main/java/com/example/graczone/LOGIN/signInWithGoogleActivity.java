@@ -1,12 +1,12 @@
 package com.example.graczone.LOGIN;
 
 import android.content.Intent;
-import android.net.Uri;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.graczone.R;
@@ -16,24 +16,18 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.google.firebase.database.FirebaseDatabase;
-
-import org.jetbrains.annotations.NotNull;
-
-import java.util.HashMap;
 
 public class signInWithGoogleActivity extends AppCompatActivity {
 
     private static final int RC_SIGN_IN = 100;
     GoogleSignInClient mGoogleSignInClient;
     FirebaseAuth firebaseAuth;
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +39,7 @@ public class signInWithGoogleActivity extends AppCompatActivity {
         // Configure sign-in to request the user's ID, email address, and basic
 // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
@@ -80,14 +75,15 @@ public class signInWithGoogleActivity extends AppCompatActivity {
 
             GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
             if (acct != null) {
-                String personName = acct.getDisplayName();
-                String personGivenName = acct.getGivenName();
-                String personFamilyName = acct.getFamilyName();
-                String personEmail = acct.getEmail();
-                String personId = acct.getId();
-                Uri personPhoto = acct.getPhotoUrl();
+                Log.d("myTag", "acct null");
+//                String personName = acct.getDisplayName();
+//                String personGivenName = acct.getGivenName();
+//                String personFamilyName = acct.getFamilyName();
+//                String personEmail = acct.getEmail();
+//                String personId = acct.getId();
+//                Uri personPhoto = acct.getPhotoUrl();
                 assert account != null;
-                firebaseAuthWithGoogle(account, personName);
+                firebaseAuthWithGoogle(account);
                 Intent intent = new Intent(signInWithGoogleActivity.this, Select_Game.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
 
@@ -103,48 +99,55 @@ public class signInWithGoogleActivity extends AppCompatActivity {
         }
     }
 
-    private void firebaseAuthWithGoogle(GoogleSignInAccount acct, String username) {
+    private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
         Log.d("myTag", "firebaseAuthWithGoogle:" + acct.getId());
+//        mGoogleSignInClient.signOut();
         //Calling get credential from the oogleAuthProviderG
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
+        Log.d("myTag", "after credential firebaseAuthWithGoogle:" + acct.getId());
+        //Override th onComplete() to see we are successful or not.
         firebaseAuth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    //Override th onComplete() to see we are successful or not.
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
 // Update UI with the sign-in user's information
-                            FirebaseUser user = firebaseAuth.getCurrentUser();
-                            assert user != null;
-                            String userid = user.getUid();
-                            String email = user.getEmail();
+                        FirebaseUser user = firebaseAuth.getCurrentUser();
+                        assert user != null;
 
-                            HashMap<String, String> hashMap = new HashMap<>();
-                            hashMap.put("id", userid);
-                            hashMap.put("username", username);
-                            hashMap.put("email", email);
-                            FirebaseDatabase.getInstance().getReference("Users").child(userid).push().setValue(hashMap)
-                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull @NotNull Task<Void> task) {
-                                            if (task.isSuccessful()) {
-//                                                progressDialog.dismiss();
-                                                Toast.makeText(getApplicationContext(), "registration successfully!", Toast.LENGTH_SHORT).show();
+                        String email = user.getEmail();
 
-                                            } else {
-                                                Toast.makeText(getApplicationContext(), "not able to save this data!\n please register again.", Toast.LENGTH_SHORT).show();
-//                                                progressDialog.dismiss();
-                                            }
-                                        }
-                                    });
-                            Log.d("myTag", "signInWithCredential:success: currentUser: " + email);
-                            Toast.makeText(signInWithGoogleActivity.this, "Firebase Authentication Succeeded ", Toast.LENGTH_LONG).show();
-                        } else {
+//                        HashMap<String, String> hashMap = new HashMap<>();
+//                        hashMap.put("username", username);
+//                        hashMap.put("email", email);
+//                        FirebaseDatabase.getInstance().getReference("Users").child(userid).setValue(hashMap)
+//                                .addOnCompleteListener(task1 -> {
+//                                    if(task1.isSuccessful()) {
+//                                        Log.d("myTag", "successfully add data");
+//                                    } else {
+//                                        Log.d("myTag", "failed to add data");
+//                                    }
+//                                });
+                        Log.d("myTag", "signInWithCredential:success: currentUser: " + email);
+                        Toast.makeText(signInWithGoogleActivity.this, "Firebase Authentication Succeeded ", Toast.LENGTH_LONG).show();
+                    } else {
 // If sign-in fails to display a message to the user.
-                            Log.d("myTag", "signInWithCredential:failure", task.getException());
-                            Toast.makeText(signInWithGoogleActivity.this, "Firebase Authentication failed:" + task.getException(), Toast.LENGTH_LONG).show();
-                        }
+                        Log.d("myTag", "signInWithCredential:failure", task.getException());
+                        Toast.makeText(signInWithGoogleActivity.this, "Firebase Authentication failed:" + task.getException(), Toast.LENGTH_LONG).show();
                     }
                 });
+    }
+
+    @Override
+    protected void onStart() {
+        IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener, intentFilter);
+        Log.d("myTag", "call on start");
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListener);
+        Log.d("myTag", "call on stop");
+        super.onStop();
     }
 }
