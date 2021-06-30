@@ -147,6 +147,10 @@ public class joining extends AppCompatActivity {
 
 
         join = findViewById(R.id.join_btn);
+        if (count.equals("100")) {
+            join.setEnabled(false);
+            join.setText("FULL");
+        }
 
         Log.d("myTag", "before try fetch");
 

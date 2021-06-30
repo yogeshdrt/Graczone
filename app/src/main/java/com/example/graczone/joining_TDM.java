@@ -93,7 +93,7 @@ public class joining_TDM extends AppCompatActivity {
         firebaseUser = firebaseAuth.getCurrentUser();
         firebaseFirestore = FirebaseFirestore.getInstance();
 
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
@@ -145,6 +145,10 @@ public class joining_TDM extends AppCompatActivity {
 
 
         join = findViewById(R.id.join_btn);
+        if (count.equals("100")) {
+            join.setEnabled(false);
+            join.setText("FULL");
+        }
 
         try {
             progressDialog = new ProgressDialog(joining_TDM.this);

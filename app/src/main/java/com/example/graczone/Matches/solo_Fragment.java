@@ -68,7 +68,7 @@ public class solo_Fragment extends Fragment {
 
                 if (Integer.parseInt(model.getCount()) == 100) {
 
-                    holder.itemView.setEnabled(false);
+//                    holder.itemView.setEnabled(false);
                     holder.count.setText("Full");
 
                 }
