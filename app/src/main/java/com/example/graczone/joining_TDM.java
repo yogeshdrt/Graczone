@@ -145,7 +145,7 @@ public class joining_TDM extends AppCompatActivity {
 
 
         join = findViewById(R.id.join_btn);
-        if (count.equals("100")) {
+        if (count.equals("8")) {
             join.setEnabled(false);
             join.setText("FULL");
         }
