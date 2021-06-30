@@ -149,6 +149,7 @@ public class joining extends AppCompatActivity {
         join = findViewById(R.id.join_btn);
         if (count.equals("100")) {
             join.setEnabled(false);
+            join.setBackgroundColor(getResources().getColor(R.color.black));
             join.setText("FULL");
         }
 
