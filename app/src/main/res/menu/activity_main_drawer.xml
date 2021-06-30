@@ -17,10 +17,7 @@
             android:id="@+id/nav_notification"
             android:icon="@drawable/ic_baseline_notifications_24"
             android:title="Notifications" />
-        <item
-            android:id="@+id/nav_myprofile"
-            android:icon="@drawable/ic_baseline_person_25"
-            android:title="My Profile" />
+
         <item
             android:id="@+id/joining_rules"
             android:icon="@drawable/ic_joining_rules"

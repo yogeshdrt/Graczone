@@ -45,18 +45,31 @@
                     android:textColor="#d9d9d9"
                     android:textSize="15dp" />
 
+                <androidx.cardview.widget.CardView
+                    android:layout_width="280dp"
+                    android:layout_height="44dp"
+                    android:layout_marginVertical="20dp"
 
-                <com.google.android.gms.common.SignInButton
-                    android:id="@+id/sign_in_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:textAlignment="center"
+                    app:cardCornerRadius="30dp">
+
+
+                    <com.shobhitpuri.custombuttons.GoogleSignInButton
+                        android:id="@+id/sign_in_button"
+                        android:layout_width="287dp"
+                        android:layout_height="55dp"
+                        android:layout_gravity="center"
+                        android:text="Google"
+                        android:textColor="@color/black" />
+
+                </androidx.cardview.widget.CardView>
 
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="0.5dp"
                     android:layout_marginHorizontal="25dp"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="10dp"
                     android:background="#f2f2f2" />
 
 
@@ -82,13 +95,6 @@
 
 
         </androidx.cardview.widget.CardView>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="150dp"
-            android:padding="10dp"
-            android:text="Admin" />
 
     </LinearLayout>
 

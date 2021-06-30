@@ -68,10 +68,10 @@ public class squad_Fragment extends Fragment {
                 holder.linearProgressIndicator.setProgress(Integer.parseInt(model.getCount()));
 
 
-                if (Integer.parseInt(model.getCount()) == 100) {
-//                    holder.itemView.setEnabled(false);
-                    holder.count.setText("Full");
-                }
+//                if (Integer.parseInt(model.getCount()) == 100) {
+////                    holder.itemView.setEnabled(false);
+//                    holder.count.setText("Full");
+//                }
 
 
                 holder.itemView.setOnClickListener(v -> {

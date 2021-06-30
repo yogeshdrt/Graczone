@@ -147,6 +147,7 @@ public class joining_TDM extends AppCompatActivity {
         join = findViewById(R.id.join_btn);
         if (count.equals("8")) {
             join.setEnabled(false);
+            join.setBackgroundColor(getResources().getColor(R.color.black));
             join.setText("FULL");
         }
 
@@ -248,7 +249,7 @@ public class joining_TDM extends AppCompatActivity {
                     networkInfo = connectivityManager.getActiveNetworkInfo();
                     if (networkInfo != null) {
 
-                        if (Integer.parseInt(count) <= 100) {
+                        if (Integer.parseInt(count) <= 8) {
 
                             if (editText.getText().toString().isEmpty()) {
                                 Toast.makeText(getApplicationContext(), "enter valid pubg id", Toast.LENGTH_SHORT).show();

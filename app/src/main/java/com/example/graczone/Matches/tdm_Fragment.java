@@ -63,12 +63,12 @@ public class tdm_Fragment extends Fragment {
                 holder.match.setText(model.getMatch());
                 holder.linearProgressIndicator.setProgress(Integer.parseInt(model.getCount()));
 
-                if (Integer.parseInt(model.getCount()) == 8) {
-
-//                    holder.itemView.setEnabled(false);
-                    holder.count.setText("Full");
-
-                }
+//                if (Integer.parseInt(model.getCount()) == 8) {
+//
+////                    holder.itemView.setEnabled(false);
+//                    holder.count.setText("Full");
+//
+//                }
 
                 holder.itemView.setOnClickListener(v -> {
                     AppCompatActivity activity = (AppCompatActivity) view.getContext();
