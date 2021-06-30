@@ -65,7 +65,7 @@ public class tdm_Fragment extends Fragment {
 
                 if (Integer.parseInt(model.getCount()) == 8) {
 
-                    holder.itemView.setEnabled(false);
+//                    holder.itemView.setEnabled(false);
                     holder.count.setText("Full");
 
                 }
