@@ -46,24 +46,20 @@
                     android:textSize="15dp" />
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="280dp"
+                    android:layout_width="278dp"
                     android:layout_height="44dp"
                     android:layout_marginVertical="20dp"
-
-                    android:textAlignment="center"
-                    app:cardCornerRadius="30dp">
+                    app:cardCornerRadius="25dp">
 
 
                     <com.shobhitpuri.custombuttons.GoogleSignInButton
                         android:id="@+id/sign_in_button"
-                        android:layout_width="287dp"
-                        android:layout_height="55dp"
+                        android:layout_width="284dp"
+                        android:layout_height="50dp"
                         android:layout_gravity="center"
-                        android:text="Google"
-                        android:textColor="@color/black" />
+                        android:text="Google" />
 
                 </androidx.cardview.widget.CardView>
-
 
                 <View
                     android:layout_width="match_parent"

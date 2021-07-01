@@ -1,5 +1,6 @@
 package com.example.graczone.LOGIN;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -9,12 +10,14 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
 import android.util.Patterns;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.graczone.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -36,6 +39,7 @@ public class EmailVerificationActivity extends AppCompatActivity {
 
     EditText emailEditText, otpEditText;
     Button verify_btn, otp_btn;
+    Dialog dialog;
     int otp;
     ProgressDialog progressDialog;
     String emailSend;
@@ -46,6 +50,20 @@ public class EmailVerificationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_email_verification);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+        dialog = new Dialog(this);
+        dialog.setContentView(R.layout.delete_account_popup);
+
+        dialog.getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.background));
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.setCancelable(false);
+        dialog.setCanceledOnTouchOutside(true);
+
 
         emailEditText = findViewById(R.id.emailEditText);
         otpEditText = findViewById(R.id.otpEditText);
@@ -146,6 +164,7 @@ public class EmailVerificationActivity extends AppCompatActivity {
         otp_btn.setOnClickListener(v -> {
             Log.d("myTag", "" + otp);
             String otp = otpEditText.getText().toString();
+            dialog.show();
 
             if (otp.isEmpty()) {
                 Toast.makeText(getApplicationContext(), "please enter otp", Toast.LENGTH_SHORT).show();
@@ -159,6 +178,18 @@ public class EmailVerificationActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        this.finish();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     @Override

@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +27,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.graczone.LOGIN.EmailVerificationActivity;
 import com.example.graczone.LOGIN.NetworkChangeListener;
 import com.example.graczone.LOGIN.signInWithGoogleActivity;
 import com.example.graczone.Wallet.wallet;
@@ -58,6 +60,7 @@ public class home extends AppCompatActivity {
     DrawerLayout drawer;
     TextView get_username, get_email;
     View hview;
+    ImageView imageView;
 
     FirebaseAuth mauth;
     FirebaseUser currentUser;
@@ -80,6 +83,8 @@ public class home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        //
 
         drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
@@ -104,52 +109,6 @@ public class home extends AppCompatActivity {
 
         if (extras != null) {
             Log.d("myTag", "get extra not null");
-//            String body = getIntent().getExtras().getString("body");
-//            if (body != null && body.length() > 0) {
-//                getIntent().removeExtra("body");
-//
-//            }
-
-//            if (extras.getString("notify").equals("true")) {
-
-//            NotificationModel notificationModel = new NotificationModel(getIntent().getStringExtra("title"),
-//                    getIntent().getStringExtra("body"), getIntent().getStringExtra("time")
-//                    , getIntent().getStringExtra("date"));
-//            currentUser = FirebaseAuth.getInstance().getCurrentUser();
-//            databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid()).child("Notifications");
-//            Log.d("myTag", "after reference");
-//            databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-//                @Override
-//                public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-//                    int flag = 0;
-//
-//                    for (DataSnapshot child : snapshot.getChildren()) {
-//                        if (Objects.equals(child.child("date").getValue(), notificationModel.getDate()) && Objects.equals(child.child("time").getValue(), notificationModel.getTime())) {
-//                            flag = 1;
-//                        }
-//
-//                    }
-//
-//
-//                    if (flag == 0) {
-//                        if (getIntent().getStringExtra("status").equals("public")) {
-//                            for (DataSnapshot child : snapshot.getChildren()) {
-//                                FirebaseDatabase.getInstance().getReference("Users").child(Objects.requireNonNull(child.getKey())).child("Notifications")
-//                                        .push().setValue(notificationModel);
-//
-//                            }
-//                        } else {
-//                            databaseReference.child(notificationModel.getDate() + "+" + notificationModel.getTime()).setValue(notificationModel);
-//                        }
-//                    }
-//                }
-//
-//                @Override
-//                public void onCancelled(@NonNull @NotNull DatabaseError error) {
-//
-//                }
-//            });
-
 
             navigationView.getMenu().performIdentifierAction(R.id.nav_notification, 0);
             Log.d("myTag", "not new intent");
@@ -177,8 +136,6 @@ public class home extends AppCompatActivity {
                 });
 
 
-//        drawer = findViewById(R.id.drawer_layout);
-//        navigationView = findViewById(R.id.nav_view);
 
         navigationView.getMenu().findItem(R.id.logout).setOnMenuItemClickListener(MenuItem -> {
 
@@ -188,56 +145,6 @@ public class home extends AppCompatActivity {
             finish();
             return true;
         });
-
-//        navigationView.getMenu().findItem(R.id.nav_myprofile).setOnMenuItemClickListener(MenuItem -> {
-//
-//            try {
-//                progressDialog = new ProgressDialog(home.this);
-//                progressDialog.show();
-//                progressDialog.setContentView(R.layout.progress_dialog);
-//                progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-//                progressDialog.setCanceledOnTouchOutside(false);
-//            } catch (Exception e) {
-//                Log.d("myTag", "error in dialog");
-//            }
-//
-//            FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid())
-//                    .addValueEventListener(new ValueEventListener() {
-//                        @Override
-//                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                            My_Profile_Fragment pf = new My_Profile_Fragment();
-//                            Bundle bundle = new Bundle();
-//                            arg1 = snapshot.child("username").getValue().toString();
-//                            arg2 = snapshot.child("email").getValue().toString();
-//                            arg3 = snapshot.child("Phone").getValue().toString();
-//
-//                            bundle.putString("arg1", arg1);
-//                            bundle.putString("arg2", arg2);
-//                            bundle.putString("arg3", arg3);
-//                            pf.setArguments(bundle);
-////
-//                            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-//                            for (int i = 0; i < getSupportFragmentManager().getBackStackEntryCount(); i++) {
-//                                getSupportFragmentManager().popBackStack();
-//
-//                            }
-//                            ft.replace(R.id.nav_host_fragment, pf, "myProfileTag");
-//                            ft.addToBackStack(null);
-//                            ft.commit();
-//                            drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-//                            navigationView.getMenu().getItem(3).setChecked(true);
-//                            progressDialog.dismiss();
-//                        }
-//
-//                        @Override
-//                        public void onCancelled(@NonNull DatabaseError error) {
-//                            Toast.makeText(getApplicationContext(), "failed to fetch data", Toast.LENGTH_SHORT).show();
-//                            progressDialog.dismiss();
-//                        }
-//
-//                    });
-//            return true;
-//        });
 
         navigationView.getMenu().findItem(R.id.nav_notification).setOnMenuItemClickListener(MenuItem -> {
 
@@ -293,39 +200,7 @@ public class home extends AppCompatActivity {
 
                         }
                     });
-//            Bundle bundle = new Bundle();
-//            Notification_Fragment nf = new Notification_Fragment();
-//            SharedPreferences sharedPreferences = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
-//            Gson gson = new Gson();
-//            if (sharedPreferences.contains("models")) {
-//
-//                String json = sharedPreferences.getString("models", null);
-//                Type type = new TypeToken<ArrayList<NotificationModel>>() {
-//                }.getType();
-//                modelArrayList = gson.fromJson(json, type);
-//            } else {
-//                modelArrayList = new ArrayList<>();
-////                NotificationModel notificationModel = new NotificationModel("default", "default", "default", "default");
-////                modelArrayList.add(notificationModel);
-//            }
-//            bundle.putSerializable("models", modelArrayList);
-//            nf.setArguments(bundle);
-////            fragment = getSupportFragmentManager().findFragmentById(R.id.profileFragment);
-////            if (fragment != null) {
-////                getSupportFragmentManager().beginTransaction().remove(fragment).commit();
-////            }
-//            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-//            for (int i = 0; i < getSupportFragmentManager().getBackStackEntryCount(); i++) {
-//                getSupportFragmentManager().popBackStack();
-//                Log.d("myTag", "open Fragment id: " + getSupportFragmentManager().getBackStackEntryAt(i).getClass() + " name: " +
-//                        getSupportFragmentManager().getBackStackEntryAt(i).getName());
-//
-//            }
-//            ft.replace(R.id.nav_host_fragment, nf, "notificationTag");
-//            ft.addToBackStack(null);
-//            ft.commit();
-//            drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-//            navigationView.getMenu().getItem(2).setChecked(true);
+
             Log.d("myTag", "noti. open fragment: " + getSupportFragmentManager().getBackStackEntryCount());
 //            Toast.makeText(getApplicationContext(), "successfully add notification data", Toast.LENGTH_SHORT).show();
             return true;
@@ -381,36 +256,6 @@ public class home extends AppCompatActivity {
 
                         }
                     });
-
-//            Bundle bundle = new Bundle();
-//            MyMatches_Fragment mf = new MyMatches_Fragment();
-//            SharedPreferences sharedPreferences = getSharedPreferences("myMatchesPre", MODE_PRIVATE);
-//            Gson gson = new Gson();
-//            if (sharedPreferences.contains("myMatchModels")) {
-//
-//                String json = sharedPreferences.getString("myMatchModels", null);
-//                Type type = new TypeToken<ArrayList<MyMatchesModel>>() {
-//                }.getType();
-//                myMatchesModels = gson.fromJson(json, type);
-//            } else {
-//                myMatchesModels = new ArrayList<>();
-//            }
-//            bundle.putSerializable("myMatchModels", myMatchesModels);
-//            mf.setArguments(bundle);
-//            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-//            for (int i = 0; i < getSupportFragmentManager().getBackStackEntryCount(); i++) {
-//                getSupportFragmentManager().popBackStack();
-//                Log.d("myTag", "open Fragment id: " + getSupportFragmentManager().getBackStackEntryAt(i).getClass() + " name: " +
-//                        getSupportFragmentManager().getBackStackEntryAt(i).getName());
-//
-//            }
-//            ft.replace(R.id.nav_host_fragment, mf, "myMatchTag");
-//            ft.addToBackStack(null);
-//            ft.commit();
-//            drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-//            navigationView.getMenu().getItem(1).setChecked(true);
-//            Log.d("myTag", "my match open fragment: " + getSupportFragmentManager().getBackStackEntryCount());
-//            Toast.makeText(getApplicationContext(), "successfully add myMatches data", Toast.LENGTH_SHORT).show();
             return true;
         });
 
@@ -455,22 +300,7 @@ public class home extends AppCompatActivity {
         hview = navigationView.getHeaderView(0);
         get_username = hview.findViewById(R.id.get_username);
         get_email = hview.findViewById(R.id.get_email);
-//        FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid())
-//                .addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                        username = snapshot.child("username").getValue().toString();
-//                        get_username.setText(username);
-//                        progressDialog.dismiss();
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError error) {
-//                        Toast.makeText(getApplicationContext(), "failed to fetch data", Toast.LENGTH_SHORT).show();
-//                        progressDialog.dismiss();
-//                    }
-//
-//                });
+
         get_email.setText(currentUser.getEmail());
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
         assert acct != null;
@@ -478,6 +308,18 @@ public class home extends AppCompatActivity {
         progressDialog.dismiss();
         NavigationUI.setupWithNavController(navigationView, navController);
 
+        ////Setting_icon-For Delete account///////////////
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+        ImageView imageView = headerView.findViewById(R.id.setting_icon);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(home.this, EmailVerificationActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void onNewIntent(Intent intent) {
@@ -492,57 +334,12 @@ public class home extends AppCompatActivity {
 
             Log.d("myTag", "out of notify" + extras.getString("notify"));
 
-//            if (extras.getString("notify").equals("true")) {
-//                Log.d("myTag", "pass notify");
-//
-//                NotificationModel notificationModel = new NotificationModel(extras.getString("title"),
-//                        extras.getString("body"), extras.getString("time")
-//                        , extras.getString("date"));
-//                currentUser = FirebaseAuth.getInstance().getCurrentUser();
-//                databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid()).child("Notifications");
-//                Log.d("myTag", "after reference");
-//                if (databaseReference == null) {
-//
-//                    databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-//                        @Override
-//                        public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-//                            int flag = 0;
-//
-//                            for (DataSnapshot child : snapshot.getChildren()) {
-//                                if (Objects.equals(child.child("date").getValue(), notificationModel.getDate()) && Objects.equals(child.child("time").getValue(), notificationModel.getTime())) {
-//                                    flag = 1;
-//                                }
-//
-//                            }
-//
-//
-//                            if (flag == 0) {
-//                                if (getIntent().getStringExtra("status").equals("public")) {
-//                                    for (DataSnapshot child : snapshot.getChildren()) {
-//                                        FirebaseDatabase.getInstance().getReference("Users").child(Objects.requireNonNull(child.getKey())).child("Notifications")
-//                                                .push().setValue(notificationModel);
-//
-//                                    }
-//                                } else {
-//                                    databaseReference.push().setValue(notificationModel);
-//                                }
-//                            }
-//                        }
-//
-//                        @Override
-//                        public void onCancelled(@NonNull @NotNull DatabaseError error) {
-//
-//                            Log.d("myTag", "database error");
-//
-//                        }
-//                    });
-//                } else {
-//                    databaseReference.push().setValue(notificationModel);
-//                }
-//            }
+
             navigationView.getMenu().performIdentifierAction(R.id.nav_notification, 0);
             Log.d("myTag", "in click manually");
         }
+
+
     }
 
 
