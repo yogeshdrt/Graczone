@@ -38,6 +38,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/setUsername"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
@@ -52,6 +53,7 @@
                 android:background="#EBA1A1A1" />
 
             <TextView
+                android:id="@+id/setEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
@@ -61,6 +63,7 @@
     </androidx.cardview.widget.CardView>
 
     <Button
+        android:id="@+id/verify_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -88,40 +91,6 @@
             android:text="An OTP is sent to your registered email"
             android:textSize="12dp" />
 
-        <EditText
-            android:id="@+id/emailEditText"
-            android:layout_width="340dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center_horizontal"
-            android:backgroundTint="#FFFFFF"
-            android:ems="10"
-            android:hint="Enter Email Id"
-            android:inputType="textEmailAddress"
-            android:paddingStart="5dp"
-            android:textColor="@color/white"
-            android:textColorHighlight="#FFFFFF"
-            android:textColorHint="#C5C3C3"
-            android:textColorLink="#FFFFFF"
-            android:textCursorDrawable="@drawable/my_cursor"
-            android:textSize="18dp"
-            tools:ignore="RtlSymmetry" />
-
-
-        <Button
-            android:id="@+id/verify_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginVertical="30dp"
-            android:backgroundTint="@color/white"
-            android:elevation="10dp"
-            android:fontFamily="sans-serif-light"
-            android:paddingHorizontal="30dp"
-            android:text="get OTP"
-            android:textAllCaps="false"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            app:cornerRadius="30dp" />
 
         <EditText
             android:id="@+id/otpEditText"

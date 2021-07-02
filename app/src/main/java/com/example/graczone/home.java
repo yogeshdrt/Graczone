@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -59,6 +60,7 @@ public class home extends AppCompatActivity {
     DrawerLayout drawer;
     TextView get_username, get_email;
     View hview;
+    ImageView imageView;
 
     FirebaseAuth mauth;
     FirebaseUser currentUser;
@@ -188,7 +190,7 @@ public class home extends AppCompatActivity {
                             ft.commit();
                             drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
                             navigationView.getMenu().getItem(2).setChecked(true);
-                          //  Toast.makeText(getApplicationContext(), "successfully add notification data", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "successfully add notification data", Toast.LENGTH_SHORT).show();
 
                         }
 
@@ -267,7 +269,7 @@ public class home extends AppCompatActivity {
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
             drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-            navigationView.getMenu().getItem(4).setChecked(true);
+            navigationView.getMenu().getItem(5).setChecked(true);
             return true;
         });
 
@@ -281,7 +283,7 @@ public class home extends AppCompatActivity {
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
             drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-            navigationView.getMenu().getItem(3).setChecked(true);
+            navigationView.getMenu().getItem(4).setChecked(true);
             return true;
         });
 
