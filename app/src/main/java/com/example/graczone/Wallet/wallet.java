@@ -27,7 +27,6 @@ public class wallet extends AppCompatActivity {
         setContentView(R.layout.activity_wallet);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -43,7 +42,6 @@ public class wallet extends AppCompatActivity {
 
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.switch_frame, new RecentTransactionFragment());
-            transaction.addToBackStack(null);
             transaction.commit();
             recent.setBackgroundResource(R.drawable.corners2);
             recent.setTextColor(this.getResources().getColor(R.color.black));
@@ -72,9 +70,6 @@ public class wallet extends AppCompatActivity {
             recent.setTextSize(getResources().getDimension(R.dimen.text_balanceTransactionSmall));
 
         });
-
-
-
 
     }
 

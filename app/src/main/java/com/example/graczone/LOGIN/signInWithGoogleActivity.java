@@ -265,56 +265,6 @@ public class signInWithGoogleActivity extends AppCompatActivity {
                     }
                     progressDialog.dismiss();
                 });
-//        firebaseAuth.signInWithCredential(credential)
-//                .addOnCompleteListener(task -> {
-//                    if (task.isSuccessful()) {
-//// Update UI with the sign-in user's information
-//                        FirebaseUser user = firebaseAuth.getCurrentUser();
-//                        assert user != null;
-//
-//                        String email = user.getEmail();
-//
-//
-//                        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(task12 -> {
-//                            if(task12.isSuccessful()) {
-//                                String token = task12.getResult();
-//                                FirebaseDatabase.getInstance().getReference("Users").child(user.getUid()).setValue(token)
-//                                        .addOnCompleteListener(task1 -> {
-//                                            if(task1.isSuccessful()) {
-//                                                Log.d("myTag", "successfully add data");
-//                                                Intent intent = new Intent(signInWithGoogleActivity.this, Select_Game.class);
-//                                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-//
-//                                                startActivity(intent);
-//                                                finish();
-//                                            } else {
-//                                                Log.d("myTag", "failed to add data");
-//                                            }
-//                                        });
-//                                Log.d("myTag","token generated"+token);
-//                            }
-//
-//                        });
-//
-////                        HashMap<String, String> hashMap = new HashMap<>();
-////                        hashMap.put("username", username);
-////                        hashMap.put("email", email);
-////                        FirebaseDatabase.getInstance().getReference("Users").child(userid).setValue(hashMap)
-////                                .addOnCompleteListener(task1 -> {
-////                                    if(task1.isSuccessful()) {
-////                                        Log.d("myTag", "successfully add data");
-////                                    } else {
-////                                        Log.d("myTag", "failed to add data");
-////                                    }
-////                                });
-//                        Log.d("myTag", "signInWithCredential:success: currentUser: " + email);
-////                        Toast.makeText(signInWithGoogleActivity.this, "Firebase Authentication Succeeded ", Toast.LENGTH_LONG).show();
-//                    } else {
-//// If sign-in fails to display a message to the user.
-//                        Log.d("myTag", "signInWithCredential:failure", task.getException());
-//                        Toast.makeText(signInWithGoogleActivity.this, "Firebase Authentication failed:" + task.getException(), Toast.LENGTH_LONG).show();
-//                    }
-//                });
     }
 
     @Override

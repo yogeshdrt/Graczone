@@ -11,7 +11,7 @@
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/black"
+        android:background="#0d0d0d"
         android:theme="@style/Theme.Graczone.AppBarOverlay">
 
 
