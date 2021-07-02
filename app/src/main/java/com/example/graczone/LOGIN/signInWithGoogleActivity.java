@@ -155,15 +155,17 @@ public class signInWithGoogleActivity extends AppCompatActivity {
 
                                         startActivity(intent);
                                         finish();
+                                        progressDialog.dismiss();
 
                                         Log.d("myTag", "signInWithCredential:success: currentUser: " + email);
 //                        Toast.makeText(signInWithGoogleActivity.this, "Firebase Authentication Succeeded ", Toast.LENGTH_LONG).show();
                                     } else {
 // If sign-in fails to display a message to the user.
                                         Log.d("myTag", "signInWithCredential:failure", task.getException());
+                                        progressDialog.dismiss();
                                         Toast.makeText(signInWithGoogleActivity.this, "Firebase Authentication failed:" + task.getException(), Toast.LENGTH_LONG).show();
                                     }
-                                    progressDialog.dismiss();
+//                                    progressDialog.dismiss();
                                 });
 //                        Toast.makeText(getApplicationContext(), "this email already exist!", Toast.LENGTH_SHORT).show();
                     } else if (!task.isSuccessful()) {
@@ -242,7 +244,7 @@ public class signInWithGoogleActivity extends AppCompatActivity {
                                                             } else {
                                                                 Log.d("myTag", "failed to add data");
                                                             }
-                                                            progressDialog.dismiss();
+//                                                            progressDialog.dismiss();
                                                         });
                                                 Log.d("myTag", "token generated" + token);
                                             }
@@ -251,19 +253,17 @@ public class signInWithGoogleActivity extends AppCompatActivity {
 
 //
                                         Log.d("myTag", "signInWithCredential:success: currentUser: " + email);
+                                        progressDialog.dismiss();
 //                        Toast.makeText(signInWithGoogleActivity.this, "Firebase Authentication Succeeded ", Toast.LENGTH_LONG).show();
                                     } else {
 // If sign-in fails to display a message to the user.
                                         Log.d("myTag", "signInWithCredential:failure", task.getException());
                                         Toast.makeText(signInWithGoogleActivity.this, "Firebase Authentication failed:" + task.getException(), Toast.LENGTH_LONG).show();
+                                        progressDialog.dismiss();
                                     }
-                                    progressDialog.dismiss();
+//                                    progressDialog.dismiss();
                                 });
-//
-
-//                        progressDialog.dismiss();
                     }
-                    progressDialog.dismiss();
                 });
 //        firebaseAuth.signInWithCredential(credential)
 //                .addOnCompleteListener(task -> {

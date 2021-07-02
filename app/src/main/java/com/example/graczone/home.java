@@ -14,7 +14,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -147,6 +146,7 @@ public class home extends AppCompatActivity {
         });
 
         navigationView.getMenu().findItem(R.id.nav_notification).setOnMenuItemClickListener(MenuItem -> {
+            progressDialog.show();
 
             FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid()).child("Notifications")
                     .addValueEventListener(new ValueEventListener() {
@@ -185,12 +185,13 @@ public class home extends AppCompatActivity {
 //                                getSupportFragmentManager().getBackStackEntryAt(i).getName());
 
                             }
+                            progressDialog.dismiss();
                             ft.replace(R.id.nav_host_fragment, nf);
                             ft.addToBackStack(null);
                             ft.commit();
                             drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
                             navigationView.getMenu().getItem(2).setChecked(true);
-                            Toast.makeText(getApplicationContext(), "successfully add notification data", Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(getApplicationContext(), "successfully add notification data", Toast.LENGTH_SHORT).show();
 
                         }
 
@@ -207,6 +208,8 @@ public class home extends AppCompatActivity {
         });
 
         navigationView.getMenu().findItem(R.id.nav_mymatches).setOnMenuItemClickListener(MenuItem -> {
+
+            progressDialog.show();
 
             FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid()).child("MyMatches")
                     .addValueEventListener(new ValueEventListener() {
@@ -241,6 +244,7 @@ public class home extends AppCompatActivity {
                                 getSupportFragmentManager().popBackStack();
 
                             }
+                            progressDialog.dismiss();
                             ft.replace(R.id.nav_host_fragment, mf);
                             ft.addToBackStack(null);
                             ft.commit();

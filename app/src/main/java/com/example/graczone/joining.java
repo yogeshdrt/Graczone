@@ -35,7 +35,6 @@ import com.example.graczone.Wallet.wallet;
 import com.example.graczone.ui.MyMatches.MyMatchesModel;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.common.reflect.TypeToken;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -45,11 +44,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.messaging.FirebaseMessaging;
-import com.google.gson.Gson;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
@@ -416,21 +413,21 @@ public class joining extends AppCompatActivity {
         } catch (Exception e) {
             Log.d("myTag", "error to save myMatches details in firebase");
         }
-        SharedPreferences sharedPreferences = getSharedPreferences("myMatchesPre", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        Gson gson = new Gson();
-        if (!sharedPreferences.contains("myMatchModels")) {
-            myMatchesModels = new ArrayList<>();
-        } else {
-            String json = sharedPreferences.getString("myMatchModels", null);
-            Type type = new TypeToken<ArrayList<MyMatchesModel>>() {
-            }.getType();
-            myMatchesModels = gson.fromJson(json, type);
-        }
-        myMatchesModels.add(0, myMatchesModel);
-        String json1 = gson.toJson(myMatchesModels);
-        editor.putString("myMatchModels", json1);
-        editor.apply();
+//        SharedPreferences sharedPreferences = getSharedPreferences("myMatchesPre", MODE_PRIVATE);
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
+//        Gson gson = new Gson();
+//        if (!sharedPreferences.contains("myMatchModels")) {
+//            myMatchesModels = new ArrayList<>();
+//        } else {
+//            String json = sharedPreferences.getString("myMatchModels", null);
+//            Type type = new TypeToken<ArrayList<MyMatchesModel>>() {
+//            }.getType();
+//            myMatchesModels = gson.fromJson(json, type);
+//        }
+//        myMatchesModels.add(0, myMatchesModel);
+//        String json1 = gson.toJson(myMatchesModels);
+//        editor.putString("myMatchModels", json1);
+//        editor.apply();
 
     }
 

@@ -23,7 +23,7 @@ public class NetworkChangeListener extends BroadcastReceiver {
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
             View dialog_layout = LayoutInflater.from(context).inflate(R.layout.check_internet_dialog, null);
             builder.setView(dialog_layout);
-            AppCompatButton button = dialog_layout.findViewById(R.id.internetBtn);
+            AppCompatButton button = dialog_layout.findViewById(R.id.noBtn);
             AlertDialog dialog = builder.create();
             dialog.show();
             dialog.setCancelable(false);
