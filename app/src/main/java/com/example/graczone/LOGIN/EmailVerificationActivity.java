@@ -98,71 +98,70 @@ public class EmailVerificationActivity extends AppCompatActivity {
         verify_btn.setOnClickListener(v -> {
 //            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 //            imm.hideSoftInputFromWindow(emailEditText.getWindowToken(), 0);
-            try {
-                progressDialog = new ProgressDialog(EmailVerificationActivity.this);
-                progressDialog.show();
-                progressDialog.setContentView(R.layout.progress_dialog);
-                progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-                progressDialog.setCanceledOnTouchOutside(false);
-                progressDialog.setCancelable(false);
-                Log.d("myTag", "show progress dialog in email verification");
-            } catch (Exception e) {
-                Log.d("myTag", "error to show progress dialog in email verification");
-            }
-            emailSend = setEmail.getText().toString();
-
+            progressDialog = new ProgressDialog(EmailVerificationActivity.this);
+            progressDialog.show();
+            progressDialog.setContentView(R.layout.progress_dialog);
+            progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+            progressDialog.setCanceledOnTouchOutside(false);
+            progressDialog.setCancelable(false);
+            Log.d("myTag", "show progress dialog in email verification");
+            sendEmailForDeleteAccount();
+//            emailSend = setEmail.getText().toString();
 //
-            Random random = new Random();
-            otp = random.nextInt(8999) + 1000;
-            String emailTo = "yogeshdrt@gmail.com";
-            String password = "Yogi@123";
-            String emailBody = "Hello,\n" +
-                    "\n" +
-                    "enter this OTP " + otp + " to verify your email address.";
-            Properties properties = new Properties();
-            properties.put("mail.smtp.auth", "true");
-            properties.put("mail.smtp.starttls.enable", "true");
-            properties.put("mail.smtp.host", "smtp.gmail.com");
-            properties.put("mail.smtp.port", "587");
-            Session session = null;
-            try {
-                session = Session.getInstance(properties, new javax.mail.Authenticator() {
-                    @Override
-                    protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(emailTo, password);
-                    }
-                });
-            } catch (Exception e) {
-                e.printStackTrace();
-                Toast.makeText(getApplicationContext(), "please Try again", Toast.LENGTH_SHORT).show();
-            }
-            Log.d("myTag", "after session");
-            try {
-                MimeMessage message = new MimeMessage(session);
-                message.setFrom(new InternetAddress(emailTo));
-                message.setRecipients(MimeMessage.RecipientType.TO, InternetAddress.parse(emailSend));
-                message.setSubject("Graczone");
-                message.setText(emailBody);
-                Transport.send(message);
-                Toast.makeText(getApplicationContext(), "otp send successfully", Toast.LENGTH_SHORT).show();
-
-            } catch (MessagingException e) {
-                Log.d("myTag", "error to send message");
-                Toast.makeText(getApplicationContext(), "error to send otp", Toast.LENGTH_LONG).show();
-                throw new RuntimeException(e);
-            }
-            progressDialog.dismiss();
+////
+//            Random random = new Random();
+//            otp = random.nextInt(8999) + 1000;
+//            String emailTo = "yogeshdrt@gmail.com";
+//            String password = "Yogi@123";
+//            String emailBody = "Hello,\n" +
+//                    "\n" +
+//                    "verification code " + otp + " for delete account";
+//            Properties properties = new Properties();
+//            properties.put("mail.smtp.auth", "true");
+//            properties.put("mail.smtp.starttls.enable", "true");
+//            properties.put("mail.smtp.host", "smtp.gmail.com");
+//            properties.put("mail.smtp.port", "587");
+//            Session session = null;
+//            try {
+//                session = Session.getInstance(properties, new javax.mail.Authenticator() {
+//                    @Override
+//                    protected PasswordAuthentication getPasswordAuthentication() {
+//                        return new PasswordAuthentication(emailTo, password);
+//                    }
+//                });
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//                Toast.makeText(getApplicationContext(), "please Try again", Toast.LENGTH_SHORT).show();
+//            }
+//            Log.d("myTag", "after session");
+//            try {
+//                MimeMessage message = new MimeMessage(session);
+//                message.setFrom(new InternetAddress(emailTo));
+//                message.setRecipients(MimeMessage.RecipientType.TO, InternetAddress.parse(emailSend));
+//                message.setSubject("Graczone");
+//                message.setText(emailBody);
+//                Transport.send(message);
+//                Toast.makeText(getApplicationContext(), "otp send successfully", Toast.LENGTH_SHORT).show();
+//                progressDialog.dismiss();
+//
+//            } catch (MessagingException e) {
+//                progressDialog.dismiss();
+//                Log.d("myTag", "error to send message");
+//                Toast.makeText(getApplicationContext(), "error to send otp", Toast.LENGTH_LONG).show();
+//                throw new RuntimeException(e);
+//            }
+//            progressDialog.dismiss();
         });
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
         otp_btn.setOnClickListener(v -> {
             Log.d("myTag", "" + otp);
-            String otp = otpEditText.getText().toString();
+            String otpText = otpEditText.getText().toString();
 
-            if (otp.isEmpty()) {
+            if (otpText.isEmpty()) {
                 Toast.makeText(getApplicationContext(), "please enter otp", Toast.LENGTH_SHORT).show();
-            } else if (otp.equals(String.valueOf(otp))) {
+            } else if (otpText.equals(String.valueOf(otp))) {
 
                 InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 
@@ -215,6 +214,7 @@ public class EmailVerificationActivity extends AppCompatActivity {
     }
 
     private void signIn() {
+        dialog.dismiss();
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
@@ -282,6 +282,52 @@ public class EmailVerificationActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+    }
+
+    private void sendEmailForDeleteAccount() {
+        emailSend = setEmail.getText().toString();
+
+        Random random = new Random();
+        otp = random.nextInt(8999) + 1000;
+        String emailTo = "yogeshdrt@gmail.com";
+        String password = "Yogi@123";
+        String emailBody = "Hello,\n" +
+                "\n" +
+                "verification code " + otp + " for delete account";
+        Properties properties = new Properties();
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.port", "587");
+        Session session = null;
+        try {
+            session = Session.getInstance(properties, new javax.mail.Authenticator() {
+                @Override
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(emailTo, password);
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(getApplicationContext(), "please Try again", Toast.LENGTH_SHORT).show();
+        }
+        Log.d("myTag", "after session");
+        try {
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(emailTo));
+            message.setRecipients(MimeMessage.RecipientType.TO, InternetAddress.parse(emailSend));
+            message.setSubject("Graczone");
+            message.setText(emailBody);
+            Transport.send(message);
+            Toast.makeText(getApplicationContext(), "otp send successfully", Toast.LENGTH_SHORT).show();
+            progressDialog.dismiss();
+
+        } catch (MessagingException e) {
+            progressDialog.dismiss();
+            Log.d("myTag", "error to send message");
+            Toast.makeText(getApplicationContext(), "error to send otp", Toast.LENGTH_LONG).show();
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

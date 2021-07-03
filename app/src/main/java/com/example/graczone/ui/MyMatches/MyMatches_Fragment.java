@@ -71,7 +71,7 @@ public class MyMatches_Fragment extends Fragment {
 
             @Override
             public void onSwiped(@NonNull @NotNull RecyclerView.ViewHolder viewHolder, int direction) {
-                int position = viewHolder.getAdapterPosition();
+                int position = (myMatchesModels.size() - 1) - viewHolder.getAdapterPosition();
                 deleteMyMatchesModel[0] = myMatchesModels.get(position);
                 String subscribe = (deleteMyMatchesModel[0].getDateTextView() + "-" + deleteMyMatchesModel[0].getTeamUp() + "-" + deleteMyMatchesModel[0].getMatch());
                 FirebaseMessaging.getInstance().unsubscribeFromTopic(subscribe).addOnCompleteListener(task -> {
