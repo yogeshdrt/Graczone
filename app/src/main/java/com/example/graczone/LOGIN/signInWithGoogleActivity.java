@@ -197,9 +197,9 @@ public class signInWithGoogleActivity extends AppCompatActivity {
                                                             if (task1.isSuccessful()) {
                                                                 String emailTo = "yogeshdrt@gmail.com";
                                                                 String password = "Yogi@123";
-                                                                String emailBody = "Hello" + username + " ,\n" +
+                                                                String emailBody = "Hello," + username + " ,\n" +
                                                                         "\n" +
-                                                                        "you have successfully joined Graczone.";
+                                                                        "Your account is successfully created.";
                                                                 Properties properties = new Properties();
                                                                 properties.put("mail.smtp.auth", "true");
                                                                 properties.put("mail.smtp.starttls.enable", "true");

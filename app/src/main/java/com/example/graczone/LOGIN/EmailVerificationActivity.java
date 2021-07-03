@@ -9,10 +9,12 @@ import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,6 +50,7 @@ public class EmailVerificationActivity extends AppCompatActivity {
     private static final int RC_SIGN_IN = 100;
     EditText otpEditText;
     Button verify_btn, otp_btn;
+    LinearLayout linearLayout;
     Dialog dialog;
     int otp;
     TextView setUsername, setEmail;
@@ -89,7 +92,7 @@ public class EmailVerificationActivity extends AppCompatActivity {
         dialog.setCancelable(false);
         dialog.setCanceledOnTouchOutside(true);
 
-
+        linearLayout = findViewById(R.id.invisible_layout);
         otpEditText = findViewById(R.id.otpEditText);
         otp_btn = findViewById(R.id.next_btn);
         verify_btn = findViewById(R.id.verify_btn);
@@ -109,8 +112,8 @@ public class EmailVerificationActivity extends AppCompatActivity {
             } catch (Exception e) {
                 Log.d("myTag", "error to show progress dialog in email verification");
             }
+            linearLayout.setVisibility(View.VISIBLE);
             emailSend = setEmail.getText().toString();
-
 //
             Random random = new Random();
             otp = random.nextInt(8999) + 1000;
