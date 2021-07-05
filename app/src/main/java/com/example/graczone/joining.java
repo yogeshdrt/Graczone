@@ -76,6 +76,7 @@ public class joining extends AppCompatActivity {
     FirebaseUser firebaseUser;
     FirebaseFirestore firebaseFirestore;
     ArrayList<MyMatchesModel> myMatchesModels;
+    boolean canWeSend;
 
 
     @RequiresApi(api = Build.VERSION_CODES.Q)
@@ -313,38 +314,39 @@ public class joining extends AppCompatActivity {
                                                                             db1.setValue(finalEmail).addOnCompleteListener(task1 -> {
                                                                                 if (task1.isSuccessful()) {
                                                                                     Log.d("myTag", "succ. add participant");
+                                                                                    canWeSend = true;
                                                                                     saveMyMatches(s1, s2, s7, time, date, s3, s4, s5);
-                                                                                    String emailTo = "yogeshdrt@gmail.com";
-                                                                                    String password = "Yogi@123";
-                                                                                    String emailBody = "Dear " + username + ",\n" +
-                                                                                            "\n" +
-                                                                                            "you have successfully joined " + s6 + " match at " + s7;
-                                                                                    Properties properties = new Properties();
-                                                                                    properties.put("mail.smtp.auth", "true");
-                                                                                    properties.put("mail.smtp.starttls.enable", "true");
-                                                                                    properties.put("mail.smtp.host", "smtp.gmail.com");
-                                                                                    properties.put("mail.smtp.port", "587");
-                                                                                    Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
-                                                                                        @Override
-                                                                                        protected PasswordAuthentication getPasswordAuthentication() {
-                                                                                            return new PasswordAuthentication(emailTo, password);
-                                                                                        }
-                                                                                    });
-                                                                                    try {
-                                                                                        MimeMessage message = new MimeMessage(session);
-                                                                                        message.setFrom(new InternetAddress(emailTo));
-                                                                                        message.setRecipients(MimeMessage.RecipientType.TO, InternetAddress.parse(finalEmail1));
-                                                                                        message.setSubject("Graczone");
-                                                                                        message.setText(emailBody);
-                                                                                        Transport.send(message);
-//                                            progressDialog.dismiss();
-
-
-                                                                                    } catch (MessagingException e) {
-//                                            progressDialog.dismiss();
-                                                                                        Toast.makeText(getApplicationContext(), "error to send mail", Toast.LENGTH_LONG).show();
-                                                                                        throw new RuntimeException(e);
-                                                                                    }
+//                                                                                    String emailTo = "yogeshdrt@gmail.com";
+//                                                                                    String password = "Yogi@123";
+//                                                                                    String emailBody = "Dear " + username + ",\n" +
+//                                                                                            "\n" +
+//                                                                                            "you have successfully joined " + s6 + " match at " + s7;
+//                                                                                    Properties properties = new Properties();
+//                                                                                    properties.put("mail.smtp.auth", "true");
+//                                                                                    properties.put("mail.smtp.starttls.enable", "true");
+//                                                                                    properties.put("mail.smtp.host", "smtp.gmail.com");
+//                                                                                    properties.put("mail.smtp.port", "587");
+//                                                                                    Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
+//                                                                                        @Override
+//                                                                                        protected PasswordAuthentication getPasswordAuthentication() {
+//                                                                                            return new PasswordAuthentication(emailTo, password);
+//                                                                                        }
+//                                                                                    });
+//                                                                                    try {
+//                                                                                        MimeMessage message = new MimeMessage(session);
+//                                                                                        message.setFrom(new InternetAddress(emailTo));
+//                                                                                        message.setRecipients(MimeMessage.RecipientType.TO, InternetAddress.parse(finalEmail1));
+//                                                                                        message.setSubject("Graczone");
+//                                                                                        message.setText(emailBody);
+//                                                                                        Transport.send(message);
+////                                            progressDialog.dismiss();
+//
+//
+//                                                                                    } catch (MessagingException e) {
+////                                            progressDialog.dismiss();
+//                                                                                        Toast.makeText(getApplicationContext(), "error to send mail", Toast.LENGTH_LONG).show();
+//                                                                                        throw new RuntimeException(e);
+//                                                                                    }
                                                                                     Toast.makeText(getApplicationContext(), "successfully joined", Toast.LENGTH_SHORT).show();
                                                                                     join.setEnabled(false);
                                                                                     join.setText("JOINED");
@@ -471,6 +473,43 @@ public class joining extends AppCompatActivity {
                 }
         );
 
+        if (canWeSend) {
+
+            String emailTo = "yogeshdrt@gmail.com";
+            String password = "Yogi@123";
+            String emailBody = "Dear " + username + ",\n" +
+                    "\n" +
+                    "you have successfully joined " + s6 + " match at " + s7;
+            Properties properties = new Properties();
+            properties.put("mail.smtp.auth", "true");
+            properties.put("mail.smtp.starttls.enable", "true");
+            properties.put("mail.smtp.host", "smtp.gmail.com");
+            properties.put("mail.smtp.port", "587");
+            Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
+                @Override
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(emailTo, password);
+                }
+            });
+            try {
+                MimeMessage message = new MimeMessage(session);
+                message.setFrom(new InternetAddress(emailTo));
+                message.setRecipients(MimeMessage.RecipientType.TO, InternetAddress.parse(firebaseUser.getEmail()));
+                message.setSubject("Graczone");
+                message.setText(emailBody);
+                Transport.send(message);
+//                                            progressDialog.dismiss();
+
+
+            } catch (MessagingException e) {
+//                                            progressDialog.dismiss();
+                Toast.makeText(getApplicationContext(), "error to send mail", Toast.LENGTH_LONG).show();
+                throw new RuntimeException(e);
+            }
+        } else {
+            Log.d("myTag", "mail can not send");
+        }
+
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
@@ -504,10 +543,48 @@ public class joining extends AppCompatActivity {
             } catch (Exception e) {
                 Log.d("myTag", "error to save myMatches details in firebase");
             }
+            if (canWeSend) {
+
+                String emailTo = "yogeshdrt@gmail.com";
+                String password = "Yogi@123";
+                String emailBody = "Dear " + username + ",\n" +
+                        "\n" +
+                        "you have successfully joined " + s6 + " match at " + s7;
+                Properties properties = new Properties();
+                properties.put("mail.smtp.auth", "true");
+                properties.put("mail.smtp.starttls.enable", "true");
+                properties.put("mail.smtp.host", "smtp.gmail.com");
+                properties.put("mail.smtp.port", "587");
+                Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
+                    @Override
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(emailTo, password);
+                    }
+                });
+                try {
+                    MimeMessage message = new MimeMessage(session);
+                    message.setFrom(new InternetAddress(emailTo));
+                    message.setRecipients(MimeMessage.RecipientType.TO, InternetAddress.parse(firebaseUser.getEmail()));
+                    message.setSubject("Graczone");
+                    message.setText(emailBody);
+                    Transport.send(message);
+//                                            progressDialog.dismiss();
+
+
+                } catch (MessagingException e) {
+//                                            progressDialog.dismiss();
+                    Toast.makeText(getApplicationContext(), "error to send mail", Toast.LENGTH_LONG).show();
+                    throw new RuntimeException(e);
+                }
+            } else {
+                Log.d("myTag", "mail can not send");
+            }
+
         } catch (Exception e) {
             Log.d("myTag", Arrays.toString(e.getStackTrace()));
 
         }
+
 //        SharedPreferences sharedPreferences = getSharedPreferences("myMatchesPre", MODE_PRIVATE);
 //        SharedPreferences.Editor editor = sharedPreferences.edit();
 //        Gson gson = new Gson();
@@ -572,3 +649,4 @@ public class joining extends AppCompatActivity {
 
 
 }
+

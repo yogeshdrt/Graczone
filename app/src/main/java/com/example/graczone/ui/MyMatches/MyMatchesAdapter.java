@@ -31,18 +31,17 @@ public class MyMatchesAdapter extends RecyclerView.Adapter<MyMatchesViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull MyMatchesViewHolder holder, int position) {
-        int length = myMatchesModels.size();
-        holder.killTextView.setText(myMatchesModels.get(length - (position + 1)).getKillTextView());
-        holder.dateTextView.setText(myMatchesModels.get(length - (position + 1)).getDateTextView());
-        holder.entryFeeTextView.setText(myMatchesModels.get(length - (position + 1)).getEntryFeeTextView());
-        holder.timeTextView.setText(myMatchesModels.get(length - (position + 1)).getTimeTextView());
-        holder.mapTextView.setText(myMatchesModels.get(length - (position + 1)).getMapTextView());
-        holder.rank1TextView.setText(myMatchesModels.get(length - (position + 1)).getRank1TextView());
-        holder.rank2TextView.setText(myMatchesModels.get(length - (position + 1)).getRank2TextView());
-        holder.rank3TextView.setText(myMatchesModels.get(length - (position + 1)).getRank3TextView());
-        holder.rank2lTextView.setText(myMatchesModels.get(length - (position + 1)).getRank2lTextView());
-        holder.rank3lTextView.setText(myMatchesModels.get(length - (position + 1)).getRank3lTextView());
-        switch (myMatchesModels.get(length - (position + 1)).getTeamUp()) {
+        holder.killTextView.setText(myMatchesModels.get(position).getKillTextView());
+        holder.dateTextView.setText(myMatchesModels.get(position).getDateTextView());
+        holder.entryFeeTextView.setText(myMatchesModels.get(position).getEntryFeeTextView());
+        holder.timeTextView.setText(myMatchesModels.get(position).getTimeTextView());
+        holder.mapTextView.setText(myMatchesModels.get(position).getMapTextView());
+        holder.rank1TextView.setText(myMatchesModels.get(position).getRank1TextView());
+        holder.rank2TextView.setText(myMatchesModels.get(position).getRank2TextView());
+        holder.rank3TextView.setText(myMatchesModels.get(position).getRank3TextView());
+        holder.rank2lTextView.setText(myMatchesModels.get(position).getRank2lTextView());
+        holder.rank3lTextView.setText(myMatchesModels.get(position).getRank3lTextView());
+        switch (myMatchesModels.get(position).getTeamUp()) {
             case "SQUAD":
                 holder.imageView.setImageResource(R.drawable.ic_baseline_groups_24);
                 break;
