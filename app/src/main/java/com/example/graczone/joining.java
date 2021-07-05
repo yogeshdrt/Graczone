@@ -76,6 +76,7 @@ public class joining extends AppCompatActivity {
     FirebaseUser firebaseUser;
     FirebaseFirestore firebaseFirestore;
     ArrayList<MyMatchesModel> myMatchesModels;
+    boolean canWeSend;
 
 
     @RequiresApi(api = Build.VERSION_CODES.Q)
@@ -296,35 +297,106 @@ public class joining extends AppCompatActivity {
                                                 }
 
                                                 count = String.valueOf(Integer.parseInt(count) + 1);
-
-                                                firebaseFirestore.collection(s6).document(match).update("count", (count))
-                                                        .addOnCompleteListener(task13 -> {
-                                                            if (task13.isSuccessful()) {
-                                                                Log.d("myTag", "add count in firestore");
-                                                            } else {
-                                                                Log.d("myTag", "failed to add count in firestore");
-                                                            }
-                                                        });
                                                 databaseReference = FirebaseDatabase.getInstance().getReference(s6).child(date + "+" + time);
-                                                databaseReference.child("EntryFee").setValue(s1).addOnCompleteListener(task12 -> {
-                                                    if (task12.isSuccessful()) {
-                                                        Log.d("myTag", "add  in database");
-                                                    } else {
-                                                        Log.d("myTag", "failed to add  in database");
-                                                    }
-                                                });
-                                                databaseReference.child("participants").child(editText.getText().toString()).child("email")
-                                                        .setValue(email).addOnCompleteListener(task1 -> {
-                                                    if (task1.isSuccessful()) {
-                                                        Log.d("myTag", "succ. add participant");
-                                                    } else {
-                                                        Log.d("myTag", "error in participant");
-                                                    }
-                                                    progressDialog.dismiss();
-                                                    Log.d("myTag", "progressDialog dismiss");
-                                                });
-                                                Log.d("myTag", "add id in joining");
-                                                saveMyMatches(s1, s2, s7, time, date, s3, s4, s5);
+
+                                                String finalEmail = email;
+                                                String finalEmail1 = email;
+                                                try {
+
+
+                                                    firebaseFirestore.collection(s6).document(match).update("count", (count))
+                                                            .addOnCompleteListener(task13 -> {
+                                                                if (task13.isSuccessful()) {
+                                                                    DatabaseReference db2 = databaseReference.child("EntryFee");
+                                                                    db2.setValue(s1).addOnCompleteListener(task12 -> {
+                                                                        if (task12.isSuccessful()) {
+                                                                            DatabaseReference db1 = databaseReference.child("participants").child(editText.getText().toString()).child("email");
+                                                                            db1.setValue(finalEmail).addOnCompleteListener(task1 -> {
+                                                                                if (task1.isSuccessful()) {
+                                                                                    Log.d("myTag", "succ. add participant");
+                                                                                    canWeSend = true;
+                                                                                    saveMyMatches(s1, s2, s7, time, date, s3, s4, s5);
+//                                                                                    String emailTo = "yogeshdrt@gmail.com";
+//                                                                                    String password = "Yogi@123";
+//                                                                                    String emailBody = "Dear " + username + ",\n" +
+//                                                                                            "\n" +
+//                                                                                            "you have successfully joined " + s6 + " match at " + s7;
+//                                                                                    Properties properties = new Properties();
+//                                                                                    properties.put("mail.smtp.auth", "true");
+//                                                                                    properties.put("mail.smtp.starttls.enable", "true");
+//                                                                                    properties.put("mail.smtp.host", "smtp.gmail.com");
+//                                                                                    properties.put("mail.smtp.port", "587");
+//                                                                                    Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
+//                                                                                        @Override
+//                                                                                        protected PasswordAuthentication getPasswordAuthentication() {
+//                                                                                            return new PasswordAuthentication(emailTo, password);
+//                                                                                        }
+//                                                                                    });
+//                                                                                    try {
+//                                                                                        MimeMessage message = new MimeMessage(session);
+//                                                                                        message.setFrom(new InternetAddress(emailTo));
+//                                                                                        message.setRecipients(MimeMessage.RecipientType.TO, InternetAddress.parse(finalEmail1));
+//                                                                                        message.setSubject("Graczone");
+//                                                                                        message.setText(emailBody);
+//                                                                                        Transport.send(message);
+////                                            progressDialog.dismiss();
+//
+//
+//                                                                                    } catch (MessagingException e) {
+////                                            progressDialog.dismiss();
+//                                                                                        Toast.makeText(getApplicationContext(), "error to send mail", Toast.LENGTH_LONG).show();
+//                                                                                        throw new RuntimeException(e);
+//                                                                                    }
+                                                                                    Toast.makeText(getApplicationContext(), "successfully joined", Toast.LENGTH_SHORT).show();
+                                                                                    join.setEnabled(false);
+                                                                                    join.setText("JOINED");
+                                                                                    join.setBackgroundColor(getResources().getColor(R.color.black));
+//                                                dialog.dismiss();
+                                                                                    SharedPreferences sharedPreferences = getSharedPreferences("haveJoinEditor", MODE_PRIVATE);
+                                                                                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                                                                                    editor.putString(date + "-" + s6 + "-" + match + firebaseUser.getUid(), "true");
+                                                                                    editor.apply();
+                                                                                    progressDialog.dismiss();
+//                                                                                Log.d("myTag", "succ. add participant");
+                                                                                } else {
+                                                                                    progressDialog.dismiss();
+                                                                                    Log.d("myTag", "error in participant");
+                                                                                }
+//                                                                            progressDialog.dismiss();
+                                                                                Log.d("myTag", "progressDialog dismiss");
+                                                                            });
+                                                                            Log.d("myTag", "add  in database");
+                                                                        } else {
+                                                                            Log.d("myTag", "failed to add  in database");
+                                                                        }
+                                                                    });
+                                                                    Log.d("myTag", "add count in firestore");
+                                                                } else {
+                                                                    Log.d("myTag", "failed to add count in firestore");
+                                                                }
+                                                            });
+//                                                databaseReference = FirebaseDatabase.getInstance().getReference(s6).child(date + "+" + time);
+                                                    Log.d("myTag", "add id in joining");
+//                                                saveMyMatches(s1, s2, s7, time, date, s3, s4, s5);
+//                                                databaseReference.child("EntryFee").setValue(s1).addOnCompleteListener(task12 -> {
+//                                                    if (task12.isSuccessful()) {
+//                                                        Log.d("myTag", "add  in database");
+//                                                    } else {
+//                                                        Log.d("myTag", "failed to add  in database");
+//                                                    }
+//                                                });
+//                                                databaseReference.child("participants").child(editText.getText().toString()).child("email")
+//                                                        .setValue(email).addOnCompleteListener(task1 -> {
+//                                                    if (task1.isSuccessful()) {
+//                                                        Log.d("myTag", "succ. add participant");
+//                                                    } else {
+//                                                        Log.d("myTag", "error in participant");
+//                                                    }
+//                                                    progressDialog.dismiss();
+//                                                    Log.d("myTag", "progressDialog dismiss");
+//                                                });
+//                                                Log.d("myTag", "add id in joining");
+//                                                saveMyMatches(s1, s2, s7, time, date, s3, s4, s5);
 //                                        FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid())
 //                                                .addValueEventListener(new ValueEventListener() {
 //                                                    @Override
@@ -339,53 +411,59 @@ public class joining extends AppCompatActivity {
 //                                                    }
 //
 //                                                });
-                                                String emailTo = "yogeshdrt@gmail.com";
-                                                String password = "Yogi@123";
-                                                String emailBody = "Dear " + username + ",\n" +
-                                                        "\n" +
-                                                        "you have successfully joined " + s6 + " match at " + s7;
-                                                Properties properties = new Properties();
-                                                properties.put("mail.smtp.auth", "true");
-                                                properties.put("mail.smtp.starttls.enable", "true");
-                                                properties.put("mail.smtp.host", "smtp.gmail.com");
-                                                properties.put("mail.smtp.port", "587");
-                                                Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
-                                                    @Override
-                                                    protected PasswordAuthentication getPasswordAuthentication() {
-                                                        return new PasswordAuthentication(emailTo, password);
-                                                    }
-                                                });
-                                                try {
-                                                    MimeMessage message = new MimeMessage(session);
-                                                    message.setFrom(new InternetAddress(emailTo));
-                                                    message.setRecipients(MimeMessage.RecipientType.TO, InternetAddress.parse(email));
-                                                    message.setSubject("Graczone");
-                                                    message.setText(emailBody);
-                                                    Transport.send(message);
-//                                            progressDialog.dismiss();
-
-
-                                                } catch (MessagingException e) {
-//                                            progressDialog.dismiss();
-                                                    Toast.makeText(getApplicationContext(), "error to send mail", Toast.LENGTH_LONG).show();
-                                                    throw new RuntimeException(e);
-                                                }
-                                                Toast.makeText(getApplicationContext(), "successfully joined", Toast.LENGTH_SHORT).show();
-                                                join.setEnabled(false);
-                                                join.setText("JOINED");
-                                                join.setBackgroundColor(getResources().getColor(R.color.black));
-//                                                dialog.dismiss();
-                                                SharedPreferences sharedPreferences = getSharedPreferences("haveJoinEditor", MODE_PRIVATE);
-                                                SharedPreferences.Editor editor = sharedPreferences.edit();
-                                                editor.putString(date + "-" + s6 + "-" + match + firebaseUser.getUid(), "true");
-                                                editor.apply();
+//                                                String emailTo = "yogeshdrt@gmail.com";
+//                                                String password = "Yogi@123";
+//                                                String emailBody = "Dear " + username + ",\n" +
+//                                                        "\n" +
+//                                                        "you have successfully joined " + s6 + " match at " + s7;
+//                                                Properties properties = new Properties();
+//                                                properties.put("mail.smtp.auth", "true");
+//                                                properties.put("mail.smtp.starttls.enable", "true");
+//                                                properties.put("mail.smtp.host", "smtp.gmail.com");
+//                                                properties.put("mail.smtp.port", "587");
+//                                                Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
+//                                                    @Override
+//                                                    protected PasswordAuthentication getPasswordAuthentication() {
+//                                                        return new PasswordAuthentication(emailTo, password);
+//                                                    }
+//                                                });
+//                                                try {
+//                                                    MimeMessage message = new MimeMessage(session);
+//                                                    message.setFrom(new InternetAddress(emailTo));
+//                                                    message.setRecipients(MimeMessage.RecipientType.TO, InternetAddress.parse(email));
+//                                                    message.setSubject("Graczone");
+//                                                    message.setText(emailBody);
+//                                                    Transport.send(message);
+////                                            progressDialog.dismiss();
+//
+//
+//                                                } catch (MessagingException e) {
+////                                            progressDialog.dismiss();
+//                                                    Toast.makeText(getApplicationContext(), "error to send mail", Toast.LENGTH_LONG).show();
+//                                                    throw new RuntimeException(e);
+//                                                }
+//                                                Toast.makeText(getApplicationContext(), "successfully joined", Toast.LENGTH_SHORT).show();
+//                                                join.setEnabled(false);
+//                                                join.setText("JOINED");
+//                                                join.setBackgroundColor(getResources().getColor(R.color.black));
+////                                                dialog.dismiss();
+//                                                SharedPreferences sharedPreferences = getSharedPreferences("haveJoinEditor", MODE_PRIVATE);
+//                                                SharedPreferences.Editor editor = sharedPreferences.edit();
+//                                                editor.putString(date + "-" + s6 + "-" + match + firebaseUser.getUid(), "true");
+//                                                editor.apply();
 //                                                progressDialog.dismiss();
+                                                } catch (Exception e) {
+                                                    Log.d("myTag", "error in joining to save");
+                                                }
                                             } else {
                                                 Log.d("myTag", "exception" + task.getException());
                                                 Toast.makeText(getApplicationContext(), "something went wrong", Toast.LENGTH_SHORT).show();
                                             }
+
                                         });
+
                             }
+
                         } else {
                             Toast.makeText(getApplicationContext(), "room is full, please try another room", Toast.LENGTH_SHORT).show();
                         }
@@ -394,6 +472,43 @@ public class joining extends AppCompatActivity {
                     }
                 }
         );
+
+        if (canWeSend) {
+
+            String emailTo = "yogeshdrt@gmail.com";
+            String password = "Yogi@123";
+            String emailBody = "Dear " + username + ",\n" +
+                    "\n" +
+                    "you have successfully joined " + s6 + " match at " + s7;
+            Properties properties = new Properties();
+            properties.put("mail.smtp.auth", "true");
+            properties.put("mail.smtp.starttls.enable", "true");
+            properties.put("mail.smtp.host", "smtp.gmail.com");
+            properties.put("mail.smtp.port", "587");
+            Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
+                @Override
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(emailTo, password);
+                }
+            });
+            try {
+                MimeMessage message = new MimeMessage(session);
+                message.setFrom(new InternetAddress(emailTo));
+                message.setRecipients(MimeMessage.RecipientType.TO, InternetAddress.parse(firebaseUser.getEmail()));
+                message.setSubject("Graczone");
+                message.setText(emailBody);
+                Transport.send(message);
+//                                            progressDialog.dismiss();
+
+
+            } catch (MessagingException e) {
+//                                            progressDialog.dismiss();
+                Toast.makeText(getApplicationContext(), "error to send mail", Toast.LENGTH_LONG).show();
+                throw new RuntimeException(e);
+            }
+        } else {
+            Log.d("myTag", "mail can not send");
+        }
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
@@ -418,14 +533,58 @@ public class joining extends AppCompatActivity {
 
     void saveMyMatches(String s1, String s2, String s7, String time, String date, String s3, String s4, String s5) {
 
-        MyMatchesModel myMatchesModel = new MyMatchesModel(s7, time, date, s1, s2, s3, s4, s5, "rank2:", "rank3:", s6, match);
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         try {
-            FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid())
-                    .child("MyMatches").push().setValue(myMatchesModel);
+
+            MyMatchesModel myMatchesModel = new MyMatchesModel(s7, time, date, s1, s2, s3, s4, s5, "rank2:", "rank3:", s6, match);
+            firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+            try {
+                FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid())
+                        .child("MyMatches").push().setValue(myMatchesModel);
+            } catch (Exception e) {
+                Log.d("myTag", "error to save myMatches details in firebase");
+            }
+            if (canWeSend) {
+
+                String emailTo = "yogeshdrt@gmail.com";
+                String password = "Yogi@123";
+                String emailBody = "Dear " + username + ",\n" +
+                        "\n" +
+                        "you have successfully joined " + s6 + " match at " + s7;
+                Properties properties = new Properties();
+                properties.put("mail.smtp.auth", "true");
+                properties.put("mail.smtp.starttls.enable", "true");
+                properties.put("mail.smtp.host", "smtp.gmail.com");
+                properties.put("mail.smtp.port", "587");
+                Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
+                    @Override
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(emailTo, password);
+                    }
+                });
+                try {
+                    MimeMessage message = new MimeMessage(session);
+                    message.setFrom(new InternetAddress(emailTo));
+                    message.setRecipients(MimeMessage.RecipientType.TO, InternetAddress.parse(firebaseUser.getEmail()));
+                    message.setSubject("Graczone");
+                    message.setText(emailBody);
+                    Transport.send(message);
+//                                            progressDialog.dismiss();
+
+
+                } catch (MessagingException e) {
+//                                            progressDialog.dismiss();
+                    Toast.makeText(getApplicationContext(), "error to send mail", Toast.LENGTH_LONG).show();
+                    throw new RuntimeException(e);
+                }
+            } else {
+                Log.d("myTag", "mail can not send");
+            }
+
         } catch (Exception e) {
-            Log.d("myTag", "error to save myMatches details in firebase");
+            Log.d("myTag", Arrays.toString(e.getStackTrace()));
+
         }
+
 //        SharedPreferences sharedPreferences = getSharedPreferences("myMatchesPre", MODE_PRIVATE);
 //        SharedPreferences.Editor editor = sharedPreferences.edit();
 //        Gson gson = new Gson();

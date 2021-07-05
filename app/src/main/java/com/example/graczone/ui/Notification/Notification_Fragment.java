@@ -85,7 +85,7 @@ public class Notification_Fragment extends Fragment {
             @Override
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
                 //Remove swiped item from list and notify the RecyclerView
-                int position = (notificationModels.size() - 1) - viewHolder.getAdapterPosition();
+                int position = viewHolder.getAbsoluteAdapterPosition();
                 deleteNotificationModel[0] = notificationModels.get(position);
                 notificationModels.remove(position);
                 Log.d("myTag", "before reference in show noti");
