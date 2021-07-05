@@ -26,36 +26,30 @@
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:yogeshdrt" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </expand>
     <select>
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="BRANCH:master" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dceb6660-a320-494f-b42a-773741ded4fc" name="Default Changelist" comment="again">
+    <list default="true" id="dceb6660-a320-494f-b42a-773741ded4fc" name="Default Changelist" comment="Linear_layout_invisible">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/LOGIN/EmailVerificationActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/LOGIN/EmailVerificationActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/LOGIN/NetworkChangeListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/LOGIN/NetworkChangeListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/LOGIN/signInWithGoogleActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/LOGIN/signInWithGoogleActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/home.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/home.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/joining.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/joining.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/ui/Notification/Notification_Fragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/ui/Notification/Notification_Fragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_email_verification.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_email_verification.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/check_internet_dialog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/check_internet_dialog.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/delete_account_popup.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/delete_account_popup.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[SerialNumber@USZPINMZ99GEGI69]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[VirtualDevicePath@C:\Android\.android\avd\Pixel_3a_XL_API_30.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -526,7 +520,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625043202013</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Linear_layout_invisible">
+      <created>1625306271229</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1625306271229</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -577,7 +578,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="joining" />
     <MESSAGE value="popup/joining" />
     <MESSAGE value="joiningComplete" />
     <MESSAGE value="joiningComplete/splash" />
@@ -602,7 +602,8 @@
     <MESSAGE value="google sign in fix again" />
     <MESSAGE value="cardset..." />
     <MESSAGE value="cardset....." />
-    <option name="LAST_COMMIT_MESSAGE" value="cardset....." />
+    <MESSAGE value="Linear_layout_invisible" />
+    <option name="LAST_COMMIT_MESSAGE" value="Linear_layout_invisible" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -670,26 +671,26 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="561" y="262" key="Github.ShareDialog/0.0.1366.728@0.0.1366.728" timestamp="1617807960078" />
-    <state width="1323" height="176" key="GridCell.Tab.0.bottom" timestamp="1625143750871">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1493" height="296" key="GridCell.Tab.0.bottom" timestamp="1625401729923">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1323" height="176" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1625143750871" />
-    <state width="1493" height="173" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1625126161367" />
-    <state width="1323" height="176" key="GridCell.Tab.0.center" timestamp="1625143750870">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1493" height="296" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1625401729923" />
+    <state width="1493" height="296" key="GridCell.Tab.0.center" timestamp="1625401729922">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1323" height="176" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1625143750870" />
-    <state width="1493" height="173" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1625126161367" />
-    <state width="1323" height="176" key="GridCell.Tab.0.left" timestamp="1625143750870">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1493" height="296" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1625401729922" />
+    <state width="1493" height="296" key="GridCell.Tab.0.left" timestamp="1625401729921">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1323" height="176" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1625143750870" />
-    <state width="1493" height="173" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1625126161367" />
-    <state width="1323" height="176" key="GridCell.Tab.0.right" timestamp="1625143750871">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1493" height="296" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1625401729921" />
+    <state width="1493" height="296" key="GridCell.Tab.0.right" timestamp="1625401729923">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1323" height="176" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1625143750871" />
-    <state width="1493" height="173" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1625126161367" />
+    <state width="1493" height="296" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1625401729923" />
     <state x="349" y="155" key="IDE.errors.dialog" timestamp="1620122575496">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -736,10 +737,11 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="496" y="201" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1620995324012" />
-    <state x="329" y="154" width="672" height="677" key="run.anything.popup" timestamp="1624878682164">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="370" y="174" width="756" height="767" key="run.anything.popup" timestamp="1625401082229">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="329" y="154" width="672" height="677" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1624878682164" />
+    <state x="370" y="174" width="756" height="767" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1625401082229" />
     <state x="383" y="128" width="672" height="600" key="search.everywhere.popup" timestamp="1622189729116">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

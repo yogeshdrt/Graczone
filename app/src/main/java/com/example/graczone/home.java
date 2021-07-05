@@ -14,7 +14,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -76,6 +75,7 @@ public class home extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -85,6 +85,7 @@ public class home extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         //
+
 
         drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
@@ -121,7 +122,6 @@ public class home extends AppCompatActivity {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel("MyNotifications", "MyNotifications", NotificationManager.IMPORTANCE_DEFAULT);
-
             NotificationManager manager = getSystemService(NotificationManager.class);
             manager.createNotificationChannel(channel);
         }
@@ -147,6 +147,7 @@ public class home extends AppCompatActivity {
         });
 
         navigationView.getMenu().findItem(R.id.nav_notification).setOnMenuItemClickListener(MenuItem -> {
+            progressDialog.show();
 
             FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid()).child("Notifications")
                     .addValueEventListener(new ValueEventListener() {
@@ -185,12 +186,13 @@ public class home extends AppCompatActivity {
 //                                getSupportFragmentManager().getBackStackEntryAt(i).getName());
 
                             }
+                            progressDialog.dismiss();
                             ft.replace(R.id.nav_host_fragment, nf);
                             ft.addToBackStack(null);
                             ft.commit();
                             drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
                             navigationView.getMenu().getItem(2).setChecked(true);
-                            Toast.makeText(getApplicationContext(), "successfully add notification data", Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(getApplicationContext(), "successfully add notification data", Toast.LENGTH_SHORT).show();
 
                         }
 
@@ -205,8 +207,9 @@ public class home extends AppCompatActivity {
 //            Toast.makeText(getApplicationContext(), "successfully add notification data", Toast.LENGTH_SHORT).show();
             return true;
         });
-
         navigationView.getMenu().findItem(R.id.nav_mymatches).setOnMenuItemClickListener(MenuItem -> {
+
+            progressDialog.show();
 
             FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid()).child("MyMatches")
                     .addValueEventListener(new ValueEventListener() {
@@ -241,6 +244,7 @@ public class home extends AppCompatActivity {
                                 getSupportFragmentManager().popBackStack();
 
                             }
+                            progressDialog.dismiss();
                             ft.replace(R.id.nav_host_fragment, mf);
                             ft.addToBackStack(null);
                             ft.commit();
@@ -258,6 +262,7 @@ public class home extends AppCompatActivity {
                     });
             return true;
         });
+
 
         navigationView.getMenu().findItem(R.id.feedback).setOnMenuItemClickListener(item -> {
 
