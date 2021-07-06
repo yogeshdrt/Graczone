@@ -337,6 +337,22 @@ public class home extends AppCompatActivity {
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
         assert acct != null;
         get_username.setText(acct.getDisplayName());
+
+        NavigationUI.setupWithNavController(navigationView, navController);
+
+        ////Setting_icon-For Delete account///////////////
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+        ImageView imageView = headerView.findViewById(R.id.setting_icon);
+        imageView.setOnClickListener(v -> {
+            for (int i = 0; i < getSupportFragmentManager().getBackStackEntryCount(); i++) {
+                getSupportFragmentManager().popBackStack();
+            }
+            Intent intent = new Intent(home.this, EmailVerificationActivity.class);
+            startActivity(intent);
+        });
+
         //add Notification and myMatches
         FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid()).child("Notifications")
                 .addValueEventListener(new ValueEventListener() {
@@ -400,7 +416,7 @@ public class home extends AppCompatActivity {
 
                                     @Override
                                     public void onCancelled(@NonNull DatabaseError error) {
-                                        Log.d("myTag", "show database error in notification");
+                                        Log.d("myTag", "show database error in myMatches");
                                         progressDialog.dismiss();
 
                                     }
@@ -419,20 +435,17 @@ public class home extends AppCompatActivity {
 
                 });
 //        progressDialog.dismiss();
-        NavigationUI.setupWithNavController(navigationView, navController);
-
-        ////Setting_icon-For Delete account///////////////
-
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        View headerView = navigationView.getHeaderView(0);
-        ImageView imageView = headerView.findViewById(R.id.setting_icon);
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(home.this, EmailVerificationActivity.class);
-                startActivity(intent);
-            }
-        });
+//        NavigationUI.setupWithNavController(navigationView, navController);
+//
+//        ////Setting_icon-For Delete account///////////////
+//
+//        NavigationView navigationView = findViewById(R.id.nav_view);
+//        View headerView = navigationView.getHeaderView(0);
+//        ImageView imageView = headerView.findViewById(R.id.setting_icon);
+//        imageView.setOnClickListener(v -> {
+//            Intent intent = new Intent(home.this, EmailVerificationActivity.class);
+//            startActivity(intent);
+//        });
     }
 
     public void onNewIntent(Intent intent) {

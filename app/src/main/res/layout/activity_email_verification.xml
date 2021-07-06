@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/gray"
+    android:orientation="vertical"
     tools:context=".LOGIN.EmailVerificationActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -69,6 +69,7 @@
         android:layout_margin="10dp"
         android:backgroundTint="@color/white"
         android:fontFamily="sans-serif-light"
+        android:onClick="sendEmailForDeleteAccount"
         android:paddingHorizontal="30dp"
         android:paddingVertical="20dp"
         android:text="Delete my Graczone account"

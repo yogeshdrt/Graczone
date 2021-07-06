@@ -481,10 +481,15 @@ public class joining extends AppCompatActivity {
                     "\n" +
                     "you have successfully joined " + s6 + " match at " + s7;
             Properties properties = new Properties();
+            properties.setProperty("mail.transport.protocol", "smtp");
             properties.put("mail.smtp.auth", "true");
             properties.put("mail.smtp.starttls.enable", "true");
             properties.put("mail.smtp.host", "smtp.gmail.com");
-            properties.put("mail.smtp.port", "587");
+            properties.put("mail.smtp.port", "465");
+            properties.put("mail.smtp.socketFactory.port", "465");
+            properties.put("mail.smtp.socketFactory.fallback", "false");
+            properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+            properties.setProperty("mail.smtp.quitwait", "false");
             Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
                 @Override
                 protected PasswordAuthentication getPasswordAuthentication() {
@@ -494,7 +499,7 @@ public class joining extends AppCompatActivity {
             try {
                 MimeMessage message = new MimeMessage(session);
                 message.setFrom(new InternetAddress(emailTo));
-                message.setRecipients(MimeMessage.RecipientType.TO, InternetAddress.parse(firebaseUser.getEmail()));
+                message.setRecipients(MimeMessage.RecipientType.TO, InternetAddress.parse(Objects.requireNonNull(firebaseUser.getEmail())));
                 message.setSubject("Graczone");
                 message.setText(emailBody);
                 Transport.send(message);
