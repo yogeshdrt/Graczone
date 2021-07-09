@@ -76,7 +76,7 @@ public class Feedback_Fragment extends Fragment {
         hashMap.put("feedback", feedbackText);
         Log.d("myTag", "feedback: " + feedbackText + " name " + firebaseUser.getDisplayName());
 
-        FirebaseDatabase.getInstance().getReference("Feedback").child(userId).setValue(hashMap)
+        FirebaseDatabase.getInstance().getReference("Feedback").child(userId).push().setValue(hashMap)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         Log.d("myTag", "successfull");

@@ -136,7 +136,6 @@ public class home extends AppCompatActivity {
                 });
 
 
-
         navigationView.getMenu().findItem(R.id.logout).setOnMenuItemClickListener(MenuItem -> {
 
             mGoogleSignInClient.signOut();
@@ -147,78 +146,81 @@ public class home extends AppCompatActivity {
         });
 
         navigationView.getMenu().findItem(R.id.nav_notification).setOnMenuItemClickListener(MenuItem -> {
+            progressDialog.show();
 
 
-//            FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid()).child("Notifications")
-//                    .addValueEventListener(new ValueEventListener() {
-//                        @Override
-//                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                            Log.d("myTag", "snapshot notification");
-//                            Bundle bundle = new Bundle();
-//                            Notification_Fragment nf = new Notification_Fragment();
-//                            modelArrayList = new ArrayList<>();
-//                            for (DataSnapshot child : snapshot.getChildren()) {
-//                                Log.d("myTag", "in forloop notification");
-//                                String body = Objects.requireNonNull(child.child("body").getValue()).toString();
-//                                String title = Objects.requireNonNull(child.child("title").getValue()).toString();
-//                                String date = Objects.requireNonNull(child.child("date").getValue()).toString();
-//                                String time = Objects.requireNonNull(child.child("time").getValue()).toString();
-//                                NotificationModel notificationModel = new NotificationModel(title, body, time, date);
-//                                Log.d("myTag", "in add notification model");
-//                                modelArrayList.add(0, notificationModel);
-//                            }
-////                    SharedPreferences sharedPreferences = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
-////                    Gson gson = new Gson();
-////                    if(sharedPreferences.contains("models")) {
-////
-////                        String json = sharedPreferences.getString("models", null);
-////                        Type type = new TypeToken<ArrayList<NotificationModel>>(){}.getType();
-////                        modelArrayList = gson.fromJson(json, type);
-////                    } else {
-////                        modelArrayList = new ArrayList<>();
-////                    }
-//                            bundle.putSerializable("models", modelArrayList);
-//                            nf.setArguments(notificationBundle);
-//                            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-//                            for (int i = 0; i < getSupportFragmentManager().getBackStackEntryCount(); i++) {
-//                                getSupportFragmentManager().popBackStack();
-////                        Log.d("myTag", "open Fragment id: " + getSupportFragmentManager().getBackStackEntryAt(i).getClass() + " name: " +
-////                                getSupportFragmentManager().getBackStackEntryAt(i).getName());
+            FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid()).child("Notifications")
+                    .addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            Log.d("myTag", "snapshot notification");
+                            Bundle bundle = new Bundle();
+                            Notification_Fragment nf = new Notification_Fragment();
+                            modelArrayList = new ArrayList<>();
+                            for (DataSnapshot child : snapshot.getChildren()) {
+                                Log.d("myTag", "in forloop notification");
+                                String body = Objects.requireNonNull(child.child("body").getValue()).toString();
+                                String title = Objects.requireNonNull(child.child("title").getValue()).toString();
+                                String date = Objects.requireNonNull(child.child("date").getValue()).toString();
+                                String time = Objects.requireNonNull(child.child("time").getValue()).toString();
+                                NotificationModel notificationModel = new NotificationModel(title, body, time, date);
+                                Log.d("myTag", "in add notification model");
+                                modelArrayList.add(0, notificationModel);
+                            }
+//                    SharedPreferences sharedPreferences = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
+//                    Gson gson = new Gson();
+//                    if(sharedPreferences.contains("models")) {
 //
-//                            }
-//                            progressDialog.dismiss();
-//                            ft.replace(R.id.nav_host_fragment, nf);
-//                            ft.addToBackStack(null);
-//                            ft.commit();
-//                            drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-//                            navigationView.getMenu().getItem(2).setChecked(true);
-////                            Toast.makeText(getApplicationContext(), "successfully add notification data", Toast.LENGTH_SHORT).show();
-//
-//                        }
-//
-//                        @Override
-//                        public void onCancelled(@NonNull DatabaseError error) {
-//                            Log.d("myTag", "show database error in notification");
-//
-//                        }
-//                    });
-            Notification_Fragment nf = new Notification_Fragment();
-            nf.setArguments(notificationBundle);
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            for (int i = 0; i < getSupportFragmentManager().getBackStackEntryCount(); i++) {
-                getSupportFragmentManager().popBackStack();
+//                        String json = sharedPreferences.getString("models", null);
+//                        Type type = new TypeToken<ArrayList<NotificationModel>>(){}.getType();
+//                        modelArrayList = gson.fromJson(json, type);
+//                    } else {
+//                        modelArrayList = new ArrayList<>();
+//                    }
+                            bundle.putSerializable("models", modelArrayList);
+                            nf.setArguments(notificationBundle);
+                            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                            for (int i = 0; i < getSupportFragmentManager().getBackStackEntryCount(); i++) {
+                                getSupportFragmentManager().popBackStack();
 //                        Log.d("myTag", "open Fragment id: " + getSupportFragmentManager().getBackStackEntryAt(i).getClass() + " name: " +
 //                                getSupportFragmentManager().getBackStackEntryAt(i).getName());
 
-            }
+                            }
+                            progressDialog.dismiss();
+                            ft.replace(R.id.nav_host_fragment, nf);
+                            ft.addToBackStack(null);
+                            ft.commit();
+                            drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+                            navigationView.getMenu().getItem(2).setChecked(true);
+//                            Toast.makeText(getApplicationContext(), "successfully add notification data", Toast.LENGTH_SHORT).show();
+                            progressDialog.dismiss();
 
-            ft.replace(R.id.nav_host_fragment, nf);
-            ft.addToBackStack(null);
-            ft.commit();
-            drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-            navigationView.getMenu().getItem(2).setChecked(true);
+                        }
 
-            Log.d("myTag", "noti. open fragment: " + getSupportFragmentManager().getBackStackEntryCount());
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            Log.d("myTag", "show database error in notification");
+                            progressDialog.dismiss();
+
+                        }
+                    });
+//            Notification_Fragment nf = new Notification_Fragment();
+//            nf.setArguments(notificationBundle);
+//            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+//            for (int i = 0; i < getSupportFragmentManager().getBackStackEntryCount(); i++) {
+//                getSupportFragmentManager().popBackStack();
+////                        Log.d("myTag", "open Fragment id: " + getSupportFragmentManager().getBackStackEntryAt(i).getClass() + " name: " +
+////                                getSupportFragmentManager().getBackStackEntryAt(i).getName());
+//
+//            }
+//
+//            ft.replace(R.id.nav_host_fragment, nf);
+//            ft.addToBackStack(null);
+//            ft.commit();
+//            drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+//            navigationView.getMenu().getItem(2).setChecked(true);
+
+//            Log.d("myTag", "noti. open fragment: " + getSupportFragmentManager().getBackStackEntryCount());
 //            Toast.makeText(getApplicationContext(), "successfully add notification data", Toast.LENGTH_SHORT).show();
             return true;
         });
@@ -348,91 +350,57 @@ public class home extends AppCompatActivity {
             for (int i = 0; i < getSupportFragmentManager().getBackStackEntryCount(); i++) {
                 getSupportFragmentManager().popBackStack();
             }
+            navigationView.getMenu().getItem(1).setChecked(false);
+            navigationView.getMenu().getItem(2).setChecked(false);
+            navigationView.getMenu().getItem(3).setChecked(false);
+            navigationView.getMenu().getItem(4).setChecked(false);
+            navigationView.getMenu().getItem(5).setChecked(false);
             Intent intent = new Intent(home.this, EmailVerificationActivity.class);
             startActivity(intent);
         });
 
         //add Notification and myMatches
-        FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid()).child("Notifications")
+        FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid()).child("MyMatches")
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        Log.d("myTag", "snapshot notification");
-                        notificationBundle = new Bundle();
-                        Notification_Fragment nf = new Notification_Fragment();
-                        modelArrayList = new ArrayList<>();
+                        Log.d("myTag", "snapshot myMatches");
+                        myMatchesBundle = new Bundle();
+                        MyMatches_Fragment mf = new MyMatches_Fragment();
+                        myMatchesModels = new ArrayList<>();
                         for (DataSnapshot child : snapshot.getChildren()) {
-                            Log.d("myTag", "in forloop notification");
-                            String body = Objects.requireNonNull(child.child("body").getValue()).toString();
-                            String title = Objects.requireNonNull(child.child("title").getValue()).toString();
-                            String date = Objects.requireNonNull(child.child("date").getValue()).toString();
-                            String time = Objects.requireNonNull(child.child("time").getValue()).toString();
-                            NotificationModel notificationModel = new NotificationModel(title, body, time, date);
-                            Log.d("myTag", "in add notification model");
-                            modelArrayList.add(0, notificationModel);
+                            Log.d("myTag", "in forloop my matches");
+                            String dateTextView = Objects.requireNonNull(child.child("dateTextView").getValue()).toString();
+                            String timeTextView = Objects.requireNonNull(child.child("timeTextView").getValue()).toString();
+                            String entryFeeTextView = Objects.requireNonNull(child.child("entryFeeTextView").getValue()).toString();
+                            String killTextView = Objects.requireNonNull(child.child("killTextView").getValue()).toString();
+                            String mapTextView = Objects.requireNonNull(child.child("mapTextView").getValue()).toString();
+                            String rank1TextView = Objects.requireNonNull(child.child("rank1TextView").getValue()).toString();
+                            String rank2TextView = Objects.requireNonNull(child.child("rank2TextView").getValue()).toString();
+                            String rank2lTextView = Objects.requireNonNull(child.child("rank2lTextView").getValue()).toString();
+                            String rank3lTextView = Objects.requireNonNull(child.child("rank3lTextView").getValue()).toString();
+                            String rank3TextView = Objects.requireNonNull(child.child("rank3TextView").getValue()).toString();
+                            String teamUp = Objects.requireNonNull(child.child("teamUp").getValue()).toString();
+                            String match = Objects.requireNonNull(child.child("match").getValue()).toString();
+                            MyMatchesModel myMatchesModel = new MyMatchesModel(mapTextView, timeTextView, dateTextView, entryFeeTextView, killTextView, rank1TextView, rank2TextView, rank3TextView, rank2lTextView, rank3lTextView, teamUp, match);
+                            Log.d("myTag", "in add my matches model");
+                            myMatchesModels.add(0, myMatchesModel);
                         }
-//                    SharedPreferences sharedPreferences = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
-//                    Gson gson = new Gson();
-//                    if(sharedPreferences.contains("models")) {
-//
-//                        String json = sharedPreferences.getString("models", null);
-//                        Type type = new TypeToken<ArrayList<NotificationModel>>(){}.getType();
-//                        modelArrayList = gson.fromJson(json, type);
-//                    } else {
-//                        modelArrayList = new ArrayList<>();
-//                    }
-                        notificationBundle.putSerializable("models", modelArrayList);
-                        FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid()).child("MyMatches")
-                                .addValueEventListener(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                        Log.d("myTag", "snapshot myMatches");
-                                        myMatchesBundle = new Bundle();
-                                        MyMatches_Fragment mf = new MyMatches_Fragment();
-                                        myMatchesModels = new ArrayList<>();
-                                        for (DataSnapshot child : snapshot.getChildren()) {
-                                            Log.d("myTag", "in forloop my matches");
-                                            String dateTextView = Objects.requireNonNull(child.child("dateTextView").getValue()).toString();
-                                            String timeTextView = Objects.requireNonNull(child.child("timeTextView").getValue()).toString();
-                                            String entryFeeTextView = Objects.requireNonNull(child.child("entryFeeTextView").getValue()).toString();
-                                            String killTextView = Objects.requireNonNull(child.child("killTextView").getValue()).toString();
-                                            String mapTextView = Objects.requireNonNull(child.child("mapTextView").getValue()).toString();
-                                            String rank1TextView = Objects.requireNonNull(child.child("rank1TextView").getValue()).toString();
-                                            String rank2TextView = Objects.requireNonNull(child.child("rank2TextView").getValue()).toString();
-                                            String rank2lTextView = Objects.requireNonNull(child.child("rank2lTextView").getValue()).toString();
-                                            String rank3lTextView = Objects.requireNonNull(child.child("rank3lTextView").getValue()).toString();
-                                            String rank3TextView = Objects.requireNonNull(child.child("rank3TextView").getValue()).toString();
-                                            String teamUp = Objects.requireNonNull(child.child("teamUp").getValue()).toString();
-                                            String match = Objects.requireNonNull(child.child("match").getValue()).toString();
-                                            MyMatchesModel myMatchesModel = new MyMatchesModel(mapTextView, timeTextView, dateTextView, entryFeeTextView, killTextView, rank1TextView, rank2TextView, rank3TextView, rank2lTextView, rank3lTextView, teamUp, match);
-                                            Log.d("myTag", "in add my matches model");
-                                            myMatchesModels.add(0, myMatchesModel);
-                                        }
-                                        myMatchesBundle.putSerializable("myMatchModels", myMatchesModels);
-                                        progressDialog.dismiss();
-
-                                    }
-
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError error) {
-                                        Log.d("myTag", "show database error in myMatches");
-                                        progressDialog.dismiss();
-
-                                    }
-                                });
+                        myMatchesBundle.putSerializable("myMatchModels", myMatchesModels);
                         progressDialog.dismiss();
 
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-                        Log.d("myTag", "show database error in notification");
+                        Log.d("myTag", "show database error in myMatches");
                         progressDialog.dismiss();
 
                     }
-
-
                 });
+        progressDialog.dismiss();
+
+
 //        progressDialog.dismiss();
 //        NavigationUI.setupWithNavController(navigationView, navController);
 //

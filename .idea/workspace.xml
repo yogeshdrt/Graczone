@@ -38,19 +38,18 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dceb6660-a320-494f-b42a-773741ded4fc" name="Default Changelist" comment="code change of home activity">
+    <list default="true" id="dceb6660-a320-494f-b42a-773741ded4fc" name="Default Changelist" comment="crashing problem solve after myMatches">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/LOGIN/EmailVerificationActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/LOGIN/EmailVerificationActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/home.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/home.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/joining.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/joining.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_email_verification.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_email_verification.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/ui/feedback/Feedback_Fragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/ui/feedback/Feedback_Fragment.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[SerialNumber@USZPINMZ99GEGI69]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -542,7 +541,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625484378450</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="crashing problem solve after myMatches">
+      <created>1625493521763</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1625493521763</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -605,7 +611,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="joiningComplete/splash" />
     <MESSAGE value="profile_complete" />
     <MESSAGE value="profile/joining_finish" />
     <MESSAGE value="Linear_progressbar" />
@@ -630,7 +635,8 @@
     <MESSAGE value="complete delete account" />
     <MESSAGE value="some changes" />
     <MESSAGE value="code change of home activity" />
-    <option name="LAST_COMMIT_MESSAGE" value="code change of home activity" />
+    <MESSAGE value="crashing problem solve after myMatches" />
+    <option name="LAST_COMMIT_MESSAGE" value="crashing problem solve after myMatches" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -667,6 +673,10 @@
     </state>
     <state x="413" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1618380447415" />
     <state x="464" y="126" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1622797452444" />
+    <state x="92" y="92" width="1182" height="544" key="AVDManager" timestamp="1625655883692">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="92" y="92" width="1182" height="544" key="AVDManager/0.0.1366.728@0.0.1366.728" timestamp="1625655883692" />
     <state x="296" y="135" key="AndroidCreateResourceDirectoryDialog" timestamp="1621851503288">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -698,25 +708,25 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="561" y="262" key="Github.ShareDialog/0.0.1366.728@0.0.1366.728" timestamp="1617807960078" />
-    <state width="1323" height="209" key="GridCell.Tab.0.bottom" timestamp="1625492646733">
+    <state width="1323" height="215" key="GridCell.Tab.0.bottom" timestamp="1625807024299">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="209" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1625492646733" />
+    <state width="1323" height="215" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1625807024299" />
     <state width="1493" height="173" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1625126161367" />
-    <state width="1323" height="209" key="GridCell.Tab.0.center" timestamp="1625492646732">
+    <state width="1323" height="215" key="GridCell.Tab.0.center" timestamp="1625807024299">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="209" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1625492646732" />
+    <state width="1323" height="215" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1625807024299" />
     <state width="1493" height="173" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1625126161367" />
-    <state width="1323" height="209" key="GridCell.Tab.0.left" timestamp="1625492646732">
+    <state width="1323" height="215" key="GridCell.Tab.0.left" timestamp="1625807024299">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="209" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1625492646732" />
+    <state width="1323" height="215" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1625807024299" />
     <state width="1493" height="173" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1625126161367" />
-    <state width="1323" height="209" key="GridCell.Tab.0.right" timestamp="1625492646733">
+    <state width="1323" height="215" key="GridCell.Tab.0.right" timestamp="1625807024299">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="209" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1625492646733" />
+    <state width="1323" height="215" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1625807024299" />
     <state width="1493" height="173" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1625126161367" />
     <state x="349" y="155" key="IDE.errors.dialog" timestamp="1620122575496">
       <screen x="0" y="0" width="1536" height="824" />
@@ -739,10 +749,10 @@
     </state>
     <state x="246" y="18" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1624878635496" />
     <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1621505795087" />
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1625484393307">
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1625493528521">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1625484393307" />
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1625493528521" />
     <state x="309" y="110" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1625043246362" />
     <state x="584" y="190" key="chooseDestDirectoryDialog" timestamp="1621853014266">
       <screen x="0" y="0" width="1536" height="824" />
