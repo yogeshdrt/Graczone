@@ -22,9 +22,6 @@ import com.example.graczone.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
-import com.shreyaspatil.EasyUpiPayment.EasyUpiPayment;
-import com.shreyaspatil.EasyUpiPayment.listener.PaymentStatusListener;
-import com.shreyaspatil.EasyUpiPayment.model.TransactionDetails;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -32,7 +29,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
-import java.util.Objects;
+
+import dev.shreyaspatil.easyupipayment.EasyUpiPayment;
+import dev.shreyaspatil.easyupipayment.listener.PaymentStatusListener;
+import dev.shreyaspatil.easyupipayment.model.PaymentApp;
+import dev.shreyaspatil.easyupipayment.model.TransactionDetails;
 
 
 public class BalanceFragment extends Fragment implements PaymentStatusListener {
@@ -118,8 +119,34 @@ public class BalanceFragment extends Fragment implements PaymentStatusListener {
         Log.d("myTag", "inner of make Payment");
         try {
 
-            EasyUpiPayment.Builder builder = new EasyUpiPayment.Builder();
-            builder.with(getActivity());
+            PaymentApp paymentApp;
+            paymentApp = PaymentApp.ALL;
+
+//            switch (paymentAppChoice.getId()) {
+//                case R.id.app_default:
+//                    paymentApp = PaymentApp.ALL;
+//                    break;
+//                case R.id.app_amazonpay:
+//                    paymentApp = PaymentApp.AMAZON_PAY;
+//                    break;
+//                case R.id.app_bhim_upi:
+//                    paymentApp = PaymentApp.BHIM_UPI;
+//                    break;
+//                case R.id.app_google_pay:
+//                    paymentApp = PaymentApp.GOOGLE_PAY;
+//                    break;
+//                case R.id.app_phonepe:
+//                    paymentApp = PaymentApp.PHONE_PE;
+//                    break;
+//                case R.id.app_paytm:
+//                    paymentApp = PaymentApp.PAYTM;
+//                    break;
+//                default:
+//                    throw new IllegalStateException("Unexpected value: " + paymentAppChoice.getId());
+//            }
+
+            EasyUpiPayment.Builder builder = new EasyUpiPayment.Builder(getActivity());
+            builder.with(paymentApp);
             Log.d("myTag", "after with");
             builder.setPayeeVpa(upi);
             Log.d("myTag", "after upi");
@@ -172,28 +199,41 @@ public class BalanceFragment extends Fragment implements PaymentStatusListener {
     @Override
     public void onTransactionCompleted(TransactionDetails transactionDetails) {
 
+        switch (transactionDetails.getTransactionStatus()) {
+            case SUCCESS:
+                onTransactionSuccess();
+                break;
+            case FAILURE:
+                onTransactionFailed();
+                break;
+            case SUBMITTED:
+                onTransactionSubmitted();
+                break;
+        }
+
         HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("Status", transactionDetails.getStatus());
+        hashMap.put("Status", transactionDetails.getTransactionStatus().toString());
         hashMap.put("TransactionId", transactionDetails.getTransactionId());
         hashMap.put("ApprovalRefNo", transactionDetails.getApprovalRefNo());
         hashMap.put("TransactionRefNO", transactionDetails.getTransactionRefId());
         hashMap.put("RespondCode", transactionDetails.getResponseCode());
-        if (Objects.equals(hashMap.get("Status"), "Success")) {
-            int bln = Integer.parseInt(balanceTextView.getText().toString()) + Integer.parseInt(amountEditText.getText().toString());
 
-            balanceTextView.setText(bln);
-            FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid()).child("Balance").setValue(bln)
-                    .addOnCompleteListener(task -> {
-                        if (task.isSuccessful()) {
-                            Log.d("myTag", "add balance in database");
-                        } else {
-                            Log.d("myTag", "failed to add balance in database");
-                        }
-                    });
-            Toast.makeText(getActivity(), "Transaction successfully completed..", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(getActivity(), "Transaction failed..", Toast.LENGTH_SHORT).show();
-        }
+//        if (Objects.equals(hashMap.get("Status"), "Success")) {
+//            int bln = Integer.parseInt(balanceTextView.getText().toString()) + Integer.parseInt(amountEditText.getText().toString());
+//
+//            balanceTextView.setText(bln);
+//            FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid()).child("Balance").setValue(bln)
+//                    .addOnCompleteListener(task -> {
+//                        if (task.isSuccessful()) {
+//                            Log.d("myTag", "add balance in database");
+//                        } else {
+//                            Log.d("myTag", "failed to add balance in database");
+//                        }
+//                    });
+//            Toast.makeText(getActivity(), "Transaction successfully completed..", Toast.LENGTH_SHORT).show();
+//        } else {
+//            Toast.makeText(getActivity(), "Transaction failed..", Toast.LENGTH_SHORT).show();
+//        }
         // on below line we are getting details about transaction when completed.
 //        String transcDetails = transactionDetails.getStatus().toString() + "\n" + "Transaction ID : " + transactionDetails.getTransactionId();
 //        transactionDetailsTV.setVisibility(View.VISIBLE);
@@ -212,20 +252,24 @@ public class BalanceFragment extends Fragment implements PaymentStatusListener {
 
     }
 
-    @Override
     public void onTransactionSuccess() {
         // this method is called when transaction is successful and we are displaying a toast message.
         Log.d("myTag", "runOnTransactionSuccess");
 
-//        int bln = Integer.parseInt(balanceTextView.getText().toString()) + Integer.parseInt(amountEditText.getText().toString());
-//
-//        balanceTextView.setText(bln);
-//        isSuccess = true;
+        int bln = Integer.parseInt(balanceTextView.getText().toString()) + Integer.parseInt(amountEditText.getText().toString());
 
+        balanceTextView.setText(bln);
+        FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid()).child("Balance").setValue(bln)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Log.d("myTag", "add balance in database");
+                    } else {
+                        Log.d("myTag", "failed to add balance in database");
+                    }
+                });
         Toast.makeText(getActivity(), "Transaction successfully completed..", Toast.LENGTH_SHORT).show();
     }
 
-    @Override
     public void onTransactionSubmitted() {
         // this method is called when transaction is done
         // but it may be successful or failure.
@@ -233,7 +277,6 @@ public class BalanceFragment extends Fragment implements PaymentStatusListener {
         Toast.makeText(getContext(), "Pending | Submitted", Toast.LENGTH_SHORT).show();
     }
 
-    @Override
     public void onTransactionFailed() {
         // this method is called when transaction is failure.
         Toast.makeText(getContext(), "Failed to complete transaction", Toast.LENGTH_SHORT).show();
@@ -245,11 +288,11 @@ public class BalanceFragment extends Fragment implements PaymentStatusListener {
         Toast.makeText(getContext(), "Transaction cancelled..", Toast.LENGTH_SHORT).show();
     }
 
-    @Override
-    public void onAppNotFound() {
-        // this method is called when the users device is not having any app installed for making payment.
-        Toast.makeText(getContext(), "No app found for making transaction..", Toast.LENGTH_SHORT).show();
-    }
+//    @Override
+//    public void onAppNotFound() {
+//        // this method is called when the users device is not having any app installed for making payment.
+//        Toast.makeText(getContext(), "No app found for making transaction..", Toast.LENGTH_SHORT).show();
+//    }
 
 
 }
