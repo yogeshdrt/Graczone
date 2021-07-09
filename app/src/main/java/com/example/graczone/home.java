@@ -227,56 +227,6 @@ public class home extends AppCompatActivity {
         });
         navigationView.getMenu().findItem(R.id.nav_mymatches).setOnMenuItemClickListener(MenuItem -> {
 
-
-//            FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid()).child("MyMatches")
-//                    .addValueEventListener(new ValueEventListener() {
-//                        @Override
-//                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                            Log.d("myTag", "snapshot myMatches");
-//                            Bundle bundle = new Bundle();
-//                            MyMatches_Fragment mf = new MyMatches_Fragment();
-//                            myMatchesModels = new ArrayList<>();
-//                            for (DataSnapshot child : snapshot.getChildren()) {
-//                                Log.d("myTag", "in forloop my matches");
-//                                String dateTextView = Objects.requireNonNull(child.child("dateTextView").getValue()).toString();
-//                                String timeTextView = Objects.requireNonNull(child.child("timeTextView").getValue()).toString();
-//                                String entryFeeTextView = Objects.requireNonNull(child.child("entryFeeTextView").getValue()).toString();
-//                                String killTextView = Objects.requireNonNull(child.child("killTextView").getValue()).toString();
-//                                String mapTextView = Objects.requireNonNull(child.child("mapTextView").getValue()).toString();
-//                                String rank1TextView = Objects.requireNonNull(child.child("rank1TextView").getValue()).toString();
-//                                String rank2TextView = Objects.requireNonNull(child.child("rank2TextView").getValue()).toString();
-//                                String rank2lTextView = Objects.requireNonNull(child.child("rank2lTextView").getValue()).toString();
-//                                String rank3lTextView = Objects.requireNonNull(child.child("rank3lTextView").getValue()).toString();
-//                                String rank3TextView = Objects.requireNonNull(child.child("rank3TextView").getValue()).toString();
-//                                String teamUp = Objects.requireNonNull(child.child("teamUp").getValue()).toString();
-//                                String match = Objects.requireNonNull(child.child("match").getValue()).toString();
-//                                MyMatchesModel myMatchesModel = new MyMatchesModel(mapTextView, timeTextView, dateTextView, entryFeeTextView, killTextView, rank1TextView, rank2TextView, rank3TextView, rank2lTextView, rank3lTextView, teamUp, match);
-//                                Log.d("myTag", "in add my matches model");
-//                                myMatchesModels.add(0, myMatchesModel);
-//                            }
-//                            bundle.putSerializable("myMatchModels", myMatchesModels);
-//                            mf.setArguments(bundle);
-//                            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-//                            for (int i = 0; i < getSupportFragmentManager().getBackStackEntryCount(); i++) {
-//                                getSupportFragmentManager().popBackStack();
-//
-//                            }
-//                            progressDialog.dismiss();
-//                            ft.replace(R.id.nav_host_fragment, mf);
-//                            ft.addToBackStack(null);
-//                            ft.commit();
-//                            drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-//                            navigationView.getMenu().getItem(1).setChecked(true);
-////                            Toast.makeText(getApplicationContext(), "successfully add myMatches data", Toast.LENGTH_SHORT).show();
-//
-//                        }
-//
-//                        @Override
-//                        public void onCancelled(@NonNull DatabaseError error) {
-//                            Log.d("myTag", "show database error in notification");
-//
-//                        }
-//                    });
             MyMatches_Fragment mf = new MyMatches_Fragment();
             mf.setArguments(myMatchesBundle);
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
