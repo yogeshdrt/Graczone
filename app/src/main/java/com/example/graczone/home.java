@@ -301,7 +301,7 @@ public class home extends AppCompatActivity {
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
             drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-            navigationView.getMenu().getItem(5).setChecked(true);
+            navigationView.getMenu().getItem(4).setChecked(true);
             return true;
         });
 
@@ -315,7 +315,7 @@ public class home extends AppCompatActivity {
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
             drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-            navigationView.getMenu().getItem(4).setChecked(true);
+            navigationView.getMenu().getItem(3).setChecked(true);
             return true;
         });
 
