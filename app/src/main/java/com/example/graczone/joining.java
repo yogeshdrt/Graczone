@@ -550,6 +550,8 @@ public class joining extends AppCompatActivity {
             }
             if (canWeSend) {
 
+//                Security.addProvider(new com.provider.JSSEProvider());
+
                 String emailTo = "yogeshdrt@gmail.com";
                 String password = "Yogi@123";
                 String emailBody = "Dear " + username + ",\n" +
