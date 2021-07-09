@@ -76,6 +76,7 @@ public class home extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -85,6 +86,7 @@ public class home extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         //
+
 
         drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
@@ -121,7 +123,6 @@ public class home extends AppCompatActivity {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel("MyNotifications", "MyNotifications", NotificationManager.IMPORTANCE_DEFAULT);
-
             NotificationManager manager = getSystemService(NotificationManager.class);
             manager.createNotificationChannel(channel);
         }
@@ -224,7 +225,6 @@ public class home extends AppCompatActivity {
 //            Toast.makeText(getApplicationContext(), "successfully add notification data", Toast.LENGTH_SHORT).show();
             return true;
         });
-
         navigationView.getMenu().findItem(R.id.nav_mymatches).setOnMenuItemClickListener(MenuItem -> {
 
 
@@ -292,6 +292,7 @@ public class home extends AppCompatActivity {
             return true;
         });
 
+
         navigationView.getMenu().findItem(R.id.feedback).setOnMenuItemClickListener(item -> {
 
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -302,7 +303,7 @@ public class home extends AppCompatActivity {
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
             drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-            navigationView.getMenu().getItem(4).setChecked(true);
+            navigationView.getMenu().getItem(5).setChecked(true);
             return true;
         });
 
@@ -316,7 +317,7 @@ public class home extends AppCompatActivity {
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
             drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-            navigationView.getMenu().getItem(3).setChecked(true);
+            navigationView.getMenu().getItem(4).setChecked(true);
             return true;
         });
 

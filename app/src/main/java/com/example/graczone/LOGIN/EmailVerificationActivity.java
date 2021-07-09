@@ -72,7 +72,7 @@ public class EmailVerificationActivity extends AppCompatActivity {
         setUsername.setText(acct.getDisplayName());
         user = FirebaseAuth.getInstance().getCurrentUser();
         progressDialog = new ProgressDialog(EmailVerificationActivity.this);
-//        progressDialog.show();
+        progressDialog.show();
         progressDialog.setContentView(R.layout.progress_dialog);
         progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         progressDialog.setCanceledOnTouchOutside(false);
@@ -323,7 +323,7 @@ public class EmailVerificationActivity extends AppCompatActivity {
             message.setSubject("Graczone");
             message.setText(emailBody);
             Transport.send(message);
-            Toast.makeText(getApplicationContext(), "otp send successfully", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "OTP send successfully", Toast.LENGTH_SHORT).show();
             progressDialog.dismiss();
 
         } catch (MessagingException e) {
