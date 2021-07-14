@@ -1,4 +1,4 @@
-package com.example.graczone;
+package com.example.graczone.Matches;
 
 public class ProductsModel {
     private String time;

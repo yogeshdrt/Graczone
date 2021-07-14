@@ -1,4 +1,4 @@
-package com.example.graczone;
+package com.example.graczone.Matches;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -31,6 +31,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
 import com.example.graczone.LOGIN.NetworkChangeListener;
+import com.example.graczone.R;
 import com.example.graczone.Wallet.wallet;
 import com.example.graczone.ui.MyMatches.MyMatchesModel;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;

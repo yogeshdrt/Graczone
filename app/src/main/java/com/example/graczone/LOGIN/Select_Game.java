@@ -27,6 +27,8 @@ public class Select_Game extends AppCompatActivity {
             finish();
         });
 
+        Log.d("myTag", "click select game");
+
 
     }
 }
