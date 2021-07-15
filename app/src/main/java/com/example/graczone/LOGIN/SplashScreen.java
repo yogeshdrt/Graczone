@@ -1,4 +1,4 @@
-package com.example.graczone;
+package com.example.graczone.LOGIN;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,7 +10,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
-import com.example.graczone.LOGIN.signInWithGoogleActivity;
+import com.example.graczone.R;
+import com.example.graczone.home;
 import com.example.graczone.ui.Notification.NotificationModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

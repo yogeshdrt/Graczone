@@ -1,4 +1,4 @@
-package com.example.graczone;
+package com.example.graczone.ui.Notification;
 
 import android.app.PendingIntent;
 import android.content.Intent;
@@ -8,12 +8,12 @@ import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
-import com.example.graczone.ui.Notification.NotificationModel;
+import com.example.graczone.R;
+import com.example.graczone.home;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
@@ -26,12 +26,10 @@ import java.util.Date;
 
 public class MyMessagingService extends FirebaseMessagingService {
 
-    public static final String MyPREFERENCES = "MyPrefs";
     private static final String TAG = "myTag";
-    String title, body, image;
+    String title, body;
     FirebaseAuth auth;
     FirebaseUser firebaseUser;
-    DatabaseReference databaseReference;
     ArrayList<NotificationModel> notificationModels;
 
     @Override

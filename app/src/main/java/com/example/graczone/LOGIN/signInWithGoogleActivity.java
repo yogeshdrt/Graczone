@@ -236,6 +236,7 @@ public class signInWithGoogleActivity extends AppCompatActivity {
                                                                     throw new RuntimeException(e);
                                                                 }
                                                                 Log.d("myTag", "successfully add data");
+                                                                progressDialog.dismiss();
                                                                 Intent intent = new Intent(signInWithGoogleActivity.this, Select_Game.class);
                                                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
 
@@ -243,6 +244,7 @@ public class signInWithGoogleActivity extends AppCompatActivity {
                                                                 finish();
                                                             } else {
                                                                 Log.d("myTag", "failed to add data");
+                                                                progressDialog.dismiss();
                                                             }
 //                                                            progressDialog.dismiss();
                                                         });
@@ -253,7 +255,7 @@ public class signInWithGoogleActivity extends AppCompatActivity {
 
 //
                                         Log.d("myTag", "signInWithCredential:success: currentUser: " + email);
-                                        progressDialog.dismiss();
+//                                        progressDialog.dismiss();
 //                        Toast.makeText(signInWithGoogleActivity.this, "Firebase Authentication Succeeded ", Toast.LENGTH_LONG).show();
                                     } else {
 // If sign-in fails to display a message to the user.

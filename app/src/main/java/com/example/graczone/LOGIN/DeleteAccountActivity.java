@@ -44,7 +44,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-public class EmailVerificationActivity extends AppCompatActivity {
+public class DeleteAccountActivity extends AppCompatActivity {
 
     private static final int RC_SIGN_IN = 100;
     EditText otpEditText;
@@ -71,8 +71,8 @@ public class EmailVerificationActivity extends AppCompatActivity {
         setEmail.setText(acct.getEmail());
         setUsername.setText(acct.getDisplayName());
         user = FirebaseAuth.getInstance().getCurrentUser();
-        progressDialog = new ProgressDialog(EmailVerificationActivity.this);
-        progressDialog.show();
+        progressDialog = new ProgressDialog(DeleteAccountActivity.this);
+//        progressDialog.show();
         progressDialog.setContentView(R.layout.progress_dialog);
         progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         progressDialog.setCanceledOnTouchOutside(false);
@@ -103,56 +103,59 @@ public class EmailVerificationActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
 
 //        verify_btn.setOnClickListener(v -> {
-////            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-////            imm.hideSoftInputFromWindow(emailEditText.getWindowToken(), 0);
-//
+//            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+//            imm.hideSoftInputFromWindow(emailEditText.getWindowToken(), 0);
+
 //            Log.d("myTag", "show progress dialog in email verification");
+//            dialog.show();
+//            dialog.findViewById(R.id.yesBtn).setOnClickListener(v1 -> sendEmailForDeleteAccount());
+//            dialog.findViewById(R.id.noBtn).setOnClickListener(task -> dialog.dismiss());
 //            sendEmailForDeleteAccount();
-////            emailSend = setEmail.getText().toString();
+//            emailSend = setEmail.getText().toString();
+//
 ////
-//////
-////            Random random = new Random();
-////            otp = random.nextInt(8999) + 1000;
-////            String emailTo = "yogeshdrt@gmail.com";
-////            String password = "Yogi@123";
-////            String emailBody = "Hello,\n" +
-////                    "\n" +
-////                    "verification code " + otp + " for delete account";
-////            Properties properties = new Properties();
-////            properties.put("mail.smtp.auth", "true");
-////            properties.put("mail.smtp.starttls.enable", "true");
-////            properties.put("mail.smtp.host", "smtp.gmail.com");
-////            properties.put("mail.smtp.port", "587");
-////            Session session = null;
-////            try {
-////                session = Session.getInstance(properties, new javax.mail.Authenticator() {
-////                    @Override
-////                    protected PasswordAuthentication getPasswordAuthentication() {
-////                        return new PasswordAuthentication(emailTo, password);
-////                    }
-////                });
-////            } catch (Exception e) {
-////                e.printStackTrace();
-////                Toast.makeText(getApplicationContext(), "please Try again", Toast.LENGTH_SHORT).show();
-////            }
-////            Log.d("myTag", "after session");
-////            try {
-////                MimeMessage message = new MimeMessage(session);
-////                message.setFrom(new InternetAddress(emailTo));
-////                message.setRecipients(MimeMessage.RecipientType.TO, InternetAddress.parse(emailSend));
-////                message.setSubject("Graczone");
-////                message.setText(emailBody);
-////                Transport.send(message);
-////                Toast.makeText(getApplicationContext(), "otp send successfully", Toast.LENGTH_SHORT).show();
-////                progressDialog.dismiss();
-////
-////            } catch (MessagingException e) {
-////                progressDialog.dismiss();
-////                Log.d("myTag", "error to send message");
-////                Toast.makeText(getApplicationContext(), "error to send otp", Toast.LENGTH_LONG).show();
-////                throw new RuntimeException(e);
-////            }
-////            progressDialog.dismiss();
+//            Random random = new Random();
+//            otp = random.nextInt(8999) + 1000;
+//            String emailTo = "yogeshdrt@gmail.com";
+//            String password = "Yogi@123";
+//            String emailBody = "Hello,\n" +
+//                    "\n" +
+//                    "verification code " + otp + " for delete account";
+//            Properties properties = new Properties();
+//            properties.put("mail.smtp.auth", "true");
+//            properties.put("mail.smtp.starttls.enable", "true");
+//            properties.put("mail.smtp.host", "smtp.gmail.com");
+//            properties.put("mail.smtp.port", "587");
+//            Session session = null;
+//            try {
+//                session = Session.getInstance(properties, new javax.mail.Authenticator() {
+//                    @Override
+//                    protected PasswordAuthentication getPasswordAuthentication() {
+//                        return new PasswordAuthentication(emailTo, password);
+//                    }
+//                });
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//                Toast.makeText(getApplicationContext(), "please Try again", Toast.LENGTH_SHORT).show();
+//            }
+//            Log.d("myTag", "after session");
+//            try {
+//                MimeMessage message = new MimeMessage(session);
+//                message.setFrom(new InternetAddress(emailTo));
+//                message.setRecipients(MimeMessage.RecipientType.TO, InternetAddress.parse(emailSend));
+//                message.setSubject("Graczone");
+//                message.setText(emailBody);
+//                Transport.send(message);
+//                Toast.makeText(getApplicationContext(), "otp send successfully", Toast.LENGTH_SHORT).show();
+//                progressDialog.dismiss();
+//
+//            } catch (MessagingException e) {
+//                progressDialog.dismiss();
+//                Log.d("myTag", "error to send message");
+//                Toast.makeText(getApplicationContext(), "error to send otp", Toast.LENGTH_LONG).show();
+//                throw new RuntimeException(e);
+//            }
+//            progressDialog.dismiss();
 //        });
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
@@ -192,7 +195,7 @@ public class EmailVerificationActivity extends AppCompatActivity {
                                             if (task1.isSuccessful()) {
                                                 dialog.dismiss();
                                                 Toast.makeText(getApplicationContext(), "delete account successfully", Toast.LENGTH_SHORT).show();
-                                                Intent intent = new Intent(EmailVerificationActivity.this, signInWithGoogleActivity.class);
+                                                Intent intent = new Intent(DeleteAccountActivity.this, signInWithGoogleActivity.class);
                                                 startActivity(intent);
                                                 finish();
                                             } else {
@@ -242,7 +245,7 @@ public class EmailVerificationActivity extends AppCompatActivity {
             if (acct != null) {
                 Log.d("myTag", "acct null");
                 try {
-                    progressDialog = new ProgressDialog(EmailVerificationActivity.this);
+                    progressDialog = new ProgressDialog(DeleteAccountActivity.this);
                     progressDialog.show();
                     progressDialog.setContentView(R.layout.progress_dialog);
                     progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
@@ -287,8 +290,9 @@ public class EmailVerificationActivity extends AppCompatActivity {
     }
 
     public void sendEmailForDeleteAccount(View v) {
-        progressDialog.show();
+        dialog.dismiss();
         verify_btn.setEnabled(false);
+        progressDialog.show();
         emailSend = setEmail.getText().toString();
 
         Random random = new Random();
