@@ -37,7 +37,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dceb6660-a320-494f-b42a-773741ded4fc" name="Default Changelist" comment="&#10;kkk">
+    <list default="true" id="dceb6660-a320-494f-b42a-773741ded4fc" name="Default Changelist" comment="pullll">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -547,7 +547,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625830469281</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="pullll">
+      <created>1626325478459</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1626325478459</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -598,7 +605,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="profile_complete" />
     <MESSAGE value="profile/joining_finish" />
     <MESSAGE value="Linear_progressbar" />
     <MESSAGE value="feedback" />
@@ -623,7 +629,8 @@
     <MESSAGE value="some changes" />
     <MESSAGE value="code change of home activity" />
     <MESSAGE value="&#10;kkk" />
-    <option name="LAST_COMMIT_MESSAGE" value="&#10;kkk" />
+    <MESSAGE value="pullll" />
+    <option name="LAST_COMMIT_MESSAGE" value="pullll" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
