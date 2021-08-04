@@ -195,8 +195,8 @@ public class signInWithGoogleActivity extends AppCompatActivity {
                                                 FirebaseDatabase.getInstance().getReference("Users").child(user.getUid()).setValue(token)
                                                         .addOnCompleteListener(task1 -> {
                                                             if (task1.isSuccessful()) {
-                                                                String emailTo = "yogeshdrt@gmail.com";
-                                                                String password = "Yogi@123";
+                                                                String emailTo = "graczone@synticsapp.com";
+                                                                String password = "Deepak@yobro";
                                                                 String emailBody = "Hello," + username + " ,\n" +
                                                                         "\n" +
                                                                         "Your account is successfully created.";

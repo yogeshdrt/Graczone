@@ -1,17 +1,19 @@
 package com.example.graczone;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.app.DownloadManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.ProgressDialog;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.database.Cursor;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.net.ConnectivityManager;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,8 +26,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
@@ -59,11 +65,17 @@ import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+
+import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
 public class home extends AppCompatActivity {
 
@@ -86,6 +98,8 @@ public class home extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
+
+    private static final int PERMISSION_REQUEST_CODE = 200;
 
 
     @Override
@@ -405,6 +419,118 @@ public class home extends AppCompatActivity {
 //        });
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            if (grantResults.length > 0) {
+
+                boolean locationAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                boolean cameraAccepted = grantResults[1] == PackageManager.PERMISSION_GRANTED;
+                if (locationAccepted && cameraAccepted) {
+                    UpdateApp updateApp = new UpdateApp();
+                    updateApp.setContext(home.this);
+                    updateApp.execute("https://graczone.netlify.app/app-debug.apk");
+                }
+            }
+        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    private boolean checkPermission() {
+        int result = ContextCompat.checkSelfPermission(getApplicationContext(), WRITE_EXTERNAL_STORAGE);
+        int result1 = ContextCompat.checkSelfPermission(getApplicationContext(), READ_EXTERNAL_STORAGE);
+
+        return result == PackageManager.PERMISSION_GRANTED && result1 == PackageManager.PERMISSION_GRANTED;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    private void requestPermission() {
+        ActivityCompat.requestPermissions(this, new String[]{WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
+    }
+
+    void findVersionFromServer() {
+
+
+        new Thread(new Runnable() {
+
+            public void run() {
+
+
+                ArrayList<String> urls = new ArrayList<String>(); //to read each line
+                //TextView t; //to show the result, please declare and find it inside onCreate()
+
+
+                try {
+
+                    // Create a URL for the desired page
+                    URL url = new URL("https://graczone.netlify.app/updateVersion.txt"); //My text file location
+                    //First open the connection
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    conn.setConnectTimeout(60000); // timing out in a minute
+
+                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+                    //t=(TextView)findViewById(R.id.TextView1); // ideally do this in onCreate()
+                    String str;
+
+                    while ((str = in.readLine()) != null) {
+
+                        urls.add(str);
+                    }
+
+                    in.close();
+                } catch (Exception e) {
+                    Log.d("myTag", e.toString());
+                }
+                Log.d("myTag", "try-catch chalgo");
+
+                //since we are in background thread, to post results we have to go back to ui thread. do the following for that
+
+
+                home.this.runOnUiThread(new Runnable() {
+
+                    public void run() {
+                        Log.d("myTag", "void run start ");
+//                        t.setText(urls.get(0)); // My TextFile has 3 lines
+                        Log.d("myTag", "Ve. " + urls.get(0));
+
+                        serverVersionCode = Integer.parseInt(urls.get(0));
+
+                        if (currentVersionCode < serverVersionCode) {
+                            dialog.show();
+                            dialog.findViewById(R.id.yesBtn).setOnClickListener(new View.OnClickListener() {
+
+                                @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+                                @Override
+                                public void onClick(View v) {
+                                    if (checkPermission()) {
+                                        UpdateApp atualizaApp = new UpdateApp();
+                                        atualizaApp.setContext(home.this);
+                                        atualizaApp.execute("https://graczone.netlify.app/app-debug.apk");
+                                    } else {
+                                        requestPermission();
+                                    }
+                                    dialog.dismiss();
+                                }
+
+
+                            });
+                            dialog.findViewById(R.id.noBtn).setOnClickListener(task -> dialog.dismiss());
+
+                        } else {
+
+                            Log.d("myTag", "currentV: " + currentVersionCode + " " + "seVC " + serverVersionCode);
+                        }
+                    }
+                });
+
+
+            }
+        }).start();
+
+    }
+
 
     public void onNewIntent(Intent intent) {
         //called when a new intent for this class is created.
@@ -490,153 +616,123 @@ public class home extends AppCompatActivity {
 
     }
 
-    void findVersionFromServer() {
+    public class UpdateApp extends AsyncTask<String, Integer, String> {
+        private ProgressDialog mPDialog;
+        private Context mContext;
 
-
-        new Thread(new Runnable() {
-
-            public void run() {
-
-
-                ArrayList<String> urls = new ArrayList<String>(); //to read each line
-                //TextView t; //to show the result, please declare and find it inside onCreate()
-
-
-                try {
-
-                    // Create a URL for the desired page
-                    URL url = new URL("https://graczone.netlify.app/updateVersion.txt"); //My text file location
-                    //First open the connection
-                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                    conn.setConnectTimeout(60000); // timing out in a minute
-
-                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-
-                    //t=(TextView)findViewById(R.id.TextView1); // ideally do this in onCreate()
-                    String str;
-
-                    while ((str = in.readLine()) != null) {
-
-                        urls.add(str);
-                    }
-
-                    in.close();
-                } catch (Exception e) {
-                    Log.d("myTag", e.toString());
+        void setContext(Activity context) {
+            mContext = context;
+            context.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    mPDialog = new ProgressDialog(mContext);
+                    mPDialog.setMessage("Please wait...");
+                    mPDialog.setIndeterminate(true);
+                    mPDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+                    mPDialog.setCancelable(false);
+                    mPDialog.show();
                 }
-                Log.d("myTag", "try-catch chalgo");
+            });
+        }
 
-                //since we are in background thread, to post results we have to go back to ui thread. do the following for that
+        @Override
+        protected String doInBackground(String... arg0) {
+            try {
 
+                URL url = new URL(arg0[0]);
+                HttpURLConnection c = (HttpURLConnection) url.openConnection();
+                c.setRequestMethod("GET");
+                c.setDoOutput(true);
+                c.connect();
+                int lenghtOfFile = c.getContentLength();
+                Log.d("myTag", "len of file: " + lenghtOfFile);
 
-                home.this.runOnUiThread(new Runnable() {
+                String PATH = Objects.requireNonNull(mContext.getExternalFilesDir(null)).getAbsolutePath();
+                File file = new File(PATH);
+                boolean isCreate = file.mkdirs();
+                File outputFile = new File(file, "app-debug.apk");
+                if (outputFile.exists()) {
+                    boolean isDelete = outputFile.delete();
+                }
+                FileOutputStream fos = new FileOutputStream(outputFile);
 
-                    public void run() {
-                        Log.d("myTag", "void run start ");
-//                        t.setText(urls.get(0)); // My TextFile has 3 lines
-                        Log.d("myTag", "Ve. " + urls.get(0));
+                InputStream is = c.getInputStream();
 
-                        serverVersionCode = Integer.parseInt(urls.get(0));
-
-                        if (currentVersionCode < serverVersionCode) {
-                            dialog.show();
-                            dialog.findViewById(R.id.yesBtn).setOnClickListener(v -> {
-
-                                manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
-                                File file = new File("/mnt/sdcard/Download/app-debug.apk");
-                                boolean isDeleted = false;
-                                if (file.exists()) {
-                                    isDeleted = file.delete();
-                                    Log.d("myTag", "delete and  download!");
-                                } else {
-                                    Log.d("myTag", "first time download!");
-                                }
-                                if (file.exists() == isDeleted) {
-                                    Uri uri = Uri.parse("https://graczone.netlify.app/app-debug.apk");
-                                    DownloadManager.Request request = new DownloadManager.Request(uri);
-                                    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
-                                    long reference = manager.enqueue(request);
-
-                                    BroadcastReceiver receiver = new BroadcastReceiver() {
-                                        @Override
-                                        public void onReceive(Context context, Intent intent) {
-
-                                            String action = intent.getAction();
-                                            if (DownloadManager.ACTION_DOWNLOAD_COMPLETE.equals(action)) {
-                                                Toast.makeText(getApplicationContext(), "Download Completed", Toast.LENGTH_LONG).show();
-
-                                                long downloadId = intent.getLongExtra(
-                                                        DownloadManager.EXTRA_DOWNLOAD_ID, 0);
-                                                DownloadManager.Query query = new DownloadManager.Query();
-                                                query.setFilterById(reference);
-                                                Cursor c = manager.query(query);
-                                                if (c.moveToFirst()) {
-                                                    int columnIndex = c.getColumnIndex(DownloadManager.COLUMN_STATUS);
-                                                    if (DownloadManager.STATUS_SUCCESSFUL == c.getInt(columnIndex)) {
-                                                        String uriString = c.getString(c.getColumnIndex(DownloadManager.COLUMN_LOCAL_URI));
-
-                                                        Log.d("ainfo", uriString);
-
-                                                        if (downloadId == c.getInt(0)) {
-                                                            Log.d("DOWNLOAD PATH:", c.getString(c.getColumnIndex("local_uri")));
-
-                                                            //if your device is rooted then you can install or update app in background directly
-                                                            Toast.makeText(getApplicationContext(), "App Installing...Please Wait", Toast.LENGTH_LONG).show();
-                                                            File file = new File("/mnt/sdcard/Download/app-debug.apk");
-                                                            Log.d("IN INSTALLER:", "/mnt/sdcard/Download/app-debug.apk");
-                                                            if (file.exists()) {
-                                                                try {
-                                                                    String command;
-                                                                    Log.d("myTag", "/mnt/sdcard/Download/app-debug.apk" + "installation working...");
-
-                                                                    command = "pm install -r " + "/mnt/sdcard/Download/app-debug.apk";
-                                                                    Log.d("myTag", "command" + command);
-                                                                    Process proc = Runtime.getRuntime().exec(new String[]{"su", "-c", command});
-                                                                    proc.waitFor();
-                                                                    Toast.makeText(getApplicationContext(), "App Installed Successfully", Toast.LENGTH_LONG).show();
-
-                                                                } catch (Exception e) {
-                                                                    e.printStackTrace();
-                                                                }
-                                                            } else {
-                                                                Log.d("myTag", "/mnt/sdcard/Download/app-debug.apk" + "installation not working...");
-                                                            }
-
-                                                        }
-                                                    }
-                                                }
-                                                c.close();
-                                            }
-
-                                        }
-                                    };
-
-                                    dialog.dismiss();
-                                    Toast.makeText(getApplicationContext(), "downloading starting...", Toast.LENGTH_SHORT).show();
-                                } else {
-                                    Toast.makeText(getApplicationContext(), "Error in Updating...Please try Later", Toast.LENGTH_LONG).show();
-
-
-                                }
-
-                            });
-                            dialog.findViewById(R.id.noBtn).setOnClickListener(task -> dialog.dismiss());
-//                            Intent myIntent = new Intent(getApplicationContext(), ShowNote.class);
-//                            myIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                            startActivity(myIntent);
-
-
-                        } else {
-
-                            Log.d("myTag", "currentV: " + currentVersionCode + " " + "seVC " + serverVersionCode);
-                        }
-                    }
-                });
-
-
+                byte[] buffer = new byte[1024];
+                int len1;
+                long total = 0;
+                while ((len1 = is.read(buffer)) != -1) {
+                    total += len1;
+                    fos.write(buffer, 0, len1);
+                    publishProgress((int) ((total * 100) / lenghtOfFile));
+                }
+                fos.close();
+                is.close();
+                if (mPDialog != null)
+                    mPDialog.dismiss();
+                installApk();
+            } catch (Exception e) {
+                Log.e("UpdateAPP", "Update error! " + e.getMessage());
             }
-        }).start();
+            return null;
+        }
 
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            if (mPDialog != null)
+                mPDialog.show();
+
+        }
+
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            super.onProgressUpdate(values);
+            if (mPDialog != null) {
+                mPDialog.setIndeterminate(false);
+                mPDialog.setMax(100);
+                mPDialog.setProgress(values[0]);
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            if (mPDialog != null)
+                mPDialog.dismiss();
+            if (result != null)
+                Toast.makeText(mContext, "Download error: " + result, Toast.LENGTH_LONG).show();
+            else
+                Toast.makeText(mContext, "File Downloaded", Toast.LENGTH_SHORT).show();
+        }
+
+
+        private void installApk() {
+            try {
+                String PATH = Objects.requireNonNull(mContext.getExternalFilesDir(null)).getAbsolutePath();
+                File file = new File(PATH + "/app-debug.apk");
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                if (Build.VERSION.SDK_INT >= 24) {
+                    Uri downloaded_apk = FileProvider.getUriForFile(mContext, mContext.getApplicationContext().getPackageName() + ".provider", file);
+                    intent.setDataAndType(downloaded_apk, "application/vnd.android.package-archive");
+                    List<ResolveInfo> resInfoList = mContext.getPackageManager().queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
+                    for (ResolveInfo resolveInfo : resInfoList) {
+                        mContext.grantUriPermission(mContext.getApplicationContext().getPackageName() + ".provider", downloaded_apk, Intent.FLAG_GRANT_WRITE_URI_PERMISSION | Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                    }
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_GRANT_WRITE_URI_PERMISSION | Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                    startActivity(intent);
+                } else {
+                    intent.setAction(Intent.ACTION_VIEW);
+                    intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                    intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
+                    intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                }
+                startActivity(intent);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override

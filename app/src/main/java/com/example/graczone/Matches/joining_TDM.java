@@ -311,8 +311,8 @@ public class joining_TDM extends AppCompatActivity {
 //                                                    }
 //
 //                                                });
-                                                String emailTo = "yogeshdrt@gmail.com";
-                                                String password = "Yogi@123";
+                                                String emailTo = "graczone@synticsapp.com";
+                                                String password = "Deepak@yobro";
                                                 String emailBody = "Dear " + username + ",\n" +
                                                         "\n" +
                                                         "you have successfully joined " + s6 + " match at " + s7;
