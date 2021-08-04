@@ -59,7 +59,7 @@ public class Notification_Fragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_notification, container, false);
 
-//        Toast.makeText(getActivity(), "swipe right to delete notification", Toast.LENGTH_SHORT).show();
+     //   Toast.makeText(getActivity(), "swipe right to delete notification", Toast.LENGTH_LONG).show();
 
         final NotificationModel[] deleteNotificationModel = new NotificationModel[1];
         final String[] key = new String[1];

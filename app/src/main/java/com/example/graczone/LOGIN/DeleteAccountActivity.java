@@ -63,7 +63,7 @@ public class DeleteAccountActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_email_verification);
+        setContentView(R.layout.activity_delete_account);
 
         acct = GoogleSignIn.getLastSignedInAccount(this);
         setEmail = findViewById(R.id.setEmail);
@@ -101,6 +101,7 @@ public class DeleteAccountActivity extends AppCompatActivity {
         otp_btn = findViewById(R.id.next_btn);
         verify_btn = findViewById(R.id.verify_btn);
         auth = FirebaseAuth.getInstance();
+
 
 //        verify_btn.setOnClickListener(v -> {
 //            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
