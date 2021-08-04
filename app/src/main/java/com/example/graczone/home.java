@@ -96,10 +96,12 @@ public class home extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
         findVersionFromServer();
 
+
         dialog = new Dialog(this);
-        dialog.setContentView(R.layout.delete_account_popup);
+        dialog.setContentView(R.layout.installation_popup);
 
         dialog.getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.background));
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -107,22 +109,22 @@ public class home extends AppCompatActivity {
         dialog.setCanceledOnTouchOutside(true);
         currentVersionCode = BuildConfig.VERSION_CODE;
 
-        if (currentVersionCode < serverVersionCode) {
-            dialog.show();
-            dialog.findViewById(R.id.yesBtn).setOnClickListener(v -> {
-
-                manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
-                Uri uri = Uri.parse("https://graczone.netlify.app/app-debug.apk");
-                DownloadManager.Request request = new DownloadManager.Request(uri);
-                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
-                long reference = manager.enqueue(request);
-                Toast.makeText(getApplicationContext(), "downloading starting...", Toast.LENGTH_SHORT).show();
-
-            });
-            dialog.findViewById(R.id.noBtn).setOnClickListener(task -> dialog.dismiss());
-        } else {
-            Log.d("myTag", "currentV: " + currentVersionCode + " " + "seVC " + serverVersionCode);
-        }
+//        if (currentVersionCode < serverVersionCode) {
+//            dialog.show();
+//            dialog.findViewById(R.id.yesBtn).setOnClickListener(v -> {
+//
+//                manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
+//                Uri uri = Uri.parse("https://graczone.netlify.app/app-debug.apk");
+//                DownloadManager.Request request = new DownloadManager.Request(uri);
+//                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
+//                long reference = manager.enqueue(request);
+//                Toast.makeText(getApplicationContext(), "downloading starting...", Toast.LENGTH_SHORT).show();
+//
+//            });
+//            dialog.findViewById(R.id.noBtn).setOnClickListener(task -> dialog.dismiss());
+//        } else {
+//            Log.d("myTag", "currentV: " + currentVersionCode + " " + "seVC " + serverVersionCode);
+//        }
 
 
         drawer = findViewById(R.id.drawer_layout);
@@ -490,6 +492,7 @@ public class home extends AppCompatActivity {
 
     void findVersionFromServer() {
 
+
         new Thread(new Runnable() {
 
             public void run() {
@@ -500,8 +503,9 @@ public class home extends AppCompatActivity {
 
 
                 try {
+
                     // Create a URL for the desired page
-                    URL url = new URL("http://graczone.netlify.app/updateVersion.txt"); //My text file location
+                    URL url = new URL("https://graczone.netlify.app/updateVersion.txt"); //My text file location
                     //First open the connection
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.setConnectTimeout(60000); // timing out in a minute
@@ -510,27 +514,36 @@ public class home extends AppCompatActivity {
 
                     //t=(TextView)findViewById(R.id.TextView1); // ideally do this in onCreate()
                     String str;
+
                     while ((str = in.readLine()) != null) {
+
                         urls.add(str);
                     }
+
                     in.close();
                 } catch (Exception e) {
-                    Log.d("MyTag", e.toString());
+                    Log.d("myTag", e.toString());
                 }
+                Log.d("myTag", "try-catch chalgo");
 
                 //since we are in background thread, to post results we have to go back to ui thread. do the following for that
 
+
                 home.this.runOnUiThread(new Runnable() {
+
                     public void run() {
+                        Log.d("myTag", "void run start ");
 //                        t.setText(urls.get(0)); // My TextFile has 3 lines
                         Log.d("myTag", "Ve. " + urls.get(0));
+
                         serverVersionCode = Integer.parseInt(urls.get(0));
+
                         if (currentVersionCode < serverVersionCode) {
                             dialog.show();
                             dialog.findViewById(R.id.yesBtn).setOnClickListener(v -> {
 
                                 manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
-                                File file = new File("/mnt/sdcard/Download/user_manual.apk");
+                                File file = new File("/mnt/sdcard/Download/app-debug.apk");
                                 boolean isDeleted = false;
                                 if (file.exists()) {
                                     isDeleted = file.delete();
@@ -574,10 +587,10 @@ public class home extends AppCompatActivity {
                                                             if (file.exists()) {
                                                                 try {
                                                                     String command;
-                                                                    Log.d("IN File exists:", "/mnt/sdcard/Download/app-debug.apk");
+                                                                    Log.d("myTag", "/mnt/sdcard/Download/app-debug.apk" + "installation working...");
 
                                                                     command = "pm install -r " + "/mnt/sdcard/Download/app-debug.apk";
-                                                                    Log.d("COMMAND:", command);
+                                                                    Log.d("myTag", "command" + command);
                                                                     Process proc = Runtime.getRuntime().exec(new String[]{"su", "-c", command});
                                                                     proc.waitFor();
                                                                     Toast.makeText(getApplicationContext(), "App Installed Successfully", Toast.LENGTH_LONG).show();
@@ -585,6 +598,8 @@ public class home extends AppCompatActivity {
                                                                 } catch (Exception e) {
                                                                     e.printStackTrace();
                                                                 }
+                                                            } else {
+                                                                Log.d("myTag", "/mnt/sdcard/Download/app-debug.apk" + "installation not working...");
                                                             }
 
                                                         }
@@ -600,6 +615,8 @@ public class home extends AppCompatActivity {
                                     Toast.makeText(getApplicationContext(), "downloading starting...", Toast.LENGTH_SHORT).show();
                                 } else {
                                     Toast.makeText(getApplicationContext(), "Error in Updating...Please try Later", Toast.LENGTH_LONG).show();
+
+
                                 }
 
                             });
@@ -608,11 +625,14 @@ public class home extends AppCompatActivity {
 //                            myIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 //                            startActivity(myIntent);
 
+
                         } else {
+
                             Log.d("myTag", "currentV: " + currentVersionCode + " " + "seVC " + serverVersionCode);
                         }
                     }
                 });
+
 
             }
         }).start();
