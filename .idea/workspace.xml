@@ -38,8 +38,9 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dceb6660-a320-494f-b42a-773741ded4fc" name="Default Changelist" comment="update code">
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+    <list default="true" id="dceb6660-a320-494f-b42a-773741ded4fc" name="Default Changelist" comment="change version code">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/home.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/home.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -562,7 +563,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626268240340</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="change version code">
+      <created>1626268340298</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1626268340298</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -625,7 +633,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Linear_progressbar" />
     <MESSAGE value="feedback" />
     <MESSAGE value="add progress with count to joining match" />
     <MESSAGE value="add swap delete in my matches" />
@@ -650,16 +657,17 @@
     <MESSAGE value="after pull" />
     <MESSAGE value="change in transaction" />
     <MESSAGE value="update code" />
-    <option name="LAST_COMMIT_MESSAGE" value="update code" />
+    <MESSAGE value="change version code" />
+    <option name="LAST_COMMIT_MESSAGE" value="change version code" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="633" y="204" key="#Notifications" timestamp="1621070442618">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="563" y="180" key="#Notifications" timestamp="1626410348422">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="563" y="180" key="#Notifications/0.0.1366.728@0.0.1366.728" timestamp="1620635872088" />
+    <state x="563" y="180" key="#Notifications/0.0.1366.728@0.0.1366.728" timestamp="1626410348422" />
     <state x="633" y="204" key="#Notifications/0.0.1536.824@0.0.1536.824" timestamp="1621070442618" />
     <state x="488" y="70" key="#com.intellij.ide.util.MemberChooser" timestamp="1624265401622">
       <screen x="0" y="0" width="1366" height="728" />
@@ -718,25 +726,25 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="561" y="262" key="Github.ShareDialog/0.0.1366.728@0.0.1366.728" timestamp="1617807960078" />
-    <state width="1323" height="207" key="GridCell.Tab.0.bottom" timestamp="1626266137291">
+    <state width="1323" height="207" key="GridCell.Tab.0.bottom" timestamp="1626413923985">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="207" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1626266137291" />
+    <state width="1323" height="207" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1626413923985" />
     <state width="1493" height="296" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1625734924275" />
-    <state width="1323" height="207" key="GridCell.Tab.0.center" timestamp="1626266137291">
+    <state width="1323" height="207" key="GridCell.Tab.0.center" timestamp="1626413923984">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="207" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1626266137291" />
+    <state width="1323" height="207" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1626413923984" />
     <state width="1493" height="296" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1625734924275" />
-    <state width="1323" height="207" key="GridCell.Tab.0.left" timestamp="1626266137291">
+    <state width="1323" height="207" key="GridCell.Tab.0.left" timestamp="1626413923984">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="207" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1626266137291" />
+    <state width="1323" height="207" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1626413923984" />
     <state width="1493" height="296" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1625734924275" />
-    <state width="1323" height="207" key="GridCell.Tab.0.right" timestamp="1626266137291">
+    <state width="1323" height="207" key="GridCell.Tab.0.right" timestamp="1626413923985">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="207" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1626266137291" />
+    <state width="1323" height="207" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1626413923985" />
     <state width="1493" height="296" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1625734924275" />
     <state x="349" y="155" key="IDE.errors.dialog" timestamp="1620122575496">
       <screen x="0" y="0" width="1536" height="824" />
@@ -759,10 +767,10 @@
     </state>
     <state x="246" y="18" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1624878635496" />
     <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1625735724563" />
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1625830198728">
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1626268346546">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1625830198728" />
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1626268346546" />
     <state x="309" y="110" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1625043246362" />
     <state x="584" y="190" key="chooseDestDirectoryDialog" timestamp="1621853014266">
       <screen x="0" y="0" width="1536" height="824" />
