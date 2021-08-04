@@ -476,8 +476,8 @@ public class joining extends AppCompatActivity {
 
         if (canWeSend) {
 
-            String emailTo = "yogeshdrt@gmail.com";
-            String password = "Yogi@123";
+            String emailTo = "graczone@synticsapp.com";
+            String password = "Deepak@yobrof";
             String emailBody = "Dear " + username + ",\n" +
                     "\n" +
                     "you have successfully joined " + s6 + " match at " + s7;
