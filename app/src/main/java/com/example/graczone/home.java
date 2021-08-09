@@ -71,6 +71,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -430,7 +431,7 @@ public class home extends AppCompatActivity {
                 if (locationAccepted && cameraAccepted) {
                     UpdateApp updateApp = new UpdateApp();
                     updateApp.setContext(home.this);
-                    updateApp.execute("https://graczone.netlify.app/app-debug.apk");
+                    updateApp.execute("https://graczone.synticsapp.com/app-debug.apk");
                 }
             }
         }
@@ -464,7 +465,7 @@ public class home extends AppCompatActivity {
                 try {
 
                     // Create a URL for the desired page
-                    URL url = new URL("https://graczone.netlify.app/updateVersion.txt"); //My text file location
+                    URL url = new URL("https://graczone.synticsapp.com/updateVersion.txt"); //My text file location
                     //First open the connection
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.setConnectTimeout(60000); // timing out in a minute
@@ -472,9 +473,11 @@ public class home extends AppCompatActivity {
                     BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 
                     //t=(TextView)findViewById(R.id.TextView1); // ideally do this in onCreate()
-                    String str;
+                    String str = "0";
 
                     while ((str = in.readLine()) != null) {
+
+                        Log.d("myTag", "str: " + str);
 
                         urls.add(str);
                     }
@@ -507,7 +510,7 @@ public class home extends AppCompatActivity {
                                     if (checkPermission()) {
                                         UpdateApp atualizaApp = new UpdateApp();
                                         atualizaApp.setContext(home.this);
-                                        atualizaApp.execute("https://graczone.netlify.app/app-debug.apk");
+                                        atualizaApp.execute("https://graczone.synticsapp.com/app-debug.apk");
                                     } else {
                                         requestPermission();
                                     }
@@ -668,11 +671,13 @@ public class home extends AppCompatActivity {
                 }
                 fos.close();
                 is.close();
+
                 if (mPDialog != null)
                     mPDialog.dismiss();
                 installApk();
             } catch (Exception e) {
-                Log.e("UpdateAPP", "Update error! " + e.getMessage());
+                Log.d("myTag", "Update error! " + e.getMessage() + Arrays.toString(e.getStackTrace()));
+                e.printStackTrace();
             }
             return null;
         }
