@@ -38,9 +38,13 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dceb6660-a320-494f-b42a-773741ded4fc" name="Default Changelist" comment="new update">
+    <list default="true" id="dceb6660-a320-494f-b42a-773741ded4fc" name="Default Changelist" comment="url change">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/LOGIN/DeleteAccountActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/LOGIN/DeleteAccountActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/home.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/graczone/home.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_delete_account.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_delete_account.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_balance.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_balance.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -571,7 +575,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628083380698</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="url change">
+      <created>1628505584149</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1628505584149</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -634,7 +645,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feedback" />
     <MESSAGE value="add progress with count to joining match" />
     <MESSAGE value="add swap delete in my matches" />
     <MESSAGE value="fix my matches view." />
@@ -659,17 +669,13 @@
     <MESSAGE value="change in transaction" />
     <MESSAGE value="update code" />
     <MESSAGE value="new update" />
-    <option name="LAST_COMMIT_MESSAGE" value="new update" />
+    <MESSAGE value="url change" />
+    <option name="LAST_COMMIT_MESSAGE" value="url change" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="633" y="204" key="#Notifications" timestamp="1621070442618">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="563" y="180" key="#Notifications/0.0.1366.728@0.0.1366.728" timestamp="1620635872088" />
-    <state x="633" y="204" key="#Notifications/0.0.1536.824@0.0.1536.824" timestamp="1621070442618" />
     <state x="429" y="154" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1628077889731">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -710,14 +716,6 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="103" y="100" width="1254" height="488" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1628184453810" />
-    <state x="549" y="154" key="FileChooserDialogImpl" timestamp="1621079256763">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="549" y="154" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1621079256763" />
-    <state x="467" y="205" key="Github.CreatePullRequestDialog" timestamp="1620720887695">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="467" y="205" key="Github.CreatePullRequestDialog/0.0.1366.728@0.0.1366.728" timestamp="1620720887695" />
     <state width="1323" height="392" key="GridCell.Tab.0.bottom" timestamp="1628505514598">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -738,18 +736,6 @@
     </state>
     <state width="1323" height="392" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1628505514598" />
     <state width="1493" height="228" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1628063337396" />
-    <state x="349" y="155" key="IDE.errors.dialog" timestamp="1620122575496">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="349" y="155" key="IDE.errors.dialog/0.0.1536.824@0.0.1536.824" timestamp="1620122575496" />
-    <state x="147" y="65" key="MergeDialog" timestamp="1620812028261">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="147" y="65" key="MergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1620812028261" />
-    <state x="407" y="174" key="MultipleFileMergeDialog" timestamp="1620812028268">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="407" y="174" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1620812028268" />
     <state x="410" y="0" key="RollbackChangesDialog" timestamp="1624363807321">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -759,19 +745,15 @@
     </state>
     <state x="246" y="18" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1624878635496" />
     <state x="330" y="115" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1626412021860" />
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1628083388650">
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1628505596928">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1628083388650" />
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1628505596928" />
     <state x="309" y="110" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1625043246362" />
     <state x="584" y="190" key="chooseDestDirectoryDialog" timestamp="1621853014266">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="584" y="190" key="chooseDestDirectoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1621853014266" />
-    <state x="330" y="66" key="com.intellij.javaee.MapExternalResourceDialog" timestamp="1619869326692">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="330" y="66" key="com.intellij.javaee.MapExternalResourceDialog/0.0.1536.824@0.0.1536.824" timestamp="1619869326692" />
     <state x="578" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1621332763982">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -780,19 +762,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="351" y="0" width="1199" height="810" key="dock-window-1/0.0.1536.824@0.0.1536.824" timestamp="1622794301520" />
-    <state x="496" y="201" key="git4idea.merge.GitPullDialog" timestamp="1620995324012">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="329" y="154" width="672" height="677" key="run.anything.popup" timestamp="1629792104430">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="496" y="201" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1620995324012" />
-    <state x="370" y="174" width="756" height="767" key="run.anything.popup" timestamp="1625625136316">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="329" y="154" width="672" height="677" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1624878682164" />
+    <state x="329" y="154" width="672" height="677" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1629792104430" />
     <state x="370" y="174" width="756" height="767" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1625625136316" />
     <state x="383" y="128" width="672" height="600" key="search.everywhere.popup" timestamp="1622189729116">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="383" y="128" width="672" height="600" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1622189729116" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1620215484373" />
   </component>
 </project>
