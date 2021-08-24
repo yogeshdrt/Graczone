@@ -20,6 +20,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.graczone.BuildConfig;
 import com.example.graczone.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -59,6 +60,7 @@ public class DeleteAccountActivity extends AppCompatActivity {
     GoogleSignInClient mGoogleSignInClient;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     FirebaseUser user;
+    TextView versionTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +70,7 @@ public class DeleteAccountActivity extends AppCompatActivity {
         acct = GoogleSignIn.getLastSignedInAccount(this);
         setEmail = findViewById(R.id.setEmail);
         setUsername = findViewById(R.id.setUsername);
+        versionTextView = findViewById(R.id.versionTextView);
         setEmail.setText(acct.getEmail());
         setUsername.setText(acct.getDisplayName());
         user = FirebaseAuth.getInstance().getCurrentUser();
@@ -101,6 +104,7 @@ public class DeleteAccountActivity extends AppCompatActivity {
         otp_btn = findViewById(R.id.next_btn);
         verify_btn = findViewById(R.id.verify_btn);
         auth = FirebaseAuth.getInstance();
+        versionTextView.setText(BuildConfig.VERSION_NAME);
 
 
 //        verify_btn.setOnClickListener(v -> {

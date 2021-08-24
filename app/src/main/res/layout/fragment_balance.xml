@@ -176,5 +176,13 @@
         android:textColor="@color/white"
         app:cornerRadius="3dp" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:padding="10dp"
+        android:text="contact us: graczone@synticsapp.com"
+        android:textColor="@color/black" />
+
 
 </LinearLayout>

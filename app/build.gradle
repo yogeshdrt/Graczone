@@ -88,6 +88,7 @@ dependencies {
     implementation 'dev.shreyaspatil.EasyUpiPayment:EasyUpiPayment:3.0.3'
 
     implementation 'com.github.tobiasschuerg:android-prefix-suffix-edit-text:1.3.1'
+    implementation 'com.google.android.play:core:1.8.0'
 
 
     testImplementation 'junit:junit:4.13.2'

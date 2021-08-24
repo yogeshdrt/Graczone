@@ -80,7 +80,7 @@
 
     <LinearLayout
         android:id="@+id/invisible_layout"
-        android:visibility="gone"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -125,6 +125,28 @@
             app:cornerRadius="5dp" />
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/versionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="0px"
+
+        android:text="version: "
+        android:textSize="20sp"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="contact us: graczone@synticsapp.com"
+
+        android:textSize="20sp" />
 
 
 </LinearLayout>
