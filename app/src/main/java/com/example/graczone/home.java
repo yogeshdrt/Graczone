@@ -129,7 +129,7 @@ public class home extends AppCompatActivity {
 //            dialog.findViewById(R.id.yesBtn).setOnClickListener(v -> {
 //
 //                manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
-//                Uri uri = Uri.parse("https://graczone.netlify.app/app-debug.apk");
+//                Uri uri = Uri.parse("https://graczone.netlify.app/graczone.apk");
 //                DownloadManager.Request request = new DownloadManager.Request(uri);
 //                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
 //                long reference = manager.enqueue(request);
@@ -431,7 +431,7 @@ public class home extends AppCompatActivity {
                 if (locationAccepted && cameraAccepted) {
                     UpdateApp updateApp = new UpdateApp();
                     updateApp.setContext(home.this);
-                    updateApp.execute("https://graczone.synticsapp.com/app-debug.apk");
+                    updateApp.execute("https://graczone.synticsapp.com/graczone.apk");
                 }
             }
         }
@@ -510,7 +510,7 @@ public class home extends AppCompatActivity {
                                     if (checkPermission()) {
                                         UpdateApp atualizaApp = new UpdateApp();
                                         atualizaApp.setContext(home.this);
-                                        atualizaApp.execute("https://graczone.synticsapp.com/app-debug.apk");
+                                        atualizaApp.execute("https://graczone.synticsapp.com/graczone.apk");
                                     } else {
                                         requestPermission();
                                     }
@@ -653,7 +653,7 @@ public class home extends AppCompatActivity {
                 String PATH = Objects.requireNonNull(mContext.getExternalFilesDir(null)).getAbsolutePath();
                 File file = new File(PATH);
                 boolean isCreate = file.mkdirs();
-                File outputFile = new File(file, "app-debug.apk");
+                File outputFile = new File(file, "graczone.apk");
                 if (outputFile.exists()) {
                     boolean isDelete = outputFile.delete();
                 }
@@ -715,7 +715,7 @@ public class home extends AppCompatActivity {
         private void installApk() {
             try {
                 String PATH = Objects.requireNonNull(mContext.getExternalFilesDir(null)).getAbsolutePath();
-                File file = new File(PATH + "/app-debug.apk");
+                File file = new File(PATH + "/graczone.apk");
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 if (Build.VERSION.SDK_INT >= 24) {
                     Uri downloaded_apk = FileProvider.getUriForFile(mContext, mContext.getApplicationContext().getPackageName() + ".provider", file);
