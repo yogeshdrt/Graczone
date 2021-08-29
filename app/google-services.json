@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "752000277855",
+    "firebase_url": "https://graczone-649d8-default-rtdb.firebaseio.com",
     "project_id": "graczone-649d8",
     "storage_bucket": "graczone-649d8.appspot.com"
   },
@@ -9,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:752000277855:android:12d4f9e3638ff08917eaea",
         "android_client_info": {
-          "package_name": "com.example.graczone"
+          "package_name": "com.syntics.graczone"
         }
       },
       "oauth_client": [
@@ -17,7 +18,52 @@
           "client_id": "752000277855-ensu9tuh86c1skatu5m9a79vcog34p9a.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.graczone",
+            "package_name": "com.syntics.graczone",
+            "certificate_hash": "dfdaf1ceee8298e8f1f5b9713ecb67f4df7c3f2e"
+          }
+        },
+        {
+          "client_id": "752000277855-qmnji2cou9ae0toovl30p3ha093dtov0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.syntics.graczone",
+            "certificate_hash": "afa962d18dd3ffe33473a9c152bd17cd475d4bfa"
+          }
+        },
+        {
+          "client_id": "752000277855-l539hdrtqdhhegpcpmrse2giht00bb7j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4KiMkSkxqRmS-m11Ppa7_JBCAy4tOK28"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "752000277855-6uk17nlr1hdiabhaq92m18gq8qin89lo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:752000277855:android:b697f21192126d5e17eaea",
+        "android_client_info": {
+          "package_name": "com.syntics.graczone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "752000277855-s90vsvhegcishsrt477orkuqor1t6j3k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.syntics.graczone",
             "certificate_hash": "dfdaf1ceee8298e8f1f5b9713ecb67f4df7c3f2e"
           }
         },
@@ -35,7 +81,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "752000277855-l539hdrtqdhhegpcpmrse2giht00bb7j.apps.googleusercontent.com",
+              "client_id": "752000277855-6uk17nlr1hdiabhaq92m18gq8qin89lo.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
