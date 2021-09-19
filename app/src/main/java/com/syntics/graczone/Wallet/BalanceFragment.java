@@ -95,7 +95,7 @@ public class BalanceFragment extends Fragment implements PaymentStatusListener {
 
         addBalanceBtn.setOnClickListener(v -> {
             String amount = amountEditText.getText().toString();
-            String upi = "8077982617@hdfcbank";
+            String upi = "8077982617-1@okbizaxis";
             String name = "Syntics App Development private limited";
             String desc = "Thank you";
             Log.d("myTag", "button click");
@@ -160,7 +160,7 @@ public class BalanceFragment extends Fragment implements PaymentStatusListener {
             Log.d("myTag", "after des");
             builder.setAmount(amount + ".00");
             Log.d("myTag", "after ammount");
-            builder.setPayeeMerchantCode("BCR2DN6TR6LLBDJC");
+            builder.setPayeeMerchantCode("BCR2DN6TZ6K4DF2K");
 
             final EasyUpiPayment easyUpiPayment = builder.build();
 

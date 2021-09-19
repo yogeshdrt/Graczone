@@ -307,9 +307,9 @@ public class home extends AppCompatActivity {
         });
 
         navigationView.getMenu().findItem(R.id.about_us).setOnMenuItemClickListener(item -> {
-            Uri uri = Uri.parse("https://graczone.synticsapp.com/");
-            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-            startActivity(intent);
+//            Uri uri = Uri.parse("https://graczone.synticsapp.com/");
+//            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+//            startActivity(intent);
             return true;
         });
 
