@@ -1,14 +1,341 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
+    android:paddingHorizontal="10dp"
+    android:scrollbars="none"
     tools:context=".Privacy_Policy">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:background="#EDEDED"
+        android:orientation="vertical">
 
-</FrameLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="5dp"
+            android:paddingVertical="10dp"
+            android:text="Privacy Policy"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:fontFamily="sans-serif-condensed"
+            android:lineSpacingExtra="4dp"
+            android:padding="5dp"
+            android:text="Syntics App Development Private Limited built the Graczone app as a Free app. This SERVICE is provided by Syntics App Development Private Limited at no cost and is intended for use as is. We, Syntics App Development Private Limited understand the importance of maintaining privacy and thus abide by the highest standards for securing customer information privacy."
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:fontFamily="sans-serif-condensed"
+            android:lineSpacingExtra="4dp"
+            android:padding="5dp"
+            android:text="The terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, which is accessible at Graczone unless otherwise defined in this Privacy Policy."
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:fontFamily="sans-serif-condensed"
+            android:lineSpacingExtra="4dp"
+            android:padding="5dp"
+            android:text="Types of Information We Collect"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:fontFamily="sans-serif-condensed"
+            android:lineSpacingExtra="4dp"
+            android:padding="5dp"
+            android:text="For a better experience, while using our Service, we may require you to provide us with certain personally identifiable information, including but not limited to Email Address, Username. The information that we request will be retained by us and used as described in this privacy policy. The app does use third party services that may collect information used to identify you."
+            android:textColor="@color/black" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:fontFamily="sans-serif-condensed"
+            android:lineSpacingExtra="4dp"
+            android:padding="5dp"
+            android:text="Link to privacy policy of third party service providers used by the app"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:autoLink="web"
+            android:fontFamily="sans-serif-condensed"
+            android:lineSpacingExtra="4dp"
+            android:padding="5dp"
+            android:text="@string/third_party_link"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:fontFamily="sans-serif-condensed"
+            android:lineSpacingExtra="4dp"
+            android:padding="5dp"
+            android:text="Log Data"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:fontFamily="sans-serif-condensed"
+            android:lineSpacingExtra="4dp"
+            android:padding="5dp"
+            android:text="We maintain procedural, technical, and physical safeguards for the Graczone Services to help protect against loss, misuse or unauthorized access, disclosure, alteration, or destruction of the information you provide via the Graczone Services. All information gathered on GRACZONE is securely stored within GRACZONE controlled database. These safeguards vary depending upon the sensitivity of the information we collect and store. Please be aware that no security solutions are infallible. The database is stored on servers secured behind a firewall; access to such servers being password-protected and strictly limited based on need-to-know basis, we cannot guarantee the security of our database, nor can we guarantee that information you supply will not be intercepted while being transmitted to us over the Internet."
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:fontFamily="sans-serif-condensed"
+            android:lineSpacingExtra="4dp"
+            android:padding="5dp"
+            android:text="Cookies"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:fontFamily="sans-serif-condensed"
+            android:lineSpacingExtra="4dp"
+            android:padding="5dp"
+            android:text="Cookies are files with a small amount of data that are commonly used as anonymous unique identifiers. These are sent to your browser from the websites that you visit and are stored on your device's internal memory.
+This Service does not use these “cookies” explicitly. However, the app may use third party code and libraries that use “cookies” to collect information and improve their services. You have the option to either accept or refuse these cookies and know when a cookie is being sent to your device. If you choose to refuse our cookies, you may not be able to use some portions of this Services"
+            android:textColor="@color/black" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:fontFamily="sans-serif-condensed"
+            android:lineSpacingExtra="4dp"
+            android:padding="5dp"
+            android:text="Service Providers"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:fontFamily="sans-serif-condensed"
+            android:lineSpacingExtra="4dp"
+            android:padding="5dp"
+            android:text="We may employ third-party companies and individuals due to the following reasons:"
+            android:textColor="@color/black" />
+
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TableRow tools:ignore="UselessParent">
+
+                <TextView
+                    android:layout_column="1"
+                    android:paddingLeft="5dp"
+                    android:text="@string/bullet" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_column="2"
+                    android:fontFamily="sans-serif-condensed"
+                    android:lineSpacingExtra="4dp"
+                    android:padding="4dp"
+                    android:text="To facilitate our Service;"
+                    android:textColor="@color/black" />
+
+            </TableRow>
+
+            <TableRow tools:ignore="UselessParent">
+
+                <TextView
+                    android:layout_column="1"
+                    android:paddingLeft="5dp"
+                    android:text="@string/bullet" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_column="2"
+                    android:fontFamily="sans-serif-condensed"
+                    android:lineSpacingExtra="4dp"
+                    android:padding="4dp"
+                    android:text="To provide the Service on our behalf;"
+                    android:textColor="@color/black" />
+
+            </TableRow>
+
+            <TableRow tools:ignore="UselessParent">
+
+                <TextView
+                    android:layout_column="1"
+                    android:paddingLeft="5dp"
+                    android:text="@string/bullet" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_column="2"
+                    android:fontFamily="sans-serif-condensed"
+                    android:lineSpacingExtra="4dp"
+                    android:padding="4dp"
+                    android:text="To perform Service-related services; or"
+                    android:textColor="@color/black" />
+
+            </TableRow>
+
+            <TableRow tools:ignore="UselessParent">
+
+                <TextView
+                    android:layout_column="1"
+                    android:paddingLeft="5dp"
+                    android:text="@string/bullet" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_column="2"
+                    android:fontFamily="sans-serif-condensed"
+                    android:lineSpacingExtra="4dp"
+                    android:padding="4dp"
+                    android:text="To assist us in analyzing how our Service is used."
+                    android:textColor="@color/black" />
+
+            </TableRow>
+        </TableLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
+            android:lineSpacingExtra="4dp"
+            android:padding="5dp"
+            android:text="We want to inform users of this Service that these third parties have access to your Personal Information. The reason is to perform the tasks assigned to them on our behalf. However, they are obligated not to disclose or use the information for any other purpose."
+            android:textColor="@color/black" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:fontFamily="sans-serif-condensed"
+            android:lineSpacingExtra="4dp"
+            android:padding="5dp"
+            android:text="Security"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:fontFamily="sans-serif-condensed"
+            android:lineSpacingExtra="4dp"
+            android:padding="5dp"
+            android:text="We value your trust in providing us your Personal Information, thus we are striving to use commercially acceptable means of protecting it. But remember that no method of transmission over the internet, or method of electronic storage is 100% secure and reliable, and we cannot guarantee its absolute security."
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:fontFamily="sans-serif-condensed"
+            android:lineSpacingExtra="4dp"
+            android:padding="5dp"
+            android:text="Links to Other Sites"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:fontFamily="sans-serif-condensed"
+            android:lineSpacingExtra="4dp"
+            android:padding="5dp"
+            android:text="This Service may contain links to other sites. If you click on a third-party link, you will be directed to that site. Note that these external sites are not operated by us. Therefore, we strongly advise you to review the Privacy Policy of these websites. We have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services."
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:fontFamily="sans-serif-condensed"
+            android:lineSpacingExtra="4dp"
+            android:padding="5dp"
+            android:text="Children’s Privacy"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:fontFamily="sans-serif-condensed"
+            android:lineSpacingExtra="4dp"
+            android:padding="5dp"
+            android:text="These Services do not address anyone under the age of 13. We do not knowingly collect personally identifiable information from children under 13 years of age. In the case we discover that a child under 13 has provided us with personal information, we immediately delete this from our servers. If you are a parent or guardian and you are aware that your child has provided us with personal information, please contact us so that we will be able to do necessary actions."
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:fontFamily="sans-serif-condensed"
+            android:lineSpacingExtra="4dp"
+            android:padding="5dp"
+            android:text="Changes to This Privacy Policy"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:fontFamily="sans-serif-condensed"
+            android:lineSpacingExtra="4dp"
+            android:padding="5dp"
+            android:text="We may update our Privacy Policy from time to time.Thus, you are advised to review this page periodically for any changes. We will notify you of any changes by posting the new Privacy Policy on this page.
+&#10;This policy is effective as of 2021-08-23"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="sans-serif-condensed"
+            android:padding="10dp"
+            android:text="© 2021 Syntics App Development pvt. ltd. All rights reserved"
+            android:textSize="10dp" />
+
+    </LinearLayout>
+
+</ScrollView>

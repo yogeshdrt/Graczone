@@ -306,12 +306,12 @@ public class home extends AppCompatActivity {
             return true;
         });
 
-        navigationView.getMenu().findItem(R.id.about_us).setOnMenuItemClickListener(item -> {
-//            Uri uri = Uri.parse("https://graczone.synticsapp.com/");
-//            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-//            startActivity(intent);
-            return true;
-        });
+//        navigationView.getMenu().findItem(R.id.about_us).setOnMenuItemClickListener(item -> {
+////            Uri uri = Uri.parse("https://graczone.synticsapp.com/");
+////            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+////            startActivity(intent);
+//            return true;
+//        });
 
 
         navigationView.getMenu().findItem(R.id.feedback).setOnMenuItemClickListener(item -> {
@@ -325,6 +325,34 @@ public class home extends AppCompatActivity {
             fragmentTransaction.commit();
             drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
             navigationView.getMenu().getItem(4).setChecked(true);
+            return true;
+        });
+
+        navigationView.getMenu().findItem(R.id.privacy).setOnMenuItemClickListener(item -> {
+
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            for (int i = 0; i < getSupportFragmentManager().getBackStackEntryCount(); i++) {
+                getSupportFragmentManager().popBackStack();
+            }
+            fragmentTransaction.replace(R.id.nav_host_fragment, new Privacy_Policy());
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+            drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+            navigationView.getMenu().getItem(5).setChecked(true);
+            return true;
+        });
+
+        navigationView.getMenu().findItem(R.id.about_us).setOnMenuItemClickListener(item -> {
+
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            for (int i = 0; i < getSupportFragmentManager().getBackStackEntryCount(); i++) {
+                getSupportFragmentManager().popBackStack();
+            }
+            fragmentTransaction.replace(R.id.nav_host_fragment, new About_Us());
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+            drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+            navigationView.getMenu().getItem(6).setChecked(true);
             return true;
         });
 
@@ -377,6 +405,7 @@ public class home extends AppCompatActivity {
             navigationView.getMenu().getItem(3).setChecked(false);
             navigationView.getMenu().getItem(4).setChecked(false);
             navigationView.getMenu().getItem(5).setChecked(false);
+            navigationView.getMenu().getItem(6).setChecked(false);
             Intent intent = new Intent(home.this, DeleteAccountActivity.class);
             startActivity(intent);
         });

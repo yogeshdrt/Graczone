@@ -37,17 +37,17 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dceb6660-a320-494f-b42a-773741ded4fc" name="Default Changelist" comment="thakur">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/syntics/graczone/About_Us.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/syntics/graczone/Privacy_Policy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_privacy.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_about__us.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_privacy__policy.xml" afterDir="false" />
+    <list default="true" id="dceb6660-a320-494f-b42a-773741ded4fc" name="Default Changelist" comment="privacyFragAdded">
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_mail.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_redirect.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/syntics/graczone/Wallet/BalanceFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/syntics/graczone/Wallet/BalanceFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/syntics/graczone/About_Us.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/syntics/graczone/About_Us.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/syntics/graczone/Privacy_Policy.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/syntics/graczone/Privacy_Policy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/syntics/graczone/home.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/syntics/graczone/home.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/popup_window.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/popup_window.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_about__us.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_about__us.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_privacy__policy.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_privacy__policy.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/activity_main_drawer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/activity_main_drawer.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -598,7 +598,14 @@
       <option name="project" value="LOCAL" />
       <updated>1630235563201</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="privacyFragAdded">
+      <created>1632040951976</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1632040951976</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -650,7 +657,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="add progress with count to joining match" />
     <MESSAGE value="add swap delete in my matches" />
     <MESSAGE value="fix my matches view." />
     <MESSAGE value="forgot_password" />
@@ -675,7 +681,8 @@
     <MESSAGE value="update code" />
     <MESSAGE value="new update" />
     <MESSAGE value="thakur" />
-    <option name="LAST_COMMIT_MESSAGE" value="thakur" />
+    <MESSAGE value="privacyFragAdded" />
+    <option name="LAST_COMMIT_MESSAGE" value="privacyFragAdded" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -689,7 +696,6 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="488" y="70" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1624265401622" />
-    <state x="549" y="79" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1622631944462" />
     <state x="448" y="148" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1628059370484">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -698,21 +704,14 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="111" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1628078048454" />
-    <state x="464" y="126" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1622797452444" />
     <state x="263" y="119" key="AndroidCreateResourceDirectoryDialog" timestamp="1628077557572">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="263" y="119" key="AndroidCreateResourceDirectoryDialog/0.0.1366.728@0.0.1366.728" timestamp="1628077557572" />
-    <state x="296" y="135" key="AndroidCreateResourceDirectoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1621851503288" />
     <state x="263" y="119" key="AndroidCreateResourceFileDialog" timestamp="1628077653850">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="263" y="119" key="AndroidCreateResourceFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1628077653850" />
-    <state x="296" y="135" key="AndroidCreateResourceFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1621854710657" />
-    <state x="593" y="174" key="AndroidCreateXmlResourceDialog" timestamp="1621854264008">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="593" y="174" key="AndroidCreateXmlResourceDialog/0.0.1536.824@0.0.1536.824" timestamp="1621854264008" />
     <state x="116" y="113" width="1411" height="553" key="DiffContextDialog" timestamp="1629960244734">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -756,14 +755,10 @@
     </state>
     <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1628083388650" />
     <state x="309" y="110" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1630235582170" />
-    <state x="584" y="190" key="chooseDestDirectoryDialog" timestamp="1621853014266">
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1632040964463">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="584" y="190" key="chooseDestDirectoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1621853014266" />
-    <state x="351" y="0" width="1199" height="810" key="dock-window-1" timestamp="1622794301520">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="351" y="0" width="1199" height="810" key="dock-window-1/0.0.1536.824@0.0.1536.824" timestamp="1622794301520" />
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1632040964463" />
     <state width="600" height="428" key="javadoc.popup" timestamp="1629804605735">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -773,9 +768,5 @@
     </state>
     <state x="329" y="154" width="672" height="677" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1624878682164" />
     <state x="370" y="174" width="756" height="767" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1629885718696" />
-    <state x="383" y="128" width="672" height="600" key="search.everywhere.popup" timestamp="1622189729116">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="383" y="128" width="672" height="600" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1622189729116" />
   </component>
 </project>
