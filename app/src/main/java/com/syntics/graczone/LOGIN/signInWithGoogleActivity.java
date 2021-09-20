@@ -114,7 +114,6 @@ public class signInWithGoogleActivity extends AppCompatActivity {
                 String personEmail = acct.getEmail();
 //                String personId = acct.getId();
 //                Uri personPhoto = acct.getPhotoUrl();
-                assert account != null;
                 firebaseAuthWithGoogle(account, personEmail, personName);
 //                Intent intent = new Intent(signInWithGoogleActivity.this, Select_Game.class);
 //                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
