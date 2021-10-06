@@ -159,8 +159,6 @@
             android:background="@drawable/border_for_pay_images"
             android:src="@drawable/paytm_logo"
             android:scaleType="centerCrop" />
-
-
     </LinearLayout>
 
 
@@ -171,7 +169,7 @@
         android:layout_marginTop="30dp"
         android:backgroundTint="#4d4d4d"
         android:padding="10dp"
-        android:text="Withdraw money                           →"
+        android:text="Withdraw money                       →"
         android:textAllCaps="false"
         android:textColor="@color/white"
         app:cornerRadius="3dp" />
@@ -181,8 +179,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
         android:padding="10dp"
+        android:layout_gravity="center"
         android:text="contact us: graczone@synticsapp.com"
-        android:textColor="@color/black" />
+        android:textColor="#9C9C9C" />
 
 
 </LinearLayout>
