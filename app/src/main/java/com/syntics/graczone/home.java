@@ -1,13 +1,20 @@
 package com.syntics.graczone;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.app.DownloadManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.IntentSender;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.net.ConnectivityManager;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,10 +24,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
@@ -34,7 +46,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.play.core.appupdate.AppUpdateInfo;
 import com.google.android.play.core.appupdate.AppUpdateManager;
+import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
+import com.google.android.play.core.install.model.AppUpdateType;
+import com.google.android.play.core.install.model.UpdateAvailability;
+import com.google.android.play.core.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -53,8 +70,20 @@ import com.syntics.graczone.ui.Notification.Notification_Fragment;
 import com.syntics.graczone.ui.feedback.Feedback_Fragment;
 import com.syntics.graczone.ui.joiningRule.Joining_Rules_Fragment;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
+
+import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
 public class home extends AppCompatActivity {
 
@@ -92,8 +121,8 @@ public class home extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-//        findVersionFromServer();
-//        checkUpdate();
+        findVersionFromServer();
+        checkUpdate();
 
 
         dialog = new Dialog(this);
@@ -437,189 +466,189 @@ public class home extends AppCompatActivity {
 //        });
     }
 
-//    private void checkUpdate() {
-//        appUpdateManager = (AppUpdateManager) AppUpdateManagerFactory.create(this);
-//
-//// Returns an intent object that you use to check for an update.
-//        Task<AppUpdateInfo> appUpdateInfoTask = appUpdateManager.getAppUpdateInfo();
-//
-//// Checks that the platform will allow the specified type of update.
-//        appUpdateInfoTask.addOnSuccessListener(appUpdateInfo -> {
-//            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
-//                    // This example applies an immediate update. To apply a flexible update
-//                    // instead, pass in AppUpdateType.FLEXIBLE
-//                    && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)) {
-//
-//                try {
-//                    appUpdateManager.startUpdateFlowForResult(
-//                            // Pass the intent that is returned by 'getAppUpdateInfo()'.
-//                            appUpdateInfo,
-//                            // Or 'AppUpdateType.FLEXIBLE' for flexible updates.
-//                            AppUpdateType.IMMEDIATE,
-//                            // The current activity making the update request.
-//                            this,
-//                            // Include a request code to later monitor this update request.
-//                            MY_REQUEST_CODE);
-//                } catch (IntentSender.SendIntentException e) {
-//                    e.printStackTrace();
-//                }
-//                // Request the update.
-//            }
-//        });
-//    }
+    private void checkUpdate() {
+        appUpdateManager = (AppUpdateManager) AppUpdateManagerFactory.create(this);
 
-//    @Override
-//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if (requestCode == MY_REQUEST_CODE) {
-//            if (resultCode != RESULT_OK) {
-//                Log.d("myTag", "Update flow failed! Result code: " + resultCode);
-//                // If the update is cancelled or fails,
-//                // you can request to start the update again.
-//                checkUpdate();
-//            }
-//        }
-//    }
+// Returns an intent object that you use to check for an update.
+        Task<AppUpdateInfo> appUpdateInfoTask = appUpdateManager.getAppUpdateInfo();
 
-    // Checks that the update is not stalled during 'onResume()'.
+// Checks that the platform will allow the specified type of update.
+        appUpdateInfoTask.addOnSuccessListener(appUpdateInfo -> {
+            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
+                    // This example applies an immediate update. To apply a flexible update
+                    // instead, pass in AppUpdateType.FLEXIBLE
+                    && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)) {
+
+                try {
+                    appUpdateManager.startUpdateFlowForResult(
+                            // Pass the intent that is returned by 'getAppUpdateInfo()'.
+                            appUpdateInfo,
+                            // Or 'AppUpdateType.FLEXIBLE' for flexible updates.
+                            AppUpdateType.IMMEDIATE,
+                            // The current activity making the update request.
+                            this,
+                            // Include a request code to later monitor this update request.
+                            MY_REQUEST_CODE);
+                } catch (IntentSender.SendIntentException e) {
+                    e.printStackTrace();
+                }
+                // Request the update.
+            }
+        });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == MY_REQUEST_CODE) {
+            if (resultCode != RESULT_OK) {
+                Log.d("myTag", "Update flow failed! Result code: " + resultCode);
+                // If the update is cancelled or fails,
+                // you can request to start the update again.
+                checkUpdate();
+            }
+        }
+    }
+
+    //     Checks that the update is not stalled during 'onResume()'.
 // However, you should execute this check at all entry points into the app.
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//
-//        appUpdateManager
-//                .getAppUpdateInfo()
-//                .addOnSuccessListener(
-//                        appUpdateInfo -> {
-//                            if (appUpdateInfo.updateAvailability()
-//                                    == UpdateAvailability.DEVELOPER_TRIGGERED_UPDATE_IN_PROGRESS) {
-//                                // If an in-app update is already running, resume the update.
-//                                try {
-//                                    appUpdateManager.startUpdateFlowForResult(
-//                                            appUpdateInfo,
-//                                            AppUpdateType.IMMEDIATE,
-//                                            this,
-//                                            MY_REQUEST_CODE);
-//                                } catch (IntentSender.SendIntentException e) {
-//                                    e.printStackTrace();
-//                                }
-//                            }
-//                        });
-//    }
+    @Override
+    protected void onResume() {
+        super.onResume();
 
-//    @Override
-//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-//        if (requestCode == PERMISSION_REQUEST_CODE) {
-//            if (grantResults.length > 0) {
-//
-//                boolean locationAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
-//                boolean cameraAccepted = grantResults[1] == PackageManager.PERMISSION_GRANTED;
-//                if (locationAccepted && cameraAccepted) {
-//                    UpdateApp updateApp = new UpdateApp();
-//                    updateApp.setContext(home.this);
-//                    updateApp.execute("https://graczone.synticsapp.com/graczone.apk");
-//                }
-//            }
-//        }
-//    }
+        appUpdateManager
+                .getAppUpdateInfo()
+                .addOnSuccessListener(
+                        appUpdateInfo -> {
+                            if (appUpdateInfo.updateAvailability()
+                                    == UpdateAvailability.DEVELOPER_TRIGGERED_UPDATE_IN_PROGRESS) {
+                                // If an in-app update is already running, resume the update.
+                                try {
+                                    appUpdateManager.startUpdateFlowForResult(
+                                            appUpdateInfo,
+                                            AppUpdateType.IMMEDIATE,
+                                            this,
+                                            MY_REQUEST_CODE);
+                                } catch (IntentSender.SendIntentException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
+    }
 
-//    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-//    private boolean checkPermission() {
-//        int result = ContextCompat.checkSelfPermission(getApplicationContext(), WRITE_EXTERNAL_STORAGE);
-//        int result1 = ContextCompat.checkSelfPermission(getApplicationContext(), READ_EXTERNAL_STORAGE);
-//
-//        return result == PackageManager.PERMISSION_GRANTED && result1 == PackageManager.PERMISSION_GRANTED;
-//    }
-//
-//    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-//    private void requestPermission() {
-//        ActivityCompat.requestPermissions(this, new String[]{WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
-//    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            if (grantResults.length > 0) {
 
-//    void findVersionFromServer() {
-//
-//
-//        new Thread(new Runnable() {
-//
-//            public void run() {
-//
-//
-//                ArrayList<String> urls = new ArrayList<String>(); //to read each line
-//                //TextView t; //to show the result, please declare and find it inside onCreate()
-//
-//
-//                try {
-//
-//                    // Create a URL for the desired page
-//                    URL url = new URL("https://graczone.synticsapp.com/updateVersion.txt"); //My text file location
-//                    //First open the connection
-//                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-//                    conn.setConnectTimeout(60000); // timing out in a minute
-//
-//                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-//
-//                    //t=(TextView)findViewById(R.id.TextView1); // ideally do this in onCreate()
-//                    String str = "0";
-//
-//                    while ((str = in.readLine()) != null) {
-//
-//                        Log.d("myTag", "str: " + str);
-//
-//                        urls.add(str);
-//                    }
-//
-//                    in.close();
-//                } catch (Exception e) {
-//                    Log.d("myTag", e.toString());
-//                }
-//                Log.d("myTag", "try-catch chalgo");
-//
-//                //since we are in background thread, to post results we have to go back to ui thread. do the following for that
-//
-//
-//                home.this.runOnUiThread(new Runnable() {
-//
-//                    public void run() {
-//                        Log.d("myTag", "void run start ");
-////                        t.setText(urls.get(0)); // My TextFile has 3 lines
-//                        Log.d("myTag", "Ve. " + urls.get(0));
-//
-//                        serverVersionCode = Integer.parseInt(urls.get(0));
-//
-//                        if (currentVersionCode < serverVersionCode) {
-//                            dialog.show();
-//                            dialog.findViewById(R.id.yesBtn).setOnClickListener(new View.OnClickListener() {
-//
-//                                @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-//                                @Override
-//                                public void onClick(View v) {
-//                                    if (checkPermission()) {
-//                                        UpdateApp atualizaApp = new UpdateApp();
-//                                        atualizaApp.setContext(home.this);
-//                                        atualizaApp.execute("https://graczone.synticsapp.com/graczone.apk");
-//                                    } else {
-//                                        requestPermission();
-//                                    }
-//                                    dialog.dismiss();
-//                                }
-//
-//
-//                            });
-//                            dialog.findViewById(R.id.noBtn).setOnClickListener(task -> dialog.dismiss());
-//
-//                        } else {
-//
-//                            Log.d("myTag", "currentV: " + currentVersionCode + " " + "seVC " + serverVersionCode);
-//                        }
-//                    }
-//                });
-//
-//
-//            }
-//        }).start();
-//
-//    }
+                boolean locationAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                boolean cameraAccepted = grantResults[1] == PackageManager.PERMISSION_GRANTED;
+                if (locationAccepted && cameraAccepted) {
+                    UpdateApp updateApp = new UpdateApp();
+                    updateApp.setContext(home.this);
+                    updateApp.execute("https://graczone.synticsapp.com/graczone.apk");
+                }
+            }
+        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    private boolean checkPermission() {
+        int result = ContextCompat.checkSelfPermission(getApplicationContext(), WRITE_EXTERNAL_STORAGE);
+        int result1 = ContextCompat.checkSelfPermission(getApplicationContext(), READ_EXTERNAL_STORAGE);
+
+        return result == PackageManager.PERMISSION_GRANTED && result1 == PackageManager.PERMISSION_GRANTED;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    private void requestPermission() {
+        ActivityCompat.requestPermissions(this, new String[]{WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
+    }
+
+    void findVersionFromServer() {
+
+
+        new Thread(new Runnable() {
+
+            public void run() {
+
+
+                ArrayList<String> urls = new ArrayList<String>(); //to read each line
+                //TextView t; //to show the result, please declare and find it inside onCreate()
+
+
+                try {
+
+                    // Create a URL for the desired page
+                    URL url = new URL("https://graczone.synticsapp.com/updateVersion.txt"); //My text file location
+                    //First open the connection
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    conn.setConnectTimeout(60000); // timing out in a minute
+
+                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+                    //t=(TextView)findViewById(R.id.TextView1); // ideally do this in onCreate()
+                    String str = "0";
+
+                    while ((str = in.readLine()) != null) {
+
+                        Log.d("myTag", "str: " + str);
+
+                        urls.add(str);
+                    }
+
+                    in.close();
+                } catch (Exception e) {
+                    Log.d("myTag", e.toString());
+                }
+                Log.d("myTag", "try-catch chalgo");
+
+                //since we are in background thread, to post results we have to go back to ui thread. do the following for that
+
+
+                home.this.runOnUiThread(new Runnable() {
+
+                    public void run() {
+                        Log.d("myTag", "void run start ");
+//                        t.setText(urls.get(0)); // My TextFile has 3 lines
+                        Log.d("myTag", "Ve. " + urls.get(0));
+
+                        serverVersionCode = Integer.parseInt(urls.get(0));
+
+                        if (currentVersionCode < serverVersionCode) {
+                            dialog.show();
+                            dialog.findViewById(R.id.yesBtn).setOnClickListener(new View.OnClickListener() {
+
+                                @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+                                @Override
+                                public void onClick(View v) {
+                                    if (checkPermission()) {
+                                        UpdateApp atualizaApp = new UpdateApp();
+                                        atualizaApp.setContext(home.this);
+                                        atualizaApp.execute("https://graczone.synticsapp.com/graczone.apk");
+                                    } else {
+                                        requestPermission();
+                                    }
+                                    dialog.dismiss();
+                                }
+
+
+                            });
+                            dialog.findViewById(R.id.noBtn).setOnClickListener(task -> dialog.dismiss());
+
+                        } else {
+
+                            Log.d("myTag", "currentV: " + currentVersionCode + " " + "seVC " + serverVersionCode);
+                        }
+                    }
+                });
+
+
+            }
+        }).start();
+
+    }
 
 
     public void onNewIntent(Intent intent) {
@@ -706,126 +735,126 @@ public class home extends AppCompatActivity {
 
     }
 
-//    public class UpdateApp extends AsyncTask<String, Integer, String> {
-//        private ProgressDialog mPDialog;
-//        private Context mContext;
-//
-//        void setContext(Activity context) {
-//            mContext = context;
-//            context.runOnUiThread(new Runnable() {
-//                @Override
-//                public void run() {
-//                    mPDialog = new ProgressDialog(mContext);
-//                    mPDialog.setMessage("Please wait...");
-//                    mPDialog.setIndeterminate(true);
-//                    mPDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-//                    mPDialog.setCancelable(false);
-//                    mPDialog.show();
-//                }
-//            });
-//        }
-//
-//        @Override
-//        protected String doInBackground(String... arg0) {
-//            try {
-//
-//                URL url = new URL(arg0[0]);
-//                HttpURLConnection c = (HttpURLConnection) url.openConnection();
-//                c.setRequestMethod("GET");
-//                c.setDoOutput(true);
-//                c.connect();
-//                int lenghtOfFile = c.getContentLength();
-//                Log.d("myTag", "len of file: " + lenghtOfFile);
-//
-//                String PATH = Objects.requireNonNull(mContext.getExternalFilesDir(null)).getAbsolutePath();
-//                File file = new File(PATH);
-//                boolean isCreate = file.mkdirs();
-//                File outputFile = new File(file, "graczone.apk");
-//                if (outputFile.exists()) {
-//                    boolean isDelete = outputFile.delete();
-//                }
-//                FileOutputStream fos = new FileOutputStream(outputFile);
-//
-//                InputStream is = c.getInputStream();
-//
-//                byte[] buffer = new byte[1024];
-//                int len1;
-//                long total = 0;
-//                while ((len1 = is.read(buffer)) != -1) {
-//                    total += len1;
-//                    fos.write(buffer, 0, len1);
-//                    publishProgress((int) ((total * 100) / lenghtOfFile));
-//                }
-//                fos.close();
-//                is.close();
-//
-//                if (mPDialog != null)
-//                    mPDialog.dismiss();
-//                installApk();
-//            } catch (Exception e) {
-//                Log.d("myTag", "Update error! " + e.getMessage() + Arrays.toString(e.getStackTrace()));
-//                e.printStackTrace();
-//            }
-//            return null;
-//        }
-//
-//        @Override
-//        protected void onPreExecute() {
-//            super.onPreExecute();
-//            if (mPDialog != null)
-//                mPDialog.show();
-//
-//        }
-//
-//
-//        @Override
-//        protected void onProgressUpdate(Integer... values) {
-//            super.onProgressUpdate(values);
-//            if (mPDialog != null) {
-//                mPDialog.setIndeterminate(false);
-//                mPDialog.setMax(100);
-//                mPDialog.setProgress(values[0]);
-//            }
-//        }
-//
-//        @Override
-//        protected void onPostExecute(String result) {
-//            if (mPDialog != null)
-//                mPDialog.dismiss();
-//            if (result != null)
-//                Toast.makeText(mContext, "Download error: " + result, Toast.LENGTH_LONG).show();
-//            else
-//                Toast.makeText(mContext, "File Downloaded", Toast.LENGTH_SHORT).show();
-//        }
-//
-//
-//        private void installApk() {
-//            try {
-//                String PATH = Objects.requireNonNull(mContext.getExternalFilesDir(null)).getAbsolutePath();
-//                File file = new File(PATH + "/graczone.apk");
-//                Intent intent = new Intent(Intent.ACTION_VIEW);
-//                if (Build.VERSION.SDK_INT >= 24) {
-//                    Uri downloaded_apk = FileProvider.getUriForFile(mContext, mContext.getApplicationContext().getPackageName() + ".provider", file);
-//                    intent.setDataAndType(downloaded_apk, "application/vnd.android.package-archive");
-//                    List<ResolveInfo> resInfoList = mContext.getPackageManager().queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
-//                    for (ResolveInfo resolveInfo : resInfoList) {
-//                        mContext.grantUriPermission(mContext.getApplicationContext().getPackageName() + ".provider", downloaded_apk, Intent.FLAG_GRANT_WRITE_URI_PERMISSION | Intent.FLAG_GRANT_READ_URI_PERMISSION);
-//                    }
-//                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_GRANT_WRITE_URI_PERMISSION | Intent.FLAG_GRANT_READ_URI_PERMISSION);
-//                    startActivity(intent);
-//                } else {
-//                    intent.setAction(Intent.ACTION_VIEW);
-//                    intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-//                    intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
-//                    intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
-//                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                }
-//                startActivity(intent);
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//        }
-//    }
+    public class UpdateApp extends AsyncTask<String, Integer, String> {
+        private ProgressDialog mPDialog;
+        private Context mContext;
+
+        void setContext(Activity context) {
+            mContext = context;
+            context.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    mPDialog = new ProgressDialog(mContext);
+                    mPDialog.setMessage("Please wait...");
+                    mPDialog.setIndeterminate(true);
+                    mPDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+                    mPDialog.setCancelable(false);
+                    mPDialog.show();
+                }
+            });
+        }
+
+        @Override
+        protected String doInBackground(String... arg0) {
+            try {
+
+                URL url = new URL(arg0[0]);
+                HttpURLConnection c = (HttpURLConnection) url.openConnection();
+                c.setRequestMethod("GET");
+                c.setDoOutput(true);
+                c.connect();
+                int lenghtOfFile = c.getContentLength();
+                Log.d("myTag", "len of file: " + lenghtOfFile);
+
+                String PATH = Objects.requireNonNull(mContext.getExternalFilesDir(null)).getAbsolutePath();
+                File file = new File(PATH);
+                boolean isCreate = file.mkdirs();
+                File outputFile = new File(file, "graczone.apk");
+                if (outputFile.exists()) {
+                    boolean isDelete = outputFile.delete();
+                }
+                FileOutputStream fos = new FileOutputStream(outputFile);
+
+                InputStream is = c.getInputStream();
+
+                byte[] buffer = new byte[1024];
+                int len1;
+                long total = 0;
+                while ((len1 = is.read(buffer)) != -1) {
+                    total += len1;
+                    fos.write(buffer, 0, len1);
+                    publishProgress((int) ((total * 100) / lenghtOfFile));
+                }
+                fos.close();
+                is.close();
+
+                if (mPDialog != null)
+                    mPDialog.dismiss();
+                installApk();
+            } catch (Exception e) {
+                Log.d("myTag", "Update error! " + e.getMessage() + Arrays.toString(e.getStackTrace()));
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            if (mPDialog != null)
+                mPDialog.show();
+
+        }
+
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            super.onProgressUpdate(values);
+            if (mPDialog != null) {
+                mPDialog.setIndeterminate(false);
+                mPDialog.setMax(100);
+                mPDialog.setProgress(values[0]);
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            if (mPDialog != null)
+                mPDialog.dismiss();
+            if (result != null)
+                Toast.makeText(mContext, "Download error: " + result, Toast.LENGTH_LONG).show();
+            else
+                Toast.makeText(mContext, "File Downloaded", Toast.LENGTH_SHORT).show();
+        }
+
+
+        private void installApk() {
+            try {
+                String PATH = Objects.requireNonNull(mContext.getExternalFilesDir(null)).getAbsolutePath();
+                File file = new File(PATH + "/graczone.apk");
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                if (Build.VERSION.SDK_INT >= 24) {
+                    Uri downloaded_apk = FileProvider.getUriForFile(mContext, mContext.getApplicationContext().getPackageName() + ".provider", file);
+                    intent.setDataAndType(downloaded_apk, "application/vnd.android.package-archive");
+                    List<ResolveInfo> resInfoList = mContext.getPackageManager().queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
+                    for (ResolveInfo resolveInfo : resInfoList) {
+                        mContext.grantUriPermission(mContext.getApplicationContext().getPackageName() + ".provider", downloaded_apk, Intent.FLAG_GRANT_WRITE_URI_PERMISSION | Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                    }
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_GRANT_WRITE_URI_PERMISSION | Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                    startActivity(intent);
+                } else {
+                    intent.setAction(Intent.ACTION_VIEW);
+                    intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                    intent.putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true);
+                    intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                }
+                startActivity(intent);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     @Override
     protected void onStart() {
