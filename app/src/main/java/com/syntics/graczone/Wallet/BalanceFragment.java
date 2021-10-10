@@ -98,7 +98,7 @@ public class BalanceFragment extends Fragment implements PaymentStatusListener {
 
         addBalanceBtn.setOnClickListener(v -> {
             String amount = amountEditText.getText().toString();
-            String upi = "8077982617-1@okbizaxis";
+            String upi = "8077982617@okbizaxis";
             String name = "Syntics App Development private limited";
             String desc = "Thank you";
             Log.d("myTag", "button click");
@@ -214,7 +214,7 @@ public class BalanceFragment extends Fragment implements PaymentStatusListener {
 //                    throw new IllegalStateException("Unexpected value: " + paymentAppChoice.getId());
 //            }
 
-            EasyUpiPayment.Builder builder = new EasyUpiPayment.Builder(getActivity());
+            EasyUpiPayment.Builder builder = new EasyUpiPayment.Builder(requireActivity());
             builder.with(paymentApp);
             Log.d("myTag", "after with");
             builder.setPayeeVpa(upi);
