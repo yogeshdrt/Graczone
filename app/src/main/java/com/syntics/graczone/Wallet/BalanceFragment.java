@@ -98,7 +98,7 @@ public class BalanceFragment extends Fragment implements PaymentStatusListener {
 
         addBalanceBtn.setOnClickListener(v -> {
             String amount = amountEditText.getText().toString();
-            String upi = "8077982617@okbizaxis";
+            String upi = "8077982617@ybl";
             String name = "Syntics App Development private limited";
             String desc = "Thank you";
             Log.d("myTag", "button click");
