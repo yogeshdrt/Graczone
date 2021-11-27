@@ -1,5 +1,8 @@
 package com.syntics.graczone.LOGIN;
 
+import static java.lang.Thread.sleep;
+
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -19,8 +22,6 @@ import com.syntics.graczone.ui.Notification.NotificationModel;
 
 import java.util.ArrayList;
 
-import static java.lang.Thread.sleep;
-
 public class SplashScreen extends AppCompatActivity {
 
     public static final String MyPREFERENCES = "MyPrefs";
@@ -37,6 +38,7 @@ public class SplashScreen extends AppCompatActivity {
     NotificationModel notification;
 
 
+    @SuppressLint("MissingPermission")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -22,6 +22,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 import com.razorpay.Checkout;
+import com.shreyaspatil.EasyUpiPayment.listener.PaymentStatusListener;
+import com.shreyaspatil.EasyUpiPayment.model.TransactionDetails;
 import com.syntics.graczone.R;
 
 import java.text.SimpleDateFormat;
@@ -30,11 +32,10 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
+import java.util.Objects;
 
 import dev.shreyaspatil.easyupipayment.EasyUpiPayment;
-import dev.shreyaspatil.easyupipayment.listener.PaymentStatusListener;
 import dev.shreyaspatil.easyupipayment.model.PaymentApp;
-import dev.shreyaspatil.easyupipayment.model.TransactionDetails;
 
 
 public class BalanceFragment extends Fragment implements PaymentStatusListener {
@@ -258,7 +259,7 @@ public class BalanceFragment extends Fragment implements PaymentStatusListener {
             // on below line we are calling a set payment
             // status listener method to call other payment methods.
             Log.d("myTag", "before statusListener");
-            easyUpiPayment.setPaymentStatusListener(this);
+            easyUpiPayment.setPaymentStatusListener((dev.shreyaspatil.easyupipayment.listener.PaymentStatusListener) this);
             Log.d("myTag", "after Status Listener");
         } catch (Exception e) {
             Log.d("myTag", Arrays.toString(e.getStackTrace()));
@@ -268,20 +269,20 @@ public class BalanceFragment extends Fragment implements PaymentStatusListener {
     @Override
     public void onTransactionCompleted(TransactionDetails transactionDetails) {
 
-        switch (transactionDetails.getTransactionStatus()) {
-            case SUCCESS:
+        switch (Objects.requireNonNull(transactionDetails.getStatus())) {
+            case "SUCCESS":
                 onTransactionSuccess();
                 break;
-            case FAILURE:
+            case "FAILURE":
                 onTransactionFailed();
                 break;
-            case SUBMITTED:
+            case "SUBMITTED":
                 onTransactionSubmitted();
                 break;
         }
 
         HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("Status", transactionDetails.getTransactionStatus().toString());
+        hashMap.put("Status", transactionDetails.getStatus());
         hashMap.put("TransactionId", transactionDetails.getTransactionId());
         hashMap.put("ApprovalRefNo", transactionDetails.getApprovalRefNo());
         hashMap.put("TransactionRefNO", transactionDetails.getTransactionRefId());
@@ -355,6 +356,11 @@ public class BalanceFragment extends Fragment implements PaymentStatusListener {
     public void onTransactionCancelled() {
         // this method is called when transaction is cancelled.
         Toast.makeText(getContext(), "Transaction cancelled..", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onAppNotFound() {
+
     }
 
 //    @Override
